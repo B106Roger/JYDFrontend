@@ -1,0 +1,113 @@
+#login-backround {
+  background: url('../../../assets/imgs/bgLogin.png') transparent;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  /*覆蓋整個葉面*/
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around; */
+  justify-content: center;
+  /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
+}
+
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  justify-content: center
+}
+
+.row-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px;
+
+  justify-content: center;
+
+}
+
+.column-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 5px;
+
+  justify-content: center;
+
+}
+
+#account-container {
+  background-image: url('../../../assets/imgs/picIdFrame.png');
+  height: 45px;
+  width: 265px;
+}
+
+#account {
+  height: 45px;
+  width: 265px;
+
+  background: none;
+  border: rgb(115 132 214);
+  border-radius: 22.5px;
+  outline: none;
+  text-indent: 57.5px;
+  font-size: 24px;
+  font-family: 'ProximaNova-Regular';
+  color:rgb( 79 107 166);
+
+}
+
+#password-container {
+  background-image: url('../../../assets/imgs/picPasswordFrame.png');
+  height: 45px;
+  width: 265px;
+}
+
+#password {
+  height: 45px;
+  width: 265px;
+
+  background: none;
+  border: rgb(115 132 214);
+  border-radius: 22.5px;
+  outline: none;
+  text-indent: 57.5px;
+  font-size: 24px;
+  font-family: 'ProximaNova-Regular';
+  color:rgb( 79 107 166);
+
+}
+
+#password::placeholder,#account::placeholder{
+  font-family: 'ProximaNova-Regular';
+  color: rgb(157 168 223);
+}
+
+#loginBtn {
+  background: none;
+  outline: none;
+  border: none;
+  height:46px;
+  width:263px;
+
+
+
+  display: flex;
+  flex-direction: row;
+  align-items : flex-end;
+  justify-content: center;
+}
+#loginBtn:hover {
+  cursor:pointer;
+}
+button:active #changeBtn{
+  content: url("../../../assets/imgs/btnLoginPressed.png")
+}
