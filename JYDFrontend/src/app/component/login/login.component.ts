@@ -9,9 +9,16 @@ export class LoginComponent implements OnInit {
 
   account = '';
   password = '';
+  remember = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  getRememberValue() {return this.remember; }
+  getRememberStyle() {
+    const displayVal = this.getRememberValue() === true ? 'inline' : 'none';
+    return { display: displayVal };
+  }
+  toggleRemeberValue() {this.remember = !this.remember; }
 }

@@ -23,9 +23,25 @@
     </div>
 
     <div class="row-flex">
-      <div class="column-flex">
+      <div class="row-flex" [ngStyle]="{'width': '135px'}"></div>
+      <div class="row-flex" style="margin-top: 0px">
+        <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
+          <img id="check-img"  src="../../../assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()">
+        </div>
+        <div class="column-flex">
+          <label for="remember-me" class="unselectable" >
+            <span id="remember-text">REMEMBER ME</span>
+          </label>
+        </div>
+        <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember">
+      </div>
+    </div>
+
+    <div class="row-flex">
+      <div class="column-flex" >
         <button id="loginBtn">
-          <img id="changeBtn" src="../../../assets/imgs/btnLoginNormal.png" alt="">
+          <img id="changeBtn"
+          src="../../../assets/imgs/btnLoginNormal.png">
         </button>
       </div>
     </div>
