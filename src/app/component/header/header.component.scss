@@ -1,0 +1,81 @@
+#header-bg {
+  background: url('../../../assets/imgs/picTopBg.png');
+  height: 66px;
+  width: 360px;
+
+  justify-content: flex-start;
+  /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
+}
+
+#name-bg {
+  background: url('../../../assets/imgs/picIdFrameEmpty.png');
+  height: 33px;
+  width: 95px;
+}
+
+#iconId {
+  height: 17.5px;
+  width: 12px;
+  content: url('../../../assets/imgs/iconId.png')
+}
+
+#credit-bg {
+  background: url('../../../assets/imgs/picCreditFrame.png');
+  height: 47px;
+  width: 151px;
+}
+
+#iconCredit  {
+  height: 26px;
+  width: 26px;
+  content: url('../../../assets/imgs/iconCreditDollar.png');
+}
+
+#credit-text {
+  height: 12.5px;
+  width: 89.5px;
+  font-size: 15px;
+  color: rgb(180 198 236);
+  text-align: right;
+}
+
+#settingButton {
+  background: none;
+  outline: none;
+  border: 0px;
+  margin: 0px;
+  img {
+    height: 22px;
+    width: 26px;
+    content: url('../../../assets/imgs/btnSettingMenuNormal.png')
+  }
+}
+#settingButton:active {
+  img {
+    content: url('../../../assets/imgs/btnSettingMenuPressed.png')
+  }
+}
+
+#logoutButton {
+  background: none;
+  outline: none;
+  border: 0px;
+  margin: 0px;
+  img {
+    height: 22px;
+    width: 26px;
+    content: url('../../../assets/imgs/btnLogoutNormal.png')
+  }
+}
+#logoutButton:active {
+  img {
+    content: url('../../../assets/imgs/btnSettingLogoutPressed.png')
+  }
+}
+
+.no-margin {
+  margin: 0px;
+}
+.no-padding {
+  padding: 5px;
+}
