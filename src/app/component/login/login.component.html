@@ -17,7 +17,7 @@
 
     <div class="row-flex">
       <div class=column-flex id="password-container">
-        <input [(ngModel)]="password" type="text" id="account"
+        <input [(ngModel)]="password" type="text" id="password"
         class="blue-color" placeholder="PLAYER ID">
       </div>
     </div>
@@ -39,7 +39,7 @@
 
     <div class="row-flex">
       <div class="column-flex" >
-        <button id="loginBtn">
+        <button id="loginBtn" (click)="login()">
           <img id="changeBtn"
           src="../../../assets/imgs/btnLoginNormal.png">
         </button>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   account = '';
   password = '';
   remember = false;
-  constructor() { }
+  constructor(public route: Router) { }
 
   ngOnInit() {
   }
@@ -21,4 +22,10 @@ export class LoginComponent implements OnInit {
     return { display: displayVal };
   }
   toggleRemeberValue() {this.remember = !this.remember; }
+  login() {
+    console.log('account: ', this.account);
+    if (this.account === '123' && this.password === '123') {
+      this.route.navigate(['lobby']);
+    }
+  }
 }

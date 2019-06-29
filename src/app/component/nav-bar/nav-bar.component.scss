@@ -1,0 +1,31 @@
+.menu-option {
+  height: 66px;
+  width: 90px;
+  background: url('../../../assets/imgs/btnLobbyBg.png') no-repeat;
+  background-size: cover;
+
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+  border: none;
+}
+
+.menu-bg {
+  padding: 0px;
+  margin: 0px;
+}
+
+button:active {
+  #lobby {
+    content: url('../../../assets/imgs/btnLobbyPressed.png');
+  }
+  #history {
+    content: url('../../../assets/imgs/btnHistoryPressed.png');
+  }
+  #account {
+    content: url('../../../assets/imgs/btnAccountPressed.png');
+  }
+  #contact {
+    content: url('../../../assets/imgs/btnContactPressed.png');
+  }
+}

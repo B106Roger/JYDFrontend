@@ -1,5 +1,5 @@
 #login-backround {
-  background: url('../../../assets/imgs/bgLogin.png') transparent;
+  background: url('../../../assets/imgs/bgLogin@3x.png') transparent;
   height: 100%;
 
   background-position: center;
@@ -21,27 +21,7 @@
   flex-direction: column;
   flex-wrap: wrap;
 
-  justify-content: center
-}
-
-.row-flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 5px;
-
-  justify-content: center;
-
-}
-
-.column-flex {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 5px;
-
-  justify-content: center;
-
+  //justify-content: flex-start
 }
 
 #account-container {

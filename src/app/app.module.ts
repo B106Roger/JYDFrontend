@@ -11,6 +11,9 @@ import { HistoryComponent } from './component/history/history.component';
 import { AccountComponent } from './component/account/account.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { DownloadAppComponent } from './component/download-app/download-app.component';
+import { HeaderComponent } from './component/header/header.component';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { LobbyComponent } from './component/lobby/lobby.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { DownloadAppComponent } from './component/download-app/download-app.comp
     HistoryComponent,
     AccountComponent,
     ContactComponent,
-    DownloadAppComponent
+    DownloadAppComponent,
+    HeaderComponent,
+    NavBarComponent,
+    LobbyComponent
   ],
   imports: [
     BrowserModule,

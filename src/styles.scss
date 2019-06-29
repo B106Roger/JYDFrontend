@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body, html {
   height: 100%;
+  margin: 0px;
 }
 
 .unselectable {
@@ -10,4 +11,24 @@ body, html {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.row-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px;
+
+  justify-content: center;
+
+}
+
+.column-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 5px;
+
+  justify-content: center;
+
 }

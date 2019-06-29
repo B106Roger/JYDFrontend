@@ -1,0 +1,26 @@
+#lobby-background {
+  background: url('../../../assets/imgs/bgLobby-v@3x.png') transparent;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  /*覆蓋整個葉面*/
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around; */
+  justify-content: flex-start;
+  /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
+}
+
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  justify-content: center
+}
+
