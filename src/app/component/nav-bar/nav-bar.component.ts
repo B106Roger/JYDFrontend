@@ -11,26 +11,26 @@ export class NavBarComponent implements OnInit {
   menuList = [
     {
       id: 'lobby',
-      picture: '../../../assets/imgs/btnLobbyNormal.png',
-      pictureHover: '../../../assets/imgs/btnLobbyPressed.png',
+      picture: '/assets/imgs/btnLobbyNormal.png',
+      pictureHover: '/assets/imgs/btnLobbyPressed.png',
       callback: this.lobbyCallback,
     },
     {
       id: 'history',
-      picture: '../../../assets/imgs/btnHistoryNormal.png',
-      pictureHover: '../../../assets/imgs/btnHistoryPressed.png',
+      picture: '/assets/imgs/btnHistoryNormal.png',
+      pictureHover: '/assets/imgs/btnHistoryPressed.png',
       callback: this.historyCallback,
     },
     {
       id: 'account',
-      picture: '../../../assets/imgs/btnAccountNormal.png',
-      pictureHover: '../../../assets/imgs/btnAccountPressed.png',
+      picture: '/assets/imgs/btnAccountNormal.png',
+      pictureHover: '/assets/imgs/btnAccountPressed.png',
       callback: this.accountCallback,
     },
     {
       id: 'contact',
-      picture: '../../../assets/imgs/btnContactNormal.png',
-      pictureHover: '../../../assets/imgs/btnContactPressed.png',
+      picture: '/assets/imgs/btnContactNormal.png',
+      pictureHover: '/assets/imgs/btnContactPressed.png',
       callback: this.ContactCallback,
     }
   ];

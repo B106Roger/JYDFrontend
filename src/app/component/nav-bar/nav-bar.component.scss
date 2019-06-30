@@ -1,7 +1,7 @@
 .menu-option {
   height: 66px;
   width: 90px;
-  background: url('../../../assets/imgs/btnLobbyBg.png') no-repeat;
+  background: url('/assets/imgs/btnLobbyBg.png') no-repeat;
   background-size: cover;
 
   padding: 0px;
@@ -17,15 +17,15 @@
 
 button:active {
   #lobby {
-    content: url('../../../assets/imgs/btnLobbyPressed.png');
+    content: url('/assets/imgs/btnLobbyPressed.png');
   }
   #history {
-    content: url('../../../assets/imgs/btnHistoryPressed.png');
+    content: url('/assets/imgs/btnHistoryPressed.png');
   }
   #account {
-    content: url('../../../assets/imgs/btnAccountPressed.png');
+    content: url('/assets/imgs/btnAccountPressed.png');
   }
   #contact {
-    content: url('../../../assets/imgs/btnContactPressed.png');
+    content: url('/assets/imgs/btnContactPressed.png');
   }
 }

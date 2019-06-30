@@ -1,5 +1,5 @@
 #header-bg {
-  background: url('../../../assets/imgs/picTopBg.png');
+  background: url('/assets/imgs/picTopBg.png');
   height: 66px;
   width: 360px;
 
@@ -8,7 +8,7 @@
 }
 
 #name-bg {
-  background: url('../../../assets/imgs/picIdFrameEmpty.png');
+  background: url('/assets/imgs/picIdFrameEmpty.png');
   height: 33px;
   width: 95px;
 }
@@ -16,11 +16,11 @@
 #iconId {
   height: 17.5px;
   width: 12px;
-  content: url('../../../assets/imgs/iconId.png')
+  content: url('/assets/imgs/iconId.png')
 }
 
 #credit-bg {
-  background: url('../../../assets/imgs/picCreditFrame.png');
+  background: url('/assets/imgs/picCreditFrame.png');
   height: 47px;
   width: 151px;
 }
@@ -28,7 +28,7 @@
 #iconCredit  {
   height: 26px;
   width: 26px;
-  content: url('../../../assets/imgs/iconCreditDollar.png');
+  content: url('/assets/imgs/iconCreditDollar.png');
 }
 
 #credit-text {
@@ -47,12 +47,12 @@
   img {
     height: 22px;
     width: 26px;
-    content: url('../../../assets/imgs/btnSettingMenuNormal.png')
+    content: url('/assets/imgs/btnSettingMenuNormal.png')
   }
 }
 #settingButton:active {
   img {
-    content: url('../../../assets/imgs/btnSettingMenuPressed.png')
+    content: url('/assets/imgs/btnSettingMenuPressed.png')
   }
 }
 
@@ -64,12 +64,12 @@
   img {
     height: 22px;
     width: 26px;
-    content: url('../../../assets/imgs/btnLogoutNormal.png')
+    content: url('/assets/imgs/btnLogoutNormal.png')
   }
 }
 #logoutButton:active {
   img {
-    content: url('../../../assets/imgs/btnSettingLogoutPressed.png')
+    content: url('/assets/imgs/btnSettingLogoutPressed.png')
   }
 }
 
