@@ -1,9 +1,12 @@
 #header-bg {
   background: url('/assets/imgs/picTopBg.png');
-  height: 66px;
-  width: 360px;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-  justify-content: flex-start;
+  height: 66px;
+  width: 100vw;
+
+  justify-content: center;
   /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
 }
 
