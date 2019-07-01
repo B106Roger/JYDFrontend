@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { LobbyComponent } from './component/lobby/lobby.component';
+import { HistoryComponent } from './component/history/history.component';
+import { AccountComponent } from './component/account/account.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { DownloadAppComponent } from './component/download-app/download-app.component';
 
 const routes: Routes = [
   {
@@ -11,6 +15,22 @@ const routes: Routes = [
   {
     path: 'lobby',
     component: LobbyComponent
+  },
+  {
+    path: 'history',
+    component: HistoryComponent
+  },
+  {
+    path: 'account',
+    component: AccountComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'download',
+    component: DownloadAppComponent
   },
   {
     path: '**',
