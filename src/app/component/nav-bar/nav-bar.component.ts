@@ -20,18 +20,21 @@ export class NavBarComponent implements OnInit {
       picture: '/assets/imgs/btnHistoryNormal.png',
       pictureHover: '/assets/imgs/btnHistoryPressed.png',
       callback: this.historyCallback,
+      nextUrl: '/history'
     },
     {
       id: 'account',
       picture: '/assets/imgs/btnAccountNormal.png',
       pictureHover: '/assets/imgs/btnAccountPressed.png',
       callback: this.accountCallback,
+      nextUrl: '/account'
     },
     {
       id: 'contact',
       picture: '/assets/imgs/btnContactNormal.png',
       pictureHover: '/assets/imgs/btnContactPressed.png',
       callback: this.ContactCallback,
+      nextUrl: '/contact'
     }
   ];
   lobbyCallback() {console.log('Lobbycallback'); }
