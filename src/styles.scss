@@ -32,3 +32,23 @@ body, html {
   justify-content: center;
 
 }
+
+.row-flex-no-margin-padding {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
+  justify-content: center;
+
+}
+
+.column-flex-no-margin-padding {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
+  justify-content: center;
+
+}

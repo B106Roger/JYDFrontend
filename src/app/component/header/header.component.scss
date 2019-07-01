@@ -32,7 +32,7 @@
 }
 
 #credit-text {
-  height: 12.5px;
+  //height: 12.5px;
   width: 89.5px;
   font-size: 15px;
   color: rgb(180 198 236);
@@ -64,12 +64,12 @@
   img {
     height: 22px;
     width: 26px;
-    content: url('../../../assets/imgs/btnLogoutNormal.png')
+    content: url('/assets/imgs/btnLogoutNormal.png')
   }
 }
 #logoutButton:active {
   img {
-    content: url('../../../assets/imgs/btnSettingLogoutPressed.png')
+    content: url('/assets/imgs/btnSettingLogoutPressed.png')
   }
 }
 
