@@ -30,7 +30,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/public/style/bootstrap.min.css"
+              "src/public/style/bootstrap.min.css",
+              "src/public/style/setting.scss"
             ],
             "scripts": [
               "src/public/js/jquery.min.js",
@@ -98,7 +99,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/public/style/bootstrap.min.css"
+              "src/public/style/bootstrap.min.css",
+              "src/public/style/setting.scss"
             ],
             "scripts": [
               "src/public/js/jquery.min.js",

@@ -1,0 +1,54 @@
+.setting-bg
+{
+  background: url('/assets/imgs/picSettingBg.png') transparent;
+  width:100vw;
+  height:100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.setting-top
+{/*
+  background: -webkit-linear-gradient(top,#FFFFFF, #B4C6EC,#FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: #B4C6EC;
+  padding-top:0.5rem;
+  font-size:1.5rem;
+  font-weight: 450;
+  background-clip: text;
+  text-shadow: 0pt 1.5pt black;
+}
+
+.close-button
+{
+  display: inline-block;
+  position: absolute;
+  top:0.3rem;
+  right:0.3rem;
+  background: url('/assets/imgs/btnSettingLeaveNormal.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width:2.8rem;
+  height:2.8rem;
+}
+
+.close-button:active
+{
+  display: inline-block;
+  position: absolute;
+  top:0.3rem;
+  right:0.3rem;
+  background: url('/assets/imgs/btnSettingLeavePressed.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width:2.8rem;
+  height:2.8rem;
+}
