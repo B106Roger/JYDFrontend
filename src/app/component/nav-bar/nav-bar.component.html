@@ -1,7 +1,7 @@
-<div class="row-flex">
- <div class="column-flex" class="menu-bg"  *ngFor="let option of menuList" >
-  <button class="menu-option" (click)="option.callback()">
-    <img [src]="option.picture" [id]="option.id" >
-  </button>
- </div>
+<div class="row-flex-no-margin-padding">
+  <div class="column-flex" class="menu-bg"  *ngFor="let option of menuList" >
+    <button class="menu-option" (click)="option.callback()">
+      <img [src]="option.picture" [id]="option.id" >
+    </button>
+  </div>
 </div>

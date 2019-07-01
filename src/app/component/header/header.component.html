@@ -1,42 +1,113 @@
 
-<div class="row-flex" id="header-bg">
-   <div class="column-flex">
-      <div class="row-flex" id="name-bg">
-        <div class="column-flex">
-          <img  id="iconId">
-        </div>
-        <div class="column-flex">
-          <span style="color:rgb(180 198 236);font-size: 14px;">HELLO</span>
-        </div>
+<div class="row-flex-no-margin-padding" id="header-bg">
+
+  <div class="column-flex">
+    <div class="row-flex" id="name-bg">
+      <div class="column-flex">
+        <img  id="iconId">
+      </div>
+      <div class="column-flex">
+        <span style="color:rgb(180 198 236);font-size: 14px;">HELLO</span>
       </div>
     </div>
+  </div>
 
 
   <div class="column-flex">
     <div class="row-flex" id="credit-bg">
       <div class="column-flex">
-       <img id="iconCredit">
+        <img id="iconCredit">
       </div>
       <div class="column-flex">
-       <span id="credit-text">3,245,568.00</span>
+        <span id="credit-text">3,245,568.00</span>
       </div>
     </div>
   </div>
 
   <div class="column-flex no-margin">
     <div class="row-flex no-margin">
-      <button class="no-padding" id="settingButton">
-          <img>
+      <button class="no-padding" id="settingButton"
+        [popper]="popperSetting"
+        [popperTrigger]="'click'"
+        [popperHideOnClickOutside]="true"
+        [popperHideOnScroll]="true"
+        [popperDisableStyle]="true"
+        [popperStyles]="{
+        background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
+        'background-size': 'cover',
+        width: '186px',
+        height: '271px'
+        }"
+        [popperModifiers]="{
+          offset: {
+            enabled: true,
+            offset: '66, 0'
+          }
+        }"
+      >
+        <img>
       </button>
     </div>
   </div>
 
-  <div class="column-flex no-margin">
-      <div class="row-flex no-margin">
-        <button class="no-padding" id="logoutButton">
-            <img>
-        </button>
+
+  <!-- poppup setting content -->
+  <popper-content #popperSetting >
+    <div class="column-flex setting-text unselectable" style="padding-top: 11px;">
+
+      <div class="row-flex justify-start">
+        <div class="column-flex">
+          MUSIC
+        </div>
+        <div class="column-flex">
+          v.2019.07.03
+        </div>
       </div>
+
+      <hr>
+      <div class="row-flex justify-start">
+        <div class="column-flex">
+          SOUND
+        </div>
+        <div class="column-flex">
+          v.2019.07.03
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start">
+        <div class="column-flex">
+          VERSION
+        </div>
+        <div class="column-flex">
+            v.2019.07.03
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start" >
+        <div class="column-flex">
+          DOWNLOAD APP
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start">
+          <div class="column-flex">
+            LOGOUT
+          </div>
+        </div>
     </div>
+  </popper-content>
+
+
+  <div class="column-flex no-margin">
+    <div class="row-flex no-margin">
+      <button class="no-padding" id="logoutButton">
+        <img>
+      </button>
+    </div>
+  </div>
+
 </div>
 

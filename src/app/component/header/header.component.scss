@@ -32,7 +32,7 @@
 }
 
 #credit-text {
-  height: 12.5px;
+  //height: 12.5px;
   width: 89.5px;
   font-size: 15px;
   color: rgb(180 198 236);
@@ -78,4 +78,22 @@
 }
 .no-padding {
   padding: 5px;
+}
+
+.setting-text {
+  color: rgb(180 198 236);
+  font-size: 14px;
+  font-family: 'ProximaNova-Regular';
+}
+
+hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: rgb(255 100 200);
+  width: 90%;
+
+}
+
+.justify-start {
+  justify-content: flex-start
 }
