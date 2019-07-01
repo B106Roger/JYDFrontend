@@ -12,4 +12,8 @@ export class LobbyComponent implements OnInit {
   ngOnInit() {
   }
 
+  hi() {
+    return {background: 'url(\'/assets/imgs/btnLoginPressed.png\')'};
+  }
+
 }

@@ -26,11 +26,80 @@
 
   <div class="column-flex no-margin">
     <div class="row-flex no-margin">
-      <button class="no-padding" id="settingButton">
-          <img>
+      <button class="no-padding" id="settingButton"
+        [popper]="popperSetting"
+        [popperTrigger]="'click'"
+        [popperHideOnClickOutside]="true"
+        [popperHideOnScroll]="true"
+        [popperDisableStyle]="true"
+        [popperStyles]="{
+        background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
+        'background-size': 'cover',
+        width: '186px',
+        height: '271px'
+        }"
+        [popperModifiers]="{
+          offset: {
+            enabled: true,
+            offset: '66, 0'
+          }
+        }"
+      >
+        <img>
       </button>
     </div>
   </div>
+
+
+  <!-- poppup setting content -->
+  <popper-content #popperSetting >
+    <div class="column-flex setting-text unselectable" style="padding-top: 11px;">
+
+      <div class="row-flex justify-start">
+        <div class="column-flex">
+          MUSIC
+        </div>
+        <div class="column-flex">
+          v.2019.07.03
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start">
+        <div class="column-flex">
+          SOUND
+        </div>
+        <div class="column-flex">
+          v.2019.07.03
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start">
+        <div class="column-flex">
+          VERSION
+        </div>
+        <div class="column-flex">
+            v.2019.07.03
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start" >
+        <div class="column-flex">
+          DOWNLOAD APP
+        </div>
+      </div>
+
+      <hr>
+      <div class="row-flex justify-start">
+          <div class="column-flex">
+            LOGOUT
+          </div>
+        </div>
+    </div>
+  </popper-content>
+
 
   <div class="column-flex no-margin">
     <div class="row-flex no-margin">
