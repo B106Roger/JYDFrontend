@@ -1,49 +1,55 @@
 <div class="setting-bg">
-    <div class="row-flex-no-margin-padding setting-top">
-      <span class="title">HISTORY</span>
-      <a routerLink="/lobby">
-        <span class="close-button close-button-base"><!-- 圖片 --></span>
-      </a>
+  <div class="row-flex-no-margin-padding setting-top">
+    <span class="title">HISTORY</span>
+    <a routerLink="/lobby">
+      <span class="close-button close-button-base"><!-- 圖片 --></span>
+    </a>
+  </div>
+
+  <div class="main-content">
+    <!-- 頁籤 -->
+    <div class="d-flex text-center justify-content-around">
+        <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">GAME HISTORY</span>
+        <span (click)="tabChange(0)" [class.active]="!selectPage" class="btn-bg btn-label">IN/OUT HISTORY</span>
     </div>
 
-    <div class="main-content">
-        <!-- 查詢欄 -->
-        <div class="d-flex text-center justify-content-around">
-            <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">GAME HISTORY</span>
-            <span (click)="tabChange(0)" [class.active]="!selectPage" class="btn-bg btn-label">IN/OUT HISTORY</span>
-        </div>
-
-        <!-- 資料主體 -->
-        <div class="wrapper">
-          <!-- table-header -->
-          <div class="search-row d-flex align-items-center justify-content-around">
-            <span class="text-sliver" style="font-size:2vh">TIME</span>
-            <label style="margin:0">
-              <span class="text-sliver time-input">
-                  2019-06-10
-                  <span class="span-button-icon icon-date"></span>
-              </span>
-            </label>
-            <span class="text-sliver" style="font-size:2vh">TO</span>
-            <span class="text-sliver time-input">
-              2019-06-14
+    <!-- 資料主體 -->
+    <div class="wrapper">
+      <!-- table-header 查詢欄 -->
+      <div class="search-row d-flex align-items-center justify-content-around">
+        <span class="text-sliver" style="font-size:2vh">TIME</span>
+        <label style="margin:0">
+          <span class="text-sliver time-input">
+              2019-06-10
               <span class="span-button-icon icon-date"></span>
-            </span>
-            <span class="span-button-icon go-btn-base go-btn"></span>
-          </div>
+          </span>
+        </label>
+        <span class="text-sliver" style="font-size:2vh">TO</span>
+        <span class="text-sliver time-input">
+          2019-06-14
+          <span class="span-button-icon icon-date"></span>
+        </span>
+        <span class="span-button-icon go-btn-base go-btn"></span>
+      </div>
 
-          <!-- table-body -->
-          <table class="text-center data-table" >
-            <thead>
-              <tr>
-                  <td *ngFor="let field of fields" class="text-sliver word-next column">{{ field }}</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let row of currentRecord" >
-                  <td *ngFor="let colData of row" class="text-sliver word-next sub-column">{{ colData }}</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- table-body -->
+      <table class="text-center data-table" >
+        <thead>
+          <tr>
+              <td *ngFor="let field of fields" class="text-sliver word-next column">{{ field }}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of currentRecord" >
+              <td *ngFor="let colData of row" class="text-sliver word-next sub-column">{{ colData }}</td>
+          </tr>
+          <tr>
+            <td [attr.colspan]="fields.length" class="text-sliver word-next sub-column">
+              All Data has been showed
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>

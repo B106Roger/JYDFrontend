@@ -66,11 +66,31 @@
   font-size:2.5vh;
   color:#6b8fda;
   text-shadow:0 1.5px 1px black;
+
+  &:hover
+  {
+    cursor:pointer;
+  }
 }
 
-.btn-label:hover
+.btn-label-long
 {
-  cursor:pointer;
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width:410px;
+  width: 95vw;
+  height: 40px;
+  padding-top:0.5vh;
+  font-size:2vh;
+  color:#6b8fda;
+  text-shadow:0 1.5px 1px black;
+}
+
+.wrapper
+{
+  border-top: 3px solid #0044BB;
 }
 
 .span-button-icon
