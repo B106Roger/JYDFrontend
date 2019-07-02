@@ -1,54 +1,82 @@
-.setting-bg
-{
-  background: url('/assets/imgs/picSettingBg.png') transparent;
-  width:100vw;
-  height:100vh;
+.setting-bg {
+  position: relative;
+  background: url("/assets/imgs/picSettingBg.png") transparent;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  text-align: center;
+  max-width:500px;
+  max-height:812px;
+  width: 100vw;
+  height: 100vh;
 }
 
-.setting-top
-{/*
-  background: -webkit-linear-gradient(top,#FFFFFF, #B4C6EC,#FFFFFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  color: #B4C6EC;
-  padding-top:0.5rem;
-  font-size:1.5rem;
+.main-content
+{
+  width:100%;
+  height:85%;
+  margin-top:10%;
+}
+
+.setting-top {
+  width:100%;
+  color: #b4c6ec;
+  padding: 0.6vh 0;
+  font-size: 3.2vh;
   font-weight: 450;
   background-clip: text;
-  text-shadow: 0pt 1.5pt black;
+  text-shadow:0 1.5px 1px black;
 }
 
-.close-button
+.close-button-base
 {
-  display: inline-block;
-  position: absolute;
-  top:0.3rem;
-  right:0.3rem;
-  background: url('/assets/imgs/btnSettingLeaveNormal.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width:2.8rem;
-  height:2.8rem;
-}
 
-.close-button:active
-{
   display: inline-block;
   position: absolute;
-  top:0.3rem;
-  right:0.3rem;
-  background: url('/assets/imgs/btnSettingLeavePressed.png');
+  top: 1vh;
+  right: 1vh;
+  width: 5vh;
+  height: 5vh;
+  min-height: 20px;
+  min-width: 20px;
+  max-height: 40px;
+  max-width: 40px;
+}
+
+.close-button {
+  background-image: url("/assets/imgs/btnSettingLeaveNormal.png");
+}
+
+.close-button:active {
+  background-image: url("/assets/imgs/btnSettingLeavePressed.png");
+}
+
+.btn-label
+{
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width:177px;
+  width: 47vw;
+  height: 40px;
+  padding-top:0.5vh;
+  font-size:2.5vh;
+  color:#6b8fda;
+  text-shadow:0 1.5px 1px black;
+}
+
+.btn-label:hover
+{
+  cursor:pointer;
+}
+
+.span-button-icon
+{
+  display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width:2.8rem;
-  height:2.8rem;
 }
