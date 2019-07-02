@@ -1,8 +1,8 @@
 {
   "name": "JYDFrontend",
   "short_name": "JYDFrontend",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#3033A8",
+  "background_color": "#3033A8",
   "display": "standalone",
   "scope": "/",
   "start_url": "./index.html",
