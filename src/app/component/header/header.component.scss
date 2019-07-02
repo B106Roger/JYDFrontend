@@ -1,9 +1,12 @@
 #header-bg {
   background: url('/assets/imgs/picTopBg.png');
-  height: 66px;
-  width: 360px;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-  justify-content: flex-start;
+  height: 66px;
+  width: 100vw;
+
+  justify-content: center;
   /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
 }
 
@@ -61,6 +64,7 @@
   outline: none;
   border: 0px;
   margin: 0px;
+  padding-left: 10px;
   img {
     height: 22px;
     width: 26px;
@@ -77,7 +81,7 @@
   margin: 0px;
 }
 .no-padding {
-  padding: 5px;
+  padding: 0px;
 }
 
 .setting-text {
@@ -95,5 +99,10 @@ hr {
 }
 
 .justify-start {
-  justify-content: flex-start
+  justify-content: flex-start;
 }
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
