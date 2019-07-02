@@ -9,25 +9,40 @@
 
       <div class="row-flex" id="credit-bg">
           <img id="iconCredit">
-          <span class="setting-text">3,245,568.00</span>
+          <span class="credit-text">3,245,568.00</span>
         </div>
 
+
+        <!--width: '51vw',
+              height: '42vh',  -->
         <button class="no-padding" id="settingButton"
               [popper]="popperSetting"
               [popperTrigger]="'click'"
               [popperHideOnClickOutside]="true"
               [popperHideOnScroll]="true"
               [popperDisableStyle]="true"
+
               [popperStyles]="{
               background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
-              'background-size': 'cover',
+              'background-size': 'contain',
+              'background-repeat': 'no-repeat',
               width: '186px',
-              height: '271px'
+              height: '271px',
+              'min-width': '186px',
+              'min-height': '271px'
               }"
+
               [popperModifiers]="{
                 offset: {
                   enabled: true,
-                  offset: '66, 0'
+                  offset: '18vw,1vh'
+                },
+                flip: {
+                  enabled: true,
+                  behavior: ['bottom','right','left','top']
+                },
+                preventOverflow: {
+                  escapeWithReference: true
                 }
               }"
             >

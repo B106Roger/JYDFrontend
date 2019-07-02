@@ -37,6 +37,7 @@
   background-position: center;
   height: 71%;
   width: 42%;
+
   margin-left: 5vw;
   align-items: center;
   justify-content: space-around;
@@ -51,8 +52,9 @@
 
 .credit-text {
   //height: 12.5px;
-  width: 89.5px;
-  font-size: 1.1rem;
+  width: 60%;
+  font-size: 0.9rem;
+
   color: rgb(180 198 236);
   text-align: right;
 }
@@ -108,7 +110,7 @@
 
 .setting-text {
   color: rgb(180 198 236);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-family: 'ProximaNova-Regular';
 }
 
