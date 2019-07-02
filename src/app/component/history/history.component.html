@@ -7,12 +7,13 @@
     </div>
 
     <div class="main-content">
-        <!-- 按鈕 -->
+        <!-- 查詢欄 -->
         <div class="d-flex text-center justify-content-around">
             <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">GAME HISTORY</span>
             <span (click)="tabChange(0)" [class.active]="!selectPage" class="btn-bg btn-label">IN/OUT HISTORY</span>
         </div>
-        <!-- 主體 -->
+
+        <!-- 資料主體 -->
         <div class="wrapper">
           <!-- table-header -->
           <div class="search-row d-flex align-items-center justify-content-around">
@@ -44,16 +45,5 @@
               </tr>
             </tbody>
           </table>
-          <!-- <div class="text-center d-flex align-items-center" style="background-color:rgb(66,21,187)">
-            <span *ngFor="let field of fields" class="text-sliver word-next column">{{ field }}</span>
-          </div> -->
     </div>
-    <form>
-      <div>
-        <input type="date" id="bday" name="bday">
-      </div>
-    </form>
-
-
-
 </div>
