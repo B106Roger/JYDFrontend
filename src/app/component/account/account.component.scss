@@ -1,0 +1,84 @@
+.btn-bg
+{
+  background-image: url('/assets/imgs/btnLabelPressed.png');
+  color:#b4c6ec;
+}
+
+.wrapper
+{
+  border-top: 3px solid #0044BB;
+}
+
+.input-container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top:3vh;
+}
+
+.text-sliver
+{
+  color: #b4c6ec;
+  text-shadow: 0px 1.5px 1px black;
+}
+
+input[type="password"]
+{
+  background-image: url('/assets/imgs/picPasswordBg.png');
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  border-color: rgb(89,19,249);
+  border-radius: 8px;
+  color: white;
+
+  &.invalid
+  {
+    border-color: red;
+    border-width: 2px;
+  }
+}
+
+label
+{
+  margin:0;
+  padding: 0;
+}
+
+.button-area
+{
+  position: absolute;
+  width:100%;
+  bottom: 5vh;
+  height:10vh;
+
+  .form-btn-base
+  {
+    background-size: 100% 100%;
+    background-position-y: 2px;
+    width: 35vw;
+    height: 8vh;
+  }
+
+  .save-btn
+  {
+    background-image: url('/assets/imgs/btnAccountSaveNormal@2x.png');
+
+    &:active
+    {
+      background-position-y: 3px;
+    }
+  }
+
+  .cancel-btn
+  {
+    background-image: url('/assets/imgs/btnAccountCancelNormal@2x.png');
+    &:active
+    {
+      background-position-y: 3px;
+    }
+  }
+}
+
