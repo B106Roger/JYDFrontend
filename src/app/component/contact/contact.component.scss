@@ -1,0 +1,105 @@
+.btn-bg
+{
+  background-image: url('/assets/imgs/btnLabelLargePressed.png');
+  color:#b4c6ec;
+}
+
+
+
+table
+{
+
+
+  table-layout: fixed;
+  padding:0 20px ;
+  width: 100%;
+
+  tr:last-child
+  {
+    .icon, .contact
+    {
+      border: none;
+    }
+
+    td
+    {
+      border-bottom: 1px solid #0044BB;
+    }
+  }
+
+  td
+  {
+    height:12vh;
+    padding:0 4vw;
+    background-color: rgb(46,6,146);
+
+
+
+    div
+    {
+      position: relative;
+      height:100%;
+    }
+
+    .icon
+    {
+      display: inline-block;
+      width:30%;
+      height:100%;
+      border-bottom: 1px solid #0044BB;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &.email-icon
+      {
+        background-image: url('/assets/imgs/iconContactEmail@3x.png');
+        background-size: 60% 60%;
+      }
+
+      &.phone-icon
+      {
+        background-image: url('/assets/imgs/iconContactPhone@3x.png');
+        background-size: 60% 60%;
+      }
+
+      &.whatsApp-icon
+      {
+        background-image: url('/assets/imgs/iconContactWhatsapp@3x.png');
+        background-size: 80% 60%;
+
+      }
+
+      &.weChat-icon
+      {
+        background-image: url('/assets/imgs/iconContactWechat@3x.png');
+        background-size: 60% 60%;
+      }
+
+
+      &.line-icon
+      {
+        background-image: url('/assets/imgs/iconContactLine@3x.png');
+        background-size: 40% 70%;
+      }
+    }
+
+    .contact
+    {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      border-bottom: 1px solid #0044BB;
+      display: inline-block;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width:70%;
+      height:100%;
+      color:#c0cfef;
+      text-shadow:0 1.5px 1px black;
+    }
+
+
+  }
+}
