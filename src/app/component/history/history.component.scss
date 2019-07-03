@@ -9,6 +9,9 @@
   color:#b4c6ec;
 }
 
+tbody::-webkit-scrollbar {
+    display: none;
+}
 
 .search-row
 {

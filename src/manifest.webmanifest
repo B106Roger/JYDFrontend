@@ -1,12 +1,13 @@
 {
-  "name": "JYDFrontend",
-  "short_name": "JYDFrontend",
+  "name": "TREASURE ISLAND",
+  "short_name": "TREASURE ISLAND",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#3658e0",
   "display": "standalone",
   "scope": "/",
-  "start_url": "./index.html",
-  "orientation": "portrait",
+  "start_url": "./index.html?utm_source=pwa_app",
+  "orientation": "portrait ",
+
   "icons": [
     {
       "src": "assets/icons/jyd-72x72.png",
