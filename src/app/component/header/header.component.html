@@ -24,10 +24,9 @@
 
               [popperStyles]="{
               background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
-              'background-size': 'contain',
+              'background-size': '100%100%',
               'background-repeat': 'no-repeat',
-              width: '186px',
-              height: '271px',
+              width: '52vw',
               'min-width': '186px',
               'min-height': '271px'
               }"
@@ -50,17 +49,28 @@
             </button>
 
 
-  <!-- poppup setting content -->
+  <!-- poppup setting content padding-top: 11px;-->
   <popper-content #popperSetting >
-    <div class="column-flex setting-text unselectable" style="padding-top: 11px;">
+    <div class="column-flex setting-text unselectable" style="position: absolute;top: 5%;">
 
-      <div class="row-flex justify-start">
+      <div class="row-flex justify-space-between" style="align-items: center">
         <div class="column-flex">
           MUSIC
         </div>
-        <!-- <div class="column-flex">
-          v.2019.07.03
-        </div> -->
+        <label class="column-flex" id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
+          <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
+          <span [ngClass]="{
+            'on-off': getMusic() === false,
+            'on-margin': getMusic() === true
+          }">
+          {{this.getMusic() === true ? 'ON' : ''}}
+          </span>
+          <span [ngClass]="{
+            'on-off': getMusic() === true
+          }">
+          {{this.getMusic() === false ? 'OFF' : ''}}
+        </span>
+        </label>
       </div>
 
       <hr>

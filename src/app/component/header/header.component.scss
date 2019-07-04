@@ -136,3 +136,27 @@ hr {
   justify-content: space-between;
 }
 
+.on-off {
+  width: 24px;
+  height:  24px;
+  margin-left: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url('/assets/imgs/btnMusicSelected.png')/* url(  開關Off ) */
+}
+
+.on-margin {
+  margin-left: 11px;
+  margin-right:2px;
+}
+
+#MusicButtonContainer {
+  width: 70px;
+  height: 30px;
+  margin: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url('/assets/imgs/btnMusicBg.png')/* url(  開關Off ) */
+}
