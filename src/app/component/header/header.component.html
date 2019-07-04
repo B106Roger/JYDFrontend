@@ -1,67 +1,76 @@
 
 <div class="row-flex-no-margin-padding" id="header-bg">
 
-  <div class="column-flex">
-    <div class="row-flex" id="name-bg">
-      <div class="column-flex">
+    <div class="row-flex" id="name-bg" >
         <img  id="iconId">
+        <span class="setting-text">HELLO</span>
       </div>
-      <div class="column-flex">
-        <span style="color:rgb(180 198 236);font-size: 14px;">HELLO</span>
-      </div>
-    </div>
-  </div>
 
 
-  <div class="column-flex">
-    <div class="row-flex" id="credit-bg">
-      <div class="column-flex">
-        <img id="iconCredit">
-      </div>
-      <div class="column-flex">
-        <span id="credit-text">3,245,568.00</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="column-flex no-margin">
-    <div class="row-flex no-margin">
-      <button class="no-padding" id="settingButton"
-        [popper]="popperSetting"
-        [popperTrigger]="'click'"
-        [popperHideOnClickOutside]="true"
-        [popperHideOnScroll]="true"
-        [popperDisableStyle]="true"
-        [popperStyles]="{
-        background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
-        'background-size': 'cover',
-        width: '186px',
-        height: '271px'
-        }"
-        [popperModifiers]="{
-          offset: {
-            enabled: true,
-            offset: '66, 0'
-          }
-        }"
-      >
-        <img>
-      </button>
-    </div>
-  </div>
+      <div class="row-flex" id="credit-bg">
+          <img id="iconCredit">
+          <span class="credit-text">3,245,568.00</span>
+        </div>
 
 
-  <!-- poppup setting content -->
+        <!--width: '51vw',
+              height: '42vh',  -->
+        <button class="no-padding" id="settingButton"
+              [popper]="popperSetting"
+              [popperTrigger]="'click'"
+              [popperHideOnClickOutside]="true"
+              [popperHideOnScroll]="true"
+              [popperDisableStyle]="true"
+
+              [popperStyles]="{
+              background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
+              'background-size': '100%100%',
+              'background-repeat': 'no-repeat',
+              width: '52vw',
+              'min-width': '186px',
+              'min-height': '271px'
+              }"
+
+              [popperModifiers]="{
+                offset: {
+                  enabled: true,
+                  offset: '18vw,1vh'
+                },
+                flip: {
+                  enabled: true,
+                  behavior: ['bottom','right','left','top']
+                },
+                preventOverflow: {
+                  escapeWithReference: true
+                }
+              }"
+            >
+              <img>
+            </button>
+
+
+  <!-- poppup setting content padding-top: 11px;-->
   <popper-content #popperSetting >
-    <div class="column-flex setting-text unselectable" style="padding-top: 11px;">
+    <div class="column-flex setting-text unselectable" style="position: absolute;top: 5%;">
 
-      <div class="row-flex justify-start">
+      <div class="row-flex justify-space-between" style="align-items: center">
         <div class="column-flex">
           MUSIC
         </div>
-        <div class="column-flex">
-          v.2019.07.03
-        </div>
+        <label class="column-flex" id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
+          <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
+          <span [ngClass]="{
+            'on-off': getMusic() === false,
+            'on-margin': getMusic() === true
+          }">
+          {{this.getMusic() === true ? 'ON' : ''}}
+          </span>
+          <span [ngClass]="{
+            'on-off': getMusic() === true
+          }">
+          {{this.getMusic() === false ? 'OFF' : ''}}
+        </span>
+        </label>
       </div>
 
       <hr>
@@ -69,9 +78,9 @@
         <div class="column-flex">
           SOUND
         </div>
-        <div class="column-flex">
+        <!-- <div class="column-flex">
           v.2019.07.03
-        </div>
+        </div> -->
       </div>
 
       <hr>
@@ -85,29 +94,25 @@
       </div>
 
       <hr>
-      <div class="row-flex justify-start" >
+      <div class="row-flex justify-start" routerLink="/download">
         <div class="column-flex">
-          <span routerLink="/download">DOWNLOAD APP</span>
+          <span >DOWNLOAD APP</span>
         </div>
       </div>
 
       <hr>
-      <div class="row-flex justify-start">
-          <div class="column-flex">
-            LOGOUT
-          </div>
+      <div class="row-flex justify-start" routerLink="/">
+        <div  class="column-flex">
+          LOGOUT
         </div>
+      </div>
     </div>
   </popper-content>
 
 
-  <div class="column-flex no-margin">
-    <div class="row-flex no-margin">
-      <button class="no-padding" id="logoutButton">
+  <button class="no-padding" id="logoutButton">
         <img>
       </button>
-    </div>
-  </div>
 
 </div>
 

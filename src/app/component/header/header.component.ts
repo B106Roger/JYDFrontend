@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  msuic = false;
   constructor() { }
 
   ngOnInit() {
   }
+
+  getMusic() { return this.msuic; }
+  printMusic() {console.log(this.msuic); }
 
 }

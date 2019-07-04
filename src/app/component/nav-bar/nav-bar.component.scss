@@ -2,12 +2,17 @@
   min-height: 66px;
   width: 25%;
   background: url('/assets/imgs/btnLobbyBg.png') no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 
-  padding: 0px;
-  margin: 0px;
   outline: none;
   border: none;
+  padding: 0px;
+  margin: 0px;
+  img {
+    max-width: 120%;
+    max-height: 120%;
+    height: 66%;
+  }
 }
 
 .menu-bg {
@@ -16,7 +21,7 @@
   flex-direction: row;
 }
 
-button:active {
+button.menu-option:active {
   #lobby {
     content: url('/assets/imgs/btnLobbyPressed.png');
   }
@@ -29,4 +34,7 @@ button:active {
   #contact {
     content: url('/assets/imgs/btnContactPressed.png');
   }
+}
+button.menu-option:hover {
+  cursor: pointer;
 }

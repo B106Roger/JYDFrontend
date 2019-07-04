@@ -1,13 +1,12 @@
 {
   "name": "TREASURE ISLAND",
   "short_name": "TREASURE ISLAND",
-  "theme_color": "#1976d2",
+  "theme_color": "#3033A8",
   "background_color": "#3658e0",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/",
   "start_url": "./index.html?utm_source=pwa_app",
-  "orientation": "portrait ",
-
+  "orientation": "portrait",
   "icons": [
     {
       "src": "assets/icons/jyd-72x72.png",
