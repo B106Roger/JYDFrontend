@@ -3,7 +3,7 @@
   "short_name": "JYDFrontend",
   "theme_color": "#3033A8",
   "background_color": "#3033A8",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/",
   "start_url": "./index.html",
   "orientation": "portrait",
