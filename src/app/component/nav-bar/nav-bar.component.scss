@@ -1,20 +1,13 @@
 .menu-option {
-  background: url('/assets/imgs/btnLobbyBg.png');
-  background-repeat: no-repeat;
-  background-size: 100%100%;
-
-  height: 10.3vh;
+  min-height: 66px;
   width: 25vw;
+  background: url('/assets/imgs/btnLobbyBg.png') no-repeat;
+  background-size: cover;
 
-  outline: none;
-  border: none;
   padding: 0px;
   margin: 0px;
-  img {
-    max-width: 120%;
-    max-height: 120%;
-    height: 66%;
-  }
+  outline: none;
+  border: none;
 }
 
 .menu-bg {
@@ -22,7 +15,7 @@
   margin: 0px;
 }
 
-button.menu-option:active {
+button:active {
   #lobby {
     content: url('/assets/imgs/btnLobbyPressed.png');
   }
@@ -35,7 +28,4 @@ button.menu-option:active {
   #contact {
     content: url('/assets/imgs/btnContactPressed.png');
   }
-}
-button.menu-option:hover {
-  cursor: pointer;
 }

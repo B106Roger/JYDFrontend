@@ -1,62 +1,45 @@
 #header-bg {
   background: url('/assets/imgs/picTopBg.png');
   background-repeat: no-repeat;
-  background-size: 100%100%;
+  background-size: cover;
 
+  height: 66px;
   width: 100vw;
-  height: 10.3vh;
-  justify-content: space-between;
-  align-items: center;
+
+  justify-content: center;
   /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
 }
 
 #name-bg {
   background: url('/assets/imgs/picIdFrameEmpty.png');
-  background-size: 100%100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  //height: 33px;
-  //width: 95px;
-  height: 50%;
-  width: 26.4%;
-
-  align-items: center;
-  justify-content: space-around;
+  height: 33px;
+  width: 95px;
 }
 
 #iconId {
-  height: 53%;
-  width: 12.6%;
+  height: 17.5px;
+  width: 12px;
   content: url('/assets/imgs/iconId.png')
 }
 
 #credit-bg {
   background: url('/assets/imgs/picCreditFrame.png');
-  background-size: 100%100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 71%;
-  width: 42%;
-
-  margin-left: 5vw;
-  align-items: center;
-  justify-content: space-around;
+  height: 47px;
+  width: 151px;
 }
 
 #iconCredit  {
-  height: 55.3%;
-  margin-left: 5px;
-  width: auto;
+  height: 26px;
+  width: 26px;
   content: url('/assets/imgs/iconCreditDollar.png');
 }
 
-.credit-text {
+#credit-text {
   //height: 12.5px;
-  width: 60%;
-  font-size: 0.9rem;
-
+  width: 89.5px;
+  font-size: 15px;
   color: rgb(180 198 236);
-  text-align: center;
+  text-align: right;
 }
 
 #settingButton {
@@ -64,19 +47,15 @@
   outline: none;
   border: 0px;
   margin: 0px;
-  min-width: 26px;
-  min-height: 22px;
-  height: 33.3%;
-  width: 7.2%;
   img {
-
+    height: 22px;
+    width: 26px;
     content: url('/assets/imgs/btnSettingMenuNormal.png')
   }
 }
 #settingButton:active {
   img {
-    content: url('/assets/imgs/btnSettingMenuPressed.png');
-    margin-bottom: 5px;
+    content: url('/assets/imgs/btnSettingMenuPressed.png')
   }
 }
 
@@ -85,13 +64,10 @@
   outline: none;
   border: 0px;
   margin: 0px;
-  min-width: 26px;
-  min-height: 22px;
-  height: 33.3%;
-  width: 7.2%;
-  padding-right: 10vw;
+  padding-left: 10px;
   img {
-
+    height: 22px;
+    width: 26px;
     content: url('/assets/imgs/btnLogoutNormal.png')
   }
 }
@@ -110,13 +86,7 @@
 
 .setting-text {
   color: rgb(180 198 236);
-  font-size: 0.9rem;
-  font-family: 'ProximaNova-Regular';
-}
-
-.header-text {
-  color:rgb(180 198 236);
-  font-size: 1.1rem;
+  font-size: 14px;
   font-family: 'ProximaNova-Regular';
 }
 
