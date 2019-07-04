@@ -1,3 +1,7 @@
+*:not(input) {
+  user-select: none;
+}
+
 .setting-bg {
   position: relative;
   background: url("/assets/imgs/picSettingBg.png") transparent;
