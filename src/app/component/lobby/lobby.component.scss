@@ -39,13 +39,18 @@
 }
 
 #normal-game-container {
-  height: 281px;
+  min-height: 281px;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 
   align-items: center;
   overflow-x: scroll;
+  &::-webkit-scrollbar
+  {
+    display: none;
+  }
 }
 
 .normal-game-frame {
@@ -61,6 +66,7 @@
   img {
     position: absolute;
   }
+
 }
 
 
