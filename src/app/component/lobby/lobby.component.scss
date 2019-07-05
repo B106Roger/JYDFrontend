@@ -14,11 +14,53 @@
   /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
 }
 
+.game-container {
+  position: absolute;
+  top: 66px;
+  bottom: 66px;
+  width: 100%;
 
-.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#hot-game-frame {
+  width: 107px;
+  height: 281px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+#normal-game-container {
+  height: 281px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: flex-start;
+
+  align-items: center;
+  overflow-x: scroll;
 }
+
+.normal-game-frame {
+  width: 107px;
+  height: 139.5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  img {
+    position: absolute;
+  }
+}
+
 

@@ -1,6 +1,22 @@
 <section class="root-base" id="lobby-background">
     <app-header ></app-header>
 
+    <div class="game-container">
+      <div></div>
+      <div id="normal-game-container" >
+        <div id="hot-game-frame">
+                <img src="/assets/imgs/picTagHotGame.png" style="position: absolute; top: 2px; z-index: 1">
+                <img [src]="getHotGame()[0].gameImgUrl" style="position: absolute; ">
+                <img src="/assets/imgs/picGameFrameLarge.png" style="position: absolute; top: -1px;">
+        </div>
+        <ng-container *ngFor="let item of getNormalGame()">
+                <div class="normal-game-frame">
+                    <img [src]="item.gameImgUrl">
+                    <img src="/assets/imgs/picGameFrameSmall.png" >
+                </div>
+        </ng-container>
+      </div>
+    </div>
 
     <app-nav-bar></app-nav-bar>
 </section>

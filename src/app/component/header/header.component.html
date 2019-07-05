@@ -25,7 +25,8 @@
               width: '52%',
               height: '40%',
               'min-width': '186px',
-              'min-height': '271px'
+              'min-height': '271px',
+              'z-index': 1
               }"
               [popperModifiers]="{
                 offset: {
@@ -54,37 +55,49 @@
 
 <!-- poppup setting content padding-top: 11px;-->
 <popper-content #popperSetting >
-    <div class="column-flex setting-text unselectable justify-space-between" style="position: absolute;top: 5%;height: 90%;">
+    <div class="column-flex setting-text unselectable justify-space-between" style="position: absolute;top: 5%;height: 90%;width: 90%;">
 
       <div class="row-flex justify-space-between" style="align-items: center">
         <div class="column-flex">
           MUSIC
         </div>
-        <label class="column-flex" id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
+        <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
           <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
           <span [ngClass]="{
-            'on-off': getMusic() === false,
-            'on-margin': getMusic() === true
-          }">
+            'on-off': getMusic() === false
+          }" [ngStyle]="{'margin-left': getMusic() === true ? '8px' : ''}">
           {{this.getMusic() === true ? 'ON' : ''}}
           </span>
           <span [ngClass]="{
             'on-off': getMusic() === true
-          }">
+          }" [ngStyle]="{'margin-right': getMusic() === false ? '8px' : ''}">
           {{this.getMusic() === false ? 'OFF' : ''}}
         </span>
         </label>
       </div>
 
       <hr>
-      <div class="row-flex justify-start">
+      <div class="row-flex justify-space-between">
         <div class="column-flex">
           SOUND
         </div>
+        <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()">
+            <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
+            <span [ngClass]="{
+              'on-off': getSound() === false
+            }" [ngStyle]="{'margin-left': getSound() === true ? '8px' : ''}">
+            {{this.getSound() === true ? 'ON' : ''}}
+            </span>
+            <span [ngClass]="{
+              'on-off': getSound() === true
+            }" [ngStyle]="{'margin-right': getSound() === false ? '8px' : ''}">
+            {{this.getSound() === false ? 'OFF' : ''}}
+          </span>
+          </label>
       </div>
 
       <hr>
-      <div class="row-flex justify-start">
+      <div class="row-flex justify-space-between">
         <div class="column-flex">
           VERSION
         </div>
@@ -94,14 +107,14 @@
       </div>
 
       <hr>
-      <div class="row-flex justify-start" routerLink="/download">
+      <div class="row-flex justify-space-between" routerLink="/download">
         <div class="column-flex">
           <span >DOWNLOAD APP</span>
         </div>
       </div>
 
       <hr>
-      <div class="row-flex justify-start" routerLink="/">
+      <div class="row-flex justify-space-between" routerLink="/">
         <div  class="column-flex">
           LOGOUT
         </div>
