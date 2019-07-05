@@ -1,7 +1,7 @@
 
 <div class="row-flex-no-margin-padding" id="header-bg">
 
-    <div class="row-flex" id="name-bg" >
+      <div class="row-flex" id="name-bg" >
         <img  id="iconId">
         <span class="setting-text">HELLO</span>
       </div>
@@ -10,31 +10,27 @@
       <div class="row-flex" id="credit-bg">
           <img id="iconCredit">
           <span class="credit-text">3,245,568.00</span>
-        </div>
+      </div>
 
-
-        <!--width: '51vw',
-              height: '42vh',  -->
-        <button class="no-padding" id="settingButton"
+      <button class="no-padding" id="settingButton"
               [popper]="popperSetting"
               [popperTrigger]="'click'"
               [popperHideOnClickOutside]="true"
               [popperHideOnScroll]="true"
               [popperDisableStyle]="true"
-
               [popperStyles]="{
               background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
               'background-size': '100%100%',
               'background-repeat': 'no-repeat',
-              width: '52vw',
+              width: '52%',
+              height: '40%',
               'min-width': '186px',
               'min-height': '271px'
               }"
-
               [popperModifiers]="{
                 offset: {
                   enabled: true,
-                  offset: '18vw,1vh'
+                  offset: '35%p'
                 },
                 flip: {
                   enabled: true,
@@ -46,12 +42,19 @@
               }"
             >
               <img>
-            </button>
+      </button>
+
+  <button class="no-padding" id="logoutButton">
+    <img>
+  </button>
 
 
-  <!-- poppup setting content padding-top: 11px;-->
-  <popper-content #popperSetting >
-    <div class="column-flex setting-text unselectable" style="position: absolute;top: 5%;">
+
+</div>
+
+<!-- poppup setting content padding-top: 11px;-->
+<popper-content #popperSetting >
+    <div class="column-flex setting-text unselectable justify-space-between" style="position: absolute;top: 5%;height: 90%;">
 
       <div class="row-flex justify-space-between" style="align-items: center">
         <div class="column-flex">
@@ -78,9 +81,6 @@
         <div class="column-flex">
           SOUND
         </div>
-        <!-- <div class="column-flex">
-          v.2019.07.03
-        </div> -->
       </div>
 
       <hr>
@@ -107,12 +107,4 @@
         </div>
       </div>
     </div>
-  </popper-content>
-
-
-  <button class="no-padding" id="logoutButton">
-        <img>
-      </button>
-
-</div>
-
+</popper-content>

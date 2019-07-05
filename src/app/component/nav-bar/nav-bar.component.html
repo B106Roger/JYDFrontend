@@ -1,4 +1,4 @@
-<div>
+<div style="position: absolute; bottom: 0;width:100%;">
   <div class="d-flex" class="menu-bg">
     <button *ngFor="let option of menuList" [routerLink]="option.nextUrl" class="menu-option" (click)="option.callback()">
       <img [src]="option.picture" [id]="option.id" >
