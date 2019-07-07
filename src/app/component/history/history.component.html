@@ -37,7 +37,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let row of currentRecord" >
-              <td *ngFor="let colData of row" class="text-sliver word-next sub-column">{{ colData }}</td>
+              <td *ngFor="let data of row" class="text-sliver word-next sub-column">{{ data }}</td>
           </tr>
           <tr>
             <td [attr.colspan]="fields.length" class="text-sliver word-next sub-column">
