@@ -87,6 +87,7 @@
 #loginBtn:hover {
   cursor:pointer;
 }
+
 button:active #changeBtn{
   content: url("/assets/imgs/btnLoginPressed.png");
   margin-top:1px;
@@ -116,4 +117,13 @@ button:active #changeBtn{
   color:rgb(180 198 236);
   font-size: 12px;
 
+}
+
+#lang-bg {
+  background: url('/assets/imgs/picLanMenuBg.png');
+  background-size: 100%100%;
+  background-repeat: no-repeat;
+
+  width: 152px;
+  height: 32px;
 }

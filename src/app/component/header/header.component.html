@@ -61,7 +61,7 @@
         <div class="column-flex">
           MUSIC
         </div>
-        <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
+        <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()" style="font-size: 0.8rem;">
           <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
           <span [ngClass]="{
             'on-off': getMusic() === false
@@ -81,7 +81,7 @@
         <div class="column-flex">
           SOUND
         </div>
-        <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()">
+        <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()" style="font-size: 0.8rem;">
             <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
             <span [ngClass]="{
               'on-off': getSound() === false
