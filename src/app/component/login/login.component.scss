@@ -122,8 +122,57 @@ button:active #changeBtn{
 #lang-bg {
   background: url('/assets/imgs/picLanMenuBg.png');
   background-size: 100%100%;
+
   background-repeat: no-repeat;
+  justify-content: flex-start;
+  align-items: center;
 
   width: 152px;
   height: 32px;
+  padding-left: 7px;
+  padding-right: 10px;
+
+  outline: none;
+  border: none;
+
+  position: relative;
+  z-index: 2;
+  &:hover {
+    cursor: default;
+  }
+}
+
+.lang-text {
+  font-size: 0.7rem;
+  color: rgb(180 198 236);
+  text-align: center;
+  margin-left: 5px;
+}
+
+.lang-option-bg {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding-left: 6px;
+  margin: 2px;
+  min-height: 26px;
+  &:hover {
+    background: url('/assets/imgs/picLanMenuSelect.png');
+  }
+}
+
+.langFlag {
+  margin-left: 2px;
+}
+
+#langPopup {
+  position: absolute;top: 20%;
+  height: 80%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }

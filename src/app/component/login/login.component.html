@@ -3,12 +3,56 @@
     <div class="row-flex">
         <img src="/assets/imgs/picLogoEn.png">
     </div>
-
-    <div class="row-flex">
-      <div id="lang-bg">
-        123
-      </div>
+        <!-- poppup setting content padding-top: 11px;-->
+        <popper-content #popperSetting >
+          <div class="unselectable" id="langPopup">
+            <ng-container *ngFor="let ele of langList">
+              <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);popperSetting.hide()">
+                <img [src]="ele.img" class="langFlag">
+                <span class="lang-text">{{ele.label}}</span>
+              </div>
+            </ng-container>
+          </div>
+        </popper-content>
+    <div class="row-flex" style="position: relative;z-index: 2;">
+      <button id="lang-bg" class="row-flex"
+      (popperOnShown)="langSelectOnShow()"
+      (popperOnHidden)="langSelectOnShow()"
+      [popper]="popperSetting"
+      [popperTrigger]="'click'"
+      [popperHideOnClickOutside]="true"
+      [popperHideOnScroll]="true"
+      [popperDisableStyle]="true"
+      [popperPlacement]="'bottom'"
+      [popperStyles]="{
+      background: 'url(\' /assets/imgs/picLanMenuBgExpand.png\')',
+      'background-size': '100%auto',
+      'background-repeat': 'no-repeat',
+      'width': '152px',
+      'min-height': '153px',
+      'z-index': 1
+      }"
+      [popperModifiers]="{
+        offset: {
+          enabled: true,
+          offset: '0px,-31px'
+        },
+        flip: {
+          enabled: false,
+          behavior: ['right','left','top']
+        },
+        preventOverflow: {
+          escapeWithReference: true
+        }
+      }">
+        <img [src]="getLang().img" class="langFlag">
+        <span class="lang-text">{{getLang().label}}</span>
+        <img [src]="langShow == false ?
+        '/assets/imgs/iconLanMenuDown.png' :
+        '/assets/imgs/iconLanMenuUp.png'" style="margin-top: 4px;position: absolute; right: 7px;" >
+      </button>
     </div>
+
 
     <div class="row-flex">
       <div class=column-flex id="account-container">
@@ -50,3 +94,5 @@
 
   </div>
 </section>
+
+
