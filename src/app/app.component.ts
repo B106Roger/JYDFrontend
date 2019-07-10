@@ -26,5 +26,23 @@ export class AppComponent implements OnInit {
         console.log('Notification permission status:', status);
       });
     }
+
+    //
+    window.scrollTo(0, 20);
+
+    // 防止使用者往下滑
+    // document.addEventListener('touchmove',  (event) => {
+    //   event.preventDefault();
+    // }, { passive: false });
+  }
+
+  displayIOSBar() {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test( userAgent );
+    if (isIOS === true) {
+      return 'display';
+    } else {
+      return 'none';
+    }
   }
 }

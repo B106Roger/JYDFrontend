@@ -81,4 +81,5 @@ export class LobbyComponent implements OnInit {
   getHotGame() {
     return this.images.filter((e) => e.display === '1');
   }
+
 }

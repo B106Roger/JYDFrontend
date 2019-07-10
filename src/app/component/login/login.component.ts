@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
   constructor(public route: Router) { }
 
   ngOnInit() {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipad|ipod/.test( userAgent );
+    console.log('isIOS', isIOS);
   }
 
   getRememberValue() {return this.remember; }
