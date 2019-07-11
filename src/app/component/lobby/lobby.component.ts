@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.scss']
 })
-export class LobbyComponent implements OnInit {
+export class LobbyComponent implements OnInit, AfterViewInit {
 
   images = [
     {
@@ -71,8 +71,8 @@ export class LobbyComponent implements OnInit {
   ngOnInit() {
   }
 
-  hi() {
-    return {background: 'url(\'/assets/imgs/btnLoginPressed.png\')'};
+  ngAfterViewInit() {
+    scrollTo(0, 40);
   }
 
   getNormalGame() {

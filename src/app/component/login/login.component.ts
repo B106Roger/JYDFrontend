@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   account = '';
   password = '';
@@ -38,9 +38,11 @@ export class LoginComponent implements OnInit {
   constructor(public route: Router) { }
 
   ngOnInit() {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIOS = /iphone|ipad|ipod/.test( userAgent );
-    console.log('isIOS', isIOS);
+
+  }
+
+  ngAfterViewInit() {
+    scrollTo(0, 40);
   }
 
   getRememberValue() {return this.remember; }
