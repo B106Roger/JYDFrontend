@@ -53,13 +53,6 @@
   content: url('/assets/imgs/iconCreditDollar.png');
 }
 
-.credit-text {
-  width: 60%;
-  font-size: 0.9rem;
-
-  color: rgb(180 198 236);
-  text-align: center;
-}
 
 #settingButton {
   background: none;
@@ -78,6 +71,14 @@
     }
   }
 }
+.setting-item {
+  flex-shrink: 1;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left:5%;
+  justify-content: space-between;
+}
+
 
 #logoutButton {
   background: none;
@@ -97,10 +98,6 @@
   }
 }
 
-hr {
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
 .no-margin {
   margin: 0px;
 }
@@ -108,21 +105,10 @@ hr {
   padding: 0px;
 }
 
-.setting-text {
-  color: rgb(180 198 236);
-  font-size: 0.9rem;
-  font-family: 'ProximaNova-Regular';
-}
-
-.header-text {
-  color:rgb(180 198 236);
-  font-size: 1.1rem;
-  font-family: 'ProximaNova-Regular';
-}
-
 hr {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  flex-shrink: 1;
   color: rgb(255 100 200);
   width: 90%;
 

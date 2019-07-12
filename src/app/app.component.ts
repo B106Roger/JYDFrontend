@@ -39,12 +39,21 @@ export class AppComponent implements OnInit, AfterViewInit {
     }, {passive: false});
 
     window.addEventListener('resize', () => {
-      alert('resizing-' + !(window.innerWidth > window.innerHeight));
-      if (window.innerWidth > window.innerHeight) {
-        alert('change orientation to see full content');
-      } else {
-        scrollTo(0, 40);
+      let resizeId;
+      if (resizeId) {
+        clearTimeout(resizeId);
       }
+      resizeId = setTimeout(() => {
+        // alert(
+        //   'WindowInnerHeight: ' + window.innerHeight + ' windowInnerWidth: ' + window.innerWidth +
+        //   ' WindowOuterHeight: ' + window.outerHeight + ' windowOutterWidth: ' + window.outerWidth
+        //   );
+        if (window.outerWidth >= window.outerHeight) {
+          alert('change orientation to see full content');
+        } else {
+          scrollTo(0, 40);
+        }
+      }, 1000);
     }, false);
   }
   displayIOSBar() {

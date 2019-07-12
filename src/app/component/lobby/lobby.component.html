@@ -1,22 +1,113 @@
 <section class="root-base" id="lobby-background">
     <app-header ></app-header>
-
     <div class="game-container">
-      <div></div>
-      <div id="normal-game-container" >
-        <div id="hot-game-frame">
-                <img src="/assets/imgs/picTagHotGame.png" style="position: absolute; top: 2px; z-index: 1">
-                <img [src]="getHotGame()[0].gameImgUrl" style="position: absolute; ">
-                <img src="/assets/imgs/picGameFrameLarge.png" style="position: absolute; top: -1px;">
-        </div>
-        <ng-container *ngFor="let item of getNormalGame()">
-                <div class="normal-game-frame">
-                    <img [src]="item.gameImgUrl">
-                    <img src="/assets/imgs/picGameFrameSmall.png" >
-                </div>
-        </ng-container>
+      <!-- 廣播元件 -->
+      <div class="marquee-bg">
+        <img src="/assets/imgs/iconMarqueeSpeaker.png" style="margin: 7.5px;">
       </div>
-    </div>
+
+      <!-- 遊戲種類選擇元鍵 3,2-->
+      <div class="menu-container">
+          <button id="game-filter-bg" class="row-flex"
+          (popperOnShown)="toggleMenuOnShow()"
+          (popperOnHidden)="toggleMenuOnShow()"
+          [popper]="popperSetting"
+          [popperTrigger]="'click'"
+          [popperHideOnClickOutside]="true"
+          [popperHideOnScroll]="true"
+          [popperDisableStyle]="true"
+          [popperPlacement]="'bottom'"
+          [popperStyles]="{
+          background: 'url(\' /assets/imgs/picGameMenuBgExpand.png\')',
+          'background-size': '100%auto',
+          'background-repeat': 'no-repeat',
+          'width': '156px',
+          'min-height': '107px',
+          'z-index': 2
+          }"
+          [popperModifiers]="{
+            offset: {
+              enabled: true,
+              offset: '0px,-31px'
+            },
+            flip: {
+              enabled: false,
+              behavior: ['right','left','top']
+            },
+            preventOverflow: {
+              escapeWithReference: true
+            }
+          }">
+
+            <span class="basic-text-style" style="margin-bottom: 1px;">{{getMenuSelect().label}}</span>
+            <img [src]="menuShow === false ?
+                        '/assets/imgs/iconGameMenuDown.png' :
+                        '/assets/imgs/iconGameMenuUp.png'" >
+
+          </button>
+      </div>
+
+      <!-- 遊戲顯示元件  -->
+      <div id="normal-game-container" >
+          <div id="hot-game-frame" *ngIf="getHotGame().length > 0">
+                  <img src="/assets/imgs/picTagHotGame.png" style="position: absolute; top: 2px; z-index: 1">
+                  <img [src]="getHotGame()[0].gameImgUrl" style="position: absolute; ">
+                  <img src="/assets/imgs/picGameFrameLarge.png" style="position: absolute; top: 1px;">
+          </div>
+          <ng-container *ngFor="let item of getNormalGame()">
+                  <div class="normal-game-frame">
+                      <img [src]="item.gameImgUrl">
+                      <img src="/assets/imgs/picGameFrameSmall.png" >
+                  </div>
+          </ng-container>
+      </div>
+
+      <!-- 輪播牆元件 -->
+      <div class="row-flex carousel-container">
+          <div id="carouselExampleIndicators" class="carousel slide"
+          data-ride="carousel"     data-interval="false">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" >
+            <div class="carousel-item active">
+              <div class="banner-game-frame">
+                  <img  src="/assets/imgs/picBanner01.png" alt="First slide">
+                  <img src="/assets/imgs/picBannerFrame.png">
+              </div>
+            </div>
+            <div class="carousel-item">
+                <div class="banner-game-frame">
+                    <img  src="/assets/imgs/picBanner01.png" alt="First slide">
+                    <img src="/assets/imgs/picBannerFrame.png">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="banner-game-frame">
+                    <img  src="/assets/imgs/picBanner01.png" alt="First slide">
+                    <img src="/assets/imgs/picBannerFrame.png">
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
 
     <app-nav-bar></app-nav-bar>
 </section>
+
+
+<!-- poppup setting content padding-top: 11px;-->
+<popper-content #popperSetting >
+    <div class="unselectable" id="menuPopup">
+      <ng-container *ngFor="let option of menuList">
+          <div class="menu-option-bg" style="justify-content: space-between"
+           (click)="popperSetting.hide();setMenuSelect(option.value)">
+              <span class="basic-text-style ">{{option.label}}</span>
+          </div>
+      </ng-container>
+    </div>
+  </popper-content>

@@ -7,61 +7,77 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class LobbyComponent implements OnInit, AfterViewInit {
 
+  menuSelected = 'slots';
+  menuShow = false;
+  menuList = [
+    {
+      value: 'slots',
+      label: 'SLOTS'
+    },
+    {
+      value: 'marry',
+      label: 'MARRY SLOTS'
+    },
+    {
+      value: 'poker',
+      label: 'POKER GAMES'
+    }
+  ];
   images = [
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame5Dragons.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '1'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame5Koi.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame50Dragons.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameAgent008.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameBeanstalk.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameBuffalo.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'Game1',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picBanner01.png',
-      gameCategory: '',
+      gameCategory: 'slots',
       display: '3'
     },
 
@@ -76,10 +92,18 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
 
   getNormalGame() {
-    return this.images.filter((e) => e.display === '2');
+    return this.images.filter((e) => e.display === '2' && e.gameCategory === this.menuSelected);
   }
   getHotGame() {
-    return this.images.filter((e) => e.display === '1');
+    return this.images.filter((e) => e.display === '1' && e.gameCategory === this.menuSelected);
   }
-
+  getMenuSelect() {
+    return this.menuList.filter((e) => e.value === this.menuSelected)[0];
+  }
+  setMenuSelect(menuOption: string) {
+    this.menuSelected = menuOption;
+  }
+  toggleMenuOnShow() {
+    this.menuShow = !this.menuShow;
+  }
 }

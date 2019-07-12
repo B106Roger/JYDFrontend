@@ -2,7 +2,7 @@
 body, html {
   height: 100%;
   margin: 0px;
-  touch-action: pan-x; // prevent double tap
+  touch-action: manipulation; // prevent double tap
 }
 
 .unselectable {
@@ -60,4 +60,10 @@ body, html {
 
 .no-padding {
   padding: 0px;
+}
+
+.basic-text-style {
+  color: white;
+  font-weight: 450;
+  text-shadow:0 1.5px 1px black;
 }

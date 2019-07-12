@@ -3,13 +3,13 @@
 
       <div class="row-flex" id="name-bg" >
         <img  id="iconId">
-        <span class="setting-text">HELLO</span>
+        <span class="basic-text-style">HELLO</span>
       </div>
 
 
       <div class="row-flex" id="credit-bg">
           <img id="iconCredit">
-          <span class="credit-text">3,245,568.00</span>
+          <span class="basic-text-style">3,245,568.00</span>
       </div>
 
       <button class="no-padding" id="settingButton"
@@ -26,7 +26,7 @@
               height: '40%',
               'min-width': '186px',
               'min-height': '271px',
-              'z-index': 1
+              'z-index': 4
               }"
               [popperModifiers]="{
                 offset: {
@@ -55,14 +55,14 @@
 
 <!-- poppup setting content padding-top: 11px;-->
 <popper-content #popperSetting >
-    <div class="column-flex setting-text unselectable justify-space-between"
-     style="position: absolute;top: 5%;height: 90%;width: 90%;">
+    <div class="column-flex basic-text-style unselectable justify-space-between"
+     style="position: absolute;top: 5%;height: 90%;width: 95%; flex-wrap: nowrap;">
 
-      <div class="row-flex justify-space-between" style="align-items: center">
+      <div class="row-flex setting-item">
         <div class="column-flex">
           MUSIC
         </div>
-        <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()" style="font-size: 0.8rem;">
+        <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
           <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
           <span [ngClass]="{
             'on-off': getMusic() === false
@@ -78,11 +78,11 @@
       </div>
 
       <hr>
-      <div class="row-flex justify-space-between">
+      <div class="row-flex setting-item">
         <div class="column-flex">
           SOUND
         </div>
-        <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()" style="font-size: 0.8rem;">
+        <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()">
             <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
             <span [ngClass]="{
               'on-off': getSound() === false
@@ -98,7 +98,7 @@
       </div>
 
       <hr>
-      <div class="row-flex justify-space-between">
+      <div class="row-flex setting-item">
         <div class="column-flex">
           VERSION
         </div>
@@ -108,14 +108,14 @@
       </div>
 
       <hr>
-      <div class="row-flex justify-space-between" routerLink="/download">
+      <div class="row-flex setting-item" routerLink="/download" >
         <div class="column-flex">
           <span >DOWNLOAD APP</span>
         </div>
       </div>
 
       <hr>
-      <div class="row-flex justify-space-between" routerLink="/">
+      <div class="row-flex setting-item" routerLink="/" >
         <div  class="column-flex">
           LOGOUT
         </div>

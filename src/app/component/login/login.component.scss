@@ -39,9 +39,6 @@
   border-radius: 22.5px;
   outline: none;
   text-indent: 57.5px;
-  font-size: 24px;
-  font-family: 'ProximaNova-Regular';
-  color:rgb( 79 107 166);
 
 }
 
@@ -60,15 +57,13 @@
   border-radius: 22.5px;
   outline: none;
   text-indent: 57.5px;
-  font-size: 24px;
-  font-family: 'ProximaNova-Regular';
-  color:rgb( 79 107 166);
-
 }
 
+
 #password::placeholder,#account::placeholder{
-  font-family: 'ProximaNova-Regular';
-  color: rgb(157 168 223);
+  color: white;
+  font-weight: 450;
+  text-shadow:0 1.5px 1px black;
 }
 
 #loginBtn {
@@ -113,12 +108,6 @@ button:active #changeBtn{
   padding-top: 3px;
 }
 
-.remember-text {
-  color:rgb(180 198 236);
-  font-size: 12px;
-
-}
-
 #lang-bg {
   background: url('/assets/imgs/picLanMenuBg.png');
   background-size: 100%100%;
@@ -143,9 +132,9 @@ button:active #changeBtn{
 }
 
 .lang-text {
-  font-size: 0.7rem;
-  color: rgb(180 198 236);
-  text-align: center;
+  color: white;
+  font-weight: 450;
+  text-shadow:0 1.5px 1px black;
   margin-left: 5px;
 }
 
