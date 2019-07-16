@@ -31,30 +31,32 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let preY = -1;
-    window.addEventListener('touchmove', (e) => {
-      if (e.touches[0].screenY !== preY && e.cancelable) {
-        e.preventDefault();
-      }
-      preY = e.touches[0].screenY;
-    }, {passive: false});
-
-    window.addEventListener('resize', () => {
-      let resizeId;
-      if (resizeId) {
-        clearTimeout(resizeId);
-      }
-      resizeId = setTimeout(() => {
-        // alert(
-        //   'WindowInnerHeight: ' + window.innerHeight + ' windowInnerWidth: ' + window.innerWidth +
-        //   ' WindowOuterHeight: ' + window.outerHeight + ' windowOutterWidth: ' + window.outerWidth
-        //   );
-        if (window.outerWidth >= window.outerHeight) {
-          alert('change orientation to see full content');
-        } else {
-          scrollTo(0, 40);
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const isIOS = /iphone|ipod/.test( userAgent );
+    if (isIOS === true) {
+       // 防止瀏覽器上下滑動
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches[0].screenY !== preY && e.cancelable) {
+          e.preventDefault();
         }
-      }, 1000);
-    }, false);
+        preY = e.touches[0].screenY;
+      }, {passive: false});
+
+      // catch ios safari 轉方向的event
+      window.addEventListener('resize', () => {
+        let resizeId;
+        if (resizeId) {
+          clearTimeout(resizeId);
+        }
+        resizeId = setTimeout(() => {
+          if (window.outerWidth >= window.outerHeight) {
+            alert('change orientation to see full content');
+          } else {
+            scrollTo(0, 40);
+          }
+        }, 1000);
+      }, false);
+    }
   }
   displayIOSBar() {
     const userAgent = window.navigator.userAgent.toLowerCase();
