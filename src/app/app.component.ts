@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
-
+import {TranslateService} from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'JYDFrontend';
   updates = false;
 
-  constructor(public swupdate: SwUpdate, public router: Router) {}
+  constructor(public swupdate: SwUpdate, public router: Router, public translate: TranslateService) {}
   ngOnInit(): void {
     // 當有新東西時更新pwa cache
     this.swupdate.available.subscribe(event => {
@@ -27,6 +27,14 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Notification permission status:', status);
       });
     }
+
+    this.translate.addLangs(['en', 'zh-tw']);
+    // this language will be used as a fallback when a translation isn't found in the current language
+    this.translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    this.translate.use('en');
+
   }
 
   ngAfterViewInit() {

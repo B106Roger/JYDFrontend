@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientModule, HttpClient  } from '@angular/common/http';
 
 import { LoginComponent } from './component/login/login.component';
 import { HistoryComponent } from './component/history/history.component';
@@ -17,6 +17,13 @@ import { DownloadAppComponent } from './component/download-app/download-app.comp
 import { HeaderComponent } from './component/header/header.component';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { LobbyComponent } from './component/lobby/lobby.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -37,6 +44,13 @@ import { LobbyComponent } from './component/lobby/lobby.component';
     FormsModule,
     NgxPopperModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    }),
   ],
   providers: [
     UserService,

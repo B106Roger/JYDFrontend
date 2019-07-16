@@ -57,14 +57,14 @@
     <div class="row-flex">
       <div class=column-flex id="account-container">
         <input [(ngModel)]="account" type="text" id="account"
-        class="basic-text-style" placeholder="PLAYER ID">
+        class="basic-text-style" [placeholder]="'login.account_holder' | translate">
       </div>
     </div>
 
     <div class="row-flex">
       <div class=column-flex id="password-container">
         <input [(ngModel)]="password" type="text" id="password"
-        class="basic-text-style" placeholder="PASSWORD">
+        class="basic-text-style" [placeholder]="'login.password_holder' | translate">
       </div>
     </div>
 
@@ -76,7 +76,7 @@
         </div>
         <div class="column-flex" >
           <label for="remember-me" class="unselectable basic-text-style" style="margin-bottom: 0px;" >
-              REMEMBER ME
+              {{ 'login.rememberMe' | translate}}
           </label>
         </div>
         <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember">

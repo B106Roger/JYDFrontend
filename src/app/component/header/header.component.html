@@ -3,7 +3,7 @@
 
       <div class="row-flex" id="name-bg" >
         <img  id="iconId">
-        <span class="basic-text-style">HELLO</span>
+        <span class="basic-text-style">Hello</span>
       </div>
 
 
@@ -60,19 +60,19 @@
 
       <div class="row-flex setting-item">
         <div class="column-flex">
-          MUSIC
+          {{ 'lobby.setting.music' | translate }}
         </div>
         <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
           <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
           <span [ngClass]="{
             'on-off': getMusic() === false
           }" [ngStyle]="{'margin-left': getMusic() === true ? '8px' : ''}">
-          {{this.getMusic() === true ? 'ON' : ''}}
+          {{this.getMusic() === true ? ('lobby.setting.on' | translate) : ''}}
           </span>
           <span [ngClass]="{
             'on-off': getMusic() === true
           }" [ngStyle]="{'margin-right': getMusic() === false ? '8px' : ''}">
-          {{this.getMusic() === false ? 'OFF' : ''}}
+          {{this.getMusic() === false ? ('lobby.setting.off' | translate) : ''}}
         </span>
         </label>
       </div>
@@ -80,19 +80,19 @@
       <hr>
       <div class="row-flex setting-item">
         <div class="column-flex">
-          SOUND
+          {{ 'lobby.setting.sounds' | translate }}
         </div>
         <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()">
             <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
             <span [ngClass]="{
               'on-off': getSound() === false
             }" [ngStyle]="{'margin-left': getSound() === true ? '8px' : ''}">
-            {{this.getSound() === true ? 'ON' : ''}}
+            {{this.getSound() === true ? ('lobby.setting.on' | translate) : ''}}
             </span>
             <span [ngClass]="{
               'on-off': getSound() === true
             }" [ngStyle]="{'margin-right': getSound() === false ? '8px' : ''}">
-            {{this.getSound() === false ? 'OFF' : ''}}
+            {{this.getSound() === false ? ('lobby.setting.off' | translate) : ''}}
           </span>
           </label>
       </div>
@@ -100,7 +100,7 @@
       <hr>
       <div class="row-flex setting-item">
         <div class="column-flex">
-          VERSION
+          {{ 'lobby.setting.version' | translate }}
         </div>
         <div class="column-flex">
             v.2019.07.03
@@ -110,14 +110,14 @@
       <hr>
       <div class="row-flex setting-item" routerLink="/download" >
         <div class="column-flex">
-          <span >DOWNLOAD APP</span>
+          <span >{{ 'lobby.setting.download' | translate }}</span>
         </div>
       </div>
 
       <hr>
       <div class="row-flex setting-item" routerLink="/" >
         <div  class="column-flex">
-          LOGOUT
+          {{'lobby.setting.logout' | translate }}
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -12,30 +13,30 @@ export class LoginComponent implements OnInit, AfterViewInit {
   password = '';
   remember = false;
   langShow = false;
-  langChoosed = 'EN';
+  langChoosed = 'en';
   langList = [
     {
-      lang: 'EN',
+      lang: 'en',
       img: '/assets/imgs/iconLanEn.png',
       label: 'ENGLISH'
     },
     {
-      lang: 'CN',
+      lang: 'zh-tw',
       img: '/assets/imgs/iconLanSc.png',
       label: '简体中文'
     },
     {
-      lang: 'ES',
+      lang: 'es',
       img: '/assets/imgs/iconLanEs.png',
       label: 'Español'
     },
     {
-      lang: 'PT',
+      lang: 'pt',
       img: '/assets/imgs/iconLanSc.png',
       label: 'Português'
     }
   ]
-  constructor(public route: Router) { }
+  constructor(public route: Router, public translate: TranslateService) { }
 
   ngOnInit() {
 
@@ -59,6 +60,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
   setLang(lang: string) {
     this.langChoosed = lang;
+    if (this.translate.getLangs().includes(lang)) {
+      this.translate.use(this.getLang().lang);
+    } else {
+      this.translate.use(this.translate.defaultLang);
+    }
   }
 
   login() {

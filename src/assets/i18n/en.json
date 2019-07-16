@@ -1,0 +1,37 @@
+{
+  "menu": {
+      "home": "Home",
+      "feature": {
+          "name": "Feature module",
+          "form": "Form"
+      },
+      "language": "Language",
+      "languageList": {
+          "taiwanese": "繁體中文",
+          "english": "English"
+      }
+  },
+  "login": {
+    "rememberMe": "REMEBER ME",
+    "account_holder": "PLAYER ID",
+    "password_holder": "PASSWORD"
+  },
+  "lobby": {
+    "slots": "SLOT",
+    "marry": "MARY SLOTS",
+    "poker": "POKER GAMES",
+    "setting": {
+      "music": "MUSIC",
+      "sounds": "SOUNDS",
+      "version": "VERSION",
+      "download": "DOWNLOAD APP",
+      "logout": "LOGOUT",
+      "on" : "ON",
+      "off": "OFF"
+    },
+    "history": "HISTORY",
+    "account": "ACCOUNT",
+    "contact": "CONTACT US",
+    "treasure": "TREASURE ISLAND"
+  }
+}

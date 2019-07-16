@@ -39,7 +39,7 @@
             }
           }">
 
-            <span class="basic-text-style" style="margin-bottom: 1px;">{{getMenuSelect().label}}</span>
+            <span class="basic-text-style" style="margin-bottom: 1px;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
                         '/assets/imgs/iconGameMenuUp.png'" >
@@ -65,7 +65,7 @@
       <!-- 輪播牆元件 -->
       <div class="row-flex carousel-container">
           <div id="carouselExampleIndicators" class="carousel slide"
-          data-ride="carousel"     data-interval="false">
+          data-ride="carousel"     data-interval="8000">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -106,7 +106,7 @@
       <ng-container *ngFor="let option of menuList">
           <div class="menu-option-bg" style="justify-content: space-between"
            (click)="popperSetting.hide();setMenuSelect(option.value)">
-              <span class="basic-text-style ">{{option.label}}</span>
+              <span class="basic-text-style ">{{('lobby.' + option.value) | translate}}</span>
           </div>
       </ng-container>
     </div>

@@ -1,0 +1,37 @@
+{
+  "menu": {
+      "home": "家",
+      "feature": {
+          "name": "Feature module",
+          "form": "Form"
+      },
+      "language": "Language",
+      "languageList": {
+          "taiwanese": "繁體中文",
+          "english": "English"
+      }
+  },
+  "login": {
+    "rememberMe": "記住密碼",
+    "account_holder": "请输入帐号",
+    "password_holder": "请输入密码"
+  },
+  "lobby": {
+    "slots": "老虎机",
+    "marry": "玛莉机",
+    "poker": "玛莉机",
+    "setting": {
+      "music": "背景音樂",
+      "sounds": "音效",
+      "version": "版本",
+      "download": "下載APP",
+      "logout": "登出",
+      "on" : "開",
+      "off": "關"
+    },
+    "history": "歷史紀錄",
+    "account": "帳戶設定",
+    "contact": "聯繫我們",
+    "treasure": "金銀島"
+  }
+}

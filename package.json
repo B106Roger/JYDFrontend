@@ -21,6 +21,8 @@
     "@angular/pwa": "^0.800.3",
     "@angular/router": "~8.0.1",
     "@angular/service-worker": "~8.0.1",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "ngx-popper": "^6.2.0",
     "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",
