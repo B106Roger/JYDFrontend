@@ -1,20 +1,11 @@
 {
-  "menu": {
-      "home": "Home",
-      "feature": {
-          "name": "Feature module",
-          "form": "Form"
-      },
-      "language": "Language",
-      "languageList": {
-          "taiwanese": "繁體中文",
-          "english": "English"
-      }
-  },
   "login": {
     "rememberMe": "REMEBER ME",
     "account_holder": "PLAYER ID",
-    "password_holder": "PASSWORD"
+    "password_holder": "PASSWORD",
+    "loginbtn": "/assets/imgs/en/btnLoginNormal.png",
+    "loginbtnpressed": "/assets/imgs/en/btnLoginPressed.png",
+    "mainicon": "/assets/imgs/en/picLogoEn.png"
   },
   "lobby": {
     "slots": "SLOT",
@@ -32,6 +23,14 @@
     "history": "HISTORY",
     "account": "ACCOUNT",
     "contact": "CONTACT US",
-    "treasure": "TREASURE ISLAND"
+    "treasure": "TREASURE ISLAND",
+    "lobbyimg": "/assets/imgs/en/btnLobbyNormal.png",
+    "historyimg": "/assets/imgs/en/btnHistoryNormal.png",
+    "accountimg": "/assets/imgs/en/btnAccountNormal.png",
+    "contactimg": "/assets/imgs/en/btnContactNormal.png",
+    "lobbyimgpressed": "/assets/imgs/en/btnLobbyPressed.png",
+    "historyimgpressed": "/assets/imgs/en/btnHistoryPressed.png",
+    "accountimgpressed": "/assets/imgs/en/btnAccountPressed.png",
+    "contactimgpressed": "/assets/imgs/en/btnContactPressed.png"
   }
 }
