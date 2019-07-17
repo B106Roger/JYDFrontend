@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       label: 'ENGLISH'
     },
     {
-      lang: 'zh-tw',
+      lang: 'zh-cn',
       img: '/assets/imgs/iconLanSc.png',
       label: '简体中文'
     },
@@ -35,11 +36,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
       img: '/assets/imgs/iconLanSc.png',
       label: 'Português'
     }
-  ]
-  constructor(public route: Router, public translate: TranslateService) { }
+  ];
+  constructor(public route: Router, public translate: TranslateService) {  }
 
   ngOnInit() {
-
+    this.langChoosed = localStorage.getItem('lang');
+    console.log(this.langChoosed);
+    console.log(this.translate.currentLang);
   }
 
   ngAfterViewInit() {
@@ -59,12 +62,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
     return this.langList.filter( e => e.lang === this.langChoosed )[0];
   }
   setLang(lang: string) {
-    this.langChoosed = lang;
     if (this.translate.getLangs().includes(lang)) {
-      this.translate.use(this.getLang().lang);
+      this.langChoosed = lang;
     } else {
-      this.translate.use(this.translate.defaultLang);
+      this.langChoosed = this.translate.defaultLang;
     }
+    this.translate.use(this.langChoosed);
+    localStorage.setItem('lang', this.langChoosed);
   }
 
   login() {

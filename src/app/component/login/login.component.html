@@ -1,7 +1,7 @@
 <section class="root-base" >
   <div class=flex-container id="login-backround">
     <div class="row-flex">
-        <img src="/assets/imgs/picLogoEn.png">
+        <img [src]="'login.mainicon' | translate">
     </div>
         <!-- poppup setting content padding-top: 11px;-->
         <popper-content #popperSetting >
@@ -85,9 +85,13 @@
 
     <div class="row-flex">
       <div class="column-flex" >
-        <button id="loginBtn" (click)="login()">
+        <button id="loginBtn" (click)="login()" >
           <img id="changeBtn"
-          src="/assets/imgs/btnLoginNormal.png">
+          [src]="'login.loginbtn' | translate"
+          (mousedown)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
+          (mouseup)="$event.currentTarget.src=translate.instant('login.loginbtn')"
+          (mouseleave)="$event.currentTarget.src=translate.instant('login.loginbtn')"
+          >
         </button>
       </div>
     </div>

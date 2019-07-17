@@ -62,6 +62,20 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     {
       gameName: 'Game1',
       gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGameAgent008.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'Game1',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'Game1',
+      gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameBeanstalk.png',
       gameCategory: 'slots',
       display: '2'

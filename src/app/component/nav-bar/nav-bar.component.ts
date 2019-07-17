@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,32 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public translate: TranslateService) {  }
+
   menuList = [
     {
       id: 'lobby',
-      picture: '/assets/imgs/btnLobbyNormal.png',
-      pictureHover: '/assets/imgs/btnLobbyPressed.png',
+      picture: 'lobby.lobbyimg',
+      picturepressed: 'lobby.lobbyimgpressed',
       callback: this.lobbyCallback,
     },
     {
       id: 'history',
-      picture: '/assets/imgs/btnHistoryNormal.png',
-      pictureHover: '/assets/imgs/btnHistoryPressed.png',
+      picture: 'lobby.historyimg',
+      picturepressed: 'lobby.historyimgpressed',
       callback: this.historyCallback,
       nextUrl: '/history'
     },
     {
       id: 'account',
-      picture: '/assets/imgs/btnAccountNormal.png',
-      pictureHover: '/assets/imgs/btnAccountPressed.png',
+      picture: 'lobby.accountimg',
+      picturepressed: 'lobby.accountimgpressed',
       callback: this.accountCallback,
       nextUrl: '/account'
     },
     {
       id: 'contact',
-      picture: '/assets/imgs/btnContactNormal.png',
-      pictureHover: '/assets/imgs/btnContactPressed.png',
+      picture: 'lobby.contactimg',
+      picturepressed: 'lobby.contactimgpressed',
       callback: this.ContactCallback,
       nextUrl: '/contact'
     }

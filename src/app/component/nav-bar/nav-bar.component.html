@@ -1,7 +1,13 @@
 <div style="position: absolute; bottom: 0;width:100%;">
   <div class="d-flex" class="menu-bg">
-    <button *ngFor="let option of menuList" [routerLink]="option.nextUrl" class="menu-option" (click)="option.callback()">
-      <img [src]="option.picture" [id]="option.id" >
+    <button *ngFor="let option of menuList" [routerLink]="option.nextUrl" class="menu-option" (click)="option.callback();$event.currentTarget.querySelector('img').src = translate.instant(option.picturepressed)"
+    (mousedown)="$event.currentTarget.querySelector('img').src = translate.instant(option.picturepressed)"
+    (mouseleave)="$event.currentTarget.querySelector('img').src= translate.instant(option.picture)"
+    (mouseup)="$event.currentTarget.querySelector('img').src= translate.instant(option.picture)"
+    
+    >
+
+      <img [src]="option.picture | translate" [id]="option.id" >
     </button>
   </div>
 </div>

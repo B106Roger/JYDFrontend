@@ -11,7 +11,24 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'JYDFrontend';
   updates = false;
 
-  constructor(public swupdate: SwUpdate, public router: Router, public translate: TranslateService) {}
+  constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService) {
+    translate.addLangs(['en', 'zh-cn']);
+    translate.setDefaultLang('en');
+    // 檢查localStorage沒有語系紀錄
+    if (localStorage.getItem('lang')) {      // 有，使用localStorage語系
+      translate.use(localStorage.getItem('lang'));
+      console.log('localstorage lang', localStorage.getItem('lang'));
+    } else {                                 // 沒有
+      const browserLang = translate.getBrowserLang();
+      if (translate.langs.includes(browserLang)) {
+        translate.use(browserLang);
+      } else {
+        translate.use(translate.defaultLang);
+      }
+      console.log('browser lang', translate.getBrowserLang());
+    }
+    localStorage.setItem('lang', this.translate.currentLang);
+  }
   ngOnInit(): void {
     // 當有新東西時更新pwa cache
     this.swupdate.available.subscribe(event => {
@@ -27,14 +44,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Notification permission status:', status);
       });
     }
-
-    this.translate.addLangs(['en', 'zh-tw']);
-    // this language will be used as a fallback when a translation isn't found in the current language
-    this.translate.setDefaultLang('en');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    this.translate.use('en');
-
   }
 
   ngAfterViewInit() {
@@ -42,6 +51,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipod/.test( userAgent );
     if (isIOS === true) {
+      scrollTo(0, 40);
        // 防止瀏覽器上下滑動
       window.addEventListener('touchmove', (e) => {
         if (e.touches[0].screenY !== preY && e.cancelable) {

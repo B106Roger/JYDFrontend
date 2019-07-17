@@ -83,10 +83,10 @@
   cursor:pointer;
 }
 
-button:active #changeBtn{
-  content: url("/assets/imgs/btnLoginPressed.png");
-  margin-top:1px;
-}
+// button:active #changeBtn{
+//   content: url("/assets/imgs/btnLoginPressed.png");
+//   margin-top:1px;
+// }
 
 .remember-checkbox {
   background: url('/assets/imgs/picRememberFrame.png') no-repeat;

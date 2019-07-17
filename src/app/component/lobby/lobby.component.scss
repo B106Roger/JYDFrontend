@@ -36,6 +36,7 @@
   /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around; */
   justify-content: flex-start;
   /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
+  overflow: hidden;
 }
 
 
@@ -50,6 +51,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
+
+  overflow:hidden;
 }
 
 #hot-game-frame {
@@ -73,7 +76,9 @@
   flex-wrap: wrap;
 
   align-items: center;
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
+
   &::-webkit-scrollbar
   {
     display: none;

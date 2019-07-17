@@ -21,20 +21,6 @@
   flex-direction: row;
 }
 
-button.menu-option:active {
-  #lobby {
-    content: url('/assets/imgs/btnLobbyPressed.png');
-  }
-  #history {
-    content: url('/assets/imgs/btnHistoryPressed.png');
-  }
-  #account {
-    content: url('/assets/imgs/btnAccountPressed.png');
-  }
-  #contact {
-    content: url('/assets/imgs/btnContactPressed.png');
-  }
-}
 button.menu-option:hover {
   cursor: pointer;
 }
