@@ -1,4 +1,4 @@
-.menu-option {
+.menu-button {
   min-height: 66px;
   width: 25%;
   background: url('/assets/imgs/btnLobbyBg.png') no-repeat;
@@ -8,10 +8,11 @@
   border: none;
   padding: 0px;
   margin: 0px;
+
+  vertical-align: middle;
+
   img {
-    max-width: 120%;
-    max-height: 120%;
-    height: 66%;
+    height: 50px;
   }
 }
 
@@ -19,8 +20,9 @@
   padding: 0px;
   margin: 0px;
   flex-direction: row;
+  align-items: center;
 }
 
-button.menu-option:hover {
+button.menu-button:hover {
   cursor: pointer;
 }

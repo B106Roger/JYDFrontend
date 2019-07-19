@@ -47,4 +47,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  setPicture(e: Event, srcURL: string) {
+    const target = e.currentTarget as HTMLElement;
+    const img = target.querySelector('img');
+    img.src = this.translate.instant(srcURL);
+  }
 }
