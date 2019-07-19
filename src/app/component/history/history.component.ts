@@ -1,7 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { GameRecord } from './../../models/game-record';
-import { InOutRecord } from './../../models/in-out-record';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-history',
@@ -16,38 +14,17 @@ export class HistoryComponent implements OnInit {
   public ioHistoryTitle: string[];
   public selectPage: number;
 
-  public currentRecord: Array<GameRecord> | Array<InOutRecord>;
-  public gameRecord: Array<GameRecord>;
-  public ioRecord: Array<InOutRecord>;
-  constructor(private userService: UserService) { }
+  public currentRecord: AnalyserOptions;
+  public gameRecord: any;
+  public ioRecord: any;
 
+  constructor( http: HttpClientModule ) {}
 
   ngOnInit() {
       this.gameHistoryTitle = ['GAME' , 'DATE/TIME' , 'BET' , 'WIN' , 'BEGIN MONEY' , 'END MONEY'];
       this.ioHistoryTitle = ['NO.' , 'DATE/TIME' , 'BEFORE' , 'IN/OUT' , 'AFTER'];
       this.fields = this.gameHistoryTitle;
       this.selectPage = 1;
-      this.gameRecord = this.userService.getGameRecords();
-
-      this.ioRecord = this.userService.getInOutRecords();
-
-      this.currentRecord = this.gameRecord;
-      setTimeout(() => {
-        console.log('fetch', this.userService.getGameRecords() );
-        console.log('fetch', this.userService.getInOutRecords() );
-        this.gameRecord = this.userService.getGameRecords();
-        this.ioRecord = this.userService.getInOutRecords();
-        this.currentRecord = this.gameRecord;
-        console.log('currentRecord', this.gameRecord );
-      }, 700);
-
-      setTimeout(() => {
-        console.log('currentRecord', this.currentRecord);
-      }, 700);
-
-      setTimeout(() => {
-        console.log('gameRecord', this.gameRecord );
-      }, 700);
 
   }
 

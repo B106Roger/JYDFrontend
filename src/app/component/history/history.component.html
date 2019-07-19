@@ -28,13 +28,13 @@
         <span class="span-button-icon go-btn-base go-btn"></span>
       </div>
 
-      <!-- table-body -->
       <table class="text-center data-table" >
         <thead>
           <tr>
               <td *ngFor="let field of fields" class="text-sliver word-next column">{{ field }}</td>
           </tr>
         </thead>
+
         <tbody>
           <tr *ngFor="let row of currentRecord" >
               <td *ngFor="let data of row" class="text-sliver word-next sub-column">{{ data }}</td>
