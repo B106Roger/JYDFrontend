@@ -105,7 +105,7 @@
       <div class="row-flex-no-margin-padding" style="align-items: center">
         <img src="/assets/imgs/segSettingMenu.png" style="width: 92%;" >
       </div>
-      <div class="row-flex setting-item" routerLink="/" >
+      <div class="row-flex setting-item" (click)="logout()" >
         <div  class="column-flex-no-margin-padding">
           {{'lobby.setting.logout' | translate }}
         </div>
