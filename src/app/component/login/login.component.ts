@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.langChoosed = localStorage.getItem('lang');
     console.log(this.langChoosed);
     console.log(this.translate.currentLang);
+    document.querySelector('body').id = this.translate.currentLang;
   }
 
   ngAfterViewInit() {
@@ -69,6 +70,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
     this.translate.use(this.langChoosed);
     localStorage.setItem('lang', this.langChoosed);
+    document.querySelector('body').id = this.translate.currentLang;
   }
 
   login() {
