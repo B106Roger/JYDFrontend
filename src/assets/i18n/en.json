@@ -42,5 +42,15 @@
       "TREASURE ISLAND" : "TREASURE ISLAND",
       "downloadImgNormal" : "/assets/imgs/en/btnDownloadNormal@2x.png",
       "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
+  },
+
+  "contact" : {
+      "title" : "CONTACT US",
+      "REACH US WITH FOLLOWING CONTACT DETAILS" : "REACH US WITH FOLLOWING CONTACT DETAILS",
+      "email-icon"    : "/assets/imgs/en/iconContactEmail@3x.png",
+      "phone-icon"    : "/assets/imgs/en/iconContactPhone@3x.png",
+      "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
+      "weChat-icon"   : "/assets/imgs/en/iconContactWechat@3x.png",
+      "line-icon"     : "/assets/imgs/en/iconContactLine@3x.png"
   }
 }

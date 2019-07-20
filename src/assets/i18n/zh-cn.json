@@ -36,11 +36,21 @@
     "offimg": "/assets/imgs/zh-cn/btnMusicOff@2x.png"
   },
 
-    "download-app" : {
-      "title" : "下载 APP",
-      "download" : "下载",
-      "TREASURE ISLAND" : "金银岛",
-      "downloadImgNormal" : "/assets/imgs/zh-cn/btnDownloadNormal@2x.png",
-      "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
+  "download-app" : {
+    "title" : "下载 APP",
+    "download" : "下载",
+    "TREASURE ISLAND" : "金银岛",
+    "downloadImgNormal" : "/assets/imgs/zh-cn/btnDownloadNormal@2x.png",
+    "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
+  },
+
+  "contact" : {
+    "title" : "联系我们",
+    "REACH US WITH FOLLOWING CONTACT DETAILS" : "请透过以下方式与我们联系",
+    "email-icon"    : "/assets/imgs/zh-cn/iconContactEmail@3x.png",
+    "phone-icon"    : "/assets/imgs/zh-cn/iconContactPhone@3x.png",
+    "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
+    "weChat-icon"   : "/assets/imgs/zh-cn/iconContactWechat@3x.png",
+    "line-icon"     : "/assets/imgs/en/iconContactLine@3x.png"
   }
 }

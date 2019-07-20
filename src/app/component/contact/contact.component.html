@@ -1,7 +1,7 @@
 <div class="root-base setting-bg">
   <div class="flex-container">
     <div class="row-flex-no-margin-padding setting-top">
-      <span class="title">CONTACT US</span>
+      <span class="title">{{'contact.title' | translate}}</span>
       <a routerLink="/lobby" class="close-button close-button-base"></a>
     </div>
   </div>
@@ -9,7 +9,7 @@
   <div class="main-content">
   <!-- 頁籤 -->
   <div class="d-flex text-center justify-content-center">
-      <span class="btn-bg btn-label-long">REACH US WITH FOLLOWING CONTACT DETAILS</span>
+      <span class="btn-bg btn-label-long">{{'contact.REACH US WITH FOLLOWING CONTACT DETAILS' | translate}}</span>
   </div>
 
   <div class="wrapper">
@@ -17,14 +17,14 @@
     <!-- E-mail -->
     <div class="outer d-flex">
       <div class="contact-row d-flex justify-content-around align-items-center">
-        <span class="icon email-icon"></span>
+        <div class="icon-warpper"><img [src]="'contact.email-icon' | translate" class="icon"/></div>
         <span class="detail text-sliver">TREASURE.ISLAND@GMAIL.COM</span>
       </div>
     </div>
     <!-- Phone -->
     <div class="outer d-flex">
       <div class="contact-row d-flex justify-content-around align-items-center">
-        <span class="icon phone-icon"></span>
+        <div class="icon-warpper"><img [src]="'contact.phone-icon' | translate" class="icon"/></div>
         <span class="detail text-sliver">+86-1398886457</span>
       </div>
     </div>
@@ -32,7 +32,7 @@
     <!-- WhatsApp -->
     <div class="outer d-flex">
       <div class="contact-row d-flex justify-content-around align-items-center">
-        <span class="icon whatsApp-icon"></span>
+        <div class="icon-warpper"><img [src]="'contact.whatsApp-icon' | translate" class="icon"/></div>
         <span class="detail text-sliver">TREASURE.ISLAND</span>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <!-- WeChat -->
     <div class="outer d-flex">
       <div class="contact-row d-flex justify-content-around align-items-center">
-        <span class="icon weChat-icon"></span>
+        <div class="icon-warpper"><img [src]="'contact.weChat-icon' | translate" class="icon"/></div>
         <span class="detail text-sliver">TREASURE.ISLAND</span>
       </div>
     </div>
@@ -48,7 +48,7 @@
     <!-- Line -->
     <div class="outer d-flex">
       <div class="contact-row d-flex justify-content-around align-items-center">
-        <span class="icon line-icon"></span>
+        <div class="icon-warpper"><img [src]="'contact.line-icon' | translate" class="icon"/></div>
         <span class="detail text-sliver">TREASURE.ISLAND</span>
       </div>
     </div>

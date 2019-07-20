@@ -15,6 +15,14 @@
   width: 100%;
   border-bottom: 1px solid #0044BB;
 
+  .icon-warpper
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:20%;
+    height:100%;
+  }
   .detail
   {
     display: inline-block;
@@ -25,43 +33,10 @@
   }
 
   .icon
-    {
-      display: inline-block;
-      width:25%;
-      height:100%;
-      background-repeat: no-repeat;
-      background-position: center;
-
-      &.email-icon
-      {
-        background-image: url('/assets/imgs/iconContactEmail@3x.png');
-        background-size: 60% 60%;
-      }
-
-      &.phone-icon
-      {
-        background-image: url('/assets/imgs/iconContactPhone@3x.png');
-        background-size: 60% 60%;
-      }
-
-      &.whatsApp-icon
-      {
-        background-image: url('/assets/imgs/iconContactWhatsapp@3x.png');
-        background-size: 80% 60%;
-
-      }
-
-      &.weChat-icon
-      {
-        background-image: url('/assets/imgs/iconContactWechat@3x.png');
-        background-size: 60% 60%;
-      }
-
-
-      &.line-icon
-      {
-        background-image: url('/assets/imgs/iconContactLine@3x.png');
-        background-size: 40% 70%;
-      }
-    }
+  {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: 58%;
+  }
 }
