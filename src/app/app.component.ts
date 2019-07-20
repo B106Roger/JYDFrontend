@@ -2,11 +2,13 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'JYDFrontend';
   updates = false;

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ConditionalExpr } from '@angular/compiler';
+import { fakeUser } from '../../env';
 
 @Component({
   selector: 'app-login',
@@ -75,10 +76,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login() {
     console.log('account: ', this.account);
-    if (this.account === '123' && this.password === '123') {
-      localStorage.setItem('test' , '123');
+    if ( fakeUser.some(user => user.account === this.account && this.password === this.password ) ) {
+      localStorage.setItem('user' , this.account);
       this.displayNotification();
       this.route.navigate(['lobby']);
+    } else {
+      alert('user is not exist');
     }
   }
 

@@ -73,4 +73,8 @@ const Api = {
   testLogin       : 'http://localhost:8000/api/user/login'
 };
 
-export { Api };
+const fakeUser = [
+  {account: '123' , password: '123'},
+  {account: 'testuser' , password: 'testpassword'}
+];
+export { Api , fakeUser };
