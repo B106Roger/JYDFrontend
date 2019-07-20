@@ -46,6 +46,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Notification permission status:', status);
       });
     }
+
+    // 為PC加入置中class
+    if (window.innerHeight > 600 && window.outerHeight > 1000) {
+      document.querySelector('body').classList.add('d-flex');
+      document.querySelector('body').classList.add('justify-content-center');
+      document.querySelector('body').classList.add('align-items-center');
+    }
   }
 
   ngAfterViewInit() {
@@ -56,10 +63,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       scrollTo(0, 40);
        // 防止瀏覽器上下滑動
       window.addEventListener('touchmove', (e) => {
-        if (e.touches[0].screenY !== preY && e.cancelable) {
-          e.preventDefault();
-        }
-        preY = e.touches[0].screenY;
+        // 如果是從主畫面開的，就要防止滑動
+        // 如果不是從主畫面開的，就不加banner，允許滑動
+        // if (e.touches[0].screenY !== preY && e.cancelable) {
+        //   e.preventDefault();
+        // }
+        // preY = e.touches[0].screenY;
       }, {passive: false});
 
       // catch ios safari 轉方向的event
@@ -74,7 +83,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           } else {
             scrollTo(0, 40);
           }
-        }, 1000);
+        }, 500);
       }, false);
     }
   }
