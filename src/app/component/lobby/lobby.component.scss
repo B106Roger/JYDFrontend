@@ -1,7 +1,6 @@
 #lobby-background {
   background: url('/assets/imgs/bgLobby-v@3x.png') transparent;
 
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,22 +42,28 @@
   // 對齊輪播牆
   @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
   {
-    margin-left: 7%;
+    margin-left: 9%;
+    width: 82%;
   }
   @media only screen and (max-width: 376px)      // i6,i7,i8
   {
     margin-left: 4.5%;
+    width: 91%
   }
   @media only screen and (max-width: 361px)      //GL s5
   {
     margin-left: 3%;
+    width: 94%;
   }
   @media only screen and (max-width: 341px)    //i5 SE
   {
     margin-left: 4.5%;
+    width: 91%
   }
-  @media screen  and (min-width: 500px){
+  @media screen  and (min-width: 500px)       // PC
+  {
     margin-left: 4.5%;
+    width: 91%
   }
 
   display: flex;
@@ -71,12 +76,15 @@
 
   &::-webkit-scrollbar
   {
-    display: none;
+     display: none;
   }
 
   #hot-game-frame {
-    width: 30%;
+    width: 33%;
     height: 100%;
+    @media screen  and (max-width: 500px) and (min-width: 360px){
+      width: 107px;
+    }
 
     display: flex;
     flex-direction: column;
@@ -100,9 +108,11 @@
     }
   }
   .normal-game-frame {
-    width: 30%;
+    width: 33%;
     height: 50%;
-
+    @media screen  and (max-width: 500px) and (min-width: 360px){ // normal mobile
+      width: 107px;
+    }
 
     display: flex;
     flex-direction: column;
@@ -121,16 +131,12 @@
   }
 }
 
-
 // 遊戲列表 end
 
 
 
 
 // 遊戲種類選單 start
-
-
-
 #menuPopup {
   position: absolute;top: 22%;
   height: 75%;
@@ -138,7 +144,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   @media screen  and (min-width: 1000px){
     font-size: 16px;
@@ -152,7 +158,7 @@
   align-items: center;
 
   min-height: 26px;
-  padding-left: 15px;
+  padding-left: 11px;
 
   &:hover {
     background: url('/assets/imgs/picGameMenuSelect.png');
