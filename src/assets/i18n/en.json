@@ -37,20 +37,32 @@
   },
 
   "download-app" : {
-      "title" : "DOWNLOAD APP",
-      "download" : "DOWNLOAD",
-      "TREASURE ISLAND" : "TREASURE ISLAND",
-      "downloadImgNormal" : "/assets/imgs/en/btnDownloadNormal@2x.png",
-      "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
+    "title" : "DOWNLOAD APP",
+    "download" : "DOWNLOAD",
+    "TREASURE ISLAND" : "TREASURE ISLAND",
+    "downloadImgNormal" : "/assets/imgs/en/btnDownloadNormal@2x.png",
+    "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
   },
 
   "contact" : {
-      "title" : "CONTACT US",
-      "REACH US WITH FOLLOWING CONTACT DETAILS" : "REACH US WITH FOLLOWING CONTACT DETAILS",
-      "email-icon"    : "/assets/imgs/en/iconContactEmail@3x.png",
-      "phone-icon"    : "/assets/imgs/en/iconContactPhone@3x.png",
-      "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
-      "weChat-icon"   : "/assets/imgs/en/iconContactWechat@3x.png",
-      "line-icon"     : "/assets/imgs/en/iconContactLine@3x.png"
+    "title" : "CONTACT US",
+    "REACH US WITH FOLLOWING CONTACT DETAILS" : "REACH US WITH FOLLOWING CONTACT DETAILS",
+    "email-icon"    : "/assets/imgs/en/iconContactEmail@3x.png",
+    "phone-icon"    : "/assets/imgs/en/iconContactPhone@3x.png",
+    "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
+    "weChat-icon"   : "/assets/imgs/en/iconContactWechat@3x.png",
+    "line-icon"     : "/assets/imgs/en/iconContactLine@3x.png"
+  },
+
+  "account" : {
+    "title" : "ACCONUT",
+    "RESET PASSWORD" : "RESET PASSWORD",
+    "CURRENT PASSWORD" : "CURRENT PASSWORD",
+    "NEW PASSWORD" : "NEW PASSWORD",
+    "CONFIRM NEW PASSWORD" : "CONFIRM NEW PASSWORD",
+    "saveImgNormal"    : "/assets/imgs/en/btnAccountSaveNormal@2x.png",
+    "cancelImgNormal"  : "/assets/imgs/en/btnAccountCancelNormal@2x.png",
+    "saveImgPressed"   : "/assets/imgs/en/btnAccountSavePressed@2x.png",
+    "cancelImgPressed" : "/assets/imgs/en/btnAccountCancelPressed@2x.png"
   }
 }

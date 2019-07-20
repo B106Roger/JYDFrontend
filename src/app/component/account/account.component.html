@@ -1,7 +1,7 @@
 <div class="root-base setting-bg">
   <div class="flex-container">
     <div class="row-flex-no-margin-padding setting-top">
-      <span class="title">ACCOUNT</span>
+      <span class="title">{{ 'account.title' | translate }}</span>
       <a routerLink="/lobby" class="close-button close-button-base"></a>
     </div>
   </div>
@@ -10,14 +10,14 @@
         <form id="resetPasswordForm" action="#">
           <!-- 頁籤 -->
           <div class="d-flex text-center justify-content-start" style="margin-left:2vw;">
-              <span class="btn-bg btn-label">RESET PASSWORD</span>
+              <span class="btn-bg btn-label">{{'account.RESET PASSWORD' | translate }}</span>
           </div>
 
           <div class="wrapper">
               <!-- 目前密碼 -->
               <div class="input-container">
                 <div class="col-11">
-                  <label for="currentPassword" class="text-sliver" >CURRENT PASSWORD</label>
+                  <label for="currentPassword" class="text-sliver" >{{'account.CURRENT PASSWORD' | translate }}</label>
                   <input type="password" class="form-control" value="0123456789" name="currentPassword" readonly />
                 </div>
               </div>
@@ -25,7 +25,7 @@
               <!-- 新密碼 -->
               <div class="input-container">
                 <div class="col-11">
-                  <label for="newPassword" class="text-sliver">NEW PASSWORD</label>
+                  <label for="newPassword" class="text-sliver">{{'account.NEW PASSWORD' | translate }}</label>
                   <input type="password" class="form-control" name="newPassword" />
                 </div>
               </div>
@@ -33,7 +33,7 @@
               <!-- 確認新密碼 -->
               <div class="input-container">
                 <div class="col-11">
-                  <label for="currentPassword" class="text-sliver">CONFIRM NEW PASSWORD</label>
+                  <label for="currentPassword" class="text-sliver">{{'account.CONFIRM NEW PASSWORD' | translate }}</label>
                   <input type="password" class="form-control" name="currentPassword" />
                 </div>
               </div>
@@ -42,12 +42,24 @@
         <div class="button-area d-flex justify-content-around align-items-center">
             <label for="submitBtn" class="d-inline-block">
               <input hidden id="submitBtn" type="submit" value="SAVE">
-              <span class="span-button-icon form-btn-base save-btn"></span>
+              <img draggable="false" [src]="'account.saveImgNormal' | translate" class="form-btn-base"
+                (mousedown) ="setSavePressed($event)"
+                (touchstart)="setSavePressed($event)"
+                (mouseup)   ="setSaveNormal($event)"
+                (touchend)  ="setSaveNormal($event)"
+                (mouseleave)="setSaveNormal($event)"
+              />
             </label>
 
             <label for="resetBtn" class="d-inline-block">
               <input hidden id="resetBtn" type="reset" value="CANCEL">
-              <span class="span-button-icon form-btn-base cancel-btn"></span>
+              <img draggable="false" [src]="'account.cancelImgNormal' | translate" class="form-btn-base"
+                (mousedown) ="setCancelPressed($event)"
+                (touchstart)="setCancelPressed($event)"
+                (mouseup)   ="setCancelNormal($event)"
+                (touchend)  ="setCancelNormal($event)"
+                (mouseleave)="setCancelNormal($event)"
+              />
             </label>
         </div>
       </form>

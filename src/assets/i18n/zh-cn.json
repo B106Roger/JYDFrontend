@@ -52,5 +52,17 @@
     "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
     "weChat-icon"   : "/assets/imgs/zh-cn/iconContactWechat@3x.png",
     "line-icon"     : "/assets/imgs/en/iconContactLine@3x.png"
+  },
+
+  "account" : {
+    "title" : "帐户设定",
+    "RESET PASSWORD" : "重设密码",
+    "CURRENT PASSWORD" : "当前密码",
+    "NEW PASSWORD" : "请输入新密码",
+    "CONFIRM NEW PASSWORD" : "请再次输入新密码",
+    "saveImgNormal"    : "/assets/imgs/zh-cn/btnAccountSaveNormal@2x.png",
+    "cancelImgNormal"  : "/assets/imgs/zh-cn/btnAccountCancelNormal@2x.png",
+    "saveImgPressed"   : "/assets/imgs/en/btnAccountSavePressed@2x.png",
+    "cancelImgPressed" : "/assets/imgs/en/btnAccountCancelPressed@2x.png"
   }
 }

@@ -1,10 +1,12 @@
-import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-download-app',
   templateUrl: './download-app.component.html',
   styleUrls: ['./download-app.component.scss']
 })
+
 export class DownloadAppComponent implements OnInit {
 
   constructor(public translate: TranslateService) { }
