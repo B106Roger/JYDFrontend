@@ -1,20 +1,24 @@
 .margin-left {
-  @media only screen and (max-width: 414px)
+  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
   {
-    margin-left: 9%;
+    margin-left: 7%;
   }
 
-  @media only screen and (max-width: 375px)
+  @media only screen and (max-width: 376px)      // i6,i7,i8
   {
-    margin-left: 5%;
+    margin-left: 4.5%;
   }
 
-  @media only screen and (max-width: 360px)
+  @media only screen and (max-width: 361px)      //GL s5
   {
     margin-left: 3%;
   }
+  @media only screen and (max-width: 341px)    //i5 SE
+  {
+    margin-left: 4.5%;
+  }
   @media screen  and (min-width: 500px){
-    margin-left: 5%;
+    margin-left: 4.5%;
   }
 }
 
@@ -55,22 +59,36 @@
   overflow:hidden;
 }
 
-#hot-game-frame {
-  width: 107px;
-  height: 281px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-}
 
 #normal-game-container {
-  min-height: 281px;
-  max-height: 400px;
-  @extend .margin-left;
+  height: 55%;
+  width: 100%;
+  @media only screen and (max-height: 860px) {
+    max-height: 281px;
+  }
+
+  // 對齊輪播牆
+  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
+  {
+    margin-left: 7%;
+  }
+  @media only screen and (max-width: 376px)      // i6,i7,i8
+  {
+    margin-left: 4.5%;
+  }
+  @media only screen and (max-width: 361px)      //GL s5
+  {
+    margin-left: 3%;
+  }
+  @media only screen and (max-width: 341px)    //i5 SE
+  {
+    margin-left: 4.5%;
+  }
+  @media screen  and (min-width: 500px){
+    margin-left: 4.5%;
+  }
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -83,23 +101,55 @@
   {
     display: none;
   }
-}
 
-.normal-game-frame {
-  width: 107px;
-  height: 139.5px;
+  #hot-game-frame {
+    width: 30%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    #hot-Tag {
+      position: absolute;
+      top: 2px;
+      z-index: 1
+    }
+    #hot-pic {
+      height: 96.7%;;
+      position: absolute;
+    }
+    #hot-frame {
+      height: 100%;
+      position: absolute;
+       top: 1px;
+    }
+  }
+  .normal-game-frame {
+    width: 30%;
+    height: 50%;
 
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  position: relative;
-  img {
-    position: absolute;
+    position: relative;
+    .normal-pic {
+      height: 94%;
+      position: absolute;
+    }
+    #normal-frame {
+      height: 100%;
+      position: absolute;
+    }
   }
 }
+
+
 // 遊戲列表 end
 
 
@@ -116,9 +166,29 @@
 
   width: 43%;
   height: 33px;
-  @extend .margin-left;
   padding-left: 16px;
   padding-right: 10px;
+
+  // 對齊輪播牆
+  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
+  {
+    margin-left: 9%;
+  }
+  @media only screen and (max-width: 376px)      // i6,i7,i8
+  {
+    margin-left: 5.5%;
+  }
+  @media only screen and (max-width: 361px)      //GL s5
+  {
+    margin-left: 3.5%;
+  }
+  @media only screen and (max-width: 341px)    //i5 SE
+  {
+    margin-left: 5%;
+  }
+  @media screen  and (min-width: 500px){
+    margin-left: 4.5%;
+  }
 
   outline: none;
   border: none;
@@ -188,33 +258,66 @@
 
 
 // 輪播牆 start
-.banner-game-frame {
-  width: 346px;
-  height: 125px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-  img {
-    position: absolute;
+.carousel-container {
+  height: 24.6%;
+  @media only screen and (max-height: 860px) {
+    max-height: 125px;
   }
-}
-
-.carousel-indicators li {
-  width: 6px;
-  height: 6px;
-  border-radius: 100%;
-  background-color: gray;
-  &.active {
-    background-color: yellow;
+  @media only screen and (min-height: 861px) {
+    height: 23.5%;
   }
-}
 
-.carousel-indicators {
-  margin-bottom: 5px;
+  #carouselExampleIndicators {
+    height: 100%;
+    width: 100%;
+    .carousel-inner {
+      height: 100%;
+      width: 100%;
+      .carousel-item {
+        height: 100%;
+        width: 100%;
+        .banner-game-frame {
+          height: 100%;
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          position: relative;
+          img.carousel-frame {
+            height: 100%;
+
+            position: absolute;
+          }
+          img.carousel-content {
+            height: 87%;
+
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+  .carousel-indicators {
+    @media only screen and (max-height: 639px) {
+      top: 65%
+    }
+    @media only screen and (min-height: 640px)  {
+      top: 73%;
+    }
+
+    li {
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: gray;
+      &.active {
+        background-color: yellow;
+      }
+    }
+  }
 }
 // 輪播牆 end
 

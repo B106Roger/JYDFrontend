@@ -94,6 +94,20 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       gameCategory: 'slots',
       display: '3'
     },
+    {
+      gameName: 'Game1',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picBanner01.png',
+      gameCategory: 'slots',
+      display: '3'
+    },
+    {
+      gameName: 'Game1',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picBanner01.png',
+      gameCategory: 'slots',
+      display: '3'
+    },
 
   ];
   constructor() { }
@@ -110,6 +124,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   getHotGame() {
     return this.images.filter((e) => e.display === '1' && e.gameCategory === this.menuSelected);
+  }
+  getCarouselGame() {
+    return this.images.filter((e) => e.display === '3' && e.gameCategory === this.menuSelected);
   }
   getMenuSelect() {
     return this.menuList.filter((e) => e.value === this.menuSelected)[0];
