@@ -19,10 +19,10 @@
           [popperPlacement]="'bottom'"
           [popperStyles]="{
           background: 'url(\' /assets/imgs/picGameMenuBgExpand.png\')',
-          'background-size': '100%auto',
+          'background-size': '100%100%',
           'background-repeat': 'no-repeat',
-          'width': '156px',
-          'min-height': '107px',
+          'width': '43%',
+          'min-height': '120px',
           'z-index': 2
           }"
           [popperModifiers]="{
@@ -39,13 +39,25 @@
             }
           }">
 
-            <span class="basic-text-style" style="margin-bottom: 1px;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
+            <span class="basic-text-style" style="margin-bottom: 3px;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
                         '/assets/imgs/iconGameMenuUp.png'" >
 
           </button>
       </div>
+
+      <!-- poppup setting content padding-top: 11px;-->
+      <popper-content #popperSetting >
+        <div class="unselectable" id="menuPopup">
+          <ng-container *ngFor="let option of menuList">
+              <div class="menu-option-bg" style="justify-content: space-between"
+              (click)="popperSetting.hide();setMenuSelect(option.value)">
+                  <span class="basic-text-style ">{{('lobby.' + option.value) | translate}}</span>
+              </div>
+          </ng-container>
+        </div>
+      </popper-content>
 
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" >
@@ -100,14 +112,4 @@
 </section>
 
 
-<!-- poppup setting content padding-top: 11px;-->
-<popper-content #popperSetting >
-    <div class="unselectable" id="menuPopup">
-      <ng-container *ngFor="let option of menuList">
-          <div class="menu-option-bg" style="justify-content: space-between"
-           (click)="popperSetting.hide();setMenuSelect(option.value)">
-              <span class="basic-text-style ">{{('lobby.' + option.value) | translate}}</span>
-          </div>
-      </ng-container>
-    </div>
-  </popper-content>
+

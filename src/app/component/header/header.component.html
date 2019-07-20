@@ -2,13 +2,13 @@
 <div class="row-flex-no-margin-padding" id="header-bg">
 
       <div class="row-flex" id="name-bg" >
-        <img  id="iconId">
+        <img  id="iconId" src="/assets/imgs/iconId@2x.png">
         <span class="basic-text-style">Hello</span>
       </div>
 
 
       <div class="row-flex" id="credit-bg">
-          <img id="iconCredit">
+          <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
           <span class="basic-text-style">3,245,568.00</span>
       </div>
 
@@ -55,68 +55,58 @@
 
 <!-- poppup setting content padding-top: 11px;-->
 <popper-content #popperSetting >
-    <div class="column-flex basic-text-style unselectable justify-space-between"
-     style="position: absolute;top: 5%;height: 90%;width: 95%; flex-wrap: nowrap;">
+    <div class="column-flex basic-text-style unselectable setting-menu-container">
 
       <div class="row-flex setting-item">
-        <div class="column-flex">
+        <div class="column-flex-no-margin-padding">
           {{ 'lobby.setting.music' | translate }}
         </div>
-        <label  id='MusicButtonContainer' for="MusicBotton" (click)="printMusic()">
-          <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
-          <span [ngClass]="{
-            'on-off': getMusic() === false
-          }" [ngStyle]="{'margin-left': getMusic() === true ? '8px' : ''}">
-          {{this.getMusic() === true ? ('lobby.setting.on' | translate) : ''}}
-          </span>
-          <span [ngClass]="{
-            'on-off': getMusic() === true
-          }" [ngStyle]="{'margin-right': getMusic() === false ? '8px' : ''}">
-          {{this.getMusic() === false ? ('lobby.setting.off' | translate) : ''}}
-        </span>
+        <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
+        <label for="MusicBotton" id="musicContainer">
+          <img [src]="getMusic() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"  >
         </label>
       </div>
 
-      <hr>
-      <div class="row-flex setting-item">
-        <div class="column-flex">
-          {{ 'lobby.setting.sounds' | translate }}
-        </div>
-        <label  id='SoundButtonContainer' for="SonudBotton" (click)="printSound()">
-            <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
-            <span [ngClass]="{
-              'on-off': getSound() === false
-            }" [ngStyle]="{'margin-left': getSound() === true ? '8px' : ''}">
-            {{this.getSound() === true ? ('lobby.setting.on' | translate) : ''}}
-            </span>
-            <span [ngClass]="{
-              'on-off': getSound() === true
-            }" [ngStyle]="{'margin-right': getSound() === false ? '8px' : ''}">
-            {{this.getSound() === false ? ('lobby.setting.off' | translate) : ''}}
-          </span>
-          </label>
+      <div class="row-flex-no-margin-padding" style="align-items: center">
+        <img src="/assets/imgs/segSettingMenu.png" style="width: 92%;" >
       </div>
 
-      <hr>
       <div class="row-flex setting-item">
-        <div class="column-flex">
+        <div class="column-flex-no-margin-padding">
+          {{ 'lobby.setting.sounds' | translate }}
+        </div>
+        <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
+        <label  for="SonudBotton" id='soundContainer' >
+          <img [src]="getSound() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"  >
+        </label>
+      </div>
+
+      <div class="row-flex-no-margin-padding" style="align-items: center">
+        <img src="/assets/imgs/segSettingMenu.png" style="width: 92%;" >
+      </div>
+      <div class="row-flex setting-item">
+        <div class="column-flex-no-margin-padding">
           {{ 'lobby.setting.version' | translate }}
         </div>
-        <div class="column-flex">
+        <div class="column-flex-no-margin-padding">
             v.2019.07.03
         </div>
       </div>
 
-      <hr>
+      <div class="row-flex-no-margin-padding" style="align-items: center">
+        <img src="/assets/imgs/segSettingMenu.png" style="width: 92%;" >
+      </div>
       <div class="row-flex setting-item" routerLink="/download" >
-        <div class="column-flex">
+        <div class="column-flex-no-margin-padding">
           <span >{{ 'lobby.setting.download' | translate }}</span>
         </div>
       </div>
 
-      <hr>
+      <div class="row-flex-no-margin-padding" style="align-items: center">
+        <img src="/assets/imgs/segSettingMenu.png" style="width: 92%;" >
+      </div>
       <div class="row-flex setting-item" routerLink="/" >
-        <div  class="column-flex">
+        <div  class="column-flex-no-margin-padding">
           {{'lobby.setting.logout' | translate }}
         </div>
       </div>

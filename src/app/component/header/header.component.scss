@@ -1,5 +1,5 @@
 #header-bg {
-  background: url('/assets/imgs/picTopBg.png');
+  background: url('/assets/imgs/picTopBg@2x.png');
   background-repeat: no-repeat;
   background-size: 100%100%;
 
@@ -14,12 +14,10 @@
 }
 
 #name-bg {
-  background: url('/assets/imgs/picIdFrameEmpty.png');
+  background: url('/assets/imgs/picIdFrameEmpty@2x.png');
   background-size: 100%100%;
   background-repeat: no-repeat;
   background-position: center;
-  //height: 33px;
-  //width: 95px;
   height: 50%;
   width: 26.4%;
 
@@ -29,18 +27,16 @@
 
 #iconId {
   height: 53%;
-  width: 12.6%;
-  content: url('/assets/imgs/iconId.png')
 }
 
 #credit-bg {
-  background: url('/assets/imgs/picCreditFrame.png');
+  background: url('/assets/imgs/picCreditFrame@2x.png');
   background-size: 100%100%;
   background-repeat: no-repeat;
   background-position: center;
   height: 71%;
   width: 42%;
-
+  max-width: 190px;
 
   align-items: center;
   justify-content: space-around;
@@ -50,8 +46,8 @@
   height: 55.3%;
   margin-left: 5px;
   width: auto;
-  content: url('/assets/imgs/iconCreditDollar.png');
 }
+
 
 
 #settingButton {
@@ -62,6 +58,12 @@
   min-width: 26px;
   min-height: 22px;
   width: 7.2%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
   img {
     content: url('/assets/imgs/btnSettingMenuNormal.png')
   }
@@ -71,12 +73,21 @@
     }
   }
 }
+
+.setting-menu-container {
+  position: absolute;
+  top: 5%;
+  height: 90%;
+  width: 95%;
+  flex-wrap: nowrap;
+  justify-content: space-around
+}
 .setting-item {
-  flex-shrink: 1;
   margin-bottom: 0px;
   margin-top: 0px;
   margin-left:5%;
   justify-content: space-between;
+  height: 12%;
 }
 
 
@@ -88,6 +99,12 @@
   min-width: 29px;
   min-height: 22px;
   width: 7.7%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
   img {
     content: url('/assets/imgs/btnLogoutNormal.png')
   }
@@ -105,14 +122,6 @@
   padding: 0px;
 }
 
-hr {
-  margin-bottom: 0px;
-  margin-top: 0px;
-  flex-shrink: 1;
-  color: rgb(255 100 200);
-  width: 90%;
-
-}
 
 .justify-start {
   justify-content: flex-start;
@@ -126,35 +135,14 @@ hr {
   justify-content: space-evenly;
 }
 
-.on-off {
-  width: 24px;
-  height:  24px;
-  margin-left: 3px;
-  margin-right: 3px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-  background-image: url('/assets/imgs/btnMusicSelected.png')/* url(  開關Off ) */
-}
-
-.on-margin {
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
-#MusicButtonContainer, #SoundButtonContainer {
-  width: 70px;
-  height: 30px;
+#musicContainer, #soundContainer {
+  height: 100%;
+  img {
+    max-height: 35px;
+    min-height: 25px;
+    height: 100%;
+  }
   margin: 0px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-  background-image: url('/assets/imgs/btnMusicBg.png');/* url(  開關Off ) */
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 

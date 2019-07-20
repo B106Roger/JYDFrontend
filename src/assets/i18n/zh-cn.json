@@ -10,7 +10,7 @@
   "lobby": {
     "slots": "老虎机",
     "marry": "玛莉机",
-    "poker": "玛莉机",
+    "poker": "扑克游戏",
     "setting": {
       "music": "背景音乐",
       "sounds": "音效",
@@ -24,13 +24,15 @@
     "account": "帐户设定",
     "contact": "联系我们",
     "treasure": "金银岛",
-    "lobbyimg": "/assets/imgs/zh-cn/btnLobbyNormal.png",
-    "historyimg": "/assets/imgs/zh-cn/btnHistoryNormal.png",
-    "accountimg": "/assets/imgs/zh-cn/btnAccountNormal.png",
-    "contactimg": "/assets/imgs/zh-cn/btnContactNormal.png",
-    "lobbyimgpressed": "/assets/imgs/zh-cn/btnLobbyPressed.png",
-    "historyimgpressed": "/assets/imgs/zh-cn/btnHistoryPressed.png",
-    "accountimgpressed": "/assets/imgs/zh-cn/btnAccountPressed.png",
-    "contactimgpressed": "/assets/imgs/zh-cn/btnContactPressed.png"
+    "lobbyimg": "/assets/imgs/zh-cn/btnLobbyNormal@2x.png",
+    "historyimg": "/assets/imgs/zh-cn/btnHistoryNormal@2x.png",
+    "accountimg": "/assets/imgs/zh-cn/btnAccountNormal@2x.png",
+    "contactimg": "/assets/imgs/zh-cn/btnContactNormal@2x.png",
+    "lobbyimgpressed": "/assets/imgs/zh-cn/btnLobbyPressed@2x.png",
+    "historyimgpressed": "/assets/imgs/zh-cn/btnHistoryPressed@2x.png",
+    "accountimgpressed": "/assets/imgs/zh-cn/btnAccountPressed@2x.png",
+    "contactimgpressed": "/assets/imgs/zh-cn/btnContactPressed@2x.png",
+    "onimg": "/assets/imgs/zh-cn/btnMusicOn@2x.png",
+    "offimg": "/assets/imgs/zh-cn/btnMusicOff@2x.png"
   }
 }
