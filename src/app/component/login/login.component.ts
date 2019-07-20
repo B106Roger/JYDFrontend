@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login() {
     console.log('account: ', this.account);
     if (this.account === '123' && this.password === '123') {
+      localStorage.setItem('test' , '123');
       this.displayNotification();
       this.route.navigate(['lobby']);
     }

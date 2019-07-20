@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
@@ -14,23 +15,28 @@ const routes: Routes = [
   },
   {
     path: 'lobby',
-    component: LobbyComponent
+    component: LobbyComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'history',
-    component: HistoryComponent
+    component: HistoryComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'account',
-    component: AccountComponent
+    component: AccountComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'contact',
-    component: ContactComponent
+    component: ContactComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'download',
-    component: DownloadAppComponent
+    component: DownloadAppComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: '**',
