@@ -34,5 +34,13 @@
     "contactimgpressed": "/assets/imgs/en/btnContactPressed@2x.png",
     "onimg": "/assets/imgs/en/btnMusicOn@2x.png",
     "offimg": "/assets/imgs/en/btnMusicOff@2x.png"
+  },
+
+  "download-app" : {
+      "title" : "DOWNLOAD APP",
+      "download" : "DOWNLOAD",
+      "TREASURE ISLAND" : "TREASURE ISLAND",
+      "downloadImgNormal" : "/assets/imgs/en/btnDownloadNormal@2x.png",
+      "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
   }
 }

@@ -34,5 +34,13 @@
     "contactimgpressed": "/assets/imgs/zh-cn/btnContactPressed@2x.png",
     "onimg": "/assets/imgs/zh-cn/btnMusicOn@2x.png",
     "offimg": "/assets/imgs/zh-cn/btnMusicOff@2x.png"
+  },
+
+    "download-app" : {
+      "title" : "下载 APP",
+      "download" : "下载",
+      "TREASURE ISLAND" : "金银岛",
+      "downloadImgNormal" : "/assets/imgs/zh-cn/btnDownloadNormal@2x.png",
+      "downloadImgPressed" : "/assets/imgs/en/btnDownloadPressed@2x.png"
   }
 }

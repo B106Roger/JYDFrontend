@@ -1,7 +1,7 @@
 <div class="root-base setting-bg">
   <div class="flex-container">
     <div class="row-flex-no-margin-padding setting-top">
-      <span class="title">DOWNLOAD APP</span>
+      <span class="title">{{ 'download-app.title' | translate }}</span>
       <a routerLink="/lobby" class="close-button close-button-base"></a>
     </div>
   </div>
@@ -9,29 +9,46 @@
   <div class="main-content">
       <!-- 頁籤 -->
       <div class="d-flex text-center justify-content-center">
-          <span class="btn-bg btn-label-long">DOWNLOAD <span class="d-inline-block" style="margin:0 0.5rem;color:rgb(0,246,255)">TREASURE ISLAND</span> APP</span>
+          <span class="btn-bg btn-label-long">{{ 'download-app.download' | translate }}
+            <span class="d-inline-block" style="margin:0 0.5rem;color:rgb(0,246,255)">{{ 'download-app.TREASURE ISLAND' | translate }}</span> APP</span>
       </div>
 
       <div class="wrapper">
         <div class="outer d-flex">
-          <div class="download-row d-flex">
-            <span class="span-button-icon ios-icon"></span>
-            <div class="text-sliver">
-              <span class="d-block">TREASURE ISLAND</span>
-              <span class="d-block">IOS APP</span>
+          <div class="download-row d-flex just-content-around">
+            <div class="d-flex flex-row icon-area">
+              <div><span class="span-button-icon ios-icon"></span></div>
+              <div class="text-sliver">
+                <span class="d-block">{{ 'download-app.TREASURE ISLAND' | translate }}</span>
+                <span class="d-block">IOS APP</span>
+              </div>
             </div>
-            <span class="span-button-icon download-btn"></span>
+            <img draggable="false" [src]="'download-app.downloadImgNormal' | translate" class="download-btn"
+              (mousedown) ="setPressed($event)"
+              (touchstart)="setPressed($event)"
+              (mouseleave)="setNormal($event)"
+              (mouseup) ="setNormal($event)"
+              (touchend)="setNormal($event)"
+            />
           </div>
         </div>
 
         <div class="outer d-flex">
-          <div class="download-row d-flex">
-            <span class="span-button-icon android-icon"></span>
-            <div class="text-sliver">
-              <span class="d-block">TREASURE ISLAND</span>
-              <span class="d-block">ANDROID APP</span>
+          <div class="download-row d-flex just-content-around">
+            <div class="d-flex flex-row icon-area">
+              <div><span class="span-button-icon android-icon"></span></div>
+              <div class="text-sliver">
+                <span class="d-block">{{ 'download-app.TREASURE ISLAND' | translate }}</span>
+                <span class="d-block">ANDROID APP</span>
+              </div>
             </div>
-            <span class="span-button-icon download-btn"></span>
+            <img draggable="false" [src]="'download-app.downloadImgNormal' | translate" class="download-btn"
+              (mousedown) ="setPressed($event)"
+              (touchstart)="setPressed($event)"
+              (mouseleave)="setNormal($event)"
+              (mouseup) ="setNormal($event)"
+              (touchend)="setNormal($event)"
+            />
           </div>
         </div>
       </div>

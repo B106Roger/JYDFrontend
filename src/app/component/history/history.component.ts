@@ -1,5 +1,6 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Api } from '../../env';
 
 @Component({
   selector: 'app-history',
@@ -18,13 +19,14 @@ export class HistoryComponent implements OnInit {
   public gameRecord: any;
   public ioRecord: any;
 
-  constructor( http: HttpClientModule ) {}
+  constructor(private http: HttpClient ) {}
 
   ngOnInit() {
       this.gameHistoryTitle = ['GAME' , 'DATE/TIME' , 'BET' , 'WIN' , 'BEGIN MONEY' , 'END MONEY'];
       this.ioHistoryTitle = ['NO.' , 'DATE/TIME' , 'BEFORE' , 'IN/OUT' , 'AFTER'];
       this.fields = this.gameHistoryTitle;
       this.selectPage = 1;
+      console.log(Api);
 
   }
 

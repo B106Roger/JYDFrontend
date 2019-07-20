@@ -30,7 +30,6 @@ table
   thead
   {
     width:100%;
-    height: 7vh;
     tr td
     {
       height: 7vh;
@@ -42,19 +41,23 @@ table
 
   tbody
   {
-    &::-webkit-scrollbar
-    {
-      display: none;
-    }
-
+    display: table;
     width:100%;
+    padding: 0;
     height:68vh;
     overflow-y:scroll;
 
     td
-    {
+    {/*
+      border-left:1px solid red;
+      border-right:1px solid red; */
       height: 7vh;
       background-color: rgb(49, 9, 146);
+    }
+
+    &::-webkit-scrollbar
+    {
+      display: none;
     }
   }
 
