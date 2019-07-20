@@ -1,6 +1,5 @@
 html
 {
-
   @media only screen and (max-width: 494px)
   {
     font-size: 4vw;
@@ -23,11 +22,13 @@ html
 
 }
 *:not(input) {
+  font-family: 'proxima-nova', sans-serif;
   user-select: none;
 }
 
 .root-base
 {
+  font-size:0.95em;
   position: relative;
   background-color: transparent;
   background-position: center;
