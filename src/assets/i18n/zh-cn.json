@@ -64,5 +64,29 @@
     "cancelImgNormal"  : "/assets/imgs/zh-cn/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/en/btnAccountSavePressed@2x.png",
     "cancelImgPressed" : "/assets/imgs/en/btnAccountCancelPressed@2x.png"
+  },
+
+  "history" : {
+    "title" : "历史纪录",
+    "time" : "日期",
+    "to" : "至",
+    "GAME HISTORY" : "游戏纪录",
+    "IN/OUT HISTORY" : "进出分纪录",
+    "gameRecord" : {
+      "game" : "游戏名称",
+      "dateTime" : "日期/时间",
+      "bet" : "投注" ,
+      "win" : "赢钱" ,
+      "beginMoney" : "开始金额",
+      "endMoney" : "结束金额"
+    } ,
+
+    "inoutRecord" : {
+      "no" : "编号",
+      "dateTime" : "日期/时间",
+      "before" : "设定前",
+      "inout" : "进出分",
+      "after" : "设定后"
+    }
   }
 }

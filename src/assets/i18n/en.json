@@ -64,5 +64,29 @@
     "cancelImgNormal"  : "/assets/imgs/en/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/en/btnAccountSavePressed@2x.png",
     "cancelImgPressed" : "/assets/imgs/en/btnAccountCancelPressed@2x.png"
+  },
+
+  "history" : {
+    "title" : "HISTORY",
+    "time" : "TIME",
+    "to" : "TO",
+    "GAME HISTORY" : "GAME HISTORY",
+    "IN/OUT HISTORY" : "IN/OUT HISTORY",
+    "gameRecord" : {
+      "game" : "GAME",
+      "dateTime" : "DATE/TIME",
+      "bet" : "BET" ,
+      "win" : "WIN" ,
+      "beginMoney" : "BEGIN MONEY",
+      "endMoney" : "END MONEY"
+    } ,
+
+    "inoutRecord" : {
+      "no" : "NO.",
+      "dateTime" : "DATE/TIME",
+      "before" : "BEFORE",
+      "inout" : "IN/OUT",
+      "after" : "AFTER"
+    }
   }
 }

@@ -16,52 +16,7 @@
   height: 7vh;
   border-bottom: 2px solid #0044BB;
 }
-table
-{
-  display: inline-block;
-  width:100%;
-  border:none;
 
-  tr
-  {
-    border-bottom: 1px solid #0044BB;
-  }
-
-  thead
-  {
-    width:100%;
-    tr td
-    {
-      height: 7vh;
-      background-color: rgb(64,21,187);
-      border-left: 2px solid rgb(64,21,187);
-      border-right: 2px solid rgb(64,21,187);
-    }
-  }
-
-  tbody
-  {
-    display: table;
-    width:100%;
-    padding: 0;
-    height:68vh;
-    overflow-y:scroll;
-
-    td
-    {/*
-      border-left:1px solid red;
-      border-right:1px solid red; */
-      height: 7vh;
-      background-color: rgb(49, 9, 146);
-    }
-
-    &::-webkit-scrollbar
-    {
-      display: none;
-    }
-  }
-
-}
 .column
 {
   width:10em;
@@ -130,4 +85,74 @@ table
 
 
 
-/*   color:#6b8fda; */
+/* for child component*/
+.recordTitle
+{
+  height: 8%;
+}
+
+.recordTitle, .recordBody {
+
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom:2px solid #0044BB;
+
+  span
+  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-weight: 400;
+  }
+}
+
+
+.records-container
+{
+  height: 85%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-bottom:2px solid #0044BB;
+  .recordBody
+  {
+    height: 10%;
+
+  .game-name   { font-size: 0.8em;}
+  .date-time   { font-size: 0.8em;}
+  .bet         { color: white;}
+  .win         { color: white;}
+  .begin-money { color: white;}
+  .end-money   { color: white;}
+  .no          { color: white;}
+  .befor       { color: white;}
+  .after       { color: white;}
+  .in-out      { color: white;}
+  }
+
+  /* 可捲動, 但隱藏卷軸(scroll-bar) */
+  &::-webkit-scrollbar
+  {
+    width: 0px;
+  }
+
+  &::-webkit-scrollbar-track
+  {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin:0px;
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background: rgba(0,0,0,0);
+  }
+}
+

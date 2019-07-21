@@ -17,8 +17,10 @@ import { DownloadAppComponent } from './component/download-app/download-app.comp
 import { HeaderComponent } from './component/header/header.component';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { LobbyComponent } from './component/lobby/lobby.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GameRecordsComponent } from './component/history/game-records.component';
+import { IoRecordsComponent } from './component/history/io-records.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,7 +37,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DownloadAppComponent,
     HeaderComponent,
     NavBarComponent,
-    LobbyComponent
+    LobbyComponent,
+    GameRecordsComponent,
+    IoRecordsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
     }),
+
   ],
   providers: [
     AuthGuardService,

@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { LobbyComponent } from './component/lobby/lobby.component';
 import { HistoryComponent } from './component/history/history.component';
+import { GameRecordsComponent } from './component/history/game-records.component';
+import { IoRecordsComponent } from './component/history/io-records.component';
 import { AccountComponent } from './component/account/account.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { DownloadAppComponent } from './component/download-app/download-app.component';
@@ -21,7 +23,21 @@ const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        component: GameRecordsComponent
+      },
+      {
+        path: 'gameRecords',
+        component: GameRecordsComponent
+      },
+      {
+        path: 'inoutRecords',
+        component: IoRecordsComponent
+      },
+    ]
   },
   {
     path: 'account',
