@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import { __asyncDelegator } from 'tslib';
 
 @Component({
   selector: 'app-root',
@@ -46,24 +47,51 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Notification permission status:', status);
       });
     }
+
+    // 為PC加入置中class
+    if (window.innerHeight > 600 && window.outerHeight > 1000) {
+      document.querySelector('body').classList.add('d-flex');
+      document.querySelector('body').classList.add('justify-content-center');
+      document.querySelector('body').classList.add('align-items-center');
+    }
   }
 
   ngAfterViewInit() {
-    let preY = -1;
+    let startY = -1;
+    let endY = -1;
+    let time = new Date().getTime();
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipod/.test( userAgent );
     if (isIOS === true) {
       scrollTo(0, 40);
-       // 防止瀏覽器上下滑動
-      window.addEventListener('touchmove', (e) => {
-        if (e.touches[0].screenY !== preY && e.cancelable) {
-          e.preventDefault();
-        }
-        preY = e.touches[0].screenY;
-      }, {passive: false});
 
-      // catch ios safari 轉方向的event
+      // 當網頁是經由home開啟時要防止縮放滑動
+      if ('standalone' in navigator && navigator['standalone']) {
+        // 防止瀏覽器上下滑動
+        window.addEventListener('touchmove', (e) => {
+          endY = e.changedTouches[0].pageY;
+          if (Math.abs(startY - endY) > 7) {
+            e.preventDefault();
+          }
+        }, {passive: false});
+
+        // 防止雙手縮放
+        document.addEventListener('touchstart', event => {
+          const tmp = new Date().getTime();
+          if (event.touches.length > 1 || tmp - time < 300) {
+              event.preventDefault();
+              event.stopPropagation(); // maybe useless
+          } else {
+            startY = event.changedTouches[0].pageY;
+          }
+          time = tmp;
+        }, {passive: false});
+      }
+
+
+      // 取得轉方向的event
       window.addEventListener('resize', () => {
+        document.body.style.height = `$(window.innerHeight)`;
         let resizeId;
         if (resizeId) {
           clearTimeout(resizeId);
@@ -74,14 +102,15 @@ export class AppComponent implements OnInit, AfterViewInit {
           } else {
             scrollTo(0, 40);
           }
-        }, 1000);
+        }, 500);
       }, false);
     }
   }
   displayIOSBar() {
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipod/.test( userAgent );
-    if (isIOS === true) {
+    const isStandalone = 'standalone' in navigator && navigator['standalone'];
+    if (isIOS && isStandalone) {
       return 'display';
     } else {
      return 'none';
