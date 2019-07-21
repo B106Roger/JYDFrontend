@@ -1,5 +1,4 @@
 import { AuthGuardService } from './services/auth-guard.service';
-import { UserService } from './services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -54,7 +53,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [
-    UserService,
     AuthGuardService,
   ],
   bootstrap: [AppComponent]
