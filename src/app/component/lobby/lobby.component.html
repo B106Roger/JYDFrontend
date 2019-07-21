@@ -78,7 +78,7 @@
 
       <!-- 輪播牆元件 -->
       <div class="row-flex carousel-container">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"  data-interval="false">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"  data-interval="7000">
             <ol class="carousel-indicators" >
               <ng-container *ngFor="let item of getCarouselGame();let index = index;let first = first">
                 <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="index" [ngClass]="{'active': first}"></li>
