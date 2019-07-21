@@ -70,6 +70,8 @@
     "title" : "历史纪录",
     "time" : "日期",
     "to" : "至",
+    "goImgNormal"  : "/assets/imgs/zh-cn/btnHistoryGoNormal@2x.png",
+    "goImgPressed" : "/assets/imgs/zh-cn/btnHistoryGoPressed@2x.png",
     "GAME HISTORY" : "游戏纪录",
     "IN/OUT HISTORY" : "进出分纪录",
     "gameRecord" : {

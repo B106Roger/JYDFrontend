@@ -23,7 +23,7 @@ export class HistoryComponent implements OnInit {
   public gameRecord: any;
   public ioRecord: any;
 
-  constructor(private http: HttpClient , private test: AuthGuardService, private router: Router) {}
+  constructor(private http: HttpClient , private test: AuthGuardService, private router: Router, private translate: TranslateService) {}
 
   ngOnInit() {
       this.selectPage = 1;
@@ -38,4 +38,13 @@ export class HistoryComponent implements OnInit {
     }
   }
 
+  setGoNormal(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('history.goImgNormal'));
+  }
+
+  setGoPressed(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('history.goImgPressed'));
+  }
 }

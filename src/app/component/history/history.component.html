@@ -25,7 +25,13 @@
           2019-06-14
           <span class="span-button-icon icon-date"></span>
         </span>
-        <span class="span-button-icon go-btn-base go-btn"></span>
+        <img draggable="false" [src]="'history.goImgNormal' | translate" class="go-btn-base"
+          (mousedown)  ="setGoPressed($event)"
+          (touchstart) ="setGoPressed($event)"
+          (touchend)   ="setGoNormal($event)"
+          (mouseup)    ="setGoNormal($event)"
+          (mousedleave)="setGoNormal($event)"
+        />
       </div>
       <router-outlet></router-outlet>
 

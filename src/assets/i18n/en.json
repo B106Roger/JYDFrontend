@@ -70,6 +70,8 @@
     "title" : "HISTORY",
     "time" : "TIME",
     "to" : "TO",
+    "goImgNormal"  : "/assets/imgs/en/btnHistoryGoNormal@2x.png",
+    "goImgPressed" : "/assets/imgs/en/btnHistoryGoPressed@2x.png",
     "GAME HISTORY" : "GAME HISTORY",
     "IN/OUT HISTORY" : "IN/OUT HISTORY",
     "gameRecord" : {
