@@ -188,6 +188,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     const ele = document.querySelector('#normal-game-container');
     e1.currentTarget.addEventListener('mousemove', scrollX);
     e1.currentTarget.addEventListener('mouseup', endScroll);
+    e1.currentTarget.addEventListener('mouseleave', endScroll);
 
     function scrollX(e2: MouseEvent) {
       const delta =  originLocation - e2.clientX ;
