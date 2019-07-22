@@ -12,37 +12,26 @@ export class NavBarComponent implements OnInit {
 
   menuList = [
     {
-      id: 'lobby',
       picture: 'lobby.lobbyimg',
       picturepressed: 'lobby.lobbyimgpressed',
-      callback: this.lobbyCallback,
+      nextUrl: '/lobby'
     },
     {
-      id: 'history',
       picture: 'lobby.historyimg',
       picturepressed: 'lobby.historyimgpressed',
-      callback: this.historyCallback,
       nextUrl: '/history'
     },
     {
-      id: 'account',
       picture: 'lobby.accountimg',
       picturepressed: 'lobby.accountimgpressed',
-      callback: this.accountCallback,
       nextUrl: '/account'
     },
     {
-      id: 'contact',
       picture: 'lobby.contactimg',
       picturepressed: 'lobby.contactimgpressed',
-      callback: this.ContactCallback,
       nextUrl: '/contact'
     }
   ];
-  lobbyCallback() {console.log('Lobbycallback'); }
-  historyCallback() {console.log('Historycallback'); }
-  accountCallback() {console.log('Accountcallback'); }
-  ContactCallback() {console.log('Contactcallback'); }
 
   ngOnInit() {
   }

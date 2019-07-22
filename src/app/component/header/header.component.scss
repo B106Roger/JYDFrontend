@@ -65,11 +65,15 @@
   align-items: center;
 
   img {
-    content: url('/assets/imgs/btnSettingMenuNormal.png')
+    width: 28px;
+    height: 25px;
+    content: url('/assets/imgs/btnSettingMenuNormal@2x.png')
   }
   &:active {
     img {
-      content: url('/assets/imgs/btnSettingMenuPressed.png');
+      width: 36px;
+      height:32px;
+      content: url('/assets/imgs/btnSettingMenuPressed@2x.png');
     }
   }
 }
@@ -106,11 +110,15 @@
   align-items: center;
 
   img {
-    content: url('/assets/imgs/btnLogoutNormal.png')
+    width: 31px;
+    height: 25px;
+    content: url('/assets/imgs/btnLogoutNormal@2x.png')
   }
   &:active {
     img {
-      content: url('/assets/imgs/btnSettingLogoutPressed.png')
+      width: 39px;
+      height: 32px;;
+      content: url('/assets/imgs/btnSettingLogoutPressed@2x.png')
     }
   }
 }
@@ -120,19 +128,6 @@
 }
 .no-padding {
   padding: 0px;
-}
-
-
-.justify-start {
-  justify-content: flex-start;
-}
-
-.justify-space-between {
-  justify-content: space-between;
-}
-
-.justify-space-evenly {
-  justify-content: space-evenly;
 }
 
 #musicContainer, #soundContainer {
