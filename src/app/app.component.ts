@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     // 為PC加入置中class
-    if (window.innerHeight > 600 && window.outerHeight > 1000) {
+    if (window.innerHeight > 700) {
       document.querySelector('body').classList.add('d-flex');
       document.querySelector('body').classList.add('justify-content-center');
       document.querySelector('body').classList.add('align-items-center');
