@@ -35,7 +35,7 @@
 #normal-game-container {
   height: 55%;
   width: 100%;
-  @media only screen and (max-height: 860px) {
+  @media only screen and (max-width: 500px) {
     max-height: 281px;
   }
 
@@ -192,10 +192,10 @@
 // 輪播牆 start
 .carousel-container {
   height: 24.6%;
-  @media only screen and (max-height: 860px) {
+  @media only screen and (max-width: 500px) {
     max-height: 125px;
   }
-  @media only screen and (min-height: 861px) {
+  @media only screen and (min-width: 501px) {
     height: 23.5%;
   }
 
@@ -348,7 +348,7 @@
   {
     margin-top: 5%;
   }
-  @media only screen and (max-height: 823px) and (min-height: 737px)  // I 10, Pixel 2XL
+  @media only screen and (max-height: 823px) and (min-height: 737px) and (max-width: 500px)  // I 10, Pixel 2XL
   {
     margin-top: 12%;
   }

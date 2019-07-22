@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-lobby',
@@ -117,6 +118,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     scrollTo(0, 40);
+    setTimeout(() => { $('.carousel').carousel('next'); }, 1000);
   }
 
   getNormalGame() {
@@ -136,5 +138,23 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   toggleMenuOnShow() {
     this.menuShow = !this.menuShow;
+  }
+
+  // 註冊滑鼠點擊拖曳 的 移動事件
+  startScroll(e1: MouseEvent) {
+    let originLocation = e1.clientX;
+    const ele = document.querySelector('#normal-game-container');
+    e1.currentTarget.addEventListener('mousemove', scrollX);
+    e1.currentTarget.addEventListener('mouseup', endScroll);
+
+    function scrollX(e2: MouseEvent) {
+      const delta =  originLocation - e2.clientX ;
+      ele.scrollLeft += delta;
+      originLocation = e2.clientX;
+    }
+    function endScroll(e3: MouseEvent) {
+      e3.currentTarget.removeEventListener('mousemove', scrollX);
+      e3.currentTarget.removeEventListener('mouseup', endScroll);
+    }
   }
 }

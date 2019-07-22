@@ -62,23 +62,24 @@
       </popper-content>
 
       <!-- 遊戲顯示元件  -->
-      <div id="normal-game-container" >
+      <div id="normal-game-container" (mousedown)="startScroll($event)" >
           <div id="hot-game-frame" *ngIf="getHotGame().length > 0">
-                  <img id="hot-Tag" src="/assets/imgs/picTagHotGame.png">
-                  <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl">
-                  <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png">
+                  <img id="hot-Tag" src="/assets/imgs/picTagHotGame.png" draggable="false">
+                  <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl" draggable="false">
+                  <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false">
           </div>
           <ng-container *ngFor="let item of getNormalGame()">
             <div class="normal-game-frame">
-              <img class="normal-pic" [src]="item.gameImgUrl">
-              <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" >
+              <img class="normal-pic" [src]="item.gameImgUrl" draggable="false">
+              <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false">
             </div>
           </ng-container>
       </div>
 
       <!-- 輪播牆元件 -->
       <div class="row-flex carousel-container">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"  data-interval="7000">
+          <div id="carouselExampleIndicators" class="carousel slide"
+          data-ride="carousel"  data-interval="5000" data-wrap="true" data-pause="hover">
             <ol class="carousel-indicators" >
               <ng-container *ngFor="let item of getCarouselGame();let index = index;let first = first">
                 <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="index" [ngClass]="{'active': first}"></li>
@@ -88,8 +89,8 @@
               <ng-container *ngFor="let item of getCarouselGame();let first = first">
                   <div [ngClass]="{'active': first, 'carousel-item': true}" >
                       <div class="banner-game-frame">
-                          <img class="carousel-content"  [src]="item.gameImgUrl" alt="First slide">
-                          <img class="carousel-frame" src="/assets/imgs/picBannerFrame.png">
+                          <img class="carousel-content"  [src]="item.gameImgUrl" alt="First slide"  draggable="false">
+                          <img class="carousel-frame" src="/assets/imgs/picBannerFrame.png"  draggable="false">
                       </div>
                   </div>
               </ng-container>
