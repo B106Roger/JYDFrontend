@@ -17,16 +17,25 @@ import { Api } from '../../env';
 export class HistoryComponent implements OnInit {
 
 
+  public startDate;
+  public endDate;
   public selectPage: number;
 
   public currentRecord: AnalyserOptions;
   public gameRecord: any;
   public ioRecord: any;
 
-  constructor(private http: HttpClient , private test: AuthGuardService, private router: Router, private translate: TranslateService) {}
+  constructor(private http: HttpClient, private router: Router, private translate: TranslateService) {}
 
   ngOnInit() {
+      const d = new Date();
+      const dealDate = d.toLocaleDateString().split('/').map( strDate => {
+        const numDate = parseInt(strDate , 10);
+        return numDate / 10 > 1 ? numDate : '0' + numDate;
+      }).join('-');
       this.selectPage = 1;
+      this.startDate = dealDate;
+      this.endDate   = dealDate;
   }
 
   tabChange( page ) {
@@ -47,4 +56,23 @@ export class HistoryComponent implements OnInit {
     const self = e.currentTarget as HTMLElement;
     self.setAttribute('src' , this.translate.instant('history.goImgPressed'));
   }
+
+  setDatepickerNormal( id ) {
+    document.getElementById( id ).setAttribute('src' , '/assets/imgs/btnCalendarNormal@2x.png');
+  }
+
+  setDatepickerPressed( id ) {
+    document.getElementById( id ).setAttribute('src' , '/assets/imgs/btnCalendarPressed@2x.png');
+  }
+
+  startDateChange(e) {
+    const nextStartDate = e.currentTarget.value;
+    this.startDate = nextStartDate;
+  }
+
+  endDateChange(e) {
+    const nextEndDate = e.currentTarget.value;
+    this.endDate = nextEndDate;
+  }
+
 }

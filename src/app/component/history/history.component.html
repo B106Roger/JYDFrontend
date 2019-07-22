@@ -7,24 +7,42 @@
   <div class="main-content">
     <!-- 頁籤 -->
     <div class="d-flex text-center justify-content-around">
-        <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">{{ 'history.GAME HISTORY' | translate }}</span>
+        <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">
+          {{ 'history.GAME HISTORY' | translate }}
+        </span>
         <span (click)="tabChange(0)" [class.active]="!selectPage" class="btn-bg btn-label">{{ 'history.IN/OUT HISTORY' | translate }}</span>
     </div>
 
     <!-- 資料主體 -->
     <div class="wrapper">
       <!-- table-header 查詢欄 -->
-      <div class="search-row d-flex align-items-center justify-content-around">
+      <div class="search-row d-flex align-items-center justify-content-around position-relative">
         <span class="text-sliver" style="font-size:2vh">{{ 'history.time' | translate }}</span>
+
         <span class="text-sliver time-input">
-            2019-06-10
-            <span class="span-button-icon icon-date"></span>
+          {{ startDate }}
+          <img id="datepicker-begin" [src]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+          <input type="date" class="ui-datepicker-begin" [value]="startDate"
+            (focus) = "setDatepickerPressed('datepicker-begin')"
+            (input) = "setDatepickerNormal('datepicker-begin')"
+            (input) = "startDateChange($event)"
+            (blur)  = "setDatepickerNormal('datepicker-begin')"
+          >
         </span>
+
         <span class="text-sliver" style="font-size:2vh">{{ 'history.to' | translate }}</span>
+
         <span class="text-sliver time-input">
-          2019-06-14
-          <span class="span-button-icon icon-date"></span>
+          {{ endDate }}
+          <img id="datepicker-end" [src]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+          <input type="date" class="ui-datepicker-end" [value]="endDate"
+            (focus) = "setDatepickerPressed('datepicker-end')"
+            (input) = "setDatepickerNormal('datepicker-end')"
+            (input) = "endDateChange($event)"
+            (blur)  = "setDatepickerNormal('datepicker-end')"
+          >
         </span>
+
         <img draggable="false" [src]="'history.goImgNormal' | translate" class="go-btn-base"
           (mousedown)  ="setGoPressed($event)"
           (touchstart) ="setGoPressed($event)"
@@ -34,6 +52,7 @@
         />
       </div>
       <router-outlet></router-outlet>
+
 
     </div>
   </div>

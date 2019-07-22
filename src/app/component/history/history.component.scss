@@ -56,19 +56,16 @@
 
 .icon-date
 {
-  background-image: url('/assets/imgs/btnCalendarNormal.png');
-  background-position-y: 2px;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   min-width: 15px;
   min-height: 15px;
+  object-fit:cover;
 }
 
 /* Go button */
 .go-btn-base
 {
-  background-size: 100% 100%;
-  background-position-y: 2px;
   width: 12%;
   height: 4vh;
 }
@@ -156,3 +153,20 @@
   }
 }
 
+.ui-datepicker-begin
+{
+  width:30%;
+  position: absolute;
+  left:12.5%;
+  height:7vh;
+  opacity: 0;
+}
+
+.ui-datepicker-end
+{
+  width:30%;
+  position: absolute;
+  right:17%;
+  height:7vh;
+  opacity: 0;
+}
