@@ -160,6 +160,22 @@
   left:12.5%;
   height:7vh;
   opacity: 0;
+
+  &::-webkit-inner-spin-button
+  {
+    display: none;
+  }
+
+  &::-webkit-clear-button
+  {
+    display: none;
+  }
+
+  &::-webkit-calendar-picker-indicator
+  {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .ui-datepicker-end
@@ -169,4 +185,20 @@
   right:17%;
   height:7vh;
   opacity: 0;
+
+  &::-webkit-inner-spin-button
+  {
+    display: none;
+  }
+
+  &::-webkit-clear-button
+  {
+    display: none;
+  }
+
+  &::-webkit-calendar-picker-indicator
+  {
+    width: 100%;
+    height: 100%;
+  }
 }
