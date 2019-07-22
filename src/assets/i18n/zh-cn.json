@@ -24,6 +24,7 @@
     "account": "帐户设定",
     "contact": "联系我们",
     "treasure": "金银岛",
+    "logoutMessage" :"您确定退出游戏?",
     "lobbyimg": "/assets/imgs/zh-cn/btnLobbyNormal@2x.png",
     "historyimg": "/assets/imgs/zh-cn/btnHistoryNormal@2x.png",
     "accountimg": "/assets/imgs/zh-cn/btnAccountNormal@2x.png",
@@ -33,7 +34,11 @@
     "accountimgpressed": "/assets/imgs/zh-cn/btnAccountPressed@2x.png",
     "contactimgpressed": "/assets/imgs/zh-cn/btnContactPressed@2x.png",
     "onimg": "/assets/imgs/zh-cn/btnMusicOn@2x.png",
-    "offimg": "/assets/imgs/zh-cn/btnMusicOff@2x.png"
+    "offimg": "/assets/imgs/zh-cn/btnMusicOff@2x.png",
+    "yesImgNormal" :  "/assets/imgs/zh-cn/btnLogoutYesNormal@2x.png",
+    "noImgNormal" :   "/assets/imgs/zh-cn/btnLogoutNoNormal@2x.png",
+    "yesImgPressed" : "/assets/imgs/en/btnLogoutYesPressed@2x.png",
+    "noImgPressed" :  "/assets/imgs/en/btnLogoutNoPressed@2x.png"
   },
 
   "download-app" : {

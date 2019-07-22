@@ -356,3 +356,48 @@
     margin-top: 5%;
   }
 }
+
+#logout-box
+{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.5);
+
+  #confirm-box
+  {
+
+    position: relative;
+    background-image: url('/assets/imgs/picLogoutFrame@2x.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 95%;
+    height: 40%;
+
+    #leaveBtn
+    {
+      position: absolute;
+      top: -2.5%;
+      right: -2.5%;
+    }
+
+    .text-message
+    {
+      margin-top: 25%;
+      color: whitesmoke;
+      text-shadow: 0px 2px 2px black;
+    }
+    .img-btn
+    {
+      margin-top: 10%;
+      padding:0 8%;
+      img{ width: 40%; }
+    }
+  }
+
+
+}

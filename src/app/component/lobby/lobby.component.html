@@ -98,6 +98,42 @@
       </div>
     </div>
 
+    <!-- 登出元件 -->
+    <div id="logout-box" hidden>
+      <div id="confirm-box">
+
+        <img id="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="YES"
+            (mousedown) ="setClosePressed($event)"
+            (touchend)  ="setClosePressed($event)"
+            (touchstart)="setCloseNormal($event)"
+            (mouseup)   ="setCloseNormal($event)"
+            (mouseleave)="setCloseNormal($event)"
+            (click)     ="closeLogoutBox()"
+        >
+
+        <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div>
+
+        <div class="img-btn d-flex justify-content-around">
+          <img draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
+            (mousedown) ="setYesPressed($event)"
+            (touchend)  ="setYesPressed($event)"
+            (touchstart)="setYesNormal($event)"
+            (mouseup)   ="setYesNormal($event)"
+            (mouseleave)="setYesNormal($event)"
+            (click)     ="logout()"
+          >
+          <img draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
+            (mousedown) ="setNoPressed($event)"
+            (touchend)  ="setNoPressed($event)"
+            (touchstart)="setNoNormal($event)"
+            (mouseup)   ="setNoNormal($event)"
+            (mouseleave)="setNoNormal($event)"
+            (click)     ="closeLogoutBox()"
+            >
+        </div>
+
+      </div>
+    </div>
 
     <app-nav-bar></app-nav-bar>
 </section>

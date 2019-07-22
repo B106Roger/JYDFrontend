@@ -1,10 +1,13 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthGuardService } from './../../services/auth-guard.service';
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
   styleUrls: ['./lobby.component.scss']
 })
+
 export class LobbyComponent implements OnInit, AfterViewInit {
 
   menuSelected = 'slots';
@@ -110,7 +113,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     },
 
   ];
-  constructor() { }
+
+
+  constructor(private translate: TranslateService, private auth: AuthGuardService) { }
 
   ngOnInit() {
   }
@@ -136,5 +141,43 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   toggleMenuOnShow() {
     this.menuShow = !this.menuShow;
+  }
+
+  setYesNormal(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('lobby.yesImgNormal'));
+  }
+
+  setNoNormal(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('lobby.noImgNormal'));
+  }
+
+  setYesPressed(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('lobby.yesImgPressed'));
+  }
+
+  setNoPressed(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('lobby.noImgPressed'));
+  }
+
+  setCloseNormal(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , '/assets/imgs/btnLogoutLeaveNormal.png');
+  }
+
+  setClosePressed(e) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , '/assets/imgs/btnLogoutLeavePressed.png');
+  }
+
+  closeLogoutBox() {
+    document.getElementById('logout-box').hidden = true;
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

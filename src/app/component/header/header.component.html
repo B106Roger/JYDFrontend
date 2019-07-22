@@ -22,8 +22,8 @@
               background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
               'background-size': '100%100%',
               'background-repeat': 'no-repeat',
-              width: '52%',
-              height: '40%',
+              'width': '52%',
+              'height': '40%',
               'min-width': '186px',
               'min-height': '271px',
               'z-index': 4
@@ -105,7 +105,7 @@
       <div class="row-flex-no-margin-padding" style="align-items: center">
         <img src="/assets/imgs/segSettingMenu.png" style="width: 92%;" >
       </div>
-      <div class="row-flex setting-item" (click)="logout()" >
+      <div class="row-flex setting-item" (click)="showLogoutBox()" >
         <div  class="column-flex-no-margin-padding">
           {{'lobby.setting.logout' | translate }}
         </div>
