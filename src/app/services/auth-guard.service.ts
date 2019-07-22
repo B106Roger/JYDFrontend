@@ -25,7 +25,7 @@ export class AuthGuardService implements CanActivate {
   }
 
   login(account: string, password: string) {
-    if ( fakeUser.some( user => user.account === account &&  user.password === account ) ) {
+    if ( fakeUser.some( user => user.account === account && user.password === password ) ) {
       localStorage.setItem('user' , account);
       return true;
     } else {
