@@ -1,5 +1,5 @@
 import { AuthGuardService } from './../../services/auth-guard.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,10 +8,7 @@ import { Api } from '../../env';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss'],
-  providers: [
-    AuthGuardService
-  ]
+  styleUrls: ['./history.component.scss']
 })
 
 export class HistoryComponent implements OnInit {
@@ -25,7 +22,11 @@ export class HistoryComponent implements OnInit {
   public gameRecord: any;
   public ioRecord: any;
 
-  constructor(private http: HttpClient, private router: Router, private translate: TranslateService) {}
+  constructor(private http: HttpClient,
+              private router: Router,
+              private translate: TranslateService,
+              private auth: AuthGuardService
+              ) {}
 
   ngOnInit() {
       const d = new Date();
@@ -36,6 +37,7 @@ export class HistoryComponent implements OnInit {
       this.selectPage = 1;
       this.startDate = dealDate;
       this.endDate   = dealDate;
+      console.log(this.auth.test);
   }
 
   tabChange( page ) {

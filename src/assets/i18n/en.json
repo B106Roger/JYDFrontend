@@ -20,10 +20,6 @@
       "on" : "ON",
       "off": "OFF"
     },
-    "history": "HISTORY",
-    "account": "ACCOUNT",
-    "contact": "CONTACT US",
-    "treasure": "TREASURE ISLAND",
     "logoutMessage" :"ARE YOU SURE YOU WANT TO QUIT THE GAME?",
 
     "lobbyimg": "/assets/imgs/en/btnLobbyNormal@2x.png",

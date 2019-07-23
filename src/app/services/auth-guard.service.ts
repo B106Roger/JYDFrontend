@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { fakeUser } from '../env';
 import { CanActivate, Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router) {}
+  private static _INSTANCE: AuthGuardService;
+  public test = 1;
+
+  constructor(private router: Router) {
+    return AuthGuardService._INSTANCE = AuthGuardService._INSTANCE || this;
+  }
 
   canActivate() {
+    this.test = 30;
     console.log('gurad is work');
     return this.loginValidate();
   }

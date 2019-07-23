@@ -20,10 +20,6 @@
       "on" : "開",
       "off": "關"
     },
-    "history": "历史纪录",
-    "account": "帐户设定",
-    "contact": "联系我们",
-    "treasure": "金银岛",
     "logoutMessage" :"您确定退出游戏?",
     "lobbyimg": "/assets/imgs/zh-cn/btnLobbyNormal@2x.png",
     "historyimg": "/assets/imgs/zh-cn/btnHistoryNormal@2x.png",
@@ -76,7 +72,7 @@
     "time" : "日期",
     "to" : "至",
     "goImgNormal"  : "/assets/imgs/zh-cn/btnHistoryGoNormal@2x.png",
-    "goImgPressed" : "/assets/imgs/zh-cn/btnHistoryGoPressed@2x.png",
+    "goImgPressed" : "/assets/imgs/en/btnHistoryGoPressed@2x.png",
     "GAME HISTORY" : "游戏纪录",
     "IN/OUT HISTORY" : "进出分纪录",
     "gameRecord" : {
@@ -91,7 +87,7 @@
     "inoutRecord" : {
       "no" : "编号",
       "dateTime" : "日期/时间",
-      "before" : "设定前",
+      "before": "设定前",
       "inout" : "进出分",
       "after" : "设定后"
     }
