@@ -74,7 +74,10 @@ const Api = {
 };
 
 const fakeUser = [
-  {account: '123' , password: '123'},
-  {account: 'testuser' , password: 'testpassword'}
+  {account: '123' , password: '123' , UID: 'Test0001'},
+  {account: 'testuser' , password: 'testpassword' , UID: 'Test0002'}
 ];
+
+const testMode = true;
+
 export { Api , fakeUser };

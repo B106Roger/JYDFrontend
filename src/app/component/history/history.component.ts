@@ -1,9 +1,6 @@
-import { AuthGuardService } from './../../services/auth-guard.service';
-import { Component, OnInit, NgModule } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Api } from '../../env';
 
 @Component({
   selector: 'app-history',
@@ -14,30 +11,30 @@ import { Api } from '../../env';
 export class HistoryComponent implements OnInit {
 
 
-  public startDate;
-  public endDate;
+  public startDate: string;
+  public endDate: string;
   public selectPage: number;
 
-  public currentRecord: AnalyserOptions;
-  public gameRecord: any;
-  public ioRecord: any;
-
-  constructor(private http: HttpClient,
-              private router: Router,
-              private translate: TranslateService,
-              private auth: AuthGuardService
-              ) {}
+  constructor(private router: Router, private translate: TranslateService) { }
 
   ngOnInit() {
       const d = new Date();
-      const dealDate = d.toLocaleDateString().split('/').map( strDate => {
+
+      const initEndDate = d.toLocaleDateString().split('/').map( strDate => {
         const numDate = parseInt(strDate , 10);
         return numDate / 10 > 1 ? numDate : '0' + numDate;
       }).join('-');
+
+      d.setTime( d.getTime() - 604800000 );
+      const initStartDate = d.toLocaleDateString().split('/').map( strDate => {
+        const numDate = parseInt(strDate , 10);
+        return numDate / 10 > 1 ? numDate : '0' + numDate;
+      }).join('-');
+
+
       this.selectPage = 1;
-      this.startDate = dealDate;
-      this.endDate   = dealDate;
-      console.log(this.auth.test);
+      this.startDate = initStartDate;
+      this.endDate   = initEndDate;
   }
 
   tabChange( page ) {

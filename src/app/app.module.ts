@@ -1,4 +1,3 @@
-import { AuthGuardService } from './services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HttpClient  } from '@angular/common/http';
+import { AuthGuardService } from './services/auth-guard.service';
+import { FetchService } from './services/fetch.service';
 
 import { LoginComponent } from './component/login/login.component';
 import { HistoryComponent } from './component/history/history.component';
@@ -59,6 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AuthGuardService,
+    FetchService
   ],
   bootstrap: [AppComponent]
 })

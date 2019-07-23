@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   account = '';
   password = '';
-  remember = false;
+  remember = true;
   langShow = false;
   langChoosed = 'en';
   langList = [
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login() {
     console.log('account: ', this.account);
-    if ( this.auth.login(this.account , this.password) ) {
+    if ( this.auth.login(this.account , this.password , this.remember) ) {
         this.route.navigate(['/lobby']);
     }
   }

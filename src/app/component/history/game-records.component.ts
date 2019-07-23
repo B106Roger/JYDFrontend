@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { FetchService } from './../../services/fetch.service';
+
 
 @Component({
   selector: 'app-game-records',
@@ -17,8 +19,8 @@ import { TranslateService } from '@ngx-translate/core';
   <div class="records-container">
     <div class="recordBody" *ngFor="let record of records">
       <span class="game-name"   style="width:17.5%">{{ record[0] }}</span>
-      <span class="bet"         style="width:22.5%">{{ record[1] }}</span>
-      <span class="date-time"   style="width:10.0%">{{ record[2] }}</span>
+      <span class="date-time"   style="width:22.5%">{{ record[1] }}</span>
+      <span class="bet"         style="width:10.0%">{{ record[2] }}</span>
       <span class="win"         style="width:10.0%">{{ record[3] }}</span>
       <span class="begin-money" style="width:20.0%">{{ record[4] }}</span>
       <span class="end-money"   style="width:20.0%">{{ record[5] }}</span>
@@ -31,7 +33,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class GameRecordsComponent implements OnInit {
 
   public records = [];
-  constructor() { }
+
+  constructor(private fetch: FetchService) { }
 
   ngOnInit() {
     for (let i = 0 ; i < 30 ; ++i) {
