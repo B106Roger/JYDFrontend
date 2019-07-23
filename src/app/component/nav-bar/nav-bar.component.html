@@ -7,7 +7,7 @@
     (mouseleave)="setPicture($event,option.picture)"
     (touchend)="setPicture($event,option.picture)"
     >
-      <img [src]="option.picture | translate" [id]="option.id" >
+      <img [src]="option.picture | translate" draggable="false">
     </button>
   </div>
 </div>
