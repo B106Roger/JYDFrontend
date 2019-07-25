@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { fakeUser } from '../env';
+import { Api , fakeUser } from '../env';
 import { CanActivate, Router } from '@angular/router';
 import * as Crypto from 'crypto-js';
 
@@ -10,7 +10,7 @@ import * as Crypto from 'crypto-js';
 export class AuthGuardService implements CanActivate {
 
   private static _INSTANCE: AuthGuardService;
-  public _UID: string;
+  private UID: string = null;
   public key;
   public iv;
   constructor(private router: Router) {
@@ -37,20 +37,32 @@ export class AuthGuardService implements CanActivate {
   }
 
   login(account: string, password: string , remember: boolean) {
-    if ( fakeUser.some( user => user.account === account && user.password === password ) ) {
-      const UID = fakeUser.filter(user => user.account === account && user.password === password)[0].UID;
+    const data = JSON.stringify({UserID: account, Password: password});
 
-      sessionStorage.setItem('UID' , this.encrypt( UID ) );
-      if ( remember ) {
-        localStorage.setItem('UserID' , this.encrypt( account ) );
-        localStorage.setItem('Password' , this.encrypt( password ) );
-      }
+    return fetch( Api.loginApi , { method: 'POST' , body : data})
+      .then( response => {
+        if ( !response.ok ) {
+          throw Error( response.statusText );
+        } else {
+          return response.json();
+        }
+      })
+      .then( responseJson => {
+        this.UID = responseJson.UID;
+        sessionStorage.setItem('UID' , this.encrypt( responseJson.UID ) );
+        if ( remember ) {
+          localStorage.setItem('UserID' , this.encrypt( account ) );
+          localStorage.setItem('Password' , this.encrypt( password ) );
+        }
 
-      return true;
-    } else {
-      alert('User isn\'t exist');
-      return false;
-    }
+        return true;
+      })
+      .catch( error => {
+        alert( error );
+        console.log('Error :' , error);
+
+        return false;
+    });
   }
 
   logout() {
@@ -70,5 +82,9 @@ export class AuthGuardService implements CanActivate {
     const srcs = Crypto.enc.Utf8.parse(text);
     const encrypted = Crypto.AES.encrypt(srcs, this.key, { iv: this.iv, mode: Crypto.mode.CBC, padding: Crypto.pad.Pkcs7 });
     return encrypted.ciphertext.toString().toUpperCase();
+  }
+
+  getUID() {
+    return this.UID = this.UID || this.decrypt( sessionStorage.getItem('UID') ) ;
   }
 }

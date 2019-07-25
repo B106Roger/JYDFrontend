@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input , OnChanges, SimpleChanges } from '@angular/core';
+import { isArray } from 'util';
 @Component({
   selector: 'app-io-records',
   template:
@@ -23,15 +24,34 @@ import { Component, OnInit } from '@angular/core';
   `,
   styleUrls: ['./history.component.scss']
 })
-export class IoRecordsComponent implements OnInit {
+export class IoRecordsComponent implements OnInit , OnChanges {
+
+  @Input() ioRecrods;
 
   public records = [];
   constructor() { }
 
-  ngOnInit() {
-    for (let i = 0 ; i < 30 ; ++i) {
-      this.records.push( ['299490' , '2019-06-04 05:53:20' , '570900.00' , '-900' , '570000.00'] );
-    }
-  }
+  ngOnInit() { }
 
+  ngOnChanges( changes: SimpleChanges ) {
+    /*  {
+      "AutoID": 36,
+      "UserID": "test006",
+      "DateTime": "2019-05-13T10:15:34.987",
+      "BeforeMoney": 303616,
+      "AfterMoney": 303606
+    }, */
+    if ( isArray( this.ioRecrods ) ) {
+      this.records = this.ioRecrods.map(record => {
+        return [
+          record.AutoID,
+          record.DateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.DateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
+          (record.AfterMoney - record.BeforeMoney).toFixed(2),
+          parseInt( record.BeforeMoney , 10).toFixed(2),
+          parseInt( record.AfterMoney  , 10).toFixed(2),
+        ];
+      });
+    }
+    console.log('changes' , changes.ioRecrods.currentValue );
+  }
 }

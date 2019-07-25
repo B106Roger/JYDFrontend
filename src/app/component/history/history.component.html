@@ -51,7 +51,9 @@
           (mouseleave)="setGoNormal($event)"
         />
       </div>
-      <router-outlet></router-outlet>
+
+      <app-game-records [(gameRecrods)]="gameRecrods" [hidden]="!selectPage"></app-game-records>
+      <app-io-records [(ioRecrods)]="ioRecrods" [hidden]="selectPage"></app-io-records>
 
 
     </div>

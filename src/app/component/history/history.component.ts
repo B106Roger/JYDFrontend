@@ -1,6 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { FetchService } from './../../services/fetch.service';
+import { GameRecordsComponent } from './game-records.component';
+import { InOutRecord } from './../../models/in-out-record';
 
 @Component({
   selector: 'app-history',
@@ -14,8 +17,9 @@ export class HistoryComponent implements OnInit {
   public startDate: string;
   public endDate: string;
   public selectPage: number;
-
-  constructor(private router: Router, private translate: TranslateService) { }
+  public gameRecrods;
+  public ioRecrods;
+  constructor(private router: Router, private translate: TranslateService, private fetch: FetchService) { }
 
   ngOnInit() {
       const d = new Date();
@@ -35,15 +39,19 @@ export class HistoryComponent implements OnInit {
       this.selectPage = 1;
       this.startDate = initStartDate;
       this.endDate   = initEndDate;
+      this.fetch.fetchGameRecords(this.startDate , this.endDate)
+                  .then(responseJson => { this.gameRecrods = responseJson.RecordList; });
+      this.fetch.fetchInOutRecords(this.startDate , this.endDate)
+                  .then(responseJson => { this.ioRecrods = responseJson.RecordList; });
   }
 
   tabChange( page ) {
     this.selectPage = page;
-    if ( page ) {
+  /*   if ( page ) {
       this.router.navigate(['/history/gameRecords']);
     } else {
       this.router.navigate(['/history/inoutRecords']);
-    }
+    } */
   }
 
   setGoNormal(e) {
@@ -67,11 +75,15 @@ export class HistoryComponent implements OnInit {
   startDateChange(e) {
     const nextStartDate = e.currentTarget.value;
     this.startDate = nextStartDate;
+    this.fetch.fetchGameRecords(this.startDate , this.endDate)
+                .then(responseJson => { this.gameRecrods = responseJson.RecordList; });
   }
 
   endDateChange(e) {
     const nextEndDate = e.currentTarget.value;
     this.endDate = nextEndDate;
+    this.fetch.fetchGameRecords(this.startDate , this.endDate)
+              .then(responseJson => { this.ioRecrods = responseJson.RecordList; });
   }
 
 }

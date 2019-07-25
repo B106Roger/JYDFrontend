@@ -76,9 +76,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login() {
     console.log('account: ', this.account);
-    if ( this.auth.login(this.account , this.password , this.remember) ) {
-        this.route.navigate(['/lobby']);
-    }
+    this.auth.login(this.account , this.password , this.remember)
+      .then( loginState => {
+        if ( loginState ) {
+          this.route.navigate(['/lobby']);
+        }
+    });
   }
 
   displayNotification() {

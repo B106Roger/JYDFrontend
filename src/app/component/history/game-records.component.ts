@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input , OnChanges, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { FetchService } from './../../services/fetch.service';
+import { isArray } from 'util';
 
 
 @Component({
@@ -30,16 +30,33 @@ import { FetchService } from './../../services/fetch.service';
   styleUrls: ['./history.component.scss']
 })
 
-export class GameRecordsComponent implements OnInit {
+
+export class GameRecordsComponent implements OnInit , OnChanges {
+
+  @Input() gameRecrods;
 
   public records = [];
 
-  constructor(private fetch: FetchService) { }
+  constructor() {
 
-  ngOnInit() {
-    for (let i = 0 ; i < 30 ; ++i) {
-      this.records.push( ['KING OF MOUTAIN' , '2019-06-04 05:53:20' , '2.25' , '6.75' , '27305.50' , '27312.25'] );
+  }
+
+  ngOnInit() { }
+
+  ngOnChanges( changes: SimpleChanges ) {
+    if ( isArray( this.gameRecrods ) ) {
+      this.records = this.gameRecrods.map(record => {
+        return [
+          record.GameName,
+          record.DateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.DateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
+          record.BetMoney,
+          record.WinMoney,
+          parseInt( record.BeforeMoney , 10).toFixed(2),
+          parseInt( record.AfterMoney  , 10).toFixed(2),
+        ];
+      });
     }
+    console.log('changes' , changes.gameRecrods.currentValue );
   }
 
 }

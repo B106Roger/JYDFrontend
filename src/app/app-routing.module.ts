@@ -24,7 +24,7 @@ const routes: Routes = [
     path: 'history',
     component: HistoryComponent,
     canActivate: [AuthGuardService],
-    children: [
+    /* children: [
       {
         path: '',
         component: GameRecordsComponent
@@ -37,7 +37,7 @@ const routes: Routes = [
         path: 'inoutRecords',
         component: IoRecordsComponent
       },
-    ]
+    ] */
   },
   {
     path: 'account',
