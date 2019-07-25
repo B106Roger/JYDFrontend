@@ -52,6 +52,5 @@ export class IoRecordsComponent implements OnInit , OnChanges {
         ];
       });
     }
-    console.log('changes' , changes.ioRecrods.currentValue );
   }
 }

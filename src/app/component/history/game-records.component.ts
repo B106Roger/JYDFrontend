@@ -56,7 +56,6 @@ export class GameRecordsComponent implements OnInit , OnChanges {
         ];
       });
     }
-    console.log('changes' , changes.gameRecrods.currentValue );
   }
 
 }
