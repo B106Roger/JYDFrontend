@@ -1,4 +1,3 @@
-import { GameRecord } from './../models/game-record';
 import { Injectable } from '@angular/core';
 import { Api } from './../env';
 import { AuthGuardService } from './auth-guard.service';
