@@ -82,9 +82,9 @@
   #hot-game-frame {
     width: 33%;
     height: 100%;
-    // @media screen  and (max-width: 500px) and (min-width: 360px){
-    //   width: 107px;
-    // }
+    @media screen  and (max-width: 500px) and (min-width: 360px){
+      width: 107px;
+    }
 
     display: flex;
     flex-direction: column;
@@ -111,9 +111,9 @@
   .normal-game-frame {
     width: 33%;
     height: 50%;
-    // @media screen  and (max-width: 500px) and (min-width: 360px){ // normal mobile
-    //   width: 107px;
-    // }
+    @media screen  and (max-width: 500px) and (min-width: 360px){ // normal mobile
+      width: 107px;
+    }
 
     display: flex;
     flex-direction: column;
