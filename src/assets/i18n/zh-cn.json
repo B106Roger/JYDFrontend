@@ -20,7 +20,9 @@
       "on" : "開",
       "off": "關"
     },
+    "hotGameTag": "/assets/imgs/zh-cn/picTagHotGame.png",
     "logoutMessage" :"您确定退出游戏?",
+
     "lobbyimg":   "/assets/imgs/zh-cn/btnLobbyNormal@2x.png",
     "historyimg": "/assets/imgs/zh-cn/btnHistoryNormal@2x.png",
     "accountimg": "/assets/imgs/zh-cn/btnAccountNormal@2x.png",

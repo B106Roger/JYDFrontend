@@ -20,6 +20,7 @@
       "on" : "ON",
       "off": "OFF"
     },
+    "hotGameTag": "/assets/imgs/en/picTagHotGame.png",
     "logoutMessage" :"ARE YOU SURE YOU WANT TO QUIT THE GAME?",
 
     "lobbyimg": "/assets/imgs/en/btnLobbyNormal@2x.png",
