@@ -47,11 +47,6 @@ export class HistoryComponent implements OnInit {
 
   tabChange( page ) {
     this.selectPage = page;
-  /*   if ( page ) {
-      this.router.navigate(['/history/gameRecords']);
-    } else {
-      this.router.navigate(['/history/inoutRecords']);
-    } */
   }
 
   setGoNormal(e) {
@@ -75,15 +70,18 @@ export class HistoryComponent implements OnInit {
   startDateChange(e) {
     const nextStartDate = e.currentTarget.value;
     this.startDate = nextStartDate;
-    this.fetch.fetchGameRecords(this.startDate , this.endDate)
-                .then(responseJson => { this.gameRecrods = responseJson.RecordList; });
   }
 
   endDateChange(e) {
     const nextEndDate = e.currentTarget.value;
     this.endDate = nextEndDate;
-    this.fetch.fetchGameRecords(this.startDate , this.endDate)
-              .then(responseJson => { this.ioRecrods = responseJson.RecordList; });
   }
 
+  sendQuery() {
+    this.fetch.fetchGameRecords(this.startDate , this.endDate)
+                .then(responseJson => { this.gameRecrods = responseJson.RecordList; });
+
+    this.fetch.fetchInOutRecords(this.startDate , this.endDate)
+              .then(responseJson => { this.ioRecrods = responseJson.RecordList; });
+  }
 }

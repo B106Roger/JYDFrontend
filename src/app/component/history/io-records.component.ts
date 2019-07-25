@@ -29,6 +29,7 @@ export class IoRecordsComponent implements OnInit , OnChanges {
   @Input() ioRecrods;
 
   public records = [];
+
   constructor() { }
 
   ngOnInit() { }

@@ -37,9 +37,7 @@ export class GameRecordsComponent implements OnInit , OnChanges {
 
   public records = [];
 
-  constructor() {
-
-  }
+  constructor() { }
 
   ngOnInit() { }
 
@@ -49,8 +47,8 @@ export class GameRecordsComponent implements OnInit , OnChanges {
         return [
           record.GameName,
           record.DateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.DateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
-          record.BetMoney,
-          record.WinMoney,
+          parseInt(record.BetMoney , 10).toFixed(2),
+          parseInt(record.WinMoney , 10).toFixed(2),
           parseInt( record.BeforeMoney , 10).toFixed(2),
           parseInt( record.AfterMoney  , 10).toFixed(2),
         ];

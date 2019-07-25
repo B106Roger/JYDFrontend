@@ -120,16 +120,16 @@
   {
     height: 10%;
 
-  .game-name   { font-size: 0.8em;}
-  .date-time   { font-size: 0.8em;}
-  .bet         { color: white;}
-  .win         { color: white;}
-  .begin-money { color: white;}
-  .end-money   { color: white;}
-  .no          { color: white;}
-  .befor       { color: white;}
-  .after       { color: white;}
-  .in-out      { color: white;}
+    .game-name   { font-size: 0.8em;}
+    .date-time   { font-size: 0.8em;}
+    .bet         { font-size: 0.5em;}
+    .win         { font-size: 0.5em;}
+    .begin-money { font-size: 0.9em;}
+    .end-money   { font-size: 0.9em;}
+    .no          { color: white;}
+    .befor       { font-size: 0.9em;}
+    .after       { font-size: 0.9em;}
+    .in-out      { color: white;}
   }
 
   /* 可捲動, 但隱藏卷軸(scroll-bar) */

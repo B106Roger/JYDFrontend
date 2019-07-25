@@ -49,11 +49,12 @@
           (touchend)   ="setGoNormal($event)"
           (mouseup)    ="setGoNormal($event)"
           (mouseleave)="setGoNormal($event)"
+          (click) = "sendQuery()"
         />
       </div>
 
-      <app-game-records [(gameRecrods)]="gameRecrods" [hidden]="!selectPage"></app-game-records>
-      <app-io-records [(ioRecrods)]="ioRecrods" [hidden]="selectPage"></app-io-records>
+      <app-game-records [gameRecrods]="gameRecrods" [hidden]="!selectPage"></app-game-records>
+      <app-io-records [ioRecrods]="ioRecrods" [hidden]="selectPage"></app-io-records>
 
 
     </div>
