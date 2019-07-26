@@ -1,10 +1,28 @@
+
+.game-frame
+{
+  background: url('/assets/imgs/bgLobby-v@2x.png') transparent;
+  width:100%;
+  height:100%;
+}
+
 #game-outlet
 {
   background: url('/assets/imgs/bgLobby-v@2x.png') transparent;
   background-position: center;
   background-repeat: no-repeat;
   width:100%;
+
   height: 100%;
+
+
+
+}
+
+.game-frame
+{
+  width:100%;
+  height:100%;
 
 }
 

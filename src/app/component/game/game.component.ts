@@ -2,6 +2,7 @@ import { Component, OnInit , OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthGuardService } from './../../services/auth-guard.service';
 // tslint:disable: no-string-literal
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
