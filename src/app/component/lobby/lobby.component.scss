@@ -35,12 +35,12 @@
 #normal-game-container {
   height: 55%;
   width: 100%;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 415px) {
     max-height: 281px;
   }
 
   // 對齊輪播牆
-  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
+  @media only screen and (max-width: 450px)      // pix 2,pix 2 XL i6+,i7+,i8+
   {
     margin-left: 9%;
     width: 82%;
@@ -60,7 +60,7 @@
     margin-left: 4.5%;
     width: 91%
   }
-  @media screen  and (min-width: 500px)       // PC
+  @media screen  and (min-width: 416px)       // PC
   {
     margin-left: 4.5%;
     width: 91%
@@ -69,8 +69,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-
   align-items: center;
+
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -80,9 +80,9 @@
   }
 
   #hot-game-frame {
-    width: 33%;
+    width: 32%;
     height: 100%;
-    @media screen  and (max-width: 500px) and (min-width: 360px){
+    @media screen  and (max-width: 415px) and (min-width: 360px){
       width: 107px;
     }
 
@@ -111,7 +111,7 @@
   .normal-game-frame {
     width: 33%;
     height: 50%;
-    @media screen  and (max-width: 500px) and (min-width: 360px){ // normal mobile
+    @media screen  and (max-width: 415px) and (min-width: 360px){ // normal mobile
       width: 107px;
     }
 
@@ -193,10 +193,10 @@
 // 輪播牆 start
 .carousel-container {
   height: 24.6%;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 415px) {
     max-height: 125px;
   }
-  @media only screen and (min-width: 501px) {
+  @media only screen and (min-width: 416px) {
     height: 23.5%;
   }
 
@@ -268,23 +268,30 @@
   z-index: 3;
   justify-content: flex-start;
 
-  @media only screen and (max-height: 640px) and (min-height: 400px)   // Galaxy S5
+  // 對齊輪播牆
+  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
   {
-    margin-top: 3%;
-  }
-  @media only screen and (max-height: 667px) and (min-height: 641px)   // I6,I7,I8
-  {
-    margin-top: 5%;
-  }
-  @media only screen and (max-height: 736px) and (min-height: 668px)   // I6+ ,I7+ ,I8+, Pixel2
-  {
+    margin-left: 9%;
     margin-top: 7%;
   }
-  @media only screen and (max-height: 823px) and (min-height: 737px)  // I 10, Pixel 2XL
+  @media only screen and (max-width: 376px)      // i6,i7,i8
   {
-    margin-top: 12%;
+    margin-left: 4.5%;
+    margin-top: 5%;
   }
-  @media screen and (min-height: 900px) {      // tablet
+  @media only screen and (max-width: 361px)      //GL s5
+  {
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+  @media only screen and (max-width: 341px)    //i5 SE
+  {
+    margin-left: 4.5%;
+    margin-top: 3%;
+  }
+  @media screen  and (min-width: 416px)       // PC
+  {
+    margin-left: 4.5%;
     margin-top: 5%;
   }
   #game-filter-bg {
@@ -297,32 +304,8 @@
 
     width: 43%;
     height: 33px;
-
-
     padding: 0px 16px 0px 10px;
-
-
-    // 對齊輪播牆
-    @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
-    {
-      margin-left: 9%;
-    }
-    @media only screen and (max-width: 376px)      // i6,i7,i8
-    {
-      margin-left: 5.5%;
-    }
-    @media only screen and (max-width: 361px)      //GL s5
-    {
-      margin-left: 3.5%;
-    }
-    @media only screen and (max-width: 341px)    //i5 SE
-    {
-      margin-left: 5%;
-    }
-    @media screen  and (min-width: 500px){       // PC, tablet
-      margin-left: 4.5%;
-      height: 40px;;
-    }
+    margin-left: 0px;
 
     outline: none;
     border: none;
