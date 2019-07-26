@@ -2,11 +2,16 @@
 .game-frame
 {
   background: url('/assets/imgs/bgLobby-v@2x.png') transparent;
-  width:100%;
-  height:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  min-height:320px;
+  min-width:548px;
+  max-height:494px;
+  max-width:840px;
+  width:100vh;
+  height:100vw;
+
+
+  transform-origin: center;
+  transform: rotate(90deg);
 }
 
 iframe
@@ -17,8 +22,6 @@ iframe
   max-width:840px;
   width:100vh;
   height:100vw;
-
-  transform: rotate(90deg);
 }
 
 
