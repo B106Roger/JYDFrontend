@@ -62,11 +62,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     let time = new Date().getTime();
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipod/.test( userAgent );
+    const isStandalone = 'standalone' in navigator && navigator['standalone'];
     if (isIOS === true) {
       scrollTo(0, 40);
 
       // 當網頁是經由home開啟時要防止縮放滑動
-      if ('standalone' in navigator && navigator['standalone']) {
+      if (isStandalone) {
         // 防止瀏覽器上下滑動
         window.addEventListener('touchmove', (e) => {
           endY = e.changedTouches[0].pageY;
@@ -99,7 +100,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         resizeId = setTimeout(() => {
           if (window.outerWidth >= window.outerHeight) {
             alert('change orientation to see full content');
-          } else {
+          } else if (isStandalone) {
             scrollTo(0, 40);
           }
         }, 500);
@@ -110,7 +111,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipod/.test( userAgent );
     const isStandalone = 'standalone' in navigator && navigator['standalone'];
-    if (isIOS && isStandalone) {
+    if (isIOS) {
       return 'display';
     } else {
      return 'none';
