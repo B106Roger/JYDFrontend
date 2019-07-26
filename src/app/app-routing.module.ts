@@ -9,7 +9,7 @@ import { IoRecordsComponent } from './component/history/io-records.component';
 import { AccountComponent } from './component/account/account.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { DownloadAppComponent } from './component/download-app/download-app.component';
-
+import { GameComponent } from './component/game/game.component';
 const routes: Routes = [
   {
     path: '',
@@ -21,23 +21,14 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'game/:gameName',
+    component: GameComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'history',
     component: HistoryComponent,
     canActivate: [AuthGuardService],
-    /* children: [
-      {
-        path: '',
-        component: GameRecordsComponent
-      },
-      {
-        path: 'gameRecords',
-        component: GameRecordsComponent
-      },
-      {
-        path: 'inoutRecords',
-        component: IoRecordsComponent
-      },
-    ] */
   },
   {
     path: 'account',

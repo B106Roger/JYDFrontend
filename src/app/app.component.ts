@@ -3,6 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import { __asyncDelegator } from 'tslib';
+// tslint:disable: no-string-literal
 
 @Component({
   selector: 'app-root',
@@ -107,6 +108,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       }, false);
     }
   }
+
   displayIOSBar() {
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipod/.test( userAgent );
