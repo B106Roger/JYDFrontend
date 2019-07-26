@@ -63,13 +63,13 @@
 
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" (mousedown)="startScroll($event)" >
-          <div id="hot-game-frame" *ngIf="getHotGame().length > 0">
-                  <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
-                  <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl" draggable="false">
-                  <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false">
+          <div id="hot-game-frame" *ngIf="getHotGame().length > 0" [routerLink]="['/game' , getHotGame()[0].gameName]">
+            <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
+            <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl" draggable="false">
+            <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false">
           </div>
           <ng-container *ngFor="let item of getNormalGame()">
-            <div class="normal-game-frame">
+            <div class="normal-game-frame" [routerLink]="['/game' , item.gameName]">
               <img class="normal-pic" [src]="item.gameImgUrl" draggable="false">
               <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false">
             </div>

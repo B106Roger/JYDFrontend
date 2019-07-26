@@ -11,6 +11,7 @@ export class AuthGuardService implements CanActivate {
 
   private static _INSTANCE: AuthGuardService;
   private UID: string = null;
+  private UserID;
   public key;
   public iv;
   constructor(private router: Router) {
@@ -49,6 +50,7 @@ export class AuthGuardService implements CanActivate {
       })
       .then( responseJson => {
         this.UID = responseJson.UID;
+        this.UserID = account;
         sessionStorage.setItem('UID' , this.encrypt( responseJson.UID ) );
         if ( remember ) {
           localStorage.setItem('UserID' , this.encrypt( account ) );
@@ -85,5 +87,9 @@ export class AuthGuardService implements CanActivate {
 
   getUID() {
     return this.UID = this.UID || this.decrypt( sessionStorage.getItem('UID') ) ;
+  }
+
+  getUserID() {
+    return this.UserID = this.UserID || this.decrypt( localStorage.getItem('UserID') ) ;
   }
 }

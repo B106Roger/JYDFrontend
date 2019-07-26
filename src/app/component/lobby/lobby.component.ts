@@ -29,21 +29,21 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   ];
   images = [
     {
-      gameName: 'Game1',
+      gameName: 'fivedragons',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame5Dragons.png',
       gameCategory: 'slots',
       display: '1'
     },
     {
-      gameName: 'Game1',
+      gameName: 'fivekoi',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame5Koi.png',
       gameCategory: 'slots',
       display: '2'
     },
     {
-      gameName: 'Game1',
+      gameName: 'fiftydragons',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame50Dragons.png',
       gameCategory: 'slots',
@@ -57,7 +57,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
-      gameName: 'Game1',
+      gameName: 'fortunes88',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
       gameCategory: 'slots',
@@ -78,14 +78,14 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
-      gameName: 'Game1',
+      gameName: 'beanstalk',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameBeanstalk.png',
       gameCategory: 'slots',
       display: '2'
     },
     {
-      gameName: 'Game1',
+      gameName: 'buffalo',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameBuffalo.png',
       gameCategory: 'slots',
