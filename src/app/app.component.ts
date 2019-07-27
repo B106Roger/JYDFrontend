@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   updates = false;
   displayHeader = 'none';
   constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService) {
-    translate.addLangs(['en', 'zh-cn']);
+    translate.addLangs(['en', 'zh-cn', 'es', 'pt']);
     translate.setDefaultLang('en');
     // 檢查localStorage沒有語系紀錄
     if (localStorage.getItem('lang')) {      // 有，使用localStorage語系
