@@ -47,19 +47,20 @@
                         '/assets/imgs/iconGameMenuUp.png'" >
 
           </button>
+          <!-- poppup setting content padding-top: 11px;-->
+          <popper-content #popperSetting >
+            <div class="unselectable" id="menuPopup">
+              <ng-container *ngFor="let option of menuList">
+                  <div class="menu-option-bg" style="justify-content: space-between"
+                  (click)="popperSetting.hide();setMenuSelect(option.value)">
+                      <span class="basic-text-style ">{{('lobby.' + option.value) | translate}}</span>
+                  </div>
+              </ng-container>
+            </div>
+          </popper-content>
       </div>
 
-      <!-- poppup setting content padding-top: 11px;-->
-      <popper-content #popperSetting >
-        <div class="unselectable" id="menuPopup">
-          <ng-container *ngFor="let option of menuList">
-              <div class="menu-option-bg" style="justify-content: space-between"
-              (click)="popperSetting.hide();setMenuSelect(option.value)">
-                  <span class="basic-text-style ">{{('lobby.' + option.value) | translate}}</span>
-              </div>
-          </ng-container>
-        </div>
-      </popper-content>
+
 
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" (mousedown)="startScroll($event)" >

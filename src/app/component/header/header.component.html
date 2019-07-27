@@ -48,10 +48,8 @@
   <button class="no-padding" id="logoutButton">
     <img>
   </button>
-
-
-
 </div>
+<audio #musicEle id="musicEle" src="/assets/music_lobbybg.wav" autoplay loop style="display: none"></audio>
 
 <!-- poppup setting content padding-top: 11px;-->
 <popper-content #popperSetting >
@@ -61,7 +59,7 @@
         <div class="column-flex-no-margin-padding">
           {{ 'lobby.setting.music' | translate }}
         </div>
-        <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic">
+        <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic" (change)="setMusic()">
         <label for="MusicBotton" id="musicContainer">
           <img [src]="getMusic() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"  >
         </label>
@@ -75,7 +73,7 @@
         <div class="column-flex-no-margin-padding">
           {{ 'lobby.setting.sounds' | translate }}
         </div>
-        <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound">
+        <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound" (change)="setSound()">
         <label  for="SonudBotton" id='soundContainer' >
           <img [src]="getSound() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"  >
         </label>
