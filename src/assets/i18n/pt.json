@@ -1,8 +1,8 @@
 {
   "login": {
-    "rememberMe": "REMEMBER ME",
-    "account_holder": "PLAYER ID",
-    "password_holder": "PASSWORD",
+    "rememberMe": "LEMBRE DE MIM",
+    "account_holder": "ID DO JOGADOR",
+    "password_holder": "CONTRASEÑA",
     "loginbtn": "/assets/imgs/en/btnLoginNormal.png",
     "loginbtnpressed": "/assets/imgs/en/btnLoginPressed.png",
     "mainicon": "/assets/imgs/en/picLogoEn.png"
@@ -12,16 +12,16 @@
     "marry": "MARY SLOTS",
     "poker": "POKER GAMES",
     "setting": {
-      "music": "MUSIC",
-      "sounds": "SOUNDS",
-      "version": "VERSION",
+      "music": "MÚSICA",
+      "sounds": "SOM",
+      "version": "VERSÃO",
       "download": "DOWNLOAD APP",
-      "logout": "LOGOUT",
+      "logout": "FECHAR SESSÃO",
       "on" : "ON",
       "off": "OFF"
     },
     "hotGameTag": "/assets/imgs/en/picTagHotGame.png",
-    "logoutMessage" :"ARE YOU SURE YOU WANT TO QUIT?",
+    "logoutMessage" :"VOCÊ TEM CERTEZA QUE QUER SAIR?",
 
     "lobbyimg": "/assets/imgs/en/btnLobbyNormal@2x.png",
     "historyimg": "/assets/imgs/en/btnHistoryNormal@2x.png",
@@ -48,8 +48,8 @@
   },
 
   "contact" : {
-    "title" : "CONTACT US",
-    "REACH US WITH FOLLOWING CONTACT DETAILS" : "REACH US WITH FOLLOWING CONTACT DETAILS",
+    "title" : "CONTATE-NOS",
+    "REACH US WITH FOLLOWING CONTACT DETAILS" : "ALCANÇA-NOS COM SEGUINTES DETALHES DO CONTATO",
     "email-icon"    : "/assets/imgs/en/iconContactEmail@3x.png",
     "phone-icon"    : "/assets/imgs/en/iconContactPhone@3x.png",
     "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
@@ -58,11 +58,11 @@
   },
 
   "account" : {
-    "title" : "ACCONUT",
-    "RESET PASSWORD" : "RESET PASSWORD",
-    "CURRENT PASSWORD" : "CURRENT PASSWORD",
-    "NEW PASSWORD" : "NEW PASSWORD",
-    "CONFIRM NEW PASSWORD" : "CONFIRM NEW PASSWORD",
+    "title" : "CONTA",
+    "RESET PASSWORD" : "RESET SENHA",
+    "CURRENT PASSWORD" : "SENHA ATUAL",
+    "NEW PASSWORD" : "NOVA SENHA",
+    "CONFIRM NEW PASSWORD" : "CONFIRME A NOVA SENHA",
     "saveImgNormal"    : "/assets/imgs/en/btnAccountSaveNormal@2x.png",
     "cancelImgNormal"  : "/assets/imgs/en/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/en/btnAccountSavePressed@2x.png",
@@ -70,28 +70,28 @@
   },
 
   "history" : {
-    "title" : "HISTORY",
-    "time" : "TIME",
+    "title" : "HISTÓRIA",
+    "time" : "TEMPO",
     "to" : "TO",
     "goImgNormal"  : "/assets/imgs/en/btnHistoryGoNormal@2x.png",
     "goImgPressed" : "/assets/imgs/en/btnHistoryGoPressed@2x.png",
-    "GAME HISTORY" : "GAME HISTORY",
-    "IN/OUT HISTORY" : "IN/OUT HISTORY",
+    "GAME HISTORY" : "HISTORIA DEL JUEGO",
+    "IN/OUT HISTORY" : "HISTÓRIA DE ENTRADA / SAÍDA",
     "gameRecord" : {
-      "game" : "GAME",
-      "dateTime" : "DATE/TIME",
-      "bet" : "BET" ,
-      "win" : "WIN" ,
-      "beginMoney" : "START AMOUNT",
-      "endMoney" : "END AMOUNT"
+      "game" : "JOGOS",
+      "dateTime" : "DATA HORA",
+      "bet" : "APOSTA" ,
+      "win" : "GANHAR" ,
+      "beginMoney" : "VALOR DE INÍCIO",
+      "endMoney" : "VALOR END"
     } ,
 
     "inoutRecord" : {
       "no" : "NO.",
-      "dateTime" : "DATE/TIME",
-      "before" : "BEFORE",
-      "inout" : "IN/OUT",
-      "after" : "AFTER"
+      "dateTime" : "DATA HORA",
+      "before" : "ANTES",
+      "inout" : "ENTRADA / SAÍDA",
+      "after" : "DEPOIS DE"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "login": {
-    "rememberMe": "REMEMBER ME",
-    "account_holder": "PLAYER ID",
-    "password_holder": "PASSWORD",
+    "rememberMe": "RECUÉRDAME",
+    "account_holder": "ID DEL JUGADOR",
+    "password_holder": "SENHA",
     "loginbtn": "/assets/imgs/en/btnLoginNormal.png",
     "loginbtnpressed": "/assets/imgs/en/btnLoginPressed.png",
     "mainicon": "/assets/imgs/en/picLogoEn.png"
@@ -12,16 +12,16 @@
     "marry": "MARY SLOTS",
     "poker": "POKER GAMES",
     "setting": {
-      "music": "MUSIC",
-      "sounds": "SOUNDS",
-      "version": "VERSION",
+      "music": "MÚSICA",
+      "sounds": "SONAR",
+      "version": "VERSÃO",
       "download": "DOWNLOAD APP",
-      "logout": "LOGOUT",
+      "logout": "CERRAR SESIÓN",
       "on" : "ON",
       "off": "OFF"
     },
     "hotGameTag": "/assets/imgs/en/picTagHotGame.png",
-    "logoutMessage" :"ARE YOU SURE YOU WANT TO QUIT?",
+    "logoutMessage" :"¿SEGURO QUE QUIERES SALIR?",
 
     "lobbyimg": "/assets/imgs/en/btnLobbyNormal@2x.png",
     "historyimg": "/assets/imgs/en/btnHistoryNormal@2x.png",
@@ -48,8 +48,8 @@
   },
 
   "contact" : {
-    "title" : "CONTACT US",
-    "REACH US WITH FOLLOWING CONTACT DETAILS" : "REACH US WITH FOLLOWING CONTACT DETAILS",
+    "title" : "CONTÁCTENOS",
+    "REACH US WITH FOLLOWING CONTACT DETAILS" : "vLLEGUE A USTED CON LOS SIGUIENTES DATOS DE CONTACTO",
     "email-icon"    : "/assets/imgs/en/iconContactEmail@3x.png",
     "phone-icon"    : "/assets/imgs/en/iconContactPhone@3x.png",
     "whatsApp-icon" : "/assets/imgs/en/iconContactWhatsapp@3x.png",
@@ -58,11 +58,11 @@
   },
 
   "account" : {
-    "title" : "ACCONUT",
-    "RESET PASSWORD" : "RESET PASSWORD",
-    "CURRENT PASSWORD" : "CURRENT PASSWORD",
-    "NEW PASSWORD" : "NEW PASSWORD",
-    "CONFIRM NEW PASSWORD" : "CONFIRM NEW PASSWORD",
+    "title" : "CUENTA",
+    "RESET PASSWORD" : "RESTABLECER LA CONTRASEÑA",
+    "CURRENT PASSWORD" : "CONTRASEÑA ACTUAL",
+    "NEW PASSWORD" : "NOVA SENHA",
+    "CONFIRM NEW PASSWORD" : "CONFIRMAR NUEVA CONTRASEÑA",
     "saveImgNormal"    : "/assets/imgs/en/btnAccountSaveNormal@2x.png",
     "cancelImgNormal"  : "/assets/imgs/en/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/en/btnAccountSavePressed@2x.png",
@@ -70,28 +70,28 @@
   },
 
   "history" : {
-    "title" : "HISTORY",
-    "time" : "TIME",
+    "title" : "HISTORIA",
+    "time" : "HORA",
     "to" : "TO",
     "goImgNormal"  : "/assets/imgs/en/btnHistoryGoNormal@2x.png",
     "goImgPressed" : "/assets/imgs/en/btnHistoryGoPressed@2x.png",
-    "GAME HISTORY" : "GAME HISTORY",
-    "IN/OUT HISTORY" : "IN/OUT HISTORY",
+    "GAME HISTORY" : "HISTÓRICO DO JOGO",
+    "IN/OUT HISTORY" : "HISTORIA DE ENTRADA / SALIDA",
     "gameRecord" : {
-      "game" : "GAME",
-      "dateTime" : "DATE/TIME",
-      "bet" : "BET" ,
-      "win" : "WIN" ,
-      "beginMoney" : "START AMOUNT",
-      "endMoney" : "END AMOUNT"
+      "game" : "JUEGO",
+      "dateTime" : "FECHA Y HORA",
+      "bet" : "APUESTA" ,
+      "win" : "GANAR" ,
+      "beginMoney" : "COMENZAR LA CANTIDAD",
+      "endMoney" : "CANTIDAD FINAL"
     } ,
 
     "inoutRecord" : {
       "no" : "NO.",
-      "dateTime" : "DATE/TIME",
-      "before" : "BEFORE",
-      "inout" : "IN/OUT",
-      "after" : "AFTER"
+      "dateTime" : "FECHA Y HORA",
+      "before" : "ANTES DE",
+      "inout" : "ENTRADA / SALIDA",
+      "after" : "DESPUÉS"
     }
   }
 }
