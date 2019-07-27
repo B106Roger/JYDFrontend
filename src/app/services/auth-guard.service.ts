@@ -68,6 +68,7 @@ export class AuthGuardService implements CanActivate {
 
   logout() {
     localStorage.removeItem('user');
+    sessionStorage.removeItem('UID');
     this.router.navigate(['/login']);
   }
 

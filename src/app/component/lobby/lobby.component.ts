@@ -71,7 +71,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
-      gameName: 'Game1',
+      gameName: 'fortunes88',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
       gameCategory: 'slots',
@@ -92,21 +92,21 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
-      gameName: 'Game1',
+      gameName: 'buffalo',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picBanner01.png',
       gameCategory: 'slots',
       display: '3'
     },
     {
-      gameName: 'Game1',
+      gameName: 'buffalo',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picBanner01.png',
       gameCategory: 'slots',
       display: '3'
     },
     {
-      gameName: 'Game1',
+      gameName: 'buffalo',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picBanner01.png',
       gameCategory: 'slots',
