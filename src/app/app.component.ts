@@ -14,7 +14,7 @@ import { __asyncDelegator } from 'tslib';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'JYDFrontend';
   updates = false;
-
+  displayHeader = 'none';
   constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService) {
     translate.addLangs(['en', 'zh-cn']);
     translate.setDefaultLang('en');
@@ -35,10 +35,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void {
     // 當有新東西時更新pwa cache
-    this.swupdate.available.subscribe(event => {
-      this.updates = true;
-      this.swupdate.activateUpdate().then(() => {
-        document.location.reload();
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      this.swupdate.available.subscribe(event => {
+        this.updates = true;
+        this.swupdate.activateUpdate().then(() => {
+          document.location.reload();
+        });
       });
     });
 
@@ -47,13 +49,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       Notification.requestPermission((status) => {
         console.log('Notification permission status:', status);
       });
-    }
-
-    // 為PC加入置中class
-    if (window.innerHeight > 700) {
-      document.querySelector('body').classList.add('d-flex');
-      document.querySelector('body').classList.add('justify-content-center');
-      document.querySelector('body').classList.add('align-items-center');
     }
   }
 
@@ -107,16 +102,15 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, 500);
       }, false);
     }
+    this.displayIOSBar();
   }
 
   displayIOSBar() {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIOS = /iphone|ipod/.test( userAgent );
+    const isIOS = /iphone/.test( userAgent );
     const isStandalone = 'standalone' in navigator && navigator['standalone'];
-    if (isIOS) {
-      return 'display';
-    } else {
-     return 'none';
+    if (isIOS === true) {
+      this.displayHeader = 'block';
     }
   }
 }
