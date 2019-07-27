@@ -39,14 +39,15 @@
   max-width: 190px;
 
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  #iconCredit  {
+    height: 55.3%;
+    margin-left: 10px;
+    width: auto;
+  }
 }
 
-#iconCredit  {
-  height: 55.3%;
-  margin-left: 5px;
-  width: auto;
-}
+
 
 
 

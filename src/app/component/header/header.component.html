@@ -2,14 +2,14 @@
 <div class="row-flex-no-margin-padding" id="header-bg">
 
       <div class="row-flex" id="name-bg" >
-        <img  id="iconId" src="/assets/imgs/iconId@2x.png" routerLink="/lobby" >
-        <span class="basic-text-style">Hello</span>
+        <img  id="iconId" src="/assets/imgs/iconId@2x.png" >
+        <span class="basic-text-style">{{ UserID }}</span>
       </div>
 
 
       <div class="row-flex" id="credit-bg">
-          <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
-          <span class="basic-text-style">3,245,568.00</span>
+        <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
+        <span class="basic-text-style" style="margin-right: 10px">{{money | number: '.2-2'}}</span>
       </div>
 
       <button class="no-padding" id="settingButton"

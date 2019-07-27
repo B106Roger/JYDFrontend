@@ -12,9 +12,13 @@ import { __asyncDelegator } from 'tslib';
 })
 
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'JYDFrontend';
   updates = false;
   displayHeader = 'none';
+
+  userAgent = window.navigator.userAgent.toLowerCase();
+  isIphone = /iphone/.test( this.userAgent );
+  isStandalone = 'standalone' in navigator && navigator['standalone'];
+
   constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService) {
     translate.addLangs(['en', 'zh-cn', 'es', 'pt']);
     translate.setDefaultLang('en');
@@ -34,41 +38,40 @@ export class AppComponent implements OnInit, AfterViewInit {
     localStorage.setItem('lang', this.translate.currentLang);
   }
   ngOnInit(): void {
-    // 當有新東西時更新pwa cache
+    // 如果service worker有被註冊時
     navigator.serviceWorker.getRegistrations().then(registrations => {
+      // 當有新東西時更新pwa cache
       this.swupdate.available.subscribe(event => {
         this.updates = true;
         this.swupdate.activateUpdate().then(() => {
           document.location.reload();
         });
       });
+      // 詢問瀏覽器是否接受通知
+      if ('serviceWorker' in navigator) {
+        Notification.requestPermission((status) => {
+          console.log('Notification permission status:', status);
+        });
+      }
+    }).catch((err) => {
+      console.log(err);
     });
-
-    // 詢問瀏覽器是否接受通知
-    if ('serviceWorker' in navigator) {
-      Notification.requestPermission((status) => {
-        console.log('Notification permission status:', status);
-      });
-    }
   }
 
   ngAfterViewInit() {
     let startY = -1;
     let endY = -1;
     let time = new Date().getTime();
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIOS = /iphone|ipod/.test( userAgent );
-    const isStandalone = 'standalone' in navigator && navigator['standalone'];
-    if (isIOS === true) {
-      scrollTo(0, 40);
-
+    if (this.isIphone === true) {
+      scrollTo(0, 100);
       // 當網頁是經由home開啟時要防止縮放滑動
-      if (isStandalone) {
+      if (this.isStandalone) {
         // 防止瀏覽器上下滑動
         window.addEventListener('touchmove', (e) => {
           endY = e.changedTouches[0].pageY;
-          if (Math.abs(startY - endY) > 7) {
+          if (Math.abs(startY - endY) > 10) {
             e.preventDefault();
+            e.stopPropagation();
           }
         }, {passive: false});
 
@@ -88,7 +91,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       // 取得轉方向的event
       window.addEventListener('resize', () => {
-        document.body.style.height = `$(window.innerHeight)`;
         let resizeId;
         if (resizeId) {
           clearTimeout(resizeId);
@@ -96,21 +98,19 @@ export class AppComponent implements OnInit, AfterViewInit {
         resizeId = setTimeout(() => {
           if (window.outerWidth >= window.outerHeight) {
             alert('change orientation to see full content');
-          } else if (isStandalone) {
-            scrollTo(0, 40);
+          } else if (this.isStandalone) {
+            scrollTo(0, 100);
           }
         }, 500);
       }, false);
     }
-    this.displayIOSBar();
   }
 
   displayIOSBar() {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIOS = /iphone/.test( userAgent );
-    const isStandalone = 'standalone' in navigator && navigator['standalone'];
-    if (isIOS === true) {
-      this.displayHeader = 'block';
+    if (this.isIphone === true) {
+      return 'block';
+    } else {
+      return 'none';
     }
   }
 }

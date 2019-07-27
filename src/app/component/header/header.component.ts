@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,14 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   musicEle: ElementRef;
   msuic = false;
   sound = false;
-  constructor() { }
+  money = 999999999;
+  UserID = '';
+  constructor(public auth: AuthGuardService) { }
 
   ngOnInit() {
     this.msuic = (localStorage.getItem('music') === 'on' ? true : false);
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
+    this.getMoney();
   }
   ngAfterViewInit() {
     this.setMusic();
@@ -61,5 +65,25 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       }
       document.removeEventListener('click', interact);
     }
+  }
+
+  getMoney() {
+    fetch('https://jyddev.azurewebsites.net/api/AmountAPI.aspx', {
+      method: 'GET',
+      headers: {
+        Currency: 'CNY',
+        UserID: this.auth.getUserID(),
+        Authorization: 'A602F295A6D547309A73AEC701ABC196'
+      }
+    }).then( response => {
+      if ( !response.ok ) {
+        throw Error( response.statusText );
+      } else {
+        return response.json();
+      }
+    }).then((responseJson) => {
+      this.money = parseFloat(responseJson.Amount);
+      this.UserID = this.auth.getUserID();
+    });
   }
 }
