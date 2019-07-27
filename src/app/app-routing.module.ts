@@ -1,11 +1,10 @@
 import { AuthGuardService } from './services/auth-guard.service';
+import { AutoGuardService } from './services/auto-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './component/login/login.component';
 import { LobbyComponent } from './component/lobby/lobby.component';
 import { HistoryComponent } from './component/history/history.component';
-import { GameRecordsComponent } from './component/history/game-records.component';
-import { IoRecordsComponent } from './component/history/io-records.component';
 import { AccountComponent } from './component/account/account.component';
 import { ContactComponent } from './component/contact/contact.component';
 import { DownloadAppComponent } from './component/download-app/download-app.component';
@@ -13,7 +12,8 @@ import { GameComponent } from './component/game/game.component';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AutoGuardService]
   },
   {
     path: 'lobby',
