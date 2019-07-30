@@ -3,7 +3,7 @@
     <div class="game-container">
       <!-- 廣播元件 -->
       <div class="marquee-bg">
-        <img src="/assets/imgs/iconMarqueeSpeaker@2x.png" style="margin: 7.5px;">
+        <img src="/assets/imgs/iconMarqueeSpeaker@2x.png">
       </div>
 
       <!-- 遊戲種類選擇元鍵 3,2-->
@@ -44,7 +44,7 @@
             <span class="basic-text-style" style="margin-bottom: 3px;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
-                        '/assets/imgs/iconGameMenuUp.png'" >
+                        '/assets/imgs/iconGameMenuUp.png'"  [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px'}">
 
           </button>
           <!-- poppup setting content padding-top: 11px;-->
