@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     },
     {
       lang: 'pt',
-      img: '/assets/imgs/iconLanSc.png',
+      img: '/assets/imgs/iconLanPo.png',
       label: 'Português'
     }
   ];

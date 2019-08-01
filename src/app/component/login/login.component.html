@@ -1,20 +1,20 @@
 <section class="root-base" >
   <div class=flex-container id="login-backround">
     <div class="row-flex">
-        <img [src]="'login.mainicon' | translate">
+        <img [src]="'login.mainicon' | translate" style="height: 100px;width: 208px;">
     </div>
-        <!-- poppup setting content padding-top: 11px;-->
-        <popper-content #popperSetting >
-          <div class="unselectable" id="langPopup">
-            <ng-container *ngFor="let ele of langList">
-              <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);popperSetting.hide()">
-                <img [src]="ele.img" class="langFlag">
-                <span class="lang-text">{{ele.label}}</span>
-              </div>
-            </ng-container>
+    <!-- poppup setting content padding-top: 11px;-->
+    <popper-content #popperSetting >
+      <div class="unselectable" id="langPopup">
+        <ng-container *ngFor="let ele of langList">
+          <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);popperSetting.hide()">
+            <img [src]="ele.img">
+            <span class="lang-text">{{ele.label}}</span>
           </div>
-        </popper-content>
-    <div class="row-flex" style="position: relative;z-index: 2;">
+        </ng-container>
+      </div>
+    </popper-content>
+    <div class="row-flex" style="margin-top: 20px">
       <button id="lang-bg" class="row-flex"
       (popperOnShown)="langSelectOnShow()"
       (popperOnHidden)="langSelectOnShow()"
@@ -45,11 +45,11 @@
           escapeWithReference: true
         }
       }">
-        <img [src]="getLang().img" class="langFlag">
-        <span class="lang-text">{{getLang().label}}</span>
-        <img [src]="langShow == false ?
-        '/assets/imgs/iconLanMenuDown.png' :
-        '/assets/imgs/iconLanMenuUp.png'" style="margin-top: 4px;position: absolute; right: 7px;" >
+      <img [src]="getLang().img" class="langFlag">
+      <span class="lang-text" style="font-size: 15px;">{{getLang().label}}</span>
+      <img [src]="langShow == false ?
+      '/assets/imgs/iconLanMenuDown.png' :
+      '/assets/imgs/iconLanMenuUp.png'" style="margin-top: 2px;position: absolute;right: 10px" >
       </button>
     </div>
 
@@ -68,14 +68,14 @@
       </div>
     </div>
 
-    <div class="row-flex">
-      <div class="row-flex" [ngStyle]="{'width': '135px'}"></div>
-      <div class="row-flex" style="margin-top: 0px;align-items: center" >
+    <div class="row-flex" style="position: relative;top: -7px">
+      <div class="row-flex" style="width: 135px"></div>
+      <div class="row-flex" style="align-items: center" >
         <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
           <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()">
         </div>
         <div class="column-flex" >
-          <label for="remember-me" class="unselectable basic-text-style" style="margin-bottom: 0px;" >
+          <label for="remember-me" class="unselectable basic-text-style" style="margin: 0;font-size: 10px" >
               {{ 'login.rememberMe' | translate}}
           </label>
         </div>
