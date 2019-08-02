@@ -15,6 +15,10 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   menuShow = false;
   menuList = [
     {
+      value: 'all',
+      label: 'ALL'
+    },
+    {
       value: 'slots',
       label: 'SLOTS'
     },
@@ -36,6 +40,48 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '1'
     },
     {
+      gameName: 'deuceswild',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameCategory: 'poker',
+      display: '2'
+    },
+    {
+      gameName: 'deuceswild',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameCategory: 'poker',
+      display: '2'
+    },
+    {
+      gameName: 'deuceswild',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameCategory: 'poker',
+      display: '2'
+    },
+    {
+      gameName: 'deuceswild',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameCategory: 'poker',
+      display: '2'
+    },
+    {
+      gameName: 'luckygoddess',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_luckygoddess_en.png',
+      gameCategory: 'marry',
+      display: '2'
+    },
+    {
+      gameName: 'sambaqueen',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sambaqueen_en.png',
+      gameCategory: 'marry',
+      display: '2'
+    },
+    {
       gameName: 'fivekoi',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame5Koi.png',
@@ -49,31 +95,31 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       gameCategory: 'slots',
       display: '2'
     },
-    {
-      gameName: 'Game1',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameAgent008.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'fortunes88',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'Game1',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameAgent008.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
+    // {
+    //   gameName: 'gameagent008',
+    //   gameScript: 'url_string',
+    //   gameImgUrl: '/assets/imgs/picGameAgent008.png',
+    //   gameCategory: 'slots',
+    //   display: '2'
+    // },
     {
       gameName: 'fortunes88',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'diamondeternity',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_diamondeternity_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'huga',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_huga_en.png',
       gameCategory: 'slots',
       display: '2'
     },
@@ -85,9 +131,44 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
+      gameName: 'misskitty',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_misskitty_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'pelicanpete',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_pelicanpete_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
       gameName: 'buffalo',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'kingofmountain',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'sexybartender',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'soccerfever',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
       gameCategory: 'slots',
       display: '2'
     },
@@ -127,13 +208,21 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
 
   getNormalGame() {
-    return this.images.filter((e) => e.display === '2' && e.gameCategory === this.menuSelected);
+    if (this.menuSelected === 'all') {
+      return this.images.filter((e) => e.display === '2');
+    } else {
+      return this.images.filter((e) => e.display === '2' && e.gameCategory === this.menuSelected);
+    }
   }
   getHotGame() {
-    return this.images.filter((e) => e.display === '1' && e.gameCategory === this.menuSelected);
+    if (this.menuSelected === 'all') {
+      return this.images.filter((e) => e.display === '1');
+    } else {
+      return this.images.filter((e) => e.display === '1' && e.gameCategory === this.menuSelected);
+    }
   }
   getCarouselGame() {
-    return this.images.filter((e) => e.display === '3' && e.gameCategory === this.menuSelected);
+    return this.images.filter((e) => e.display === '3');
   }
   getMenuSelect() {
     return this.menuList.filter((e) => e.value === this.menuSelected)[0];

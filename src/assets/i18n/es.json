@@ -8,6 +8,7 @@
     "mainicon": "/assets/imgs/en/picLogoEn.png"
   },
   "lobby": {
+    "all": "ALL",
     "slots": "SLOT",
     "marry": "MARY SLOTS",
     "poker": "POKER GAMES",

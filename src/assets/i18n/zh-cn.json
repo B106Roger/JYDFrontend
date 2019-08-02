@@ -8,6 +8,7 @@
     "mainicon": "/assets/imgs/zh-cn/picLogoSc.png"
   },
   "lobby": {
+    "all": "全部",
     "slots": "老虎机",
     "marry": "玛莉机",
     "poker": "扑克游戏",
