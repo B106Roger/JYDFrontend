@@ -105,12 +105,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       }, false);
     }
   }
-
-  displayIOSBar() {
-    if (this.isIphone === true) {
-      return 'block';
-    } else {
-      return 'none';
-    }
+  isLoginOrGame() {
+    const dst = this.router.url;
+    return dst === '/' || dst.match('/game/');
   }
 }

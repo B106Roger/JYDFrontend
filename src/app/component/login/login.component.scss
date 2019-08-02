@@ -1,3 +1,22 @@
+.login-root-base
+{
+  font-size:0.95em;
+  position: relative;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  min-width:320px;
+  min-height:548px;
+
+  max-width:494px;
+  max-height:840px;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+
 #login-backround {
   @media only screen  and (min-height: 760px) {
     background: url('/assets/imgs/bgLoginBig@2x.png') center no-repeat;
