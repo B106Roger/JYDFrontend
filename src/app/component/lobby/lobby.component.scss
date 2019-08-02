@@ -3,7 +3,7 @@
 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%100%;
 
   display: flex;
   flex-direction: column;
@@ -17,17 +17,19 @@
 
 // 遊戲列表 start
 .game-container {
-  position: absolute;
-  top: 66px;
-  bottom: 66px;
   width: 100%;
-
+  @media screen and (min-height: 760px){
+    height: calc(100vh - 106px - 85px);
+    max-height: calc(840px - 106px - 85px);
+  }
+  @media screen and (max-height: 759px){
+    height: calc(100vh - 66px - 67px);
+    max-height: calc(840px - 66px - 67px);
+  }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-content: center;
-
-  overflow:hidden;
 }
 
 
@@ -35,6 +37,7 @@
 #normal-game-container {
   height: 55%;
   width: 100%;
+  margin-top: 2%;
   @media only screen and (max-width: 415px) {
     max-height: 281px;
   }
@@ -138,6 +141,66 @@
 
 
 // 遊戲種類選單 start
+.menu-container {
+  position: relative;
+  z-index: 3;
+  justify-content: flex-start;
+
+  // 對齊輪播牆
+  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
+  {
+    margin-left: 9%;
+    margin-top: 7%;
+  }
+  @media only screen and (max-width: 376px)      // i6,i7,i8
+  {
+    margin-left: 4.5%;
+    margin-top: 5%;
+  }
+  @media only screen and (max-width: 361px)      //GL s5
+  {
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+  @media only screen and (max-width: 341px)    //i5 SE
+  {
+    margin-left: 5.5%;
+    margin-top: 3%;
+  }
+  @media screen  and (min-width: 416px)       // PC
+  {
+    margin-left: 4.5%;
+    margin-top: 5%;
+  }
+  #game-filter-bg {
+    background: url('/assets/imgs/picGameMenuBg@2x.png');
+    background-size: 100%100%;
+
+    background-repeat: no-repeat;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 43%;
+    height: 33px;
+    padding: 0px 16px 0px 10px;
+    margin-left: 1px;
+
+    outline: none;
+    border: none;
+
+    position: relative;
+    z-index: 3;
+    &:hover {
+      cursor: default;
+    }
+
+    @media screen  and (min-width: 1000px){
+      font-size: 16px;
+    }
+  }
+
+}
+
 #menuPopup {
   position: absolute;top: 22%;
   height: 75%;
@@ -267,66 +330,6 @@
   margin:0px;
 }
 
-
-.menu-container {
-  position: relative;
-  z-index: 3;
-  justify-content: flex-start;
-
-  // 對齊輪播牆
-  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
-  {
-    margin-left: 9%;
-    margin-top: 7%;
-  }
-  @media only screen and (max-width: 376px)      // i6,i7,i8
-  {
-    margin-left: 4.5%;
-    margin-top: 5%;
-  }
-  @media only screen and (max-width: 361px)      //GL s5
-  {
-    margin-left: 3%;
-    margin-top: 3%;
-  }
-  @media only screen and (max-width: 341px)    //i5 SE
-  {
-    margin-left: 4.5%;
-    margin-top: 3%;
-  }
-  @media screen  and (min-width: 416px)       // PC
-  {
-    margin-left: 4.5%;
-    margin-top: 5%;
-  }
-  #game-filter-bg {
-    background: url('/assets/imgs/picGameMenuBg@2x.png');
-    background-size: 100%100%;
-
-    background-repeat: no-repeat;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 43%;
-    height: 33px;
-    padding: 0px 16px 0px 10px;
-    margin-left: 0px;
-
-    outline: none;
-    border: none;
-
-    position: relative;
-    z-index: 3;
-    &:hover {
-      cursor: default;
-    }
-
-    @media screen  and (min-width: 1000px){
-      font-size: 16px;
-    }
-  }
-
-}
 
 .carousel-container {
   @media only screen and (max-height: 667px)              // Galaxy S5  I6,I7,I8
