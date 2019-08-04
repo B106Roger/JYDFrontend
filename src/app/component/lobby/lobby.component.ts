@@ -175,6 +175,146 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     {
       gameName: 'buffalo',
       gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'kingofmountain',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'sexybartender',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'soccerfever',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'buffalo',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'kingofmountain',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'sexybartender',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'soccerfever',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'buffalo',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'kingofmountain',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'sexybartender',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'soccerfever',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'buffalo',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'kingofmountain',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'sexybartender',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'soccerfever',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'buffalo',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'kingofmountain',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'sexybartender',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'soccerfever',
+      gameScript: 'url_string',
+      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
+      gameCategory: 'slots',
+      display: '2'
+    },
+    {
+      gameName: 'buffalo',
+      gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picBanner01.png',
       gameCategory: 'slots',
       display: '3'
@@ -273,7 +413,8 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   // 註冊滑鼠點擊拖曳 的 移動事件
   startScroll(e1: MouseEvent) {
-    clearInterval(this.scrollintervalItem);
+    var scrollintervalItem;
+    clearInterval(scrollintervalItem);
     const initialLocation = e1.clientX;
     const initalTime = new Date();
     let previousLocation = initialLocation;
@@ -296,7 +437,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       // *******************************************
       const interval = new Date().getTime() - initalTime.getTime();
       const distance = initialLocation - e3.clientX;
-      const timeinterval = 0.1;
+
       let velocity = distance / interval;
       if (interval === 0) {
         velocity = distance / 0.1;
@@ -304,28 +445,37 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       velocity *= 100;
       console.log('ini location: ', initialLocation, 'final location: ' , e3.clientX);
       console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
-      if (Math.abs(velocity) > 20) {
-        this.scrollintervalItem = setInterval((e) => {
-          const ratio = 0.05;
-          if (Math.abs(velocity) > 5) {
-            ele.scrollLeft += velocity  * timeinterval;
-            velocity = velocity * (1 - ratio);
+      const updateInterval = 0.1;
+      const decreaseRatio = 0.05;
+      const initalcount = Math.floor(1 / updateInterval);
+      let count = initalcount;
+      if (Math.abs(velocity) > 5) {
+        scrollintervalItem = setInterval((e) => {
+          if (Math.abs(velocity) > 2) {
+            if (count > 0) {
+              ele.scrollLeft += Math.floor(velocity  * updateInterval);
+              count--;
+            } else {
+              count = initalcount;
+              velocity = velocity * (1 - decreaseRatio);
+            }
           } else {
-            clearInterval(this.scrollintervalItem);
+            clearInterval(scrollintervalItem);
           }
-        }, timeinterval);
+        }, updateInterval);
       }
 
       // *******************************************
     }
   }
   startTouch(e1: TouchEvent) {
-    clearInterval(this.touchintervalItem);
+    var touchintervalItem;
+    clearInterval(touchintervalItem);
     const initialLocation = e1.changedTouches[0].clientX;
     const initalTime = new Date();
     let previousLocation = initialLocation;
-    const ele = document.querySelector('#normal-game-container');
 
+    const ele = document.querySelector('#normal-game-container');
     e1.currentTarget.addEventListener('touchmove', scrollX);
     e1.currentTarget.addEventListener('touchend', endScroll);
     e1.currentTarget.addEventListener('touchcancel', endScroll);
@@ -343,7 +493,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       // *******************************************
       const interval = new Date().getTime() - initalTime.getTime();
       const distance = initialLocation - e3.changedTouches[0].clientX;
-      const timeinterval = 0.1;
+
       let velocity = distance / interval;
       if (interval === 0) {
         velocity = distance / 0.1;
@@ -351,18 +501,25 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       velocity *= 100;
       console.log('ini location: ', initialLocation, 'final location: ' , e3.changedTouches[0].clientX);
       console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
-      if (Math.abs(velocity) > 20) {
-        this.touchintervalItem = setInterval((e) => {
-          const ratio = 0.05;
-          if (Math.abs(velocity) > 5) {
-            ele.scrollLeft += velocity  * timeinterval;
-            velocity = velocity * (1 - ratio);
+      const updateInterval = 0.1;
+      const decreaseRatio = 0.05;
+      const initalcount = Math.floor(1 / updateInterval);
+      let count = initalcount;
+      if (Math.abs(velocity) > 5) {
+        touchintervalItem = setInterval((e) => {
+          if (Math.abs(velocity) > 2) {
+            if (count > 0) {
+              ele.scrollLeft += Math.floor(velocity  * updateInterval);
+              count--;
+            } else {
+              count = initalcount;
+              velocity = velocity * (1 - decreaseRatio);
+            }
           } else {
-            clearInterval(this.touchintervalItem);
+            clearInterval(touchintervalItem);
           }
-        }, timeinterval);
+        }, updateInterval);
       }
-
       // *******************************************
     }
   }
