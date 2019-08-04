@@ -11,7 +11,7 @@ declare var $: any;
 
 export class LobbyComponent implements OnInit, AfterViewInit {
 
-  menuSelected = 'slots';
+  menuSelected = 'all';
   menuShow = false;
   menuList = [
     {
@@ -193,9 +193,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       gameCategory: 'slots',
       display: '3'
     },
-
   ];
-
+  private scrollintervalItem;
+  private touchintervalItem;
 
   constructor(private translate: TranslateService, private auth: AuthGuardService) { }
 
@@ -273,20 +273,97 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   // 註冊滑鼠點擊拖曳 的 移動事件
   startScroll(e1: MouseEvent) {
-    let originLocation = e1.clientX;
+    clearInterval(this.scrollintervalItem);
+    const initialLocation = e1.clientX;
+    const initalTime = new Date();
+    let previousLocation = initialLocation;
+
     const ele = document.querySelector('#normal-game-container');
     e1.currentTarget.addEventListener('mousemove', scrollX);
     e1.currentTarget.addEventListener('mouseup', endScroll);
     e1.currentTarget.addEventListener('mouseleave', endScroll);
 
     function scrollX(e2: MouseEvent) {
-      const delta =  originLocation - e2.clientX ;
+      const delta =  previousLocation - e2.clientX ;
       ele.scrollLeft += delta;
-      originLocation = e2.clientX;
+      previousLocation = e2.clientX;
     }
     function endScroll(e3: MouseEvent) {
       e3.currentTarget.removeEventListener('mousemove', scrollX);
       e3.currentTarget.removeEventListener('mouseup', endScroll);
+      e3.currentTarget.removeEventListener('mouseleave', endScroll);
+
+      // *******************************************
+      const interval = new Date().getTime() - initalTime.getTime();
+      const distance = initialLocation - e3.clientX;
+      const timeinterval = 0.1;
+      let velocity = distance / interval;
+      if (interval === 0) {
+        velocity = distance / 0.1;
+      }
+      velocity *= 100;
+      console.log('ini location: ', initialLocation, 'final location: ' , e3.clientX);
+      console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
+      if (Math.abs(velocity) > 20) {
+        this.scrollintervalItem = setInterval((e) => {
+          const ratio = 0.05;
+          if (Math.abs(velocity) > 5) {
+            ele.scrollLeft += velocity  * timeinterval;
+            velocity = velocity * (1 - ratio);
+          } else {
+            clearInterval(this.scrollintervalItem);
+          }
+        }, timeinterval);
+      }
+
+      // *******************************************
+    }
+  }
+  startTouch(e1: TouchEvent) {
+    clearInterval(this.touchintervalItem);
+    const initialLocation = e1.changedTouches[0].clientX;
+    const initalTime = new Date();
+    let previousLocation = initialLocation;
+    const ele = document.querySelector('#normal-game-container');
+
+    e1.currentTarget.addEventListener('touchmove', scrollX);
+    e1.currentTarget.addEventListener('touchend', endScroll);
+    e1.currentTarget.addEventListener('touchcancel', endScroll);
+
+    function scrollX(e2: TouchEvent) {
+      const delta =  previousLocation - e2.changedTouches[0].clientX ;
+      ele.scrollLeft += delta;
+      previousLocation = e2.changedTouches[0].clientX;
+    }
+    function endScroll(e3: TouchEvent) {
+      e3.currentTarget.removeEventListener('touchmove', scrollX);
+      e3.currentTarget.removeEventListener('touchend', endScroll);
+      e3.currentTarget.removeEventListener('touchcancel', endScroll);
+
+      // *******************************************
+      const interval = new Date().getTime() - initalTime.getTime();
+      const distance = initialLocation - e3.changedTouches[0].clientX;
+      const timeinterval = 0.1;
+      let velocity = distance / interval;
+      if (interval === 0) {
+        velocity = distance / 0.1;
+      }
+      velocity *= 100;
+      console.log('ini location: ', initialLocation, 'final location: ' , e3.changedTouches[0].clientX);
+      console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
+      if (Math.abs(velocity) > 20) {
+        this.touchintervalItem = setInterval((e) => {
+          const ratio = 0.05;
+          if (Math.abs(velocity) > 5) {
+            ele.scrollLeft += velocity  * timeinterval;
+            velocity = velocity * (1 - ratio);
+          } else {
+            clearInterval(this.touchintervalItem);
+          }
+        }, timeinterval);
+      }
+
+      // *******************************************
     }
   }
 }

@@ -64,7 +64,7 @@
 
 
       <!-- 遊戲顯示元件  -->
-      <div id="normal-game-container" (mousedown)="startScroll($event)" >
+      <div id="normal-game-container" (mousedown)="startScroll($event)" (touchstart)="startTouch($event)">
           <div id="hot-game-frame" *ngIf="getHotGame().length > 0" [routerLink]="['/game' , getHotGame()[0].gameName]">
             <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
             <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl" draggable="false">

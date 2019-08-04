@@ -68,11 +68,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (this.isStandalone) {
         // 防止瀏覽器上下滑動
         window.addEventListener('touchmove', (e) => {
-          endY = e.changedTouches[0].pageY;
-          if (Math.abs(startY - endY) > 10) {
-            e.preventDefault();
-            e.stopPropagation();
-          }
+          // endY = e.changedTouches[0].pageY;
+          // if (Math.abs(startY - endY) > 10) {
+          //   e.preventDefault();
+          //   e.stopPropagation();
+          // }
+          e.preventDefault();
         }, {passive: false});
 
         // 防止雙手縮放
