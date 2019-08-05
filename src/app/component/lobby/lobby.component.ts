@@ -11,6 +11,9 @@ declare var $: any;
 
 export class LobbyComponent implements OnInit, AfterViewInit {
 
+  userAgent = window.navigator.userAgent.toLowerCase();
+  isIphone = /iphone/.test( this.userAgent );
+  isStandalone = 'standalone' in navigator && navigator['standalone'];
   menuSelected = 'all';
   menuShow = false;
   menuList = [
@@ -413,16 +416,17 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   // 註冊滑鼠點擊拖曳 的 移動事件
   startScroll(e1: MouseEvent) {
-    var scrollintervalItem;
-    clearInterval(scrollintervalItem);
+    // 清除上一次的momentum scroll
+    clearInterval(this.scrollintervalItem);
     const initialLocation = e1.clientX;
     const initalTime = new Date();
     let previousLocation = initialLocation;
 
-    const ele = document.querySelector('#normal-game-container');
+    const newendScroll = endScroll.bind(this);
+    const ele = document.querySelector('#normal-game-container') as HTMLElement;
     e1.currentTarget.addEventListener('mousemove', scrollX);
-    e1.currentTarget.addEventListener('mouseup', endScroll);
-    e1.currentTarget.addEventListener('mouseleave', endScroll);
+    e1.currentTarget.addEventListener('mouseup', newendScroll);
+    e1.currentTarget.addEventListener('mouseleave', newendScroll);
 
     function scrollX(e2: MouseEvent) {
       const delta =  previousLocation - e2.clientX ;
@@ -431,10 +435,10 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     }
     function endScroll(e3: MouseEvent) {
       e3.currentTarget.removeEventListener('mousemove', scrollX);
-      e3.currentTarget.removeEventListener('mouseup', endScroll);
-      e3.currentTarget.removeEventListener('mouseleave', endScroll);
+      e3.currentTarget.removeEventListener('mouseup', newendScroll);
+      e3.currentTarget.removeEventListener('mouseleave', newendScroll);
 
-      // *******************************************
+      // *************   Momentum Scroll   ****************
       const interval = new Date().getTime() - initalTime.getTime();
       const distance = initialLocation - e3.clientX;
 
@@ -442,43 +446,56 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       if (interval === 0) {
         velocity = distance / 0.1;
       }
-      velocity *= 100;
       console.log('ini location: ', initialLocation, 'final location: ' , e3.clientX);
       console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
-      const updateInterval = 0.1;
-      const decreaseRatio = 0.05;
-      const initalcount = Math.floor(1 / updateInterval);
+
+      const maxscroll = ele.scrollWidth - ele.offsetWidth;
+      const updateInterval = 10;
+      let updateconstant = 5;
+      const decreaseRatio = 0.08;
+      const initalcount = 1000;
       let count = initalcount;
-      if (Math.abs(velocity) > 5) {
-        scrollintervalItem = setInterval((e) => {
-          if (Math.abs(velocity) > 2) {
+      if (Math.abs(velocity) > 0.05) {
+        this.scrollintervalItem = setInterval((e) => {
+          let displacement = Math.floor(velocity  * updateInterval);
+          if (velocity < 0) {displacement += 1; }
+          if (Math.abs(displacement) === 3) { updateconstant = 10; }
+          else if (Math.abs(displacement) === 2) { updateconstant = 20; }
+          else if (Math.abs(displacement) === 1) { updateconstant = 40; }
+
+          // 如果滑動速率低於0.1 px/ms 或 滑到頂部或底部，就停下來，並清除momentum scroll
+          if (Math.abs(velocity) > 0.1 && ele.scrollLeft !== 0 && ele.scrollLeft !== maxscroll) {
             if (count > 0) {
-              ele.scrollLeft += Math.floor(velocity  * updateInterval);
-              count--;
+              ele.scrollLeft += displacement;
+              count -= updateInterval * updateconstant;
             } else {
               count = initalcount;
               velocity = velocity * (1 - decreaseRatio);
             }
           } else {
-            clearInterval(scrollintervalItem);
+            clearInterval(this.scrollintervalItem);
           }
         }, updateInterval);
       }
-
       // *******************************************
     }
   }
+  // 註冊手機點擊拖曳 的 移動事件
   startTouch(e1: TouchEvent) {
-    var touchintervalItem;
-    clearInterval(touchintervalItem);
+    // 這個手機事件只有iphone 的 standalone模式才需要註冊
+    if (this.isIphone && ! this.isStandalone) { return; };
+
+    // 清除上一次的momentum scroll
+    clearInterval(this.touchintervalItem);
     const initialLocation = e1.changedTouches[0].clientX;
     const initalTime = new Date();
     let previousLocation = initialLocation;
 
-    const ele = document.querySelector('#normal-game-container');
+    const newendScroll = endScroll.bind(this);
+    const ele = document.querySelector('#normal-game-container') as HTMLElement;
     e1.currentTarget.addEventListener('touchmove', scrollX);
-    e1.currentTarget.addEventListener('touchend', endScroll);
-    e1.currentTarget.addEventListener('touchcancel', endScroll);
+    e1.currentTarget.addEventListener('touchend', newendScroll);
+    e1.currentTarget.addEventListener('touchcancel', newendScroll);
 
     function scrollX(e2: TouchEvent) {
       const delta =  previousLocation - e2.changedTouches[0].clientX ;
@@ -487,10 +504,10 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     }
     function endScroll(e3: TouchEvent) {
       e3.currentTarget.removeEventListener('touchmove', scrollX);
-      e3.currentTarget.removeEventListener('touchend', endScroll);
-      e3.currentTarget.removeEventListener('touchcancel', endScroll);
+      e3.currentTarget.removeEventListener('touchend', newendScroll);
+      e3.currentTarget.removeEventListener('touchcancel', newendScroll);
 
-      // *******************************************
+      // *************   Momentum Scroll   ****************
       const interval = new Date().getTime() - initalTime.getTime();
       const distance = initialLocation - e3.changedTouches[0].clientX;
 
@@ -498,25 +515,34 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       if (interval === 0) {
         velocity = distance / 0.1;
       }
-      velocity *= 100;
       console.log('ini location: ', initialLocation, 'final location: ' , e3.changedTouches[0].clientX);
       console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
-      const updateInterval = 0.1;
-      const decreaseRatio = 0.05;
-      const initalcount = Math.floor(1 / updateInterval);
+
+      const maxscroll = ele.scrollWidth - ele.offsetWidth;
+      const updateInterval = 10;
+      let updateconstant = 5;
+      const decreaseRatio = 0.08;
+      const initalcount = 1000;
       let count = initalcount;
-      if (Math.abs(velocity) > 5) {
-        touchintervalItem = setInterval((e) => {
-          if (Math.abs(velocity) > 2) {
+      if (Math.abs(velocity) > 0.05) {
+        this.touchintervalItem = setInterval((e) => {
+          let displacement = Math.floor(velocity  * updateInterval);
+          if (velocity < 0) {displacement += 1; }
+          if (Math.abs(displacement) === 3) { updateconstant = 10; }
+          else if (Math.abs(displacement) === 2) { updateconstant = 20; }
+          else if (Math.abs(displacement) === 1) { updateconstant = 40; }
+
+          // 如果滑動速率低於0.1 px/ms 或 滑到頂部或底部，就停下來，並清除momentum scroll
+          if (Math.abs(velocity) > 0.1 && ele.scrollLeft !== 0 && ele.scrollLeft !== maxscroll) {
             if (count > 0) {
-              ele.scrollLeft += Math.floor(velocity  * updateInterval);
-              count--;
+              ele.scrollLeft += displacement;
+              count -= updateInterval * updateconstant;
             } else {
               count = initalcount;
               velocity = velocity * (1 - decreaseRatio);
             }
           } else {
-            clearInterval(touchintervalItem);
+            clearInterval(this.touchintervalItem);
           }
         }, updateInterval);
       }
