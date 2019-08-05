@@ -103,6 +103,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   isLoginOrGame() {
     const dst = this.router.url;
-    return dst === '/' || dst.match('/game/');
+    return dst === '/' || dst.match('/game/') || dst === '/?utm_source=pwa_app';
   }
 }

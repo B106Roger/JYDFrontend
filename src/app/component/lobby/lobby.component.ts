@@ -178,146 +178,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     {
       gameName: 'buffalo',
       gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'kingofmountain',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'sexybartender',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'soccerfever',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'kingofmountain',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'sexybartender',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'soccerfever',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'kingofmountain',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'sexybartender',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'soccerfever',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'kingofmountain',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'sexybartender',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'soccerfever',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'kingofmountain',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'sexybartender',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'soccerfever',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/picBanner01.png',
       gameCategory: 'slots',
       display: '3'
@@ -352,7 +212,12 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   getNormalGame() {
     if (this.menuSelected === 'all') {
-      return this.images.filter((e) => e.display === '2');
+      const source = this.images.filter((e) => e.display === '2');
+      let result = source;
+      for (let i = 0; i < 5; i++) {
+        result = result.concat(source);
+      }
+      return result;
     } else {
       return this.images.filter((e) => e.display === '2' && e.gameCategory === this.menuSelected);
     }
@@ -452,22 +317,27 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       const maxscroll = ele.scrollWidth - ele.offsetWidth;
       const updateInterval = 10;
       let updateconstant = 5;
-      const decreaseRatio = 0.08;
+      const decreaseRatio = 0.1;
       const initalcount = 1000;
       let count = initalcount;
       if (Math.abs(velocity) > 0.05) {
-        this.scrollintervalItem = setInterval((e) => {
+        this.scrollintervalItem = setInterval(() => {
           let displacement = Math.floor(velocity  * updateInterval);
+          const absVelocity = Math.abs(velocity);
           if (velocity < 0) {displacement += 1; }
-          if (Math.abs(displacement) === 3) { updateconstant = 10; }
-          else if (Math.abs(displacement) === 2) { updateconstant = 20; }
-          else if (Math.abs(displacement) === 1) { updateconstant = 40; }
 
+          if (absVelocity < 0.2) { updateconstant = 50; }
+          else if (absVelocity < 0.3) { updateconstant = 25; }
+          else if (absVelocity < 0.4) { updateconstant = 15; }
+          else if (absVelocity < 0.5) { updateconstant = 11; }
+          else if (absVelocity < 0.7) { updateconstant = 9; }
+          else if (absVelocity < 1) { updateconstant = 7; }
           // 如果滑動速率低於0.1 px/ms 或 滑到頂部或底部，就停下來，並清除momentum scroll
-          if (Math.abs(velocity) > 0.1 && ele.scrollLeft !== 0 && ele.scrollLeft !== maxscroll) {
+          if (Math.abs(velocity) > 0.15 && ele.scrollLeft !== 0 && ele.scrollLeft !== maxscroll) {
             if (count > 0) {
               ele.scrollLeft += displacement;
               count -= updateInterval * updateconstant;
+              console.log(velocity,displacement,updateconstant);
             } else {
               count = initalcount;
               velocity = velocity * (1 - decreaseRatio);
@@ -483,7 +353,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   // 註冊手機點擊拖曳 的 移動事件
   startTouch(e1: TouchEvent) {
     // 這個手機事件只有iphone 的 standalone模式才需要註冊
-    if (this.isIphone && ! this.isStandalone) { return; };
+    if (! (this.isIphone &&  this.isStandalone)) { return; };
 
     // 清除上一次的momentum scroll
     clearInterval(this.touchintervalItem);
@@ -521,19 +391,23 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       const maxscroll = ele.scrollWidth - ele.offsetWidth;
       const updateInterval = 10;
       let updateconstant = 5;
-      const decreaseRatio = 0.08;
+      const decreaseRatio = 0.1;
       const initalcount = 1000;
       let count = initalcount;
       if (Math.abs(velocity) > 0.05) {
         this.touchintervalItem = setInterval((e) => {
           let displacement = Math.floor(velocity  * updateInterval);
+          let absVelocity = Math.abs(velocity);
           if (velocity < 0) {displacement += 1; }
-          if (Math.abs(displacement) === 3) { updateconstant = 10; }
-          else if (Math.abs(displacement) === 2) { updateconstant = 20; }
-          else if (Math.abs(displacement) === 1) { updateconstant = 40; }
 
+          if (absVelocity < 0.2) { updateconstant = 50; }
+          else if (absVelocity < 0.3) { updateconstant = 25; }
+          else if (absVelocity < 0.4) { updateconstant = 15; }
+          else if (absVelocity < 0.5) { updateconstant = 11; }
+          else if (absVelocity < 0.7) { updateconstant = 9; }
+          else if (absVelocity < 1) { updateconstant = 7; }
           // 如果滑動速率低於0.1 px/ms 或 滑到頂部或底部，就停下來，並清除momentum scroll
-          if (Math.abs(velocity) > 0.1 && ele.scrollLeft !== 0 && ele.scrollLeft !== maxscroll) {
+          if (absVelocity > 0.15 && ele.scrollLeft !== 0 && ele.scrollLeft !== maxscroll) {
             if (count > 0) {
               ele.scrollLeft += displacement;
               count -= updateInterval * updateconstant;
