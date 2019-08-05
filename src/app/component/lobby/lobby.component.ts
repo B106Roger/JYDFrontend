@@ -14,7 +14,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   userAgent = window.navigator.userAgent.toLowerCase();
   isIphone = /iphone/.test( this.userAgent );
   isStandalone = 'standalone' in navigator && navigator['standalone'];
-  menuSelected = 'all';
+  menuSelected: string;
   menuShow = false;
   menuList = [
     {
@@ -203,6 +203,13 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   constructor(private translate: TranslateService, private auth: AuthGuardService) { }
 
   ngOnInit() {
+    // 初始化遊戲選擇項目
+    if (!localStorage.getItem('gameChoose')) {
+      this.menuSelected = 'all';
+      localStorage.setItem('gameChoose', 'all');
+    } else {
+      this.menuSelected = localStorage.getItem('gameChoose');
+    }
   }
 
   ngAfterViewInit() {
@@ -237,6 +244,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
   setMenuSelect(menuOption: string) {
     this.menuSelected = menuOption;
+    localStorage.setItem('gameChoose', menuOption);
   }
   toggleMenuOnShow() {
     this.menuShow = !this.menuShow;

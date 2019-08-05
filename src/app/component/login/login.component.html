@@ -79,7 +79,7 @@
               {{ 'login.rememberMe' | translate}}
           </label>
         </div>
-        <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember">
+        <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember" (change)="setRememberValue()">
       </div>
     </div>
 

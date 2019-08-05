@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   account = 'test007';
   password = '';
-  remember = true;
+  remember: boolean;
   langShow = false;
   langChoosed = 'en';
   langList = [
@@ -41,10 +41,18 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService) {  }
 
   ngOnInit() {
+    // 設定語系
     this.langChoosed = localStorage.getItem('lang');
     console.log(this.langChoosed);
     console.log(this.translate.currentLang);
     document.querySelector('body').id = this.translate.currentLang;
+    // 設定記住帳密
+    if (! localStorage.getItem('remember')) {
+      this.remember = false;
+      localStorage.setItem('remember', 'false');
+    } else {
+      this.remember = localStorage.getItem('remember') === 'true';
+    }
   }
 
   ngAfterViewInit() {
@@ -56,7 +64,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const displayVal = this.getRememberValue() === true ? 'inline' : 'none';
     return { display: displayVal };
   }
-  toggleRemeberValue() {this.remember = !this.remember; }
+  toggleRemeberValue() {
+    this.remember = !this.remember;
+    this.setRememberValue();
+   }
+   setRememberValue() {
+    const setvalue = this.remember === true ? 'true' : 'false';
+    localStorage.setItem('remember', setvalue);
+   }
   langSelectOnShow() {
     this.langShow = ! this.langShow;
   }
