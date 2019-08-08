@@ -2,6 +2,7 @@ const Api = {
    /*
     UICD348EE55BC1A63AA805F63DE86EB5F7757D2EAD891FDFB25E5A523B26DE9E25D3D9D3952F505B6E4F157652ED50A0342F79CCFD79E70506
     13FCD060F0651739050F60CACBE5C33DD1BA68974831BAC0
+
     https://jyddev.azurewebsites.net/
     https://jyddev.azurewebsites.net/
    */
@@ -10,7 +11,7 @@ const Api = {
     * @headers {'Content-Type':'application/json'}
     * @var  UserID   :string
     * @var  Password :string
-    * @return UserID , UID
+    * @return access_token , expires_in , token_type , scope
     */
   loginApi      : 'https://jyddev1.azurewebsites.net/auth/connect/token',
 
@@ -24,23 +25,21 @@ const Api = {
 
    /**
     * @method Get
-    * @headers {'Content-Type':'application/json'}
-    * @var UID       :string
+    * @headers {'Authorization' : Access_token}
     * @var StartDate :Y-m-d
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  betRecordApi  : 'https://jyddev.azurewebsites.net/api/app/BetRecordAPI.ashx',
+  betRecordApi  : 'https://jyddev1.azurewebsites.net/api/account/betrecord/',
 
    /**
     * @method Get
-    * @headers {'Content-Type':'application/json'}
-    * @var UID       :string
+    * @headers {'Authorization' : Access_token}
     * @var StartDate :Y-m-d
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  gameRecordApi : 'https://jyddev.azurewebsites.net/api/app/GameRecordAPI.ashx',
+  gameRecordApi : 'https://jyddev1.azurewebsites.net/api/game/record/',
 
    /**
     * @method Get

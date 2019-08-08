@@ -45,15 +45,14 @@ export class GameRecordsComponent implements OnInit , OnChanges {
     if ( isArray( this.gameRecrods ) ) {
       this.records = this.gameRecrods.map(record => {
         return [
-          record.GameName,
-          record.DateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.DateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
-          parseInt(record.BetMoney , 10).toFixed(2),
-          parseInt(record.WinMoney , 10).toFixed(2),
-          parseInt( record.BeforeMoney , 10).toFixed(2),
-          parseInt( record.AfterMoney  , 10).toFixed(2),
+          record.gameName,
+          record.dateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.dateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
+          parseInt( record.betMoney    , 10).toFixed(2),
+          parseInt( record.winMoney    , 10).toFixed(2),
+          parseInt( record.beforeMoney , 10).toFixed(2),
+          parseInt( record.afterMoney  , 10).toFixed(2),
         ];
       });
     }
   }
-
 }

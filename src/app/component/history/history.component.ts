@@ -78,9 +78,9 @@ export class HistoryComponent implements OnInit {
 
   sendQuery() {
     this.fetch.fetchGameRecords(this.startDate , this.endDate)
-                .then(responseJson => { this.gameRecrods = responseJson.RecordList; });
+                .then(responseJson => { this.gameRecrods = responseJson.recordList; });
 
     this.fetch.fetchInOutRecords(this.startDate , this.endDate)
-              .then(responseJson => { this.ioRecrods = responseJson.RecordList; });
+              .then(responseJson => { this.ioRecrods = responseJson.recordList; });
   }
 }

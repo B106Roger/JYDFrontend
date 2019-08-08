@@ -16,12 +16,18 @@ export class FetchService {
   }
 
   fetchGameRecords(startDate , endDate) {
-    const requestUrl = `${Api.gameRecordApi}?StartDate=${startDate}&EndDate=${endDate}&UID=${this.auth.getToken()}`;
-    return fetch(requestUrl).then(reponse => reponse.json()  );
+    return fetch(`${Api.gameRecordApi}/${startDate}/${endDate}` , {
+      headers : new Headers({
+        Authorization: `Bearer ${this.auth.getToken()}`
+      })
+    }).then(reponse => reponse.json()  );
   }
 
   fetchInOutRecords(startDate , endDate) {
-    const requestUrl = `${Api.betRecordApi}?StartDate=${startDate}&EndDate=${endDate}&UID=${this.auth.getToken()}`;
-    return fetch(requestUrl).then(reponse => reponse.json());
+    return fetch(`${Api.betRecordApi}/${startDate}/${endDate}` , {
+      headers : new Headers({
+        Authorization: `Bearer ${this.auth.getToken()}`
+      })
+    }).then(reponse => reponse.json());
   }
 }
