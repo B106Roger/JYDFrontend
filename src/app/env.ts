@@ -12,7 +12,7 @@ const Api = {
     * @var  Password :string
     * @return UserID , UID
     */
-  loginApi      : 'https://jyddev.azurewebsites.net/api/app/LoginAPI.ashx',
+  loginApi      : 'https://jyddev1.azurewebsites.net/auth/connect/token',
 
    /**
     * @method Get
@@ -83,5 +83,6 @@ const fakeUser = [
 ];
 
 const testMode = true;
+
 
 export { Api , fakeUser };

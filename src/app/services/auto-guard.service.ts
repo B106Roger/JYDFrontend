@@ -9,7 +9,7 @@ export class AutoGuardService implements CanActivate {
   constructor(private auth: AuthGuardService, private router: Router) { }
 
   canActivate() {
-    const sessionUID = sessionStorage.getItem('UID') ;
+    const sessionUID = sessionStorage.getItem('Token') ;
     if ( sessionUID !== null ) {
       if ( this.auth.decrypt( sessionUID ) !== null ) {
         this.router.navigate(['/lobby']);
