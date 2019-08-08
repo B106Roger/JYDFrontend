@@ -9,7 +9,7 @@
       </div>
 
       <!-- 遊戲種類選擇元件 -->
-      <div class="menu-container">
+      <div class="menu-container" style="margin-left: 0">
           <button id="game-filter-bg" class="row-flex"
           (popperOnShown)="toggleMenuOnShow()"
           (popperOnHidden)="toggleMenuOnShow()"
@@ -43,10 +43,10 @@
             }
           }">
 
-            <span class="basic-text-style" style="margin-bottom: 3px;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
+            <span class="basic-text-style" style="margin-bottom: 3px;padding-left: 9.6%">{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
-                        '/assets/imgs/iconGameMenuUp.png'"  [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px'}">
+                        '/assets/imgs/iconGameMenuUp.png'"  [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px', 'padding-right': '8.3%'}">
 
           </button>
           <!-- poppup setting content padding-top: 11px;-->
@@ -54,7 +54,7 @@
             <div class="unselectable" id="menuPopup">
               <ng-container *ngFor="let option of menuList">
                   <div class="menu-option-bg" (click)="popperSetting.hide();setMenuSelect(option.value)">
-                      <span class="basic-text-style ">{{('lobby.' + option.value) | translate}}</span>
+                      <span class="basic-text-style " style="padding-left: 9.6%">{{('lobby.' + option.value) | translate}}</span>
                   </div>
               </ng-container>
             </div>
@@ -65,6 +65,7 @@
 
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" (mousedown)="startScroll($event)" (touchstart)="startTouch($event)">
+          <!-- <div class="margin-left"></div> -->
           <div id="hot-game-frame" *ngIf="getHotGame().length > 0" [routerLink]="['/game' , getHotGame()[0].gameName]">
             <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
             <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl" draggable="false">

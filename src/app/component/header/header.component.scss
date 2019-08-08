@@ -6,10 +6,8 @@
   height: 66px;
   width: 100%;
 
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
-  /* // 修改以下值試試看 flex-start | flex-end | center | space-between | space-around | stretch */
-
 }
 
 #name-bg {
@@ -17,15 +15,28 @@
   background-size: 100%100%;
   background-repeat: no-repeat;
   background-position: center;
+
+  position: relative;
   height: 50%;
   width: 26.4%;
+  margin: 0 0 0 2%;
 
   align-items: center;
   justify-content: space-between;
 
   #iconId {
     height: 53%;
-    margin-left: 10px;
+    margin-left: 9.4%;
+    position: absolute;
+    top: 27.2%;
+  }
+  #accountText {
+    position: absolute;
+    right: 0;
+
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10%;
   }
 }
 
@@ -36,16 +47,28 @@
   background-size: 100%100%;
   background-repeat: no-repeat;
   background-position: center;
+
+  position: relative;
   height: 71%;
   width: 42%;
   max-width: 190px;
+  margin: 0 0 0 6.5%;
 
   align-items: center;
   justify-content: space-between;
   #iconCredit  {
     height: 55.3%;
-    margin-left: 10px;
-    width: auto;
+    margin-left: 7.3%;
+    position: absolute;
+    top: 22.3%;
+  }
+  #moneyText {
+    position: absolute;
+    right: 0;
+
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10%;
   }
 }
 
@@ -57,10 +80,11 @@
   background: none;
   outline: none;
   border: 0px;
-  margin: 0px;
+
+  margin: 0 0 0 2.4%;
   min-width: 26px;
   min-height: 22px;
-  width: 7.2%;
+  width: 7.7%;
 
   display: flex;
   flex-direction: row;
@@ -68,14 +92,12 @@
   align-items: center;
 
   img {
-    width: 28px;
-    height: 25px;
+    width: 100%;
     content: url('/assets/imgs/btnSettingMenuNormal@2x.png')
   }
   &:active {
     img {
-      width: 36px;
-      height:32px;
+      width: 128%;
       content: url('/assets/imgs/btnSettingMenuPressed@2x.png');
     }
   }
@@ -102,10 +124,11 @@
   background: none;
   outline: none;
   border: 0px;
-  margin: 0px;
+
+  margin: 0 0 0 2.7%;
   min-width: 29px;
   min-height: 22px;
-  width: 7.7%;
+  width: 8.5%;
 
   display: flex;
   flex-direction: row;
@@ -113,14 +136,12 @@
   align-items: center;
 
   img {
-    width: 31px;
-    height: 25px;
+    width: 100%;
     content: url('/assets/imgs/btnLogoutNormal@2x.png')
   }
   &:active {
     img {
-      width: 39px;
-      height: 32px;;
+      width: 125%;
       content: url('/assets/imgs/btnSettingLogoutPressed@2x.png')
     }
   }

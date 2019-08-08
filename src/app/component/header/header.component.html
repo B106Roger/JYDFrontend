@@ -2,13 +2,13 @@
 
       <div class="row-flex" id="name-bg" >
         <img  id="iconId" src="/assets/imgs/iconId@2x.png" >
-        <span class="basic-text-style" style="margin-right: 10px">{{ UserID }}</span>
+        <span class="basic-text-style" id="accountText">{{ UserID }}</span>
       </div>
 
 
       <div class="row-flex" id="credit-bg">
         <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
-        <span class="basic-text-style" style="margin-right: 10px">{{money | number: '.2-2'}}</span>
+        <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
       </div>
 
       <button class="no-padding" id="settingButton"

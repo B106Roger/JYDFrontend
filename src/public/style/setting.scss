@@ -51,11 +51,11 @@ body#zh-cn * {
 
   width: 100vw;
   //height: 100vh;
-  @media screen and (min-height: 760px){
+  @media screen and (min-height: 730px){
     height: calc(100vh - 40px - 18px);
     max-height: calc(840px - 40px - 18px);
   }
-  @media screen and (max-height: 759px){
+  @media screen and (max-height: 729px){
     height: 100vh;
     max-height:840px;
   }

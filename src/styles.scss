@@ -81,27 +81,27 @@ input {
 }
 
 .bottom-banner {
-  @media screen and (min-height: 760px){
+  @media screen and (min-height: 730px){
     content: url('/assets/imgs/btnBgExpand.png');
     min-width:320px;
     max-width:494px;
     width: 100vw;
     height: 18px;
   }
-  @media screen and (max-height: 759px){
+  @media screen and (max-height: 729px){
     display: none;
   }
 }
 
 .header-banner {
-  @media screen and (min-height: 760px){
+  @media screen and (min-height: 730px){
     content: url('/assets/imgs/picTopBgExpand.png');
     min-width:320px;
     max-width:494px;
     width: 100vw;
     height: 40px;
   }
-  @media screen and (max-height: 759px){
+  @media screen and (max-height: 729px){
     display: none;
   }
 }
