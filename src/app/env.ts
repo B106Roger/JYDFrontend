@@ -30,7 +30,7 @@ const Api = {
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  betRecordApi  : 'https://jyddev1.azurewebsites.net/api/account/betrecord/',
+  betRecordApi  : 'https://jyddev1.azurewebsites.net/api/account/betrecord',
 
    /**
     * @method Get
@@ -39,7 +39,7 @@ const Api = {
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  gameRecordApi : 'https://jyddev1.azurewebsites.net/api/game/record/',
+  gameRecordApi : 'https://jyddev1.azurewebsites.net/api/game/record',
 
    /**
     * @method Get
