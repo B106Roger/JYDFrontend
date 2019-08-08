@@ -1,20 +1,20 @@
 <section class="login-root-base">
   <div class=flex-container id="login-backround">
-    <div class="row-flex">
-        <img [src]="'login.mainicon' | translate" style="height: 100px;width: 208px;">
+    <div class="row-flex w100" id="main-icon-container">
+        <img [src]="'login.mainicon' | translate">
     </div>
     <!-- poppup setting content padding-top: 11px;-->
     <popper-content #popperSetting >
       <div class="unselectable" id="langPopup">
         <ng-container *ngFor="let ele of langList">
           <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);popperSetting.hide()">
-            <img [src]="ele.img">
+            <img [src]="ele.img" class="langFlag">
             <span class="lang-text">{{ele.label}}</span>
           </div>
         </ng-container>
       </div>
     </popper-content>
-    <div class="row-flex" style="margin-top: 20px">
+    <div class="row-flex w100" [ngStyle]="{'margin-top.px': '20'}">
       <button id="lang-bg" class="row-flex"
       (popperOnShown)="langSelectOnShow()"
       (popperOnHidden)="langSelectOnShow()"
@@ -26,16 +26,17 @@
       [popperPlacement]="'bottom'"
       [popperStyles]="{
       background: 'url(\' /assets/imgs/picLanMenuBgExpand.png\')',
-      'background-size': '100%auto',
+      'background-size': '100%100%',
       'background-repeat': 'no-repeat',
-      'width': '152px',
-      'min-height': '153px',
+      'width': '40.5%',
+      'height': '41vw',
+      'max-height': '202px',
       'z-index': 1
       }"
       [popperModifiers]="{
         offset: {
           enabled: true,
-          offset: '0px,-31px'
+          offset: '0px,-93.75%'
         },
         flip: {
           enabled: false,
@@ -47,55 +48,51 @@
       }">
       <img [src]="getLang().img" class="langFlag">
       <span class="lang-text" style="font-size: 15px;">{{getLang().label}}</span>
-      <img [src]="langShow == false ?
+      <img id="pointer" [src]="langShow == false ?
       '/assets/imgs/iconLanMenuDown.png' :
-      '/assets/imgs/iconLanMenuUp.png'" style="margin-top: 2px;position: absolute;right: 10px" >
+      '/assets/imgs/iconLanMenuUp.png'"  >
       </button>
     </div>
 
 
-    <div class="row-flex">
-      <div class=column-flex id="account-container">
+    <div class="row-flex w100">
+      <div class="row-flex"  id="account-container">
+        <img src="/assets/imgs/picIdFrame@2x.png" style="width: 100%;">
         <input [(ngModel)]="account" type="text" id="account"
-        class="basic-text-style" [placeholder]="'login.account_holder' | translate">
+          class="basic-text-style" [placeholder]="'login.account_holder' | translate">
       </div>
     </div>
 
-    <div class="row-flex">
-      <div class=column-flex id="password-container">
+    <div class="row-flex w100">
+      <div class="row-flex" id="password-container">
+        <img src="/assets/imgs/picPasswordFrame@2x.png" style="width: 100%;">
         <input [(ngModel)]="password" type="text" id="password" type="password"
-        class="basic-text-style" [placeholder]="'login.password_holder' | translate">
+          class="basic-text-style" [placeholder]="'login.password_holder' | translate">
       </div>
     </div>
 
-    <div class="row-flex" style="position: relative;top: -7px">
-      <div class="row-flex" style="width: 135px"></div>
-      <div class="row-flex" style="align-items: center" >
-        <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
-          <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()">
-        </div>
-        <div class="column-flex" >
-          <label for="remember-me" class="unselectable basic-text-style" style="margin: 0;font-size: 10px" >
-              {{ 'login.rememberMe' | translate}}
-          </label>
-        </div>
-        <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember" (change)="setRememberValue()">
+    <div class="row-flex w100" id="remember-container">
+      <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
+        <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()">
       </div>
-    </div>
-
-    <div class="row-flex">
       <div class="column-flex" >
-        <button id="loginBtn" (click)="login()" >
-          <img alt="Login"
-          [src]="'login.loginbtn' | translate"
-          (mousedown)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
-          (mouseup)="$event.currentTarget.src=translate.instant('login.loginbtn')"
-          (mouseleave)="$event.currentTarget.src=translate.instant('login.loginbtn')"
-          (touchstart)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
-          (touchend)="$event.currentTarget.src=translate.instant('login.loginbtn')"
-          >
-        </button>
+        <label for="remember-me" class="unselectable basic-text-style" style="margin: 0;font-size: 90%" >
+            {{ 'login.rememberMe' | translate}}
+        </label>
       </div>
+      <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember" (change)="setRememberValue()">
+    </div>
+
+    <div class="row-flex w100">
+      <button id="loginBtn" (click)="login()" >
+        <img alt="Login"
+        [src]="'login.loginbtn' | translate"
+        (mousedown)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
+        (mouseup)="$event.currentTarget.src=translate.instant('login.loginbtn')"
+        (mouseleave)="$event.currentTarget.src=translate.instant('login.loginbtn')"
+        (touchstart)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
+        (touchend)="$event.currentTarget.src=translate.instant('login.loginbtn')">
+      </button>
     </div>
 
   </div>
