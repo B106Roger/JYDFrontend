@@ -92,7 +92,8 @@ export class AppComponent implements OnInit, AfterViewInit {
           clearTimeout(resizeId);
         }
         resizeId = setTimeout(() => {
-          if (window.outerWidth >= window.outerHeight) {
+          const dst = this.router.url;
+          if (window.outerWidth >= window.outerHeight && !dst.match('/game/')) {
             alert('change orientation to see full content');
           } else if (this.isStandalone) {
             scrollTo(0, 100);

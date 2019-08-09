@@ -1,4 +1,14 @@
 
-<section class="game-frame">
-    <iframe [src]="getSrc()" frameborder="0" ></iframe>
+<section *ngIf="this.isIphone === false; else iphone_area" class="game-frame">
+    <iframe src="/assets/Games/embed.html" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
 </section>
+
+
+<ng-template #iphone_area>
+    <div class="popover-body">
+        <div class="iframe-container fixed scroll no-scrollbar">
+            <iframe src="/assets/Games/embed.html" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+</ng-template>
+

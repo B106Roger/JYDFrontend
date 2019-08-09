@@ -14,6 +14,9 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   @ViewChild('myiframe',{static: false}) myframe: ElementRef;
   constructor(private routerInfo: ActivatedRoute, private auth: AuthGuardService, public sanitizer: DomSanitizer) { }
 
+  userAgent = window.navigator.userAgent.toLowerCase();
+  isIphone = /iphone/.test( this.userAgent );
+
   ngOnInit() {
     console.log( this.routerInfo.snapshot.params.gameName );
     window['_GameName'] = this.routerInfo.snapshot.params.gameName;
@@ -25,8 +28,9 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   }
 
   getSrc() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/embed.html');
-    if (screen.width > 500) {
+    if (this.isIphone) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/ios-embed.html');
+    } else if (screen.width > 500) {
       return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/desktop.html');
     } else {
       return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/embed.html');
