@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   musicEle: ElementRef;
   msuic = false;
   sound = false;
-  money = 999999999;
+  money: number;
   UserID = '';
   constructor(public auth: AuthGuardService) { }
 

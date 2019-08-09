@@ -67,14 +67,18 @@
   flex-wrap: nowrap;
   img {
     width: 100%;
+    z-index: 0;
   }
   #account {
-    height: 100%;
     width: 100%;
-    position: absolute;
+    height: 12.5vw;
+    max-height: 61.75px;
 
-    background: none;
-    border: rgb(115 132 214);
+    background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
+    background-size: 100%100%;
+    background-position: center;
+
+    border: 0;
     outline: none;
     text-indent: 20%;
     z-index: 1;
@@ -87,27 +91,33 @@
   position: relative;
   flex-wrap: nowrap;
   img {
+    position: relative;
     width: 100%;
+    z-index: 0;
   }
   #password {
-    height: 100%;
     width: 100%;
-    position: absolute;
+    height: 12.5vw;
+    max-height: 61.75px;
 
-    background: none;
-    border: rgb(115 132 214);
+    background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
+    background-size: 100%100%;
+    background-position: center;
+
+    border: 0;
     outline: none;
     text-indent: 20%;
     z-index: 1;
   }
 }
 
-#password::placeholder,#account::placeholder{
+#password::placeholder,#account::placeholder {
   color: white;
   font-weight: 450;
   text-shadow:0 1.5px 1px black;
-  z-index: 1;
+  z-index: 9;
 }
+
 
 #loginBtn {
   background: none;
@@ -115,6 +125,7 @@
   border: none;
   width:73.6%;
 
+  padding: 0;
   display: flex;
   flex-direction: row;
   align-items : flex-end;
@@ -147,11 +158,13 @@
   justify-content: center;
   align-content: center;
   vertical-align: middle;
+  position: relative;
 
   #check-img {
     width: 70%;
     height: 60%;
-    margin-top: 3px;
+    position: absolute;
+    top: 25%;
   }
 }
 
