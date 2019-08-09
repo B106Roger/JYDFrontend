@@ -9,6 +9,9 @@ declare var $: any;
   styleUrls: ['./lobby.component.scss']
 })
 
+// tslint:disable: one-line
+// tslint:disable: no-string-literal
+
 export class LobbyComponent implements OnInit, AfterViewInit {
 
   userAgent = window.navigator.userAgent.toLowerCase();
@@ -340,7 +343,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
             if (count > 0) {
               ele.scrollLeft += displacement;
               count -= updateInterval * updateconstant;
-              console.log(velocity,displacement,updateconstant);
+              console.log(velocity, displacement, updateconstant);
             } else {
               count = initalcount;
               velocity = velocity * (1 - decreaseRatio);
@@ -356,7 +359,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   // 註冊手機點擊拖曳 的 移動事件
   startTouch(e1: TouchEvent) {
     // 這個手機事件只有iphone 的 standalone模式才需要註冊
-    if (! (this.isIphone &&  this.isStandalone)) { return; };
+    if (! (this.isIphone &&  this.isStandalone)) { return; }
 
     // 清除上一次的momentum scroll
     clearInterval(this.touchintervalItem);
@@ -400,7 +403,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       if (Math.abs(velocity) > 0.05) {
         this.touchintervalItem = setInterval((e) => {
           let displacement = Math.floor(velocity  * updateInterval);
-          let absVelocity = Math.abs(velocity);
+          const absVelocity = Math.abs(velocity);
           if (velocity < 0) {displacement += 1; }
 
           if (absVelocity < 0.2) { updateconstant = 50; }
