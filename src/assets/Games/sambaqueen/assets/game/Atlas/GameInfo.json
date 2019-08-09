@@ -1,0 +1,89 @@
+{
+  "frames": {
+    "HU_page01": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 386,
+        "h": 655
+      },
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 3,
+        "w": 386,
+        "h": 655
+      },
+      "sourceSize": {
+        "w": 441,
+        "h": 661
+      }
+    },
+    "HU_page02": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 390,
+        "y": 2,
+        "w": 386,
+        "h": 655
+      },
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 3,
+        "w": 386,
+        "h": 655
+      },
+      "sourceSize": {
+        "w": 441,
+        "h": 661
+      }
+    },
+    "HU_page03": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 778,
+        "y": 2,
+        "w": 386,
+        "h": 655
+      },
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 3,
+        "w": 386,
+        "h": 655
+      },
+      "sourceSize": {
+        "w": 441,
+        "h": 661
+      }
+    },
+    "HU_page04": {
+      "trimmed": true,
+      "rotated": false,
+      "frame": {
+        "x": 1166,
+        "y": 2,
+        "w": 386,
+        "h": 655
+      },
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 3,
+        "w": 386,
+        "h": 655
+      },
+      "sourceSize": {
+        "w": 441,
+        "h": 661
+      }
+    }
+  },
+  "meta": {
+    "app": "Phaser Editor",
+    "version": "1",
+    "image": "GameInfo.png"
+  }
+}
