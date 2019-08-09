@@ -43,7 +43,7 @@
             }
           }">
 
-            <span class="basic-text-style" style="margin-bottom: 3px;padding-left: 9.6%">{{('lobby.' + getMenuSelect().value) | translate}}</span>
+            <span class="basic-text-style" style="padding-left: 9.6%;writing-mode: horizontal-tb;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
                         '/assets/imgs/iconGameMenuUp.png'"  [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px', 'padding-right': '8.3%'}">
@@ -66,13 +66,17 @@
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" (mousedown)="startScroll($event)" (touchstart)="startTouch($event)">
           <!-- <div class="margin-left"></div> -->
-          <div id="hot-game-frame" *ngIf="getHotGame().length > 0" [routerLink]="['/game' , getHotGame()[0].gameName]">
-            <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
-            <img id="hot-pic" [src]="getHotGame()[0].gameImgUrl" draggable="false">
-            <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false">
-          </div>
+          <ng-container *ngFor="let item of getHotGame();let first = first">
+            <div id="hot-game-frame" *ngIf="first" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]">
+              <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
+              <img id="hot-pic" [src]="item.gameImgUrl" draggable="false">
+              <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false">
+            </div>
+          </ng-container>
+
+
           <ng-container *ngFor="let item of getNormalGame()">
-            <div class="normal-game-frame" [routerLink]="['/game' , item.gameName]">
+            <div class="normal-game-frame" [routerLink]="['/game' ,item.gameCategory ,item.gameName]">
               <img class="normal-pic" [src]="item.gameImgUrl" draggable="false">
               <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false">
             </div>

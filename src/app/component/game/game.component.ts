@@ -16,24 +16,42 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
 
   userAgent = window.navigator.userAgent.toLowerCase();
   isIphone = /iphone/.test( this.userAgent );
-
+  gameType = '';
+  orientation = '';
+  iframeURL;
   ngOnInit() {
     console.log( this.routerInfo.snapshot.params.gameName );
     window['_GameName'] = this.routerInfo.snapshot.params.gameName;
     window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
     window['_Bearer']   = this.auth.getUserID();
+    this.gameType = this.routerInfo.snapshot.params.gameType;
+    this.iframeURL = this.getSrc();
+    this.initOrientation();
   }
 
   ngAfterViewInit(): void {
   }
 
   getSrc() {
-    if (this.isIphone) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/ios-embed.html');
-    } else if (screen.width > 500) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/desktop.html');
-    } else {
-      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/embed.html');
+    if (this.gameType === 'slots') {
+      console.log('--------------------slot game');
+      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
+    } else if (this.gameType === 'marry') {
+      console.log('--------------------marry slot game');
+      return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/index.html`);
+    } else if (this.gameType === 'poker') {
+      console.log('--------------------poker game');
+      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/poker.html');
+    }
+  }
+
+  initOrientation() {
+    if (this.gameType === 'slots') {
+      this.orientation = 'landscape';
+    } else if (this.gameType === 'marry') {
+      this.orientation = 'portrait';
+    } else if (this.gameType === 'poker') {
+      this.orientation = 'portrait';
     }
   }
 

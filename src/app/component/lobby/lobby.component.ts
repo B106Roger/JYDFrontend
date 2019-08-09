@@ -161,20 +161,20 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       gameCategory: 'slots',
       display: '2'
     },
-    {
-      gameName: 'sexybartender',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'soccerfever',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-      gameCategory: 'slots',
-      display: '2'
-    },
+    // {
+    //   gameName: 'sexybartender',
+    //   gameScript: 'url_string',
+    //   gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
+    //   gameCategory: 'slots',
+    //   display: '2'
+    // },
+    // {
+    //   gameName: 'soccerfever',
+    //   gameScript: 'url_string',
+    //   gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
+    //   gameCategory: 'slots',
+    //   display: '2'
+    // },
     {
       gameName: 'buffalo',
       gameScript: 'url_string',
@@ -219,12 +219,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   getNormalGame() {
     if (this.menuSelected === 'all') {
-      const source = this.images.filter((e) => e.display === '2');
-      let result = source;
-      for (let i = 0; i < 5; i++) {
-        result = result.concat(source);
-      }
-      return result;
+      return this.images.filter((e) => e.display === '2');
     } else {
       return this.images.filter((e) => e.display === '2' && e.gameCategory === this.menuSelected);
     }

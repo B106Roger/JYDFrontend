@@ -1,13 +1,20 @@
 
-<section *ngIf="this.isIphone === false; else iphone_area" class="game-frame">
-    <iframe src="/assets/Games/embed.html" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+<!-- 給android的遊戲畫面 -->
+<section *ngIf="this.isIphone === false; else iphone_area"
+ [ngClass]="{
+   'landscape-frame': orientation === 'landscape',
+   'portrait-frame': orientation === 'portrait'
+  }">
+    <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
 </section>
 
 
+
+<!-- 給ios的遊戲畫面 -->
 <ng-template #iphone_area>
     <div class="popover-body">
         <div class="iframe-container fixed scroll no-scrollbar">
-            <iframe src="/assets/Games/embed.html" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+            <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
         </div>
     </div>
 </ng-template>

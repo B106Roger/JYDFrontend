@@ -21,7 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'game/:gameName',
+    path: 'game/:gameType/:gameName',
     component: GameComponent,
     canActivate: [AuthGuardService]
   },
