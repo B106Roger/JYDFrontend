@@ -65,18 +65,16 @@
   width: 73.6%;
   position: relative;
   flex-wrap: nowrap;
-  img {
-    width: 100%;
-    z-index: 0;
-  }
+
+  height: 12.5vw;
+  max-height: 61.75px;
+
+  background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
+  background-size: 100%100%;
+  background-position: center;
   #account {
     width: 100%;
-    height: 12.5vw;
-    max-height: 61.75px;
-
-    background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
-    background-size: 100%100%;
-    background-position: center;
+    height: 100%;
 
     border: 0;
     outline: none;
@@ -90,19 +88,16 @@
   width: 73.6%;
   position: relative;
   flex-wrap: nowrap;
-  img {
-    position: relative;
-    width: 100%;
-    z-index: 0;
-  }
+
+  height: 12.5vw;
+  max-height: 61.75px;
+
+  background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
+  background-size: 100%100%;
+  background-position: center;
   #password {
     width: 100%;
-    height: 12.5vw;
-    max-height: 61.75px;
-
-    background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
-    background-size: 100%100%;
-    background-position: center;
+    height: 100%;
 
     border: 0;
     outline: none;

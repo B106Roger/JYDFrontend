@@ -16,10 +16,8 @@
     </popper-content>
     <div class="row-flex w100" style="margin-top: 30px">
       <button id="lang-bg" class="row-flex"
-      (popperOnShown)="langSelectOnShow()"
-      (popperOnHidden)="langSelectOnShow()"
       [popper]="popperSetting"
-      [popperTrigger]="'click'"
+      [popperTrigger]="'none'"
       [popperHideOnClickOutside]="true"
       [popperHideOnScroll]="true"
       [popperDisableStyle]="true"
@@ -45,7 +43,9 @@
         preventOverflow: {
           escapeWithReference: true
         }
-      }">
+      }"
+      (click)="togglePopper()"
+      >
       <img [src]="getLang().img" class="langFlag">
       <span class="lang-text" style="font-size: 15px;">{{getLang().label}}</span>
       <img id="pointer" [src]="langShow == false ?
