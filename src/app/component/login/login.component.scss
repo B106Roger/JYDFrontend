@@ -49,6 +49,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 
@@ -64,7 +65,9 @@
   width: 73.6%;
   position: relative;
   flex-wrap: nowrap;
-
+  img {
+    width: 100%;
+  }
   #account {
     height: 100%;
     width: 100%;
@@ -72,9 +75,9 @@
 
     background: none;
     border: rgb(115 132 214);
-    border-radius: 22.5px;
     outline: none;
     text-indent: 20%;
+    z-index: 1;
   }
 }
 
@@ -83,7 +86,9 @@
   width: 73.6%;
   position: relative;
   flex-wrap: nowrap;
-
+  img {
+    width: 100%;
+  }
   #password {
     height: 100%;
     width: 100%;
@@ -91,9 +96,9 @@
 
     background: none;
     border: rgb(115 132 214);
-    border-radius: 22.5px;
     outline: none;
     text-indent: 20%;
+    z-index: 1;
   }
 }
 
@@ -101,6 +106,7 @@
   color: white;
   font-weight: 450;
   text-shadow:0 1.5px 1px black;
+  z-index: 1;
 }
 
 #loginBtn {
@@ -171,7 +177,7 @@
   border: none;
 
   position: relative;
-  z-index: 2;
+  z-index: 3;
   &:hover {
     cursor: default;
   }

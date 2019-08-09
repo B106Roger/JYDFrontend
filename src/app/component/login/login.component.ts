@@ -11,7 +11,7 @@ import { AuthGuardService } from './../../services/auth-guard.service';
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
-  account = 'test007';
+  account = '';
   password = '';
   remember: boolean;
   langShow = false;
