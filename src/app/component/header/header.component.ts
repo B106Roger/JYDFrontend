@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { PopperContent } from 'ngx-popper';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('musicEle', {static: false})
   musicEle: ElementRef;
+  @ViewChild('popperSetting', {static: false})
+  popper: PopperContent;
   msuic = false;
   sound = false;
-  money = 999999999;
+  money: number;
   UserID = '';
   constructor(public auth: AuthGuardService) { }
 
@@ -33,6 +36,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   printSound() { console.log(!this.sound); }
   showLogoutBox() {
       document.getElementById('logout-box').hidden = false;
+      this.popper.hide();
   }
 
   setMusic() {
@@ -85,5 +89,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.money = parseFloat(responseJson.Amount);
       this.UserID = this.auth.getUserID();
     });
+  }
+
+  togglePopper() {
+    if (this.popper.ariaHidden === 'false') {
+      this.popper.hide();
+    } else if (this.popper.ariaHidden === 'true') {
+      this.popper.show();
+    }
   }
 }

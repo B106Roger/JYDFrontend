@@ -13,8 +13,8 @@
 
       <button class="no-padding" id="settingButton"
         [popper]="popperSetting"
-        [popperTrigger]="'click'"
         [popperHideOnClickOutside]="true"
+        [popperTrigger]="'none'"
         [popperHideOnScroll]="true"
         [popperDisableStyle]="true"
         [popperStyles]="{
@@ -39,7 +39,9 @@
           preventOverflow: {
             escapeWithReference: true
           }
-        }">
+        }"
+        (click)="togglePopper()"
+        >
         <img>
       </button>
 

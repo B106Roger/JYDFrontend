@@ -16,10 +16,8 @@
     </popper-content>
     <div class="row-flex w100" style="margin-top: 30px">
       <button id="lang-bg" class="row-flex"
-      (popperOnShown)="langSelectOnShow()"
-      (popperOnHidden)="langSelectOnShow()"
       [popper]="popperSetting"
-      [popperTrigger]="'click'"
+      [popperTrigger]="'none'"
       [popperHideOnClickOutside]="true"
       [popperHideOnScroll]="true"
       [popperDisableStyle]="true"
@@ -45,7 +43,9 @@
         preventOverflow: {
           escapeWithReference: true
         }
-      }">
+      }"
+      (click)="togglePopper()"
+      >
       <img [src]="getLang().img" class="langFlag">
       <span class="lang-text" style="font-size: 15px;">{{getLang().label}}</span>
       <img id="pointer" [src]="langShow == false ?
@@ -56,15 +56,15 @@
 
 
     <div class="column-flex w100"  id="account-container" style="margin-top: 15px">
-      <img src="/assets/imgs/picIdFrame@3x.png">
+      <!-- <img src="/assets/imgs/picIdFrame@3x.png"> -->
       <input [(ngModel)]="account" type="text" id="account"
-        class="basic-text-style" [placeholder]="'login.account_holder' | translate">
+        class="basic-text-style" placeholder="{{'login.account_holder' | translate}}">
     </div>
 
     <div class="column-flex w100"  id="password-container">
-      <img src="/assets/imgs/picPasswordFrame@2x.png">
+      <!-- <img src="/assets/imgs/picPasswordFrame@3x.png"> -->
       <input [(ngModel)]="password" type="text" id="password" type="password"
-        class="basic-text-style" [placeholder]="'login.password_holder' | translate">
+        class="basic-text-style" placeholder="{{ 'login.password_holder' | translate }}">
     </div>
 
     <div class="row-flex w100" id="remember-container" style="margin-top: 10px">

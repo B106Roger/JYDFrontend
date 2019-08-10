@@ -1,8 +1,10 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ConditionalExpr } from '@angular/compiler';
 import { AuthGuardService } from './../../services/auth-guard.service';
+import { PopperContent } from 'ngx-popper';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ import { AuthGuardService } from './../../services/auth-guard.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-
+  @ViewChild('popperSetting', {static: false})
+  popper: PopperContent;
   account = '';
   password = '';
   remember: boolean;
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const setvalue = this.remember === true ? 'true' : 'false';
     localStorage.setItem('remember', setvalue);
    }
-  langSelectOnShow() {
+   langSelectOnToggle() {
     this.langShow = ! this.langShow;
   }
   getLang() {
@@ -97,6 +100,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
           this.route.navigate(['/lobby']);
         }
     });
+  }
+
+  togglePopper() {
+    this.langSelectOnToggle();
+    if (this.popper.ariaHidden === 'false') {
+      this.popper.hide();
+    } else if (this.popper.ariaHidden === 'true') {
+      this.popper.show();
+    }
   }
 
   displayNotification() {
