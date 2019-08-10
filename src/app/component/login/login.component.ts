@@ -46,9 +46,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // 設定語系
     this.langChoosed = localStorage.getItem('lang');
-    console.log(this.langChoosed);
-    console.log(this.translate.currentLang);
-    document.querySelector('body').id = this.translate.currentLang;
     // 設定記住帳密
     if (! localStorage.getItem('remember')) {
       this.remember = false;
@@ -70,12 +67,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
   toggleRemeberValue() {
     this.remember = !this.remember;
     this.setRememberValue();
-   }
-   setRememberValue() {
+  }
+  setRememberValue() {
     const setvalue = this.remember === true ? 'true' : 'false';
     localStorage.setItem('remember', setvalue);
-   }
-   langSelectOnToggle() {
+  }
+  langSelectOnToggle() {
     this.langShow = ! this.langShow;
   }
   getLang() {

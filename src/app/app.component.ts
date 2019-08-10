@@ -56,6 +56,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }).catch((err) => {
       console.log(err);
     });
+    // 設定語系id
+    document.querySelector('body').id = localStorage.getItem('lang');
   }
 
   ngAfterViewInit() {
