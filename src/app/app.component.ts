@@ -88,20 +88,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
       // 取得轉方向的event
-      window.addEventListener('resize', () => {
-        let resizeId;
-        if (resizeId) {
-          clearTimeout(resizeId);
-        }
-        resizeId = setTimeout(() => {
-          const dst = this.router.url;
-          if (window.outerWidth >= window.outerHeight && !dst.match('/game/')) {
-            alert('change orientation to see full content');
-          } else if (this.isStandalone) {
-            scrollTo(0, 100);
-          }
-        }, 500);
-      }, false);
+      // window.addEventListener('resize', () => {
+      //   let resizeId;
+      //   if (resizeId) {
+      //     clearTimeout(resizeId);
+      //   }
+      //   resizeId = setTimeout(() => {
+      //     const dst = this.router.url;
+      //     if (window.outerWidth >= window.outerHeight && !dst.match('/game/')) {
+      //       alert('change orientation to see full content');
+      //     } else if (this.isStandalone) {
+      //       scrollTo(0, 100);
+      //     }
+      //   }, 500);
+      // }, false);
     }
   }
   isLoginOrGame() {
