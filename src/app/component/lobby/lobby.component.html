@@ -43,7 +43,7 @@
             }
           }">
 
-            <span class="basic-text-style" style="padding-left: 9.6%;writing-mode: horizontal-tb;">{{('lobby.' + getMenuSelect().value) | translate}}</span>
+            <span class="basic-text-style" id="menu-text" >{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
                         '/assets/imgs/iconGameMenuUp.png'"  [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px', 'padding-right': '8.3%'}">
