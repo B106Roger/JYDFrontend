@@ -33,25 +33,40 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   }
 
   getSrc() {
-    if (this.gameType === 'slots') {
-      console.log('--------------------slot game');
-      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
-    } else if (this.gameType === 'marry') {
-      console.log('--------------------marry slot game');
-      return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/index.html`);
-    } else if (this.gameType === 'poker') {
-      console.log('--------------------poker game');
-      return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/poker.html');
+    switch ( this.gameType ) {
+      case 'slots':
+        console.log('--------------------slot game');
+        return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
+
+      case 'marry':
+        console.log('--------------------marry slot game');
+        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/index.html`);
+
+      case 'poker':
+        console.log('--------------------poker game');
+        return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/poker.html');
+
+      default:
+        throw Error('Unknown Game Type');
     }
   }
 
   initOrientation() {
-    if (this.gameType === 'slots') {
-      this.orientation = 'landscape';
-    } else if (this.gameType === 'marry') {
-      this.orientation = 'portrait';
-    } else if (this.gameType === 'poker') {
-      this.orientation = 'portrait';
+    switch ( this.gameType ) {
+      case 'slots':
+        this.orientation = 'landscape';
+        break;
+
+      case 'marry':
+        this.orientation = 'portrait';
+        break;
+
+      case 'poker':
+        this.orientation = 'portrait';
+        break;
+
+      default:
+        throw Error('Unknown Game Type');
     }
   }
 

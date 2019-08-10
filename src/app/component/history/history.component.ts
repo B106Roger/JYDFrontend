@@ -25,13 +25,13 @@ export class HistoryComponent implements OnInit {
 
       const initEndDate = d.toLocaleDateString().split('/').map( strDate => {
         const numDate = parseInt(strDate , 10);
-        return numDate / 10 > 1 ? numDate : '0' + numDate;
+        return numDate < 10 ? '0' + numDate : numDate;
       }).join('-');
 
       d.setTime( d.getTime() - 604800000 );
       const initStartDate = d.toLocaleDateString().split('/').map( strDate => {
         const numDate = parseInt(strDate , 10);
-        return numDate / 10 > 1 ? numDate : '0' + numDate;
+        return numDate < 10 ? '0' + numDate : numDate;
       }).join('-');
 
 

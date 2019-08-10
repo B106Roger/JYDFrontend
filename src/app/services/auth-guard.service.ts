@@ -72,6 +72,7 @@ export class AuthGuardService implements CanActivate {
       .then( responseJson => {
         this.token = responseJson.access_token;
         this.UserID = account;
+        sessionStorage.setItem('UserID', this.encrypt( account ) );
         sessionStorage.setItem('Token' , this.encrypt( this.token ) );
         sessionStorage.setItem('Scope' , 'GameManagement jyd.profile openid profile' );
         if ( remember ) {
@@ -113,6 +114,6 @@ export class AuthGuardService implements CanActivate {
   }
 
   getUserID() {
-    return this.UserID = this.UserID || this.decrypt( localStorage.getItem('UserID') ) ;
+    return this.UserID = this.UserID || this.decrypt( sessionStorage.getItem('UserID') ) ;
   }
 }
