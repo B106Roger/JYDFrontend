@@ -38,10 +38,12 @@ export class HistoryComponent implements OnInit {
       this.selectPage = 1;
       this.startDate = initStartDate;
       this.endDate   = initEndDate;
+      /*
       this.fetch.fetchGameRecords(this.startDate , this.endDate)
                   .then(responseJson => { this.gameRecrods = responseJson.RecordList; });
       this.fetch.fetchInOutRecords(this.startDate , this.endDate)
                   .then(responseJson => { this.ioRecrods = responseJson.RecordList; });
+      */
   }
 
   tabChange( page ) {

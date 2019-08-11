@@ -74,10 +74,10 @@ body#zh-cn * {
     position: relative;
     width:100%;
     color: #b4c6ec;
-    padding: 0.6vh 0;
-    font-size: 3.2vh;
-    font-weight: 450;
-    text-shadow:0 1.5px 1px black;
+    padding: 0;
+    height:6vh;
+    justify-content: center;
+    align-items:center;
   }
 
   .main-content
@@ -97,14 +97,12 @@ body#zh-cn * {
 
     display: inline-block;
     position: absolute;
-    top: 1vh;
-    right: 1vh;
+    top: 10%;
+    right: 0.5vh;
     width: 5vh;
     height: 5vh;
     min-height: 20px;
-    min-width: 20px;
     max-height: 40px;
-    max-width: 40px;
   }
 
   .close-button
@@ -168,6 +166,23 @@ body#zh-cn * {
 
 }
 
+.short-label
+{
+  max-width:47%;
+  margin:0 2vh;
+}
+
+.long-label
+{
+  max-width:95%;
+  margin:0 1vh;
+}
+
+.titleImg
+{
+  max-height:14.5pt;
+  max-width: 139.5pt;
+}
 
 body#es , body#pt
 {

@@ -52,6 +52,14 @@ const Api = {
   amountApi     : 'https://jyddev.azurewebsites.net/api/AmountAPI.aspx',
 
    /**
+    * @method PUT
+    * @headers {'Authorization' : Access_token}
+    * @var oldPassword: string
+    * @var newPassword: string
+    */
+  ChangePasswordApi: 'https://jyddev1.azurewebsites.net/api/account/password',
+
+   /**
     * @method Get
     * @var begin : Y-m-d
     * @var end   : Y-m-d

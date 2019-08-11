@@ -1,14 +1,16 @@
 <div class="root-base setting-bg">
   <div class="flex-container">
     <div class="row-flex-no-margin-padding setting-top">
-      <span class="title">{{'contact.title' | translate}}</span>
+      <span *ngIf="false" class="title">{{'contact.title' | translate}}</span>
+      <img class="titleImg" [src]="'contact.titleImg' | translate" />
       <a routerLink="/lobby" class="close-button close-button-base"></a>
     </div>
   </div>
 
   <div class="main-content">
-  <!-- 頝籤 -->
-  <div class="d-flex text-center justify-content-center">
+  <!-- 頁籤 -->
+  <img class="long-label" [src]="'contact.label' | translate" />
+  <div *ngIf="false" class="d-flex text-center justify-content-center">
       <span class="btn-bg btn-label-long">{{'contact.REACH US WITH FOLLOWING CONTACT DETAILS' | translate}}</span>
   </div>
 

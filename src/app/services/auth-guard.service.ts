@@ -12,6 +12,7 @@ export class AuthGuardService implements CanActivate {
   private static _INSTANCE: AuthGuardService;
   private token: string = null;
   private UserID;
+  private Password;
   private formData = new FormData();
   private key;
   private iv;
@@ -73,6 +74,7 @@ export class AuthGuardService implements CanActivate {
         this.token = responseJson.access_token;
         this.UserID = account;
         sessionStorage.setItem('UserID', this.encrypt( account ) );
+        sessionStorage.setItem('Password' , this.encrypt( password ) );
         sessionStorage.setItem('Token' , this.encrypt( this.token ) );
         sessionStorage.setItem('Scope' , 'GameManagement jyd.profile openid profile' );
         if ( remember ) {
@@ -91,7 +93,7 @@ export class AuthGuardService implements CanActivate {
 
   logout() {
     localStorage.removeItem('user');
-    sessionStorage.removeItem('Token');
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 
@@ -115,5 +117,9 @@ export class AuthGuardService implements CanActivate {
 
   getUserID() {
     return this.UserID = this.UserID || this.decrypt( sessionStorage.getItem('UserID') ) ;
+  }
+
+  getPassword() {
+    return this.Password = this.Password || this.decrypt( sessionStorage.getItem('Password') ) ;
   }
 }

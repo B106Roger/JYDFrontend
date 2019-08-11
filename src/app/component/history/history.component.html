@@ -1,10 +1,13 @@
 <div class="root-base setting-bg">
   <div class="row-flex-no-margin-padding setting-top">
-    <span class="title">{{ 'history.title' | translate }}</span>
+    <span *ngIf="false" class="title">{{ 'history.title' | translate }}</span>
+    <img class="titleImg" [src]="'history.titleImg' | translate" />
     <a routerLink="/lobby" class="close-button close-button-base"></a>
   </div>
 
   <div class="main-content">
+    <img src="" />
+    <img src="" />
     <!-- 頁籤 -->
     <div class="d-flex text-center justify-content-around">
         <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">

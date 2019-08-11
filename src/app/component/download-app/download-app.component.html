@@ -1,14 +1,16 @@
 <div class="root-base setting-bg">
   <div class="flex-container">
     <div class="row-flex-no-margin-padding setting-top">
-      <span class="title">{{ 'download-app.title' | translate }}</span>
+      <span *ngIf="false" class="title">{{ 'download-app.title' | translate }}</span>
+      <img class="titleImg" [src]="'download-app.titleImg' | translate " />
       <a routerLink="/lobby" class="close-button close-button-base"></a>
     </div>
   </div>
 
   <div class="main-content">
       <!-- 頁籤 -->
-      <div class="d-flex text-center justify-content-center">
+      <img class="long-label" [src]="'download-app.label' | translate" />
+      <div *ngIf="false" class="d-flex text-center justify-content-center">
           <span class="btn-bg btn-label-long">{{ 'download-app.download' | translate }}
             <span class="d-inline-block" style="margin:0 0.5rem;color:rgb(0,246,255)">{{ 'download-app.TREASURE ISLAND' | translate }}</span> APP</span>
       </div>
