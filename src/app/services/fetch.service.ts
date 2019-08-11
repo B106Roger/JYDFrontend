@@ -9,9 +9,9 @@ import { AuthGuardService } from './auth-guard.service';
 export class FetchService {
 
   private static _INSTANCE: FetchService;
-
+  private historyStart;
+  private historyEnd;
   constructor(private auth: AuthGuardService) {
-
     return FetchService._INSTANCE = FetchService._INSTANCE || this;
   }
 

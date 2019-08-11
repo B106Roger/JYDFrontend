@@ -163,3 +163,14 @@ body#zh-cn * {
   }
 
 }
+
+
+body#es , body#pt
+{
+  .recordTitle span
+  {
+    transform:scale(0.72);
+    -o-transform:scale(0.72);
+    -webkit-transform:scale(0.72);
+  }
+}

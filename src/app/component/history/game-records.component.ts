@@ -8,10 +8,10 @@ import { isArray } from 'util';
   template:
   `
   <div class="recordTitle">
-    <span style="width:17.5%">{{ 'history.gameRecord.game'     | translate }}</span>
-    <span style="width:22.5%">{{ 'history.gameRecord.dateTime' | translate }}</span>
-    <span style="width:10.0%">{{ 'history.gameRecord.bet' | translate }}</span>
-    <span style="width:10.0%">{{ 'history.gameRecord.win' | translate }}</span>
+    <span style="width:16.5%">{{ 'history.gameRecord.game'     | translate }}</span>
+    <span style="width:20.0%">{{ 'history.gameRecord.dateTime' | translate }}</span>
+    <span style="width:12.0%">{{ 'history.gameRecord.bet' | translate }}</span>
+    <span style="width:12.0%">{{ 'history.gameRecord.win' | translate }}</span>
     <span style="width:20.0%">{{ 'history.gameRecord.beginMoney' | translate }}</span>
     <span style="width:20.0%">{{ 'history.gameRecord.endMoney'   | translate }}</span>
   </div>
@@ -43,7 +43,7 @@ export class GameRecordsComponent implements OnInit , OnChanges {
 
   ngOnChanges( changes: SimpleChanges ) {
     if ( isArray( this.gameRecrods ) ) {
-      this.records = this.gameRecrods.map(record => {
+      this.records = this.gameRecrods.slice( 0, 200 ).map(record => {
         return [
           record.gameName,
           record.dateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.dateTime.match(/[\d]+/g).slice(3 , 6).join(':'),

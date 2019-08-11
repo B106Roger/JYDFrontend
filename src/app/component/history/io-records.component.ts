@@ -43,7 +43,7 @@ export class IoRecordsComponent implements OnInit , OnChanges {
       "AfterMoney": 303606
     }, */
     if ( isArray( this.ioRecrods ) ) {
-      this.records = this.ioRecrods.map(record => {
+      this.records = this.ioRecrods.slice( 0, 200 ).map(record => {
         return [
           record.autoID,
           record.dateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.DateTime.match(/[\d]+/g).slice(3 , 6).join(':'),

@@ -68,12 +68,16 @@ export class HistoryComponent implements OnInit {
 
   startDateChange(e) {
     const nextStartDate = e.currentTarget.value;
-    this.startDate = nextStartDate;
+    if ( nextStartDate != null ) {
+      this.startDate = nextStartDate;
+    }
   }
 
   endDateChange(e) {
     const nextEndDate = e.currentTarget.value;
-    this.endDate = nextEndDate;
+    if ( nextEndDate != null ) {
+      this.endDate = nextEndDate;
+    }
   }
 
   sendQuery() {
