@@ -1,5 +1,5 @@
 <div class="screen">
-    <img class="header-banner" [ngClass]="{'none': isLoginOrGame() }">
+    <img class="header-banner" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="topBanner">
     <router-outlet></router-outlet>
-    <img class="bottom-banner" [ngClass]="{'none': isLoginOrGame() }">
+    <img class="bottom-banner" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="bottomBanner">
 </div>

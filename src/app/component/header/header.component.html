@@ -1,13 +1,13 @@
 <div class="row-flex-no-margin-padding" id="header-bg">
 
   <div class="row-flex" id="name-bg" >
-    <img  id="iconId" src="/assets/imgs/iconId@2x.png" >
+    <img  id="iconId" src="/assets/imgs/iconId@2x.png" draggable="false" alt="ID icon" >
     <span class="basic-text-style" id="accountText">{{ UserID }}</span>
   </div>
 
 
   <div class="row-flex" id="credit-bg">
-    <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
+    <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png" draggable="false" alt="Cash icon">
     <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
   </div>
 
@@ -46,7 +46,7 @@
   </button>
 
   <button class="no-padding" id="logoutButton" (click)="showLeaveBox()">
-    <img>
+    <img draggable="false" alt="leaveButton">
   </button>
 </div>
 <audio #musicEle id="musicEle" src="/assets/music_lobbybg.wav" autoplay loop style="display: none"></audio>
@@ -61,12 +61,13 @@
         </div>
         <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic" (change)="setMusic()">
         <label for="MusicBotton" id="musicContainer">
-          <img [src]="getMusic() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"  >
+          <img [src]="getMusic() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)" draggable="false"
+               [alt]="getMusic() === true ? 'on' : 'off'" >
         </label>
       </div>
 
       <div class="row-flex-no-margin-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" >
+        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
       </div>
 
       <div class="row-flex setting-item">
@@ -75,12 +76,13 @@
         </div>
         <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound" (change)="setSound()">
         <label  for="SonudBotton" id='soundContainer' >
-          <img [src]="getSound() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"  >
+          <img [src]="getSound() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"
+           draggable="false" alt="separateLine" >
         </label>
       </div>
 
       <div class="row-flex-no-margin-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" >
+        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
       </div>
       <div class="row-flex setting-item">
         <div class="column-flex-no-margin-padding">
@@ -92,7 +94,7 @@
       </div>
 
       <div class="row-flex-no-margin-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" >
+        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
       </div>
       <div class="row-flex setting-item" routerLink="/download" >
         <div class="column-flex-no-margin-padding">
@@ -101,7 +103,7 @@
       </div>
 
       <div class="row-flex-no-margin-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" >
+        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
       </div>
       <div class="row-flex setting-item" (click)="showLogoutBox()" >
         <div  class="column-flex-no-margin-padding">

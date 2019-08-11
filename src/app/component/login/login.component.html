@@ -1,14 +1,14 @@
 <section class="login-root-base">
   <div class=flex-container id="login-backround">
     <div class="row-flex w100" id="main-icon-container">
-        <img [src]="'login.mainicon' | translate">
+        <img [src]="'login.mainicon' | translate" draggable="false" alt="TreasureIsland">
     </div>
     <!-- poppup setting content padding-top: 11px;-->
     <popper-content #popperSetting >
       <div class="unselectable" id="langPopup">
         <ng-container *ngFor="let ele of langList">
           <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);popperSetting.hide()">
-            <img [src]="ele.img" class="langFlag">
+            <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label">
             <span class="lang-text">{{ele.label}}</span>
           </div>
         </ng-container>
@@ -56,20 +56,19 @@
 
 
     <div class="column-flex w100"  id="account-container" style="margin-top: 15px">
-      <!-- <img src="/assets/imgs/picIdFrame@3x.png"> -->
       <input [(ngModel)]="account" type="text" id="account"
         class="basic-text-style" placeholder="{{'login.account_holder' | translate}}">
     </div>
 
     <div class="column-flex w100"  id="password-container">
-      <!-- <img src="/assets/imgs/picPasswordFrame@3x.png"> -->
       <input [(ngModel)]="password" type="text" id="password" type="password"
         class="basic-text-style" placeholder="{{ 'login.password_holder' | translate }}">
     </div>
 
     <div class="row-flex w100" id="remember-container" style="margin-top: 10px">
       <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
-        <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()">
+        <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()"
+        draggable="false" alt="check">
       </div>
       <div class="column-flex" >
         <label for="remember-me" class="unselectable basic-text-style" style="margin: 0;font-size: 90%" >
@@ -87,7 +86,8 @@
         (mouseup)="$event.currentTarget.src=translate.instant('login.loginbtn')"
         (mouseleave)="$event.currentTarget.src=translate.instant('login.loginbtn')"
         (touchstart)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
-        (touchend)="$event.currentTarget.src=translate.instant('login.loginbtn')">
+        (touchend)="$event.currentTarget.src=translate.instant('login.loginbtn')"
+        draggable="false">
       </button>
     </div>
 

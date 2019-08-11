@@ -294,8 +294,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     } catch (e) {
       console.log('fail');
     }
-   // window.close();
-    //window.open('https://jyd.nogf.xyz', '_self', '').close();
   }
 
   logout() {

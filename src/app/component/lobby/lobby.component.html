@@ -3,9 +3,9 @@
 
     <div class="game-container">
       <!-- 廣播元件 -->
-      <img src="/assets/imgs/segTop.png" alt="segTop">
+      <img src="/assets/imgs/segTop.png" draggable="false" alt="separateLine">
       <div class="marquee-bg">
-        <img src="/assets/imgs/iconMarqueeSpeaker@2x.png">
+        <img src="/assets/imgs/iconMarqueeSpeaker@2x.png" draggable="false" alt="marqueeFrame">
       </div>
 
       <!-- 遊戲種類選擇元件 -->
@@ -46,7 +46,9 @@
             <span class="basic-text-style" id="menu-text" >{{('lobby.' + getMenuSelect().value) | translate}}</span>
             <img [src]="menuShow === false ?
                         '/assets/imgs/iconGameMenuDown.png' :
-                        '/assets/imgs/iconGameMenuUp.png'"  [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px', 'padding-right': '8.3%'}">
+                        '/assets/imgs/iconGameMenuUp.png'"
+                        [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px', 'padding-right': '8.3%'}"
+                        draggable="false" [alt]="menuShow === false ? 'collapse' : 'expand'">
 
           </button>
           <!-- poppup setting content padding-top: 11px;-->
@@ -68,17 +70,17 @@
           <!-- <div class="margin-left"></div> -->
           <ng-container *ngFor="let item of getHotGame();let first = first">
             <div id="hot-game-frame" *ngIf="first" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]">
-              <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false">
-              <img id="hot-pic" [src]="item.gameImgUrl" draggable="false">
-              <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false">
+              <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
+              <img id="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
+              <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false" alt="hotGameFrame">
             </div>
           </ng-container>
 
 
           <ng-container *ngFor="let item of getNormalGame()">
             <div class="normal-game-frame" [routerLink]="['/game' ,item.gameCategory ,item.gameName]">
-              <img class="normal-pic" [src]="item.gameImgUrl" draggable="false">
-              <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false">
+              <img class="normal-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
+              <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false" alt="normalGameFrame">
             </div>
           </ng-container>
       </div>
@@ -93,11 +95,11 @@
               </ng-container>
             </ol>
             <div class="carousel-inner" >
-              <ng-container *ngFor="let item of getCarouselGame();let first = first">
+              <ng-container *ngFor="let item of getCarouselGame();let first = first;let index = index">
                   <div [ngClass]="{'active': first, 'carousel-item': true}" >
                       <div class="banner-game-frame">
-                          <img class="carousel-content"  [src]="item.gameImgUrl" alt="First slide"  draggable="false">
-                          <img class="carousel-frame" src="/assets/imgs/picBannerFrame.png"  draggable="false">
+                          <img class="carousel-content"  [src]="item.gameImgUrl" draggable="false" [alt]="index + 'slide'"  >
+                          <img class="carousel-frame" src="/assets/imgs/picBannerFrame.png" draggable="false" alt="carouselFrame"  >
                       </div>
                   </div>
               </ng-container>
@@ -112,7 +114,7 @@
     <div id="logout-box" hidden>
       <div class="confirm-box">
 
-        <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="YES"
+        <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
             (mousedown) ="setClosePressed($event)"
             (touchend)  ="setClosePressed($event)"
             (touchstart)="setCloseNormal($event)"
@@ -149,7 +151,7 @@
     <div id="leave-box" hidden>
       <div class="confirm-box">
 
-        <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="YES"
+        <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
             (mousedown) ="setClosePressed($event)"
             (touchend)  ="setClosePressed($event)"
             (touchstart)="setCloseNormal($event)"
