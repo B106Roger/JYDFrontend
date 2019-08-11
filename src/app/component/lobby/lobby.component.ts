@@ -74,7 +74,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
-      gameName: 'luckygoddess',
+      gameName: 'luckymario',
       gameScript: 'url_string',
       gameImgUrl: '/assets/imgs/pic_game_iconS_luckygoddess_en.png',
       gameCategory: 'marry',

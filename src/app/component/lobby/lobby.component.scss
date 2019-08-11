@@ -18,14 +18,21 @@
 // 遊戲列表 start
 .game-container {
   width: 100%;
-  @media screen and (min-height: 730px){
+
+  // mobile
+  @media screen and (min-height: 730px) and (max-width: 494px) {
     height: calc(100vh - 106px - 85px);
     max-height: calc(840px - 106px - 85px);
   }
-  @media screen and (max-height: 729px){
+  @media screen and (max-height: 729px) and (max-width: 494px) {
     height: calc(100vh - 66px - 67px);
     max-height: calc(840px - 66px - 67px);
   }
+  // PC
+  @media screen and (min-width: 495px) {
+    height: calc(840px - 106px - 85px);
+  }
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

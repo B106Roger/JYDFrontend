@@ -48,16 +48,20 @@ body#zh-cn * {
 
   max-width:494px;
   //max-height:840px;
-
   width: 100vw;
   //height: 100vh;
-  @media screen and (min-height: 730px){
+
+  // mobile
+  @media screen and (min-height: 730px) and (max-width: 494px) {
     height: calc(100vh - 40px - 18px);
     max-height: calc(840px - 40px - 18px);
   }
-  @media screen and (max-height: 729px){
+  @media screen and (max-height: 729px) and (max-width: 494px) {
     height: 100vh;
-    max-height:840px;
+  }
+  // PC
+  @media screen and (min-width: 495px) {
+    height: calc(840px - 40px - 18px);
   }
 }
 
