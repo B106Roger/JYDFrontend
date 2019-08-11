@@ -20,7 +20,13 @@ export class FetchService {
       headers : new Headers({
         Authorization: `Bearer ${this.auth.getToken()}`
       })
-    }).then(reponse => reponse.json()  );
+    }).then( response => {
+      if ( !response.ok ) {
+        throw Error( response.statusText );
+      } else {
+        return response.json();
+      }
+    });
   }
 
   fetchInOutRecords(startDate , endDate) {
@@ -28,7 +34,13 @@ export class FetchService {
       headers : new Headers({
         Authorization: `Bearer ${this.auth.getToken()}`
       })
-    }).then(reponse => reponse.json());
+    }).then( response => {
+      if ( !response.ok ) {
+        throw Error( response.statusText );
+      } else {
+        return response.json();
+      }
+    });
   }
 
   fetchChangePassword( nextPassword ) {
@@ -52,6 +64,20 @@ export class FetchService {
       })
       .catch(error => {
         alert(error);
+    });
+  }
+
+  fetchAmount() {
+    return fetch(`${Api.amountApi}` , {
+      headers : new Headers({
+        Authorization: `Bearer ${this.auth.getToken()}`
+      })
+    }).then( response => {
+      if ( !response.ok ) {
+        throw Error( response.statusText );
+      } else {
+        return response.json();
+      }
     });
   }
 }

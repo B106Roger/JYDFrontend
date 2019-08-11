@@ -49,7 +49,7 @@ const Api = {
     * @var void
     * @return data[]
     */
-  amountApi     : 'https://jyddev.azurewebsites.net/api/AmountAPI.aspx',
+  amountApi     : 'https://jyddev1.azurewebsites.net/api/account/',
 
    /**
     * @method PUT

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { AuthGuardService } from './../../services/auth-guard.service';
+import { FetchService } from './../../services/fetch.service';
 import { PopperContent } from 'ngx-popper';
 
 @Component({
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   sound = false;
   money: number;
   UserID = '';
-  constructor(public auth: AuthGuardService) { }
+  constructor(public auth: AuthGuardService, public fetch: FetchService) { }
 
   ngOnInit() {
     this.msuic = (localStorage.getItem('music') === 'on' ? true : false);
@@ -72,21 +73,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   getMoney() {
-    fetch('https://jyddev.azurewebsites.net/api/AmountAPI.aspx', {
-      method: 'GET',
-      headers: {
-        Currency: 'CNY',
-        UserID: this.auth.getUserID(),
-        Authorization: 'A602F295A6D547309A73AEC701ABC196'
-      }
-    }).then( response => {
-      if ( !response.ok ) {
-        throw Error( response.statusText );
-      } else {
-        return response.json();
-      }
-    }).then((responseJson) => {
-      this.money = parseFloat(responseJson.Amount);
+    this.fetch.fetchAmount().then(responseJson => {
+      this.money = parseFloat(responseJson.account.amount);
       this.UserID = this.auth.getUserID();
     });
   }
