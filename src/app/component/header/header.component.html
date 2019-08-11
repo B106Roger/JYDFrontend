@@ -1,17 +1,17 @@
 <div class="row-flex-no-margin-padding" id="header-bg">
 
-      <div class="row-flex" id="name-bg" >
-        <img  id="iconId" src="/assets/imgs/iconId@2x.png" >
-        <span class="basic-text-style" id="accountText">{{ UserID }}</span>
-      </div>
+  <div class="row-flex" id="name-bg" >
+    <img  id="iconId" src="/assets/imgs/iconId@2x.png" >
+    <span class="basic-text-style" id="accountText">{{ UserID }}</span>
+  </div>
 
 
-      <div class="row-flex" id="credit-bg">
-        <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
-        <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
-      </div>
+  <div class="row-flex" id="credit-bg">
+    <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png">
+    <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
+  </div>
 
-      <button class="no-padding" id="settingButton"
+  <button class="no-padding" id="settingButton"
         [popper]="popperSetting"
         [popperHideOnClickOutside]="true"
         [popperTrigger]="'none'"
@@ -43,9 +43,9 @@
         (click)="togglePopper()"
         >
         <img>
-      </button>
+  </button>
 
-  <button class="no-padding" id="logoutButton">
+  <button class="no-padding" id="logoutButton" (click)="showLeaveBox()">
     <img>
   </button>
 </div>

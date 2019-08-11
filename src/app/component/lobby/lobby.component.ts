@@ -282,6 +282,22 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     document.getElementById('logout-box').hidden = true;
   }
 
+  closeLeaveBox() {
+    document.getElementById('leave-box').hidden = true;
+  }
+
+  leave() {
+    window.opener = null;
+    window.open('', '_self', '');
+    try {
+      window.close();
+    } catch (e) {
+      console.log('fail');
+    }
+   // window.close();
+    //window.open('https://jyd.nogf.xyz', '_self', '').close();
+  }
+
   logout() {
     this.auth.logout();
   }

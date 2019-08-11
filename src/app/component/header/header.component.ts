@@ -32,12 +32,17 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   getMusic() { return this.msuic; }
-  printMusic() { console.log(!this.msuic); }
+
   getSound() { return this.sound; }
-  printSound() { console.log(!this.sound); }
+
   showLogoutBox() {
       document.getElementById('logout-box').hidden = false;
       this.popper.hide();
+  }
+
+  showLeaveBox() {
+    document.getElementById('leave-box').hidden = false;
+    this.popper.hide();
   }
 
   setMusic() {

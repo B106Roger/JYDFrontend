@@ -378,7 +378,7 @@
   }
 }
 
-#logout-box
+#logout-box, #leave-box
 {
   display:flex;
   justify-content: center;
@@ -389,21 +389,22 @@
   height: 100%;
   background-color:rgba(0,0,0,0.5);
 
-  #confirm-box
+  .confirm-box
   {
 
     position: relative;
     background-image: url('/assets/imgs/picLogoutFrame@2x.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 95%;
-    height: 40%;
+    width: 96%;
+    height: 65vw;
+    max-height: 324px;
 
-    #leaveBtn
+    .leaveBtn
     {
       position: absolute;
       top: -2.5%;
-      right: -2.5%;
+      right: -1%;
     }
 
     .text-message
@@ -416,9 +417,7 @@
     {
       margin-top: 10%;
       padding:0 8%;
-      img{ width: 40%; }
+      img{ width: 35%; }
     }
   }
-
-
 }
