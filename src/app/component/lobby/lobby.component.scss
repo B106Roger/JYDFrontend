@@ -417,7 +417,11 @@
     {
       margin-top: 10%;
       padding:0 8%;
-      img{ width: 35%; }
+      img{
+        width: 35.4%;
+        height: 11.25vw;
+        max-height: 55.56px;
+      }
     }
   }
 }
