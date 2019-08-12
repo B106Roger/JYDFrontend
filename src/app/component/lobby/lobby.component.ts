@@ -17,6 +17,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   userAgent = window.navigator.userAgent.toLowerCase();
   isIphone = /iphone/.test( this.userAgent );
   isStandalone = 'standalone' in navigator && navigator['standalone'];
+  picLang: string;
   menuSelected: string;
   menuShow = false;
   menuList = [
@@ -40,162 +41,121 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   images = [
     {
       gameName: 'fivedragons',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGame5Dragons.png',
+      gameImgUrl: '5dragons',
       gameCategory: 'slots',
       display: '1'
     },
     {
       gameName: 'deuceswild',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameImgUrl: 'deuceswild',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'deuceswild',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameImgUrl: 'deuceswild',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'deuceswild',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameImgUrl: 'deuceswild',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'deuceswild',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_deuceswild_en.png',
+      gameImgUrl: 'deuceswild',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'luckymario',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_luckygoddess_en.png',
+      gameImgUrl: 'luckygoddess',
       gameCategory: 'marry',
       display: '2'
     },
     {
       gameName: 'sambaqueen',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_sambaqueen_en.png',
+      gameImgUrl: 'sambaqueen',
       gameCategory: 'marry',
       display: '2'
     },
     {
       gameName: 'fivekoi',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGame5Koi.png',
+      gameImgUrl: '5koi',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'fiftydragons',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGame50Dragons.png',
+      gameImgUrl: '50dragons',
       gameCategory: 'slots',
       display: '2'
     },
-    // {
-    //   gameName: 'gameagent008',
-    //   gameScript: 'url_string',
-    //   gameImgUrl: '/assets/imgs/picGameAgent008.png',
-    //   gameCategory: 'slots',
-    //   display: '2'
-    // },
     {
       gameName: 'fortunes88',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGame88Fortunes.png',
+      gameImgUrl: '88fortunes',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'diamondeternity',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_diamondeternity_en.png',
+      gameImgUrl: 'diamondeternity',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'huga',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_huga_en.png',
+      gameImgUrl: 'huga',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'beanstalk',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBeanstalk.png',
+      gameImgUrl: 'beanstalk',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'misskitty',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_misskitty_en.png',
+      gameImgUrl: 'misskitty',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'pelicanpete',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_pelicanpete_en.png',
+      gameImgUrl: 'pelicanpete',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picGameBuffalo.png',
+      gameImgUrl: 'buffalo',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'kingofmountain',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/pic_game_iconS_kingofmountain_en.png',
+      gameImgUrl: 'kingofmountain',
       gameCategory: 'slots',
       display: '2'
     },
-    // {
-    //   gameName: 'sexybartender',
-    //   gameScript: 'url_string',
-    //   gameImgUrl: '/assets/imgs/pic_game_iconS_sexybartender_en.png',
-    //   gameCategory: 'slots',
-    //   display: '2'
-    // },
-    // {
-    //   gameName: 'soccerfever',
-    //   gameScript: 'url_string',
-    //   gameImgUrl: '/assets/imgs/pic_game_iconS_soccerfever_en.png',
-    //   gameCategory: 'slots',
-    //   display: '2'
-    // },
     {
       gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picBanner01.png',
+      gameImgUrl: 'picBanner01@2x.png',
       gameCategory: 'slots',
       display: '3'
     },
     {
       gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picBanner01.png',
+      gameImgUrl: 'picBanner01@2x.png',
       gameCategory: 'slots',
       display: '3'
     },
     {
       gameName: 'buffalo',
-      gameScript: 'url_string',
-      gameImgUrl: '/assets/imgs/picBanner01.png',
+      gameImgUrl: 'picBanner01@2x.png',
       gameCategory: 'slots',
       display: '3'
     },
@@ -212,6 +172,27 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       localStorage.setItem('gameChoose', 'all');
     } else {
       this.menuSelected = localStorage.getItem('gameChoose');
+    }
+    // 初始化遊戲圖片
+    this.picLang = this.translate.currentLang;
+    for (let ele of this.images) {
+      switch (ele.display) {
+        case '1':
+          ele.gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${ele.gameImgUrl}_${this.picLang}.png`;
+          break;
+
+        case '2':
+          ele.gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${ele.gameImgUrl}_${this.picLang}.png`;
+          break;
+
+        case '3':
+          ele.gameImgUrl = `/assets/imgs/${this.picLang}/${ele.gameImgUrl}`;
+          break;
+
+        default:
+         throw Error('Unknown Game Type');
+      }
+
     }
   }
 
