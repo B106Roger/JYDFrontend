@@ -102,6 +102,14 @@ export class AppComponent implements OnInit, AfterViewInit {
       //     }
       //   }, 500);
       // }, false);
+
+      // function reorient(e) {
+      //   console.log(window.orientation);
+      //   const portrait = ( (+window.orientation % 180) === 0);
+      //   $('body').css('-webkit-transform', !portrait ? 'rotate(-90deg)' : '');
+      // }
+      // window.onorientationchange = reorient;
+      // window.setTimeout(reorient, 0);
     }
   }
   isLoginOrGame() {

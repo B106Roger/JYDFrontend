@@ -5,7 +5,8 @@
    'landscape-frame': orientation === 'landscape',
    'portrait-frame': orientation === 'portrait'
   }">
-    <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+    <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
+    mozallowfullscreen="true" allowfullscreen="true" (load)="this.addListenerInIframe()"></iframe>
 </section>
 
 
@@ -14,7 +15,8 @@
 <ng-template #iphone_area>
     <div class="popover-body">
         <div class="iframe-container fixed scroll no-scrollbar">
-            <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"></iframe>
+            <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
+            mozallowfullscreen="true" allowfullscreen="true" (load)="this.addListenerInIframe()"></iframe>
         </div>
     </div>
 </ng-template>

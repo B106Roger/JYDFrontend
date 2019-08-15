@@ -35,18 +35,15 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   getSrc() {
     switch ( this.gameType ) {
       case 'slots':
-        console.log('--------------------slot game');
         return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
 
       case 'marry':
-        console.log('--------------------marry slot game');
         return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/index.html`);
 
       case 'poker':
-        console.log('--------------------poker game');
         return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/poker.html');
 
-      default:
+        default:
         throw Error('Unknown Game Type');
     }
   }
@@ -68,6 +65,16 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
       default:
         throw Error('Unknown Game Type');
     }
+  }
+
+  stopPropagation(e: Event) {
+    e.stopPropagation();
+  }
+
+  addListenerInIframe() {
+    const iframe = document.querySelector('iframe');
+    const game = iframe.contentWindow.document.querySelector('body');
+    game.addEventListener('mousedown', (e) => {e.stopPropagation(); }, true);
   }
 
   ngOnDestroy() {
