@@ -11,48 +11,20 @@
     <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
   </div>
 
-  <button class="no-padding" id="settingButton"
-        [popper]="popperSetting"
-        [popperHideOnClickOutside]="true"
-        [popperTrigger]="'none'"
-        [popperHideOnScroll]="true"
-        [popperDisableStyle]="true"
-        [popperStyles]="{
-        background: 'url(\' /assets/imgs/picSettingMenuBg.png\')',
-        'background-size': '100%100%',
-        'background-repeat': 'no-repeat',
-        'width': '52%',
-        'height': '40%',
-        'min-width': '186px',
-        'min-height': '271px',
-        'z-index': 4
-        }"
-        [popperModifiers]="{
-          offset: {
-            enabled: true,
-            offset: '35%p'
-          },
-          flip: {
-            enabled: true,
-            behavior: ['bottom','right','left','top']
-          },
-          preventOverflow: {
-            escapeWithReference: true
-          }
-        }"
-        (click)="togglePopper()"
-        >
-        <img>
+  <button class="no-padding" id="settingButton" (click)="togglePopper()">
+    <img id="settingImg" draggable="false" alt="settingButton"
+     [ngClass]="{
+       'settingImgNormal': !getShowPopper(),
+       'settingImgPressed': getShowPopper()
+      }">
   </button>
 
   <button class="no-padding" id="logoutButton" (click)="showLeaveBox()">
     <img draggable="false" alt="leaveButton">
   </button>
-</div>
-<audio #musicEle id="musicEle" src="/assets/music_lobbybg.wav" autoplay loop style="display: none"></audio>
 
-<!-- poppup setting content padding-top: 11px;-->
-<popper-content #popperSetting >
+  <!-- poppup setting content padding-top: 11px;-->
+  <div id="popper_content" [ngStyle]="{'display': showPopper === true ? 'block' : 'none'}" >
     <div class="column-flex basic-text-style unselectable setting-menu-container">
 
       <div class="row-flex setting-item">
@@ -62,7 +34,7 @@
         <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic" (change)="setMusic()">
         <label for="MusicBotton" id="musicContainer">
           <img [src]="getMusic() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)" draggable="false"
-               [alt]="getMusic() === true ? 'on' : 'off'" >
+              [alt]="getMusic() === true ? 'on' : 'off'" >
         </label>
       </div>
 
@@ -77,7 +49,7 @@
         <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound" (change)="setSound()">
         <label  for="SonudBotton" id='soundContainer' >
           <img [src]="getSound() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"
-           draggable="false" alt="separateLine" >
+          draggable="false" alt="separateLine" >
         </label>
       </div>
 
@@ -105,10 +77,14 @@
       <div class="row-flex-no-margin-padding" style="align-items: center">
         <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
       </div>
-      <div class="row-flex setting-item" (click)="showLogoutBox()" >
+      <div class="row-flex setting-item" (click)="closePopper();showLogoutBox()" >
         <div  class="column-flex-no-margin-padding">
           {{'lobby.setting.logout' | translate }}
         </div>
       </div>
     </div>
-</popper-content>
+  </div>
+</div>
+<audio #musicEle id="musicEle" src="/assets/music_lobbybg.wav" autoplay loop style="display: none"></audio>
+
+

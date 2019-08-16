@@ -95,27 +95,38 @@ input {
 }
 
 .bottom-banner {
-  @media screen and (min-height: 730px){
-    content: url('/assets/imgs/btnBgExpand.png');
-    min-width:320px;
-    max-width:494px;
+  content: url('/assets/imgs/btnBgExpand.png');
+  height: 18px;
+  min-width:320px;
+  max-width:494px;
+  @media screen and (min-height: 730px) and (orientation: portrait) {
     width: 100vw;
-    height: 18px;
   }
-  @media screen and (max-height: 729px){
+  @media screen and (min-width: 730px) and (orientation: landscape) {
+    width: 100vh;
+  }
+
+
+  @media screen and (max-height: 729px) and (orientation: portrait),
+  (max-width: 736px) and (orientation: landscape){
     display: none;
   }
 }
 
 .header-banner {
-  @media screen and (min-height: 730px){
-    content: url('/assets/imgs/picTopBgExpand.png');
-    min-width:320px;
-    max-width:494px;
+  content: url('/assets/imgs/picTopBgExpand.png');
+  height: 40px;
+  min-width:320px;
+  max-width:494px;
+  @media screen and (min-height: 730px) and (orientation: portrait) {
     width: 100vw;
-    height: 40px;
   }
-  @media screen and (max-height: 729px){
+  @media screen and (min-width: 730px) and (orientation: landscape) {
+    width: 100vh;
+  }
+
+  @media screen and (max-height: 729px) and (orientation: portrait),
+  (max-width: 736px) and (orientation: landscape) {
     display: none;
   }
 }

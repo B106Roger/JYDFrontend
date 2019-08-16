@@ -88,7 +88,7 @@
       <!-- 輪播牆元件 -->
       <div class="row-flex carousel-container">
           <div id="carouselExampleIndicators" class="carousel slide"
-          data-ride="carousel"  data-interval="5000" data-wrap="true" data-pause="hover">
+          data-ride="carousel"  data-interval="false" data-wrap="true" data-pause="hover">
             <ol class="carousel-indicators" >
               <ng-container *ngFor="let item of getCarouselGame();let index = index;let first = first">
                 <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="index" [ngClass]="{'active': first}"></li>
@@ -111,7 +111,7 @@
     <app-nav-bar></app-nav-bar>
 
     <!-- 登出元件 -->
-    <div id="logout-box" hidden>
+    <div id="logout-box" class="blurContainer" hidden>
       <div class="confirm-box">
 
         <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
@@ -148,7 +148,7 @@
     </div>
 
     <!-- 離開元件 -->
-    <div id="leave-box" hidden>
+    <div id="leave-box" class="blurContainer" hidden>
       <div class="confirm-box">
 
         <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
@@ -183,6 +183,8 @@
 
       </div>
     </div>
+
+    <div id="blurItem" class="blurContainer" hidden></div>
 
 
 </section>

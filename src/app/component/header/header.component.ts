@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from './../../services/fetch.service';
-import { PopperContent } from 'ngx-popper';
 
 @Component({
   selector: 'app-header',
@@ -13,12 +12,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('musicEle', {static: false})
   musicEle: ElementRef;
-  @ViewChild('popperSetting', {static: false})
-  popper: PopperContent;
   msuic = false;
   sound = false;
   money: number;
   UserID = '';
+  showPopper = false;
   constructor(public auth: AuthGuardService, public fetch: FetchService) { }
 
   ngOnInit() {
@@ -36,13 +34,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   getSound() { return this.sound; }
 
   showLogoutBox() {
-      document.getElementById('logout-box').hidden = false;
-      this.popper.hide();
+    document.getElementById('logout-box').hidden = false;
   }
 
   showLeaveBox() {
     document.getElementById('leave-box').hidden = false;
-    this.popper.hide();
   }
 
   setMusic() {
@@ -85,10 +81,21 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   togglePopper() {
-    if (this.popper.ariaHidden === 'false') {
-      this.popper.hide();
-    } else if (this.popper.ariaHidden === 'true') {
-      this.popper.show();
+    if (this.showPopper) {
+      this.closePopper();
+    } else {
+      this.openPopper();
     }
+  }
+  closePopper() {
+    this.showPopper = false;
+    document.getElementById('blurItem').hidden = true;
+  }
+  openPopper() {
+    this.showPopper = true;
+    document.getElementById('blurItem').hidden = false;
+  }
+  getShowPopper() {
+    return this.showPopper;
   }
 }

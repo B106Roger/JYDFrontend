@@ -3,58 +3,29 @@
     <div class="row-flex w100" id="main-icon-container">
         <img [src]="'login.mainicon' | translate" draggable="false" alt="TreasureIsland">
     </div>
-    <!-- poppup setting content padding-top: 11px;-->
-    <popper-content #popperSetting >
-      <div class="unselectable" id="langPopup">
-        <ng-container *ngFor="let ele of langList">
-          <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);popperSetting.hide()">
-            <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label">
-            <span class="lang-text">{{ele.label}}</span>
-          </div>
-        </ng-container>
-      </div>
-    </popper-content>
-    <div class="row-flex w100" style="margin-top: 30px">
-      <button id="lang-bg" class="row-flex"
-      [popper]="popperSetting"
-      [popperTrigger]="'none'"
-      [popperHideOnClickOutside]="true"
-      [popperHideOnScroll]="true"
-      [popperDisableStyle]="true"
-      [popperPlacement]="'bottom'"
-      [popperStyles]="{
-      'background-image': 'url(\' /assets/imgs/picLanMenuBgExpand.png\')',
-      'background-size': '100% 100%',
-      'background-repeat': 'no-repeat',
-      'width': '42.2%',
-      'padding-top': '42.5%',
-      'max-height': '202px',
-      'z-index': 2
-      }"
-      [popperModifiers]="{
-        offset: {
-          enabled: true,
-          offset: '0px,-93.75%'
-        },
-        flip: {
-          enabled: false,
-          behavior: ['right','left','top']
-        },
-        preventOverflow: {
-          escapeWithReference: true
-        }
-      }"
-      (click)="togglePopper()"
-      >
 
-      <div>
-        <img [src]="getLang().img" class="langFlag">
-        <span class="lang-text">{{getLang().label}}</span>
-        <img id="pointer" [src]="langShow == false ?
-        '/assets/imgs/iconLanMenuDown.png' :
-        '/assets/imgs/iconLanMenuUp.png'"  >
-      </div>
+    <div class="row-flex w100" style="margin-top: 30px">
+      <button id="lang-bg" class="row-flex" (click)="togglePopper()" (blur)="closePopper()">
+        <div>
+          <img [src]="getLang().img" class="langFlag">
+          <span class="lang-text">{{getLang().label}}</span>
+          <img id="pointer" [src]="langShow == false ?
+          '/assets/imgs/iconLanMenuDown.png' :
+          '/assets/imgs/iconLanMenuUp.png'"  >
+        </div>
       </button>
+
+      <!-- poppup setting content -->
+      <div id="popper_content" [ngStyle]="{'display': this.langShow === true ? 'block' : 'none'}" >
+        <div class="unselectable" id="langPopup">
+          <ng-container *ngFor="let ele of langList">
+            <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);togglePopper()">
+              <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label">
+              <span class="lang-text">{{ele.label}}</span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
     </div>
 
 
