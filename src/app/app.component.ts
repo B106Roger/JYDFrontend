@@ -5,6 +5,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { __asyncDelegator } from 'tslib';
 // tslint:disable: no-string-literal
 
+declare var $: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -61,8 +62,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let startY = -1;
-    let endY = -1;
     let time = new Date().getTime();
     if (this.isIphone === true) {
       scrollTo(0, 100);
@@ -79,8 +78,6 @@ export class AppComponent implements OnInit, AfterViewInit {
           if (event.touches.length > 1 || tmp - time < 300) {
               event.preventDefault();
               event.stopPropagation(); // maybe useless
-          } else {
-            startY = event.changedTouches[0].pageY;
           }
           time = tmp;
         }, {passive: false});
@@ -108,8 +105,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       //   const portrait = ( (+window.orientation % 180) === 0);
       //   $('body').css('-webkit-transform', !portrait ? 'rotate(-90deg)' : '');
       // }
-      // window.onorientationchange = reorient;
-      // window.setTimeout(reorient, 0);
+      // window.addEventListener('orientationchange', () => {
+      //   window.setTimeout(reorient, 0);
+      // }, true);
+
     }
   }
   isLoginOrGame() {

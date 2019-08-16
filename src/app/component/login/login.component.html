@@ -26,8 +26,8 @@
       'background-image': 'url(\' /assets/imgs/picLanMenuBgExpand.png\')',
       'background-size': '100% 100%',
       'background-repeat': 'no-repeat',
-      'width': '40.5%',
-      'height': '41vw',
+      'width': '42.2%',
+      'padding-top': '42.5%',
       'max-height': '202px',
       'z-index': 2
       }"
@@ -46,11 +46,14 @@
       }"
       (click)="togglePopper()"
       >
-      <img [src]="getLang().img" class="langFlag">
-      <span class="lang-text" style="font-size: 15px;">{{getLang().label}}</span>
-      <img id="pointer" [src]="langShow == false ?
-      '/assets/imgs/iconLanMenuDown.png' :
-      '/assets/imgs/iconLanMenuUp.png'"  >
+
+      <div>
+        <img [src]="getLang().img" class="langFlag">
+        <span class="lang-text">{{getLang().label}}</span>
+        <img id="pointer" [src]="langShow == false ?
+        '/assets/imgs/iconLanMenuDown.png' :
+        '/assets/imgs/iconLanMenuUp.png'"  >
+      </div>
       </button>
     </div>
 
@@ -71,7 +74,7 @@
         draggable="false" alt="check">
       </div>
       <div class="column-flex" >
-        <label for="remember-me" class="unselectable basic-text-style" style="margin: 0;font-size: 90%" >
+        <label for="remember-me" class="unselectable basic-text-style" >
             {{ 'login.rememberMe' | translate}}
         </label>
       </div>
