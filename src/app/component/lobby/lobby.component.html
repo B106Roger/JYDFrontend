@@ -10,57 +10,27 @@
 
       <!-- 遊戲種類選擇元件 -->
       <div class="menu-container" style="margin-left: 0">
-          <button id="game-filter-bg" class="row-flex"
-          (popperOnShown)="toggleMenuOnShow()"
-          (popperOnHidden)="toggleMenuOnShow()"
-          [popper]="popperSetting"
-          [popperTrigger]="'click'"
-          [popperHideOnClickOutside]="true"
-          [popperHideOnScroll]="true"
-          [popperDisableStyle]="true"
-          [popperPlacement]="'bottom'"
-          [popperStyles]="{
-          background: 'url(\' /assets/imgs/picGameMenuBgExpand.png\')',
-          'background-size': '100% 100%',
-          'background-repeat': 'no-repeat',
-          'width': '43%',
-          'min-height': '140px',
-          'max-height': '160px',
-          'height': '27%',
-          'z-index': 2
-          }"
-          [popperModifiers]="{
-            offset: {
-              enabled: true,
-              offset: '0px,-31px'
-            },
-            flip: {
-              enabled: false,
-              behavior: ['right','left','top']
-            },
-            preventOverflow: {
-              escapeWithReference: true
-            }
-          }">
+          <button id="game-filter-bg" class="row-flex" (mousedown)="toggleMenuOnShow()" (blur)="this.menuShow=false">
 
-            <span class="basic-text-style" id="menu-text" >{{('lobby.' + getMenuSelect().value) | translate}}</span>
-            <img [src]="menuShow === false ?
-                        '/assets/imgs/iconGameMenuDown.png' :
-                        '/assets/imgs/iconGameMenuUp.png'"
-                        [ngStyle]="{'margin-top': menuShow === false ? '2px' : '0px', 'padding-right': '8.3%'}"
-                        draggable="false" [alt]="menuShow === false ? 'collapse' : 'expand'">
+            <div >
+              <span class="basic-text-style" id="menu-text" >{{('lobby.' + getMenuSelect().value) | translate}}</span>
+              <img [src]="menuShow === false ?
+                          '/assets/imgs/iconGameMenuDown.png' :
+                          '/assets/imgs/iconGameMenuUp.png'"
+                          draggable="false" [alt]="menuShow === false ? 'collapse' : 'expand'">
+            </div>
 
           </button>
           <!-- poppup setting content padding-top: 11px;-->
-          <popper-content #popperSetting >
+          <div id="game_popper" [ngStyle]="{'display': this.menuShow === true ? 'block' : 'none'}">
             <div class="unselectable" id="menuPopup">
               <ng-container *ngFor="let option of menuList">
-                  <div class="menu-option-bg" (click)="popperSetting.hide();setMenuSelect(option.value)">
+                  <div class="menu-option-bg" (mousedown)="setMenuSelect(option.value);toggleMenuOnShow()">
                       <span class="basic-text-style " style="padding-left: 9.6%">{{('lobby.' + option.value) | translate}}</span>
                   </div>
               </ng-container>
             </div>
-          </popper-content>
+          </div>
       </div>
 
 
@@ -126,7 +96,7 @@
         <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div>
 
         <div class="img-btn d-flex justify-content-around">
-          <img draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
+          <img class="yes" draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
             (mousedown) ="setYesPressed($event)"
             (touchend)  ="setYesNormal($event)"
             (touchstart)="setYesPressed($event)"
@@ -134,7 +104,7 @@
             (mouseleave)="setYesNormal($event)"
             (click)     ="logout()"
           >
-          <img draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
+          <img class="no" draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
             (mousedown) ="setNoPressed($event)"
             (touchend)  ="setNoNormal($event)"
             (touchstart)="setNoPressed($event)"
@@ -163,7 +133,7 @@
         <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div>
 
         <div class="img-btn d-flex justify-content-around">
-          <img draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
+          <img class="yes" draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
             (mousedown) ="setYesPressed($event)"
             (touchend)  ="setYesNormal($event)"
             (touchstart)="setYesPressed($event)"
@@ -171,7 +141,7 @@
             (mouseleave)="setYesNormal($event)"
             (click)     ="leave()"
           >
-          <img draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
+          <img class="no" draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
             (mousedown) ="setNoPressed($event)"
             (touchend)  ="setNoNormal($event)"
             (touchstart)="setNoPressed($event)"

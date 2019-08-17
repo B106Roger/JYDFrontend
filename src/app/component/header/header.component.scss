@@ -98,7 +98,7 @@
     content: url('/assets/imgs/btnSettingMenuNormal@2x.png');
   }
   .settingImgPressed {
-    width: 130%;
+    width: 129%;
     margin-bottom: 2px;
     z-index: 11;
     content: url('/assets/imgs/btnSettingMenuPressed@2x.png');
@@ -171,12 +171,15 @@
   background-size: 100%100%;
   background-repeat: no-repeat;
   width: 52%;
-  padding-top: 75.3%;
+  padding-top: 60%;
   z-index: 11;
 
   position: absolute;
   top: 50px;
-  right: 10%;
-
+  left: 38.5%;
+  @media screen and (min-width: 495px) and (orientation: portrait),
+  (min-width: 900px) and (orientation: landscape) {
+    left: calc(38.5% + 190px - 42%);
+  }
 }
 

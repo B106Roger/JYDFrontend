@@ -1,6 +1,6 @@
 
 <!-- 給android的遊戲畫面 -->
-<section *ngIf="this.isIphone === false; else iphone_area"
+<section
  [ngClass]="{
    'landscape-frame': orientation === 'landscape',
    'portrait-frame': orientation === 'portrait'

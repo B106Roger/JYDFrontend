@@ -55,25 +55,19 @@ body#zh-cn * {
     width: 100vw;
   }
   // mobile landscape
-  @media screen and (min-width: 730px) and (max-height: 494px) and (orientation: landscape) {
+  @media screen and (min-width: 737px) and (max-height: 494px) and (orientation: landscape) {
     height: calc(100vw - 40px - 18px);
     width: 100vh;
     max-width: calc(840px - 40px - 18px);
   }
-  @media screen and (max-width: 729px) and (max-height: 494px) and (orientation: landscape) {
+  @media screen and (max-width: 736px) and (max-height: 494px) and (orientation: landscape) {
     height: 100vw;
     width: 100vh;
   }
 
   // PC
-  @media screen and (min-width: 495px) and (orientation: portrait) {
-    height: calc(840px - 40px - 18px);
-    width: 100vw;
-
-    min-width:320px;
-    min-height:548px;
-    max-width:494px;
-  }
+  height: calc(840px - 40px - 18px);
+  width: 494px;
 }
 
 .setting-bg
