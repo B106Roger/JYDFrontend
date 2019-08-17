@@ -46,11 +46,20 @@
   height: 55%;
   width: 100%;
   margin-top: 2%;
-  @media only screen and (max-width: 415px) and (orientation: portrait),
-                         (max-height: 415px) and (orientation: landscape)
-  {
-    max-height: 281px;
+  // Mobile
+  @media screen and (max-width: 495px) and (orientation: portrait) {
+    height: calc(78vw);
   }
+  @media screen and (max-height: 495px) and (orientation: landscape) {
+    height: calc(78vh);
+  }
+
+  @media screen and (min-width: 400px) and (orientation: portrait),
+  (min-height: 400px) and (orientation: landscape) {
+    height: 300px;
+  }
+
+  // @media screen and (min-width: 401px) and (min-height: 800px)
 
   display: flex;
   flex-direction: column;
@@ -67,22 +76,13 @@
   }
 
   #hot-game-frame {
-    width: 32%;
+    width: 29.7%;
     height: 100%;
-    @media screen  and (max-width: 415px) and (min-width: 360px) and (orientation: portrait),
-    (max-height: 415px) and (min-height: 360px) and (orientation: landscape)
-    {
-      width: 107px;
-    }
-    @media screen and (max-width: 483px) and (min-width:416px) and (orientation: portrait),
-    (max-height: 483px) and (min-height:416px) and (orientation: landscape)
-    {
-      width: 32%;
-    }
-    @media screen and (min-width: 484px) and (orientation: portrait),
-    (min-height: 484px) and (orientation: landscape)
-    {
-      width: 28%;
+
+    @media screen and (min-width: 400px) and (orientation: portrait),
+    (min-height: 400px) and (orientation: landscape) {
+      height: 300px;
+      width: 114.23px;
     }
 
     display: flex;
@@ -98,34 +98,25 @@
       width: 62.6%;
     }
     #hot-pic {
-      height: 96.7%;;
+      width: 93%;;
       position: absolute;
+      top: 3px;
     }
     #hot-frame {
-      height: 100%;
+      width: 100%;
       position: absolute;
-       top: 1px;
+      top: 0;
     }
   }
   .normal-game-frame {
-    width: 33%;
+    width: 29.7%;
     height: 50%;
-    @media screen  and (max-width: 415px) and (min-width: 360px) and (orientation: portrait),
-    (max-height: 415px) and (min-height: 360px) and (orientation: landscape)
-    {
-      width: 107px;
-    }
-    @media screen and (max-width: 483px) and (min-width:416px) and (orientation: portrait),
-    (max-height: 483px) and (min-height:416px) and (orientation: landscape)
-    {
-      width: 32%;
-    }
-    @media screen and (min-width: 484px) and (orientation: portrait),
-    (min-height: 484px) and (orientation: landscape)
-    {
-      width: 28%;
-    }
 
+    @media screen and (min-width: 400px) and (orientation: portrait),
+    (min-height: 400px) and (orientation: landscape) {
+      height: 150px;
+      width: 114.23px;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,12 +124,14 @@
 
     position: relative;
     .normal-pic {
-      height: 94%;
+      width: 93%;;
       position: absolute;
+      top: 3px;
     }
     #normal-frame {
-      height: 100%;
+      width: 100%;
       position: absolute;
+      top: 0;
     }
   }
   .margin-left {
@@ -185,7 +178,7 @@
 
     width: 43%;
     padding-top: 9.2%;
-    margin-left: 1px;
+    margin: 0 0 0 1px;
 
     outline: none;
     border: none;
@@ -294,28 +287,21 @@
 
 // 輪播牆 start
 .carousel-container {
-  height: 24.6%;
-  @media only screen and (max-width: 415px) and (orientation: portrait),
-                        (max-height: 415px) and (orientation: landscape) {
-    max-height: 125px;
-  }
-  @media only screen and (min-width: 416px) and (orientation: portrait),
-                         (min-height: 416px) and (orientation: landscape) {
-    height: 23.5%;
-  }
+  width: 100%;
 
   #carouselExampleIndicators {
-    height: 100%;
     width: 100%;
     .carousel-inner {
-      height: 100%;
       width: 100%;
       .carousel-item {
-        height: 100%;
         width: 100%;
         .banner-game-frame {
-          height: 100%;
+          padding-top: 34.7%;
           width: 100%;
+          @media screen and (min-width: 400px) and (orientation: portrait),
+          (min-height: 400px) and (orientation: landscape) {
+            padding-top: calc(34.7% * 0.90);
+          }
 
           display: flex;
           flex-direction: column;
@@ -325,13 +311,13 @@
           position: relative;
           img.carousel-frame {
             height: 100%;
-
             position: absolute;
+            top: 0;
           }
           img.carousel-content {
             height: 87%;
-
             position: absolute;
+            top: 6%;
           }
         }
       }
