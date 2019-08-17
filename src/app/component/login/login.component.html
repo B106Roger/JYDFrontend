@@ -19,7 +19,7 @@
       <div id="popper_content" [ngStyle]="{'display': this.langShow === true ? 'block' : 'none'}" >
         <div class="unselectable" id="langPopup">
           <ng-container *ngFor="let ele of langList">
-            <div class="lang-option-bg" style="justify-content: flex-start" (click)="setLang(ele.lang);togglePopper()">
+            <div class="lang-option-bg" style="justify-content: flex-start" (mousedown)="setLang(ele.lang);">
               <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label">
               <span class="lang-text">{{ele.label}}</span>
             </div>
