@@ -1,21 +1,31 @@
 html
 {
-  @media only screen and (max-width: 494px)
+  @media only screen and (max-width: 494px) and (orientation: portrait)
   {
     font-size: 4vw;
   }
+  @media only screen and (max-height: 494px) and (orientation: landscape)
+  {
+    font-size: 4vh;
+  }
 
-  @media only screen and (max-height: 840px)
+  @media only screen and (max-height: 840px) and (orientation: portrait)
   {
     font-size: 4vw;
   }
+  @media only screen and (max-width: 840px) and (orientation: landscape)
+  {
+    font-size: 4vh;
+  }
 
-  @media only screen and (min-width: 494px)
+  @media only screen and (min-width: 494px) and (orientation: portrait),
+  (min-height: 494px) and (orientation: landscape)
   {
     font-size: 20px;
   }
 
-  @media only screen and (min-height: 840px)
+  @media only screen and (min-height: 840px) and (orientation: portrait),
+  (min-width: 840px) and (orientation: landscape)
   {
     font-size: 20px;
   }
