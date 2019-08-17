@@ -1,6 +1,6 @@
 
 <!-- 給android的遊戲畫面 -->
-<section
+<section *ngIf="this.isIphone === false; else iphone_area"
  [ngClass]="{
    'landscape-frame': orientation === 'landscape',
    'portrait-frame': orientation === 'portrait'
@@ -13,11 +13,14 @@
 
 <!-- 給ios的遊戲畫面 -->
 <ng-template #iphone_area>
-    <div class="popover-body">
-        <div class="iframe-container fixed scroll no-scrollbar">
-            <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
-            mozallowfullscreen="true" allowfullscreen="true" (load)="this.addListenerInIframe()"></iframe>
-        </div>
+  <div [ngClass]="{
+    'ios-landscape-body': orientation === 'landscape',
+    'ios-portrait-body': orientation === 'portrait'
+  }">
+    <div class="iframe-container fixed scroll no-scrollbar">
+      <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
+      mozallowfullscreen="true" allowfullscreen="true" (load)="this.addListenerInIframe()"></iframe>
     </div>
+  </div>
 </ng-template>
 
