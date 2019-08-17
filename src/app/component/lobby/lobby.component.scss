@@ -178,33 +178,6 @@
   position: relative;
   z-index: 3;
   justify-content: flex-start;
-
-  // 對齊輪播牆
-  @media only screen and (max-width: 415px)      // pix 2,pix 2 XL i6+,i7+,i8+
-  {
-    margin-left: 9%;
-    margin-top: 7%;
-  }
-  @media only screen and (max-width: 376px)      // i6,i7,i8
-  {
-    margin-left: 4.5%;
-    margin-top: 5%;
-  }
-  @media only screen and (max-width: 361px)      //GL s5
-  {
-    margin-left: 3%;
-    margin-top: 3%;
-  }
-  @media only screen and (max-width: 341px)    //i5 SE
-  {
-    margin-left: 5.5%;
-    margin-top: 3%;
-  }
-  @media screen  and (min-width: 416px)       // PC
-  {
-    margin-left: 4.5%;
-    margin-top: 5%;
-  }
   #game-filter-bg {
     background: url('/assets/imgs/picGameMenuBg@2x.png');
     background-size: 100%100%;
@@ -393,25 +366,6 @@
   margin:0px;
 }
 
-
-.carousel-container {
-  @media only screen and (max-height: 667px)              // Galaxy S5  I6,I7,I8
-  {
-    margin-top: 0;
-  }
-  @media only screen and (max-height: 736px) and (min-height: 668px)   // I6+ ,I7+ ,I8+, Pixel2
-  {
-    margin-top: 5%;
-  }
-  @media only screen and (max-height: 823px) and (min-height: 737px) and (max-width: 500px)  // I 10, Pixel 2XL
-  {
-    margin-top: 12%;
-  }
-  @media screen and (min-height: 900px) {       // tablet
-    margin-top: 5%;
-  }
-}
-
 .blurContainer
 {
   display:flex;
@@ -469,5 +423,26 @@
         right: 13.4%;
       }
     }
+  }
+}
+
+
+#menu-seperater {
+  width: 100%;
+  @media screen and (min-height: 500px) and (orientation: portrait),
+  (min-width: 500px) and (orientation: landscape) {
+    height: 3.5%;
+  }
+  @media screen and (min-height: 740px) and (orientation: portrait),
+  (min-width: 740px) and (orientation: landscape) {
+    height: 48px;
+  }
+}
+
+#carousel-seperater {
+  width: 100%;
+  @media screen and (min-height: 770px) and (orientation: portrait),
+  (min-width: 770px) and (orientation: landscape) {
+    height: 40px;
   }
 }
