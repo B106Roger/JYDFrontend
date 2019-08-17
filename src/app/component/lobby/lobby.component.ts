@@ -46,8 +46,8 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '1'
     },
     {
-      gameName: 'deuceswild',
-      gameImgUrl: 'deuceswild',
+      gameName: 'jackorbetter',
+      gameImgUrl: 'jackorbetter',
       gameCategory: 'poker',
       display: '2'
     },
@@ -58,8 +58,8 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '2'
     },
     {
-      gameName: 'deuceswild',
-      gameImgUrl: 'deuceswild',
+      gameName: 'jokerpoker',
+      gameImgUrl: 'jokerpoker',
       gameCategory: 'poker',
       display: '2'
     },
