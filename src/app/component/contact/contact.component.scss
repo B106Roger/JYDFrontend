@@ -6,7 +6,8 @@
 .outer
 {
   padding:0 3%;
-  height: 12vh;
+  @media screen and ( orientation: portrait )  { height: 12vh; }
+  @media screen and ( orientation: landscape ) { height: 12vw; }
 }
 
 .contact-row

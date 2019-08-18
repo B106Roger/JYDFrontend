@@ -31,18 +31,18 @@ html
   }
 
 }
-*:not(input) {
 
+*:not(input) {
   user-select: none;
 }
 
 body#en * {
-    font-family: 'proxima-nova', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
 }
 
 
 body#zh-cn * {
-    font-family: '微軟正黑體', sans-serif;
+  font-family: '微軟正黑體', sans-serif;
 }
 
 .root-base
@@ -90,7 +90,8 @@ body#zh-cn * {
     width:100%;
     color: #b4c6ec;
     padding: 0;
-    height:6vh;
+    @media screen and ( orientation: portrait )   { height:6vh; }
+    @media screen and ( orientation: landscape )  { height:6vw; }
     justify-content: center;
     align-items:center;
   }
@@ -113,9 +114,16 @@ body#zh-cn * {
     display: inline-block;
     position: absolute;
     top: 10%;
-    right: 0.5vh;
-    width: 5vh;
-    height: 5vh;
+    @media screen and ( orientation: portrait )   { 
+      right: 0.5vh;
+      width: 5vh;
+      height: 5vh;
+    }
+    @media screen and ( orientation: landscape )  { 
+      right: 0.5vw;
+      width: 5vw;
+      height: 5vw;
+    }
     min-height: 20px;
     max-height: 40px;
   }
@@ -184,13 +192,17 @@ body#zh-cn * {
 .short-label
 {
   max-width:47%;
-  margin:0 2vh;
+  @media screen and ( orientation: portrait )   { margin:0 2vh; }
+  @media screen and ( orientation: landscape )  { margin:0 2vw; }
+
 }
 
 .long-label
 {
   max-width:95%;
-  margin:0 1vh;
+  @media screen and ( orientation: portrait )   { margin:0 1vh; }
+  @media screen and ( orientation: landscape )  { margin:0 1vw; }
+
 }
 
 .titleImg
