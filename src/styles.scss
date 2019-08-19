@@ -6,16 +6,23 @@ body, html {
   touch-action: manipulation;
 }
 
-.custom-justify-content-center {
-  // mobile
-  @media screen and (max-width: 494px){
-    justify-content: center !important;
+body {
+  display: flex;
+  align-items: center;
+}
+
+app-root {
+  display: block;
+  margin:auto;
+  @media screen and (max-width: 494px) and (orientation: portrait) {
+    width: 100vw;
+    height: 100vh;
   }
-  // PC
-  @media screen and (min-width: 495px){
-    app-root {
-      margin: auto;
-    }
+  
+  @media screen and (max-height: 494px) and (orientation: landscape) {
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(calc(50vw - 50vh));
   }
 }
 
