@@ -358,7 +358,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
     // 清除上一次的momentum scroll
     clearInterval(this.touchintervalItem);
-    const initialLocation = e1.changedTouches[0].clientX;
+    const initialLocation = e1.changedTouches[0];
     const initalTime = new Date();
     let previousLocation = initialLocation;
 
@@ -369,9 +369,12 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     e1.currentTarget.addEventListener('touchcancel', newendScroll);
 
     function scrollX(e2: TouchEvent) {
-      const delta =  previousLocation - e2.changedTouches[0].clientX ;
-      ele.scrollLeft += delta;
-      previousLocation = e2.changedTouches[0].clientX;
+      if (window.innerHeight > window.innerWidth) { // portrait
+        ele.scrollLeft += previousLocation.clientX - e2.changedTouches[0].clientX;
+      } else {
+        ele.scrollLeft += e2.changedTouches[0].clientY - previousLocation.clientY;
+      }
+      previousLocation = e2.changedTouches[0];
     }
     function endScroll(e3: TouchEvent) {
       e3.currentTarget.removeEventListener('touchmove', scrollX);
@@ -380,14 +383,17 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
       // *************   Momentum Scroll   ****************
       const interval = new Date().getTime() - initalTime.getTime();
-      const distance = initialLocation - e3.changedTouches[0].clientX;
+      let distance: number;
+      if (window.innerHeight > window.innerWidth) { // portrait
+        distance =  initialLocation.clientX - e3.changedTouches[0].clientX;
+      } else {
+        distance = e3.changedTouches[0].clientY -   initialLocation.clientY;
+      }
 
       let velocity = distance / interval;
       if (interval === 0) {
         velocity = distance / 0.1;
       }
-      console.log('ini location: ', initialLocation, 'final location: ' , e3.changedTouches[0].clientX);
-      console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
 
       const maxscroll = ele.scrollWidth - ele.offsetWidth;
       const updateInterval = 10;
