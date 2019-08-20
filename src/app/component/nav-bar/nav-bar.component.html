@@ -1,13 +1,7 @@
 <div id="nav-bar-container">
   <img src="/assets/imgs/segBottom.png" style="width: 100%" alt="segBottom">
   <div class="d-flex" class="menu-bg">
-    <button *ngFor="let option of menuList" [routerLink]="option.nextUrl" class="menu-button"
-    (touchstart)="setPicture($event,option.picturepressed)"
-    (mousedown)="setPicture($event,option.picturepressed)"
-    (mouseup)="setPicture($event,option.picture)"
-    (mouseleave)="setPicture($event,option.picture)"
-    (touchend)="setPicture($event,option.picture)"
-    >
+    <button *ngFor="let option of menuList" [routerLink]="option.nextUrl" class="menu-button">
       <img [src]="option.picture | translate" draggable="false" [alt]="option.picture">
     </button>
   </div>
