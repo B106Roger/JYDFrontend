@@ -18,7 +18,7 @@ app-root {
     width: 100vw;
     height: 100vh;
   }
-  
+
   @media screen and (max-height: 494px) and (orientation: landscape) {
     width: 100vh;
     height: 100vw;
@@ -105,7 +105,7 @@ input {
   content: url('/assets/imgs/btnBgExpand.png');
   height: 18px;
   min-width:320px;
-  max-width:494px;
+  max-width:414px;
   @media screen and (min-height: 730px) and (orientation: portrait) {
     width: 100vw;
   }
@@ -124,7 +124,7 @@ input {
   content: url('/assets/imgs/picTopBgExpand.png');
   height: 40px;
   min-width:320px;
-  max-width:494px;
+  max-width:414px;
   @media screen and (min-height: 730px) and (orientation: portrait) {
     width: 100vw;
   }

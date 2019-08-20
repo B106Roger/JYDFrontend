@@ -427,6 +427,10 @@
 
 #carousel-seperater {
   width: 100%;
+  @media screen and (min-height: 700px) and (orientation: portrait),
+  (min-width: 700px) and (orientation: landscape) {
+    height: 15px;
+  }
   @media screen and (min-height: 770px) and (orientation: portrait),
   (min-width: 770px) and (orientation: landscape) {
     height: 40px;

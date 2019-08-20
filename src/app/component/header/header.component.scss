@@ -107,7 +107,7 @@
 
 .setting-menu-container {
   position: absolute;
-  top: 5%;
+  top: 3%;
   height: 90%;
   width: 95%;
   flex-wrap: nowrap;
@@ -118,7 +118,8 @@
   margin-top: 0px;
   margin-left:5%;
   justify-content: space-between;
-  height: 12%;
+  align-items: center;
+  height: 20%;
 }
 
 
@@ -128,8 +129,6 @@
   border: 0px;
 
   margin: 0 0 0 2.7%;
-  min-width: 29px;
-  min-height: 22px;
   width: 8.5%;
 
   display: flex;
@@ -158,11 +157,9 @@
 }
 
 #musicContainer, #soundContainer {
-  height: 100%;
+  width: 37.6%;
   img {
-    max-height: 35px;
-    min-height: 25px;
-    height: 100%;
+    width: 100%;
   }
   margin: 0px;
 }
@@ -177,9 +174,5 @@
   position: absolute;
   top: 50px;
   left: 38.5%;
-  @media screen and (min-width: 495px) and (orientation: portrait),
-  (min-width: 900px) and (orientation: landscape) {
-    left: calc(38.5% + 190px - 42%);
-  }
 }
 
