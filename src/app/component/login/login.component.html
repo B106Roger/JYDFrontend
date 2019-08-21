@@ -5,7 +5,7 @@
     </div>
 
     <div class="row-flex w100" style="margin-top: 30px">
-      <button id="lang-bg" class="row-flex" (click)="togglePopper()" (blur)="closePopper()">
+      <button id="lang-bg" class="row-flex" (mousedown)="togglePopper()" (blur)="closePopper()">
         <div>
           <img [src]="getLang().img" class="langFlag">
           <span class="lang-text">{{getLang().label}}</span>
@@ -19,7 +19,7 @@
       <div id="popper_content" [ngStyle]="{'display': this.langShow === true ? 'block' : 'none'}" >
         <div class="unselectable" id="langPopup">
           <ng-container *ngFor="let ele of langList">
-            <div class="lang-option-bg" style="justify-content: flex-start" (mousedown)="setLang(ele.lang);">
+            <div class="lang-option-bg" style="justify-content: flex-start" (mousedown)="setLang(ele.lang);closePopper()">
               <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label">
               <span class="lang-text">{{ele.label}}</span>
             </div>
