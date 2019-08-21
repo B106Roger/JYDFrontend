@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public translate: TranslateService) {  }
+  constructor(public translate: TranslateService, private route: Router) {  }
 
   menuList = [
     {
@@ -40,5 +41,14 @@ export class NavBarComponent implements OnInit {
     const target = e.currentTarget as HTMLElement;
     const img = target.querySelector('img');
     img.src = this.translate.instant(srcURL);
+  }
+  navigateTo(e: Event) {
+    const target = e.target as HTMLElement;
+    if (target.nodeName === 'BUTTON') {
+      this.route.navigate([target.dataset.href]);
+    } else if (target.nodeName === 'IMG') {
+      const actualTarget = target.parentElement  as HTMLElement;
+      this.route.navigate([actualTarget.dataset.href]);
+    }
   }
 }

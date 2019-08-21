@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -163,7 +164,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   private scrollintervalItem;
   private touchintervalItem;
 
-  constructor(private translate: TranslateService, private auth: AuthGuardService) { }
+  constructor(private translate: TranslateService, private auth: AuthGuardService, private route: Router) { }
 
   ngOnInit() {
     // 初始化遊戲選擇項目
@@ -312,8 +313,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       if (interval === 0) {
         velocity = distance / 0.1;
       }
-      console.log('ini location: ', initialLocation, 'final location: ' , e3.clientX);
-      console.log('interval: ', interval, ' diff: ', distance, 'velocity: ', velocity);
 
       const maxscroll = ele.scrollWidth - ele.offsetWidth;
       const updateInterval = 10;
@@ -338,7 +337,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
             if (count > 0) {
               ele.scrollLeft += displacement;
               count -= updateInterval * updateconstant;
-              console.log(velocity, displacement, updateconstant);
             } else {
               count = initalcount;
               velocity = velocity * (1 - decreaseRatio);
