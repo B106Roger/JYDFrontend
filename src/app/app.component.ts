@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       //   resizeId = setTimeout(() => {
       //     const dst = this.router.url;
       //     if (window.outerWidth >= window.outerHeight && !dst.match('/game/')) {
-      //       alert('change orientation to see full content');
+      //       window.alert('change orientation to see full content');
       //     } else if (this.isStandalone) {
       //       scrollTo(0, 100);
       //     }

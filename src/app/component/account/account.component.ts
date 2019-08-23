@@ -51,7 +51,7 @@ export class AccountComponent implements OnInit {
     if (this.password.value === this.confirm.value) {
       this.fetch.fetchChangePassword( this.password.value );
     } else {
-      alert('Not Match Password');
+      window.alert('Not Match Password');
     }
   }
 }

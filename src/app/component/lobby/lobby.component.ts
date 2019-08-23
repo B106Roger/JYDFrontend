@@ -176,7 +176,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     }
     // 初始化遊戲圖片
     this.picLang = this.translate.currentLang;
-    for (let ele of this.images) {
+    for (const ele of this.images) {
       switch (ele.display) {
         case '1':
           ele.gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${ele.gameImgUrl}_${this.picLang}.png`;

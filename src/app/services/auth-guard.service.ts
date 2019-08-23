@@ -16,6 +16,8 @@ export class AuthGuardService implements CanActivate {
   private formData = new FormData();
   private key;
   private iv;
+  private prefixSalt;
+  private suffixSalt;
   private OPTION: RequestInit = {
     method: 'post',
     body : this.formData,
@@ -32,7 +34,19 @@ export class AuthGuardService implements CanActivate {
     this.formData.append('password' , null );
     this.formData.append('grant_type' , 'password');
     this.formData.append('scope' , 'GameManagement jyd.profile profile openid');
+    this.prefixSalt = AuthGuardService.randomStr();
+    this.suffixSalt = AuthGuardService.randomStr();
     return AuthGuardService._INSTANCE = AuthGuardService._INSTANCE || this;
+  }
+
+  static randomStr(length = 8) {
+    const $char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let str = '';
+    while (str.length < length ) {
+      const index = Math.ceil(Math.random() * 35);
+      str += $char[index];
+    }
+    return str;
   }
 
   canActivate() {
@@ -85,7 +99,7 @@ export class AuthGuardService implements CanActivate {
         return true;
       })
       .catch( error => {
-        alert( error );
+        window.alert( error );
 
         return false;
     });
@@ -102,11 +116,12 @@ export class AuthGuardService implements CanActivate {
     const srcs = Crypto.enc.Base64.stringify(encryptedHexStr);
     const decrypt = Crypto.AES.decrypt(srcs, this.key, { iv: this.iv, mode: Crypto.mode.CBC, padding: Crypto.pad.Pkcs7 });
     const decryptedStr = decrypt.toString(Crypto.enc.Utf8);
-    return decryptedStr.toString();
+    return decryptedStr.toString().substring(8, decryptedStr.length - 8);
   }
 
   encrypt( text ) {
-    const srcs = Crypto.enc.Utf8.parse(text);
+    const saltText = `${this.prefixSalt}${text}${this.suffixSalt}`;
+    const srcs = Crypto.enc.Utf8.parse(saltText);
     const encrypted = Crypto.AES.encrypt(srcs, this.key, { iv: this.iv, mode: Crypto.mode.CBC, padding: Crypto.pad.Pkcs7 });
     return encrypted.ciphertext.toString().toUpperCase();
   }

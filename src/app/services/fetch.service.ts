@@ -60,10 +60,10 @@ export class FetchService {
         method : 'PUT'
       })
       .then( responser => {
-        alert('Success');
+        window.alert('Success');
       })
       .catch(error => {
-        alert(error);
+        window.alert(error);
     });
   }
 
