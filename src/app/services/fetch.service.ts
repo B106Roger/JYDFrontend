@@ -83,4 +83,10 @@ export class FetchService {
       return responseJSON;
     });
   }
+
+  fetchGameList() {
+    return fetch(`${Api.gameListApi}`).then(response => {
+      return response.json();
+    });
+  }
 }

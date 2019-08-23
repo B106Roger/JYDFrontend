@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
+import { FetchService } from 'src/app/services/fetch.service';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       label: 'Português'
     }
   ];
-  constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService) {  }
+  constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService, private fetch: FetchService) {  }
 
   ngOnInit() {
     // 設定語系
@@ -87,7 +88,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.auth.login(this.account , this.password , this.remember)
       .then( loginState => {
         if ( loginState ) {
-          this.route.navigate(['/lobby']);
+          this.fetch.fetchAmount().then(() => {
+            this.route.navigate(['/lobby']);
+          }).catch( err => {
+            console.log(err);
+            this.route.navigate(['/lobby']);
+          });
         }
     });
   }

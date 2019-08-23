@@ -94,6 +94,9 @@ export class AuthGuardService implements CanActivate {
   logout() {
     localStorage.removeItem('user');
     sessionStorage.clear();
+    this.UserID = null;
+    this.Password = null;
+    this.token = null;
     this.router.navigate(['/login']);
   }
 

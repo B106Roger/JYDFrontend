@@ -13,7 +13,7 @@ const Api = {
     * @var  Password :string
     * @return access_token , expires_in , token_type , scope
     */
-  loginApi      : 'https://jyddev1.azurewebsites.net/auth/connect/token',
+  loginApi      : 'https://jyd.bet7evens.com/auth/connect/token',
 
    /**
     * @method Get
@@ -21,7 +21,7 @@ const Api = {
     * @var void
     * @return GameList[]
     */
-  gameListApi   : 'https://jyddev.azurewebsites.net/api/app/GameListAPI.aspx',
+  gameListApi   : 'https://dev-slot-mario.gd888.cc/gamelab/slot-mario/v3/config/priorities',
 
    /**
     * @method Get
@@ -30,7 +30,7 @@ const Api = {
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  betRecordApi  : 'https://jyddev1.azurewebsites.net/api/account/betrecord',
+  betRecordApi  : 'https://jyd.bet7evens.com/api/account/betrecord',
 
    /**
     * @method Get
@@ -39,7 +39,7 @@ const Api = {
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  gameRecordApi : 'https://jyddev1.azurewebsites.net/api/game/record',
+  gameRecordApi : 'https://jyd.bet7evens.com/api/game/record',
 
    /**
     * @method Get
@@ -49,7 +49,7 @@ const Api = {
     * @var void
     * @return data[]
     */
-  amountApi     : 'https://jyddev1.azurewebsites.net/api/account/',
+  amountApi     : 'https://jyd.bet7evens.com/api/account',
 
    /**
     * @method PUT
@@ -57,7 +57,7 @@ const Api = {
     * @var oldPassword: string
     * @var newPassword: string
     */
-  ChangePasswordApi: 'https://jyddev1.azurewebsites.net/api/account/password',
+  ChangePasswordApi: 'https://jyd.bet7evens.com/api/account/password',
 
    /**
     * @method Get
