@@ -22,7 +22,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.msuic = (localStorage.getItem('music') === 'on' ? true : false);
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
-    this.getMoney();
+    this.getUserID();
+    this.fetchMoney();
   }
   ngAfterViewInit() {
     this.setMusic();
@@ -73,11 +74,18 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  getMoney() {
-    this.fetch.fetchAmount().then(responseJson => {
-      this.money = parseFloat(responseJson.account.amount);
-      this.UserID = this.auth.getUserID();
-    });
+  fetchMoney() {
+    if (!sessionStorage.getItem('amount')) {
+      this.fetch.fetchAmount().then(responseJson => {
+        // this.money = parseFloat(responseJson.account.amount);
+        this.money = parseFloat(sessionStorage.getItem('amount'));
+      });
+    } else {
+      this.money = parseFloat(sessionStorage.getItem('amount'));
+    }
+  }
+  getUserID() {
+    this.UserID = this.auth.getUserID();
   }
 
   togglePopper() {

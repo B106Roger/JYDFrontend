@@ -78,6 +78,9 @@ export class FetchService {
       } else {
         return response.json();
       }
+    }).then( responseJSON => {
+      sessionStorage.setItem('amount', responseJSON.account.amount);
+      return responseJSON;
     });
   }
 }

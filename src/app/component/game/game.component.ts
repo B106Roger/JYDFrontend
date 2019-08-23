@@ -1,9 +1,10 @@
 import { Component, OnInit , OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthGuardService } from './../../services/auth-guard.service';
-// tslint:disable: no-string-literal
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { FetchService } from 'src/app/services/fetch.service';
+// tslint:disable: max-line-length
+// tslint:disable: no-string-literal
 
 @Component({
   selector: 'app-game',
@@ -12,7 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   @ViewChild('myiframe',{static: false}) myframe: ElementRef;
-  constructor(private routerInfo: ActivatedRoute, private auth: AuthGuardService, public sanitizer: DomSanitizer) { }
+
+  constructor(private routerInfo: ActivatedRoute, private auth: AuthGuardService, public sanitizer: DomSanitizer, public fetch: FetchService) { }
 
   userAgent = window.navigator.userAgent.toLowerCase();
   isIphone = /iphone/.test( this.userAgent );
@@ -81,6 +83,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     delete window['_GameName'];
     delete window['_GameUrl'];
     delete window['_Bearer'];
+    sessionStorage.removeItem('amount');
   }
 
 }
