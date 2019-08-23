@@ -16,8 +16,6 @@ export class AuthGuardService implements CanActivate {
   private formData = new FormData();
   private key;
   private iv;
-  private prefixSalt;
-  private suffixSalt;
   private OPTION: RequestInit = {
     method: 'post',
     body : this.formData,
@@ -34,8 +32,6 @@ export class AuthGuardService implements CanActivate {
     this.formData.append('password' , null );
     this.formData.append('grant_type' , 'password');
     this.formData.append('scope' , 'GameManagement jyd.profile profile openid');
-    this.prefixSalt = AuthGuardService.randomStr();
-    this.suffixSalt = AuthGuardService.randomStr();
     return AuthGuardService._INSTANCE = AuthGuardService._INSTANCE || this;
   }
 
@@ -123,7 +119,9 @@ export class AuthGuardService implements CanActivate {
   }
 
   encrypt( text ) {
-    const saltText = `${this.prefixSalt}${text}${this.suffixSalt}`;
+    const prefixSalt = AuthGuardService.randomStr();
+    const suffixSalt = AuthGuardService.randomStr();
+    const saltText = `${prefixSalt}${text}${suffixSalt}`;
     const srcs = Crypto.enc.Utf8.parse(saltText);
     const encrypted = Crypto.AES.encrypt(srcs, this.key, { iv: this.iv, mode: Crypto.mode.CBC, padding: Crypto.pad.Pkcs7 });
     return encrypted.ciphertext.toString().toUpperCase();
