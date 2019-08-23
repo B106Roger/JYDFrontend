@@ -40,7 +40,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
         return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
 
       case 'marry':
-        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/index.html`);
+        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/Builds/index.html`);
 
       case 'poker':
         return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/poker.html');
