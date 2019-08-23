@@ -31,7 +31,6 @@ const Api = {
     * @return RecordList[]
     */
   betRecordApi  : 'https://jyd.bet7evens.com/api/account/betrecord',
-
    /**
     * @method Get
     * @headers {'Authorization' : Access_token}
