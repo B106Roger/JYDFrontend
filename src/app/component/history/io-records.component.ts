@@ -46,7 +46,7 @@ export class IoRecordsComponent implements OnInit , OnChanges {
       this.records = this.ioRecrods.slice( 0, 200 ).map(record => {
         return [
           record.autoID,
-          record.dateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.DateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
+          record.dateTime.match(/[\d]+/g).slice(0, 3).join('-') + ' ' + record.dateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
           (record.afterMoney - record.beforeMoney).toFixed(2),
           parseInt( record.beforeMoney , 10).toFixed(2),
           parseInt( record.afterMoney  , 10).toFixed(2),

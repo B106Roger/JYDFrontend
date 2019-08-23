@@ -114,10 +114,9 @@
 
 .records-container
 {
-  height: 85%;
+  height: 75%;
   overflow-x: hidden;
   overflow-y: auto;
-  border-bottom:2px solid #0044BB;
   .recordBody
   {
     height: 10%;
@@ -154,6 +153,47 @@
     background: rgba(0,0,0,0);
   }
 }
+
+.pageSelect-container
+{
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+
+  .first-page
+  {
+    max-width:4%;
+  }
+  .prev-page
+  {
+    max-width:3%;
+  }
+  .page-frame
+  {
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    width:25%;
+    height:60%;
+    color: white;
+    background-image: url('/assets/imgs/picPageFrame@2x.png');
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center;
+  }
+  .next-page
+  {
+    max-width:3%;
+  }
+  .final-page
+  {
+    max-width:4%;
+  }
+}
+
+
 
 .ui-datepicker-begin
 {

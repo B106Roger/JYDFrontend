@@ -46,15 +46,6 @@ export class AuthGuardService implements CanActivate {
   }
 
   canActivate() {
-    console.log( 'decrypt Token: '    , this.decrypt( sessionStorage.getItem('Token')) );
-
-    if ( localStorage.getItem('UserID') !== null ) {
-      console.log( 'decrypt Account : ' , this.decrypt( localStorage.getItem('UserID') ));
-    }
-
-    if ( localStorage.getItem('Password') !== null ) {
-      console.log( 'decrypt Password: ' , this.decrypt( localStorage.getItem('Password') ));
-    }
     return this.loginValidate();
   }
 

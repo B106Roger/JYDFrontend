@@ -84,14 +84,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   login() {
-    console.log('account: ', this.account);
     this.auth.login(this.account , this.password , this.remember)
       .then( loginState => {
         if ( loginState ) {
           this.fetch.fetchAmount().then(() => {
             this.route.navigate(['/lobby']);
           }).catch( err => {
-            console.log(err);
             this.route.navigate(['/lobby']);
           });
         }

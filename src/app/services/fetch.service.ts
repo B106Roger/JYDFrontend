@@ -15,8 +15,8 @@ export class FetchService {
     return FetchService._INSTANCE = FetchService._INSTANCE || this;
   }
 
-  fetchGameRecords(startDate , endDate) {
-    return fetch(`${Api.gameRecordApi}/${startDate}/${endDate}` , {
+  fetchGameRecords(startDate , endDate , page = 1) {
+    return fetch(`${Api.gameRecordApi}/${startDate}/${endDate}/${page}` , {
       headers : new Headers({
         Authorization: `Bearer ${this.auth.getToken()}`
       })
@@ -29,8 +29,8 @@ export class FetchService {
     });
   }
 
-  fetchInOutRecords(startDate , endDate) {
-    return fetch(`${Api.betRecordApi}/${startDate}/${endDate}` , {
+  fetchInOutRecords(startDate , endDate , page = 1) {
+    return fetch(`${Api.betRecordApi}/${startDate}/${endDate}/${page}` , {
       headers : new Headers({
         Authorization: `Bearer ${this.auth.getToken()}`
       })

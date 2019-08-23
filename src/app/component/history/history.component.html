@@ -59,6 +59,40 @@
       <app-game-records [gameRecrods]="gameRecrods" [hidden]="!selectPage"></app-game-records>
       <app-io-records [ioRecrods]="ioRecrods" [hidden]="selectPage"></app-io-records>
 
+      <div class="pageSelect-container">
+        <img class="first-page" [src]="'/assets/imgs/btnFirstPageNormal@2x.png'"
+          (mousedown)  ="setFirstPageBtnPressed($event)"
+          (touchstart) ="setFirstPageBtnPressed($event)"
+          (touchend)   ="setFirstPageBtnNormal($event)"
+          (mouseup)    ="setFirstPageBtnNormal($event)"
+          (mouseleave) ="setFirstPageBtnNormal($event)"
+          (click)      ="setPage( 1 )"
+        />
+        <img class="prev-page" [src]="'/assets/imgs/btnPreviousPageNormal@2x.png'"
+          (mousedown)  ="setPrevPageBtnPressed($event)"
+          (touchstart) ="setPrevPageBtnPressed($event)"
+          (touchend)   ="setPrevPageBtnNormal($event)"
+          (mouseup)    ="setPrevPageBtnNormal($event)"
+          (mouseleave) ="setPrevPageBtnNormal($event)"
+          (click)      ="changePage( -1 )"
+        />
+        <span class="page-frame">{{ currentPage }}</span>
+        <img class="next-page" [src]="'/assets/imgs/btnNextPageNormal@2x.png'"
+          (mousedown)  ="setNextPageBtnPressed($event)"
+          (touchstart) ="setNextPageBtnPressed($event)"
+          (touchend)   ="setNextPageBtnNormal($event)"
+          (mouseup)    ="setNextPageBtnNormal($event)"
+          (mouseleave) ="setNextPageBtnNormal($event)"
+          (click)      ="changePage( 1 )"
+        />
+        <img class="final-page" [src]="'/assets/imgs/btnLastPageNormal@2x.png'"
+          (mousedown)  ="setFinalPageBtnPressed($event)"
+          (touchstart) ="setFinalPageBtnPressed($event)"
+          (touchend)   ="setFinalPageBtnNormal($event)"
+          (mouseup)    ="setFinalPageBtnNormal($event)"
+          (mouseleave) ="setFinalPageBtnNormal($event)"
+        />
+      </div>
 
     </div>
   </div>
