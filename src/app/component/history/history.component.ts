@@ -178,10 +178,15 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   sendQuery() {
-    this.fetch.fetchGameRecords(this.startDate , this.endDate , this.currentPage )
-                .then(responseJson => { this.gameRecrods = responseJson.recordList; });
+    Promise.all([
+      this.fetch.fetchGameRecords(this.startDate, this.endDate, this.currentPage)
+        .then(responseJson => { this.gameRecrods = responseJson.recordList; }),
 
-    this.fetch.fetchInOutRecords(this.startDate, this.endDate, this.currentPage )
-                .then(responseJson => { this.ioRecrods = responseJson.recordList; });
+      this.fetch.fetchInOutRecords(this.startDate, this.endDate, this.currentPage)
+        .then(responseJson => { this.ioRecrods = responseJson.recordList; })
+    ]).then( values => {
+        document.querySelector('.records-container').scrollTo(0, 0);
+    });
+
   }
 }
