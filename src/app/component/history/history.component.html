@@ -76,7 +76,7 @@
           (mouseleave) ="setPrevPageBtnNormal($event)"
           (click)      ="changePage( -1 )"
         />
-        <span class="page-frame">{{ currentPage }}</span>
+        <span class="page-frame">{{ currentPage+1 }}</span>
         <img class="next-page" [src]="'/assets/imgs/btnNextPageNormal@2x.png'"
           (mousedown)  ="setNextPageBtnPressed($event)"
           (touchstart) ="setNextPageBtnPressed($event)"
@@ -91,6 +91,7 @@
           (touchend)   ="setFinalPageBtnNormal($event)"
           (mouseup)    ="setFinalPageBtnNormal($event)"
           (mouseleave) ="setFinalPageBtnNormal($event)"
+          (click)      ="setPage( selectPage ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 )"
         />
       </div>
 

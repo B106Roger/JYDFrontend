@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FetchService } from './../../services/fetch.service';
@@ -10,7 +10,7 @@ import { GameRecordsComponent } from './game-records.component';
   styleUrls: ['./history.component.scss']
 })
 
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, OnDestroy {
 
 
   public startDate: string;
@@ -37,25 +37,53 @@ export class HistoryComponent implements OnInit {
         return numDate < 10 ? '0' + numDate : numDate;
       }).join('-');
 
-
-      this.selectPage = 1;
-      this.startDate = initStartDate;
-      this.endDate   = initEndDate;
-      this.currentPage = 1;
-      this.fetch.fetchGameRecords(this.startDate , this.endDate)
-        .then(responseJson => {
-          this.gameRecrods = responseJson.recordList;
-          this.gameRecordTotalPage = responseJson.info.totalPages;
-      });
-      this.fetch.fetchInOutRecords(this.startDate , this.endDate)
-        .then(responseJson => {
-          this.ioRecrods = responseJson.recordList;
-          this.ioRecordTotalPage = responseJson.info.totalPages;
-      });
+      if ('historyCache' in sessionStorage) {
+        const snapshot = JSON.parse(sessionStorage.getItem('historyCache'));
+        this.selectPage = snapshot.selectPage;
+        this.startDate = snapshot.startDate;
+        this.endDate = snapshot.endDate;
+        this.currentPage = snapshot.currentPage;
+        this.gameRecrods = snapshot.gameRecrods;
+        this.gameRecordTotalPage = snapshot.gameRecordTotalPage;
+        this.ioRecrods = snapshot.ioRecrods;
+        this.ioRecordTotalPage = snapshot.ioRecordTotalPage;
+      } else {
+        this.selectPage = 1;
+        this.startDate = initStartDate;
+        this.endDate = initEndDate;
+        this.currentPage = 0;
+        this.fetch.fetchGameRecords(this.startDate, this.endDate)
+          .then(responseJson => {
+            this.gameRecrods = responseJson.recordList;
+            this.gameRecordTotalPage = responseJson.info.totalPages;
+          });
+        this.fetch.fetchInOutRecords(this.startDate, this.endDate)
+          .then(responseJson => {
+            this.ioRecrods = responseJson.recordList;
+            this.ioRecordTotalPage = responseJson.info.totalPages;
+          });
+      }
   }
 
+  ngOnDestroy() {
+    sessionStorage.setItem('historyCache' , JSON.stringify({
+      selectPage: this.selectPage,
+      startDate: this.startDate,
+      endDate: this.endDate,
+      currentPage: this.currentPage,
+      gameRecrods: this.gameRecrods,
+      gameRecordTotalPage: this.gameRecordTotalPage,
+      ioRecrods: this.ioRecrods,
+      ioRecordTotalPage: this.ioRecordTotalPage
+    }));
+  }
   tabChange( page ) {
     this.selectPage = page;
+    const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
+    if (this.currentPage > maxPage) {
+      this.currentPage = maxPage;
+      this.sendQuery();
+    }
   }
 
   setGoNormal(e) {
@@ -131,21 +159,29 @@ export class HistoryComponent implements OnInit {
   }
 
   changePage(value: number) {
-    this.currentPage = parseInt( this.currentPage , 10 ) + value;
-    this.currentPage = ( parseInt( this.currentPage , 10) < 1 ? 1 : this.currentPage);
-    this.sendQuery();
+    const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1;
+    let temp;
+    temp = parseInt( this.currentPage , 10 ) + value;
+    temp = (temp < 0 ? 0 : temp );
+    temp = (temp > maxPage ? maxPage : temp );
+    if (parseInt(this.currentPage, 10) !== temp ) {
+      this.currentPage = temp;
+      this.sendQuery();
+    }
   }
 
   setPage(page: number) {
-    this.currentPage = page;
+    if (parseInt(this.currentPage, 10) !== page) {
+      this.currentPage = page;
+      this.sendQuery();
+    }
   }
 
-  // FIXME: 分頁待修正
   sendQuery() {
     this.fetch.fetchGameRecords(this.startDate , this.endDate , this.currentPage )
                 .then(responseJson => { this.gameRecrods = responseJson.recordList; });
 
     this.fetch.fetchInOutRecords(this.startDate, this.endDate, this.currentPage )
-              .then(responseJson => { this.ioRecrods = responseJson.recordList; });
+                .then(responseJson => { this.ioRecrods = responseJson.recordList; });
   }
 }
