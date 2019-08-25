@@ -17,18 +17,18 @@
   background-position: center;
 
   position: relative;
-  height: 50%;
-  width: 26.4%;
+  height: 53%;
+  width: 28%;
   margin: 0 0 0 2%;
 
   align-items: center;
   justify-content: space-between;
 
   #iconId {
-    height: 53%;
-    margin-left: 9.4%;
+    width: 13%;
+    margin-left: 9.6%;
     position: absolute;
-    top: 27.2%;
+    top: 28.6%;
   }
   #accountText {
     position: absolute;
@@ -43,22 +43,21 @@
 
 
 #credit-bg {
-  background: url('/assets/imgs/picCreditFrame@2x.png');
+  background: url('/assets/imgs/picCreditFrame@3x.png');
   background-size: 100%100%;
   background-repeat: no-repeat;
   background-position: center;
 
   position: relative;
   height: 71%;
-  width: 42%;
-  max-width: 190px;
-  margin: 0 0 0 6.5%;
+  width: 50%;
+  margin: 0 0 0 7.4%;
 
   align-items: center;
   justify-content: space-between;
   #iconCredit  {
     height: 55.3%;
-    margin-left: 7.3%;
+    margin-left: 8.1%;
     position: absolute;
     top: 22.3%;
   }
@@ -81,8 +80,8 @@
   outline: none;
   border: 0px;
 
-  margin: 0 0 0 2.4%;
-  width: 7.22%;
+  margin: 3px 0 0 2.6%;
+  width: 7.74%;
 
   display: flex;
   flex-direction: row;
@@ -91,19 +90,19 @@
 
   .settingImgNormal {
     width: 100%;
-    content: url('/assets/imgs/btnSettingMenuNormal@2x.png');
+    content: url('/assets/imgs/btnSettingMenuNormal@3x.png');
   }
   .settingImgPressed {
     width: 129%;
     margin-bottom: 2px;
     z-index: 11;
-    content: url('/assets/imgs/btnSettingMenuPressed@2x.png');
+    content: url('/assets/imgs/btnSettingMenuPressed@3x.png');
   }
 }
 
 .setting-menu-container {
   position: absolute;
-  top: 3%;
+  top: 4.5%;
   height: 90%;
   width: 95%;
   flex-wrap: nowrap;
@@ -134,13 +133,13 @@
 
   img {
     width: 100%;
-    content: url('/assets/imgs/btnLogoutNormal@2x.png')
+    content: url('/assets/imgs/btnLogoutNormal@3x.png')
   }
   &:active {
     img {
       width: 125%;
       margin-bottom: 2px;
-      content: url('/assets/imgs/btnSettingLogoutPressed@2x.png')
+      content: url('/assets/imgs/btnSettingLogoutPressed@3x.png')
     }
   }
 }
@@ -164,11 +163,11 @@
   background-size: 100%100%;
   background-repeat: no-repeat;
   width: 52%;
-  padding-top: 60%;
+  padding-top: 61%;
   z-index: 11;
 
   position: absolute;
   top: 50px;
-  left: 38.5%;
+  left: 45.5%;
 }
 
