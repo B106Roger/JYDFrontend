@@ -72,6 +72,7 @@ body{
     padding: 0;
     @media screen and ( orientation: portrait )   { height:6vh; }
     @media screen and ( orientation: landscape )  { height:6vw; }
+    @media screen and (min-height: 900px) and (min-width: 900px) { height: 56px; }
     justify-content: center;
     align-items:center;
   }
@@ -82,7 +83,7 @@ body{
     height:88%;
     margin: 0;
     margin-top:10%;
-
+    @media screen and (min-height: 900px) and (min-width: 900px) { margin-top: 41px; }
   }
 
   .close-button-base
@@ -106,6 +107,8 @@ body{
     }
     min-height: 20px;
     max-height: 40px;
+    min-width: 20px;
+    max-width: 40px;
   }
 
   .close-button
