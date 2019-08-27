@@ -1,15 +1,17 @@
 <section class="root-base" id="lobby-background">
     <app-header ></app-header>
 
+    <!-- 廣播元件 -->
+    <img src="/assets/imgs/segTop.png" draggable="false" alt="separateLine" style="position: absolute; top: 66px; width: 100%">
+    <div class="marquee-bg">
+      <img src="/assets/imgs/iconMarqueeSpeaker@2x.png" draggable="false" alt="marqueeFrame">
+    </div>
+
+
     <div class="game-container">
-      <!-- 廣播元件 -->
-      <img src="/assets/imgs/segTop.png" draggable="false" alt="separateLine">
-      <div class="marquee-bg">
-        <img src="/assets/imgs/iconMarqueeSpeaker@2x.png" draggable="false" alt="marqueeFrame">
-      </div>
-      <div id="menu-seperater"></div>
+      <!-- <div id="menu-seperater"></div> -->
       <!-- 遊戲種類選擇元件 -->
-      <div class="menu-container" style="margin-left: 0">
+      <div class="menu-container">
           <button id="game-filter-bg" class="row-flex" (mousedown)="toggleMenuOnShow()" (blur)="this.menuShow=false">
 
             <div >
@@ -37,7 +39,7 @@
 
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" (mousedown)="startScroll($event)" (touchstart)="startTouch($event)">
-          <!-- <div class="margin-left"></div> -->
+          <div class="gameSeparate"></div>
           <ng-container *ngFor="let item of getHotGame();let first = first">
             <div id="hot-game-frame" *ngIf="first" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]">
               <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
@@ -53,6 +55,7 @@
               <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false" alt="normalGameFrame">
             </div>
           </ng-container>
+          <div class="gameSeparate"></div>
       </div>
       <div id="carousel-seperater"></div>
       <!-- 輪播牆元件 -->
@@ -116,46 +119,6 @@
 
       </div>
     </div>
-
-    <!-- 離開元件 -->
-    <div id="leave-box" class="blurContainer" hidden>
-      <div class="confirm-box">
-
-        <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
-            (mousedown) ="setClosePressed($event)"
-            (touchend)  ="setCloseNormal($event)"
-            (touchstart)="setClosePressed($event)"
-            (mouseup)   ="setCloseNormal($event)"
-            (mouseleave)="setCloseNormal($event)"
-            (click)     ="closeLeaveBox()"
-        >
-
-        <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div>
-
-        <div class="img-btn d-flex justify-content-around">
-          <img class="yes" draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
-            (mousedown) ="setYesPressed($event)"
-            (touchend)  ="setYesNormal($event)"
-            (touchstart)="setYesPressed($event)"
-            (mouseup)   ="setYesNormal($event)"
-            (mouseleave)="setYesNormal($event)"
-            (click)     ="leave()"
-          >
-          <img class="no" draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
-            (mousedown) ="setNoPressed($event)"
-            (touchend)  ="setNoNormal($event)"
-            (touchstart)="setNoPressed($event)"
-            (mouseup)   ="setNoNormal($event)"
-            (mouseleave)="setNoNormal($event)"
-            (click)     ="closeLeaveBox()"
-            >
-        </div>
-
-      </div>
-    </div>
-
-    <div id="blurItem" class="blurContainer" hidden></div>
-
 
 </section>
 
