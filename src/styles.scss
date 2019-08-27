@@ -112,7 +112,7 @@ input {
   }
 
   @media screen and (max-height: 729px) and (orientation: portrait),
-  (max-width: 729px) and (orientation: landscape){
+  (max-width: 736px) and (orientation: landscape){
     display: none;
   }
 }
@@ -128,7 +128,7 @@ input {
   }
 
   @media screen and (max-height: 729px) and (orientation: portrait),
-  (max-width: 729px) and (orientation: landscape) {
+  (max-width: 736px) and (orientation: landscape) {
     display: none;
   }
 }
