@@ -5,7 +5,7 @@
     "password_holder": "CONTRASEÑA",
     "loginbtn": "/assets/imgs/en/btnLoginNormal.png",
     "loginbtnpressed": "/assets/imgs/en/btnLoginPressed.png",
-    "mainicon": "/assets/imgs/en/picLogoEn.png"
+    "mainicon": "/assets/imgs/en/picLogoEn@3x.png"
   },
   "lobby": {
     "all": "ALL",
