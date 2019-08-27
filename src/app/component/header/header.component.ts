@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   constructor(public auth: AuthGuardService, public fetch: FetchService) { }
 
   ngOnInit() {
-    this.msuic = (localStorage.getItem('music') === 'on' ? true : false);
+    this.msuic = (localStorage.getItem('music') === 'on' || null ? true : false);
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
     this.getUserID();
     this.fetchMoney();

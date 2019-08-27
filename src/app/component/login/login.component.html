@@ -1,9 +1,12 @@
 <section class="login-root-base">
   <div class=flex-container id="login-backround">
+
+    <!-- Treasure Island Icon-->
     <div class="row-flex w100" id="main-icon-container">
         <img [src]="'login.mainicon' | translate" draggable="false" alt="TreasureIsland">
     </div>
 
+    <!-- 選擇語系元件-->
     <div class="row-flex w100" style="margin-top: 30px">
       <button id="lang-bg" class="row-flex" (mousedown)="togglePopper()" (blur)="closePopper()">
         <div>
@@ -28,17 +31,19 @@
       </div>
     </div>
 
-
+    <!-- 帳號元件-->
     <div class="column-flex w100"  id="account-container" style="margin-top: 15px">
       <input [(ngModel)]="account" type="text" id="account"
         class="basic-text-style" placeholder="{{'login.account_holder' | translate}}">
     </div>
 
+    <!-- 密碼元件-->
     <div class="column-flex w100"  id="password-container">
       <input [(ngModel)]="password" type="text" id="password" type="password"
         class="basic-text-style" placeholder="{{ 'login.password_holder' | translate }}">
     </div>
 
+    <!-- 記住我元件-->
     <div class="row-flex w100" id="remember-container" style="margin-top: 10px">
       <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
         <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="getRememberStyle()"
@@ -52,6 +57,7 @@
       <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember" (change)="setRememberValue()">
     </div>
 
+    <!-- 登入按鈕-->
     <div class="row-flex w100" style="margin-top: 20px">
       <button id="loginBtn" (click)="login()" >
         <img alt="Login"

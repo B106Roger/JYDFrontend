@@ -1,9 +1,9 @@
 #lobby-background {
-  background: url('/assets/imgs/bgLobby-v@2x.png') transparent;
+  background: url('/assets/imgs/picBgLobby@2x.png') transparent;
 
-  background-position: center;
+  // background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%100%;
+  background-size: 100% calc(100% + 66px);
 
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: center;
 }
 
@@ -47,23 +47,15 @@
   width: 100%;
   margin-top: 2%;
   // Mobile
-  @media screen and (max-width: 495px) and (orientation: portrait) {
-    height: calc(78vw);
+  @media screen and (max-width: 495px) and (orientation: portrait),
+  (max-height: 495px) and (orientation: landscape) {
+    height: 77.4vmin;
   }
-  @media screen and (max-height: 495px) and (orientation: landscape) {
-    height: calc(78vh);
-  }
-
-  @media screen and (min-width: 400px) and (orientation: portrait),
-  (min-height: 400px) and (orientation: landscape) {
-    height: 300px;
-  }
-
-  // @media screen and (min-width: 401px) and (min-height: 800px)
 
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-content: flex-start;
 
   overflow-x: auto;
@@ -76,14 +68,8 @@
   }
 
   #hot-game-frame {
-    width: 29.7%;
+    width: 29.2%;
     height: 100%;
-
-    @media screen and (min-width: 400px) and (orientation: portrait),
-    (min-height: 400px) and (orientation: landscape) {
-      height: 300px;
-      width: 114.23px;
-    }
 
     display: flex;
     flex-direction: column;
@@ -93,30 +79,27 @@
     position: relative;
     #hot-Tag {
       position: absolute;
-      top: 4px;
+      top: 3px;
       z-index: 1;
       width: 62.6%;
     }
     #hot-pic {
-      width: 93%;;
+      width: 95%;
+      height: 98%;
       position: absolute;
       top: 3px;
     }
     #hot-frame {
       width: 100%;
+      height: 100%;;
       position: absolute;
       top: 0;
     }
   }
   .normal-game-frame {
     width: 29.7%;
-    height: 50%;
+    height: 49.6%;
 
-    @media screen and (min-width: 400px) and (orientation: portrait),
-    (min-height: 400px) and (orientation: landscape) {
-      height: 150px;
-      width: 114.23px;
-    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,42 +107,26 @@
 
     position: relative;
     .normal-pic {
-      width: 93%;;
+      width: 95%;
+      height: 94%;
       position: absolute;
       top: 3px;
     }
     #normal-frame {
       width: 100%;
+      height: 100%;
       position: absolute;
       top: 0;
     }
   }
-  .margin-left {
-    // 對齊輪播牆
-    height: 100%;
-    @media only screen and (max-width: 450px)      // pix 2,pix 2 XL i6+,i7+,i8+
-    {
-      width: 9%;
-    }
-    @media only screen and (max-width: 376px)      // i6,i7,i8
-    {
-      width: 4.5%;
-    }
-    @media only screen and (max-width: 361px)      //GL s5
-    {
-      width: 3%;
-    }
-    @media only screen and (max-width: 341px)    //i5 SE
-    {
-      width: 4.5%;
-    }
-    @media screen  and (min-width: 416px)       // PC
-    {
-      width: 4.5%;
-    }
 
+  .gameSeparate {
+    height: 100%;
+    width: 2%;
   }
 }
+
+
 
 // 遊戲列表 end
 
@@ -171,6 +138,7 @@
   position: relative;
   z-index: 3;
   justify-content: flex-start;
+  margin: 15px 0 0 2%;
   #game-filter-bg {
     background: url('/assets/imgs/picGameMenuBg@2x.png');
     background-size: 100%100%;
@@ -271,6 +239,9 @@
   justify-content: flex-start;
   align-items: center;
 
+  position: absolute;
+  top: 67px;
+
   height: 22px;
   width: 100%;
   margin: 0px;
@@ -288,7 +259,6 @@
 // 輪播牆 start
 .carousel-container {
   width: 100%;
-
   #carouselExampleIndicators {
     width: 100%;
     .carousel-inner {
@@ -296,12 +266,8 @@
       .carousel-item {
         width: 100%;
         .banner-game-frame {
-          padding-top: 34.7%;
+          padding-top: 34%;
           width: 100%;
-          @media screen and (min-width: 400px) and (orientation: portrait),
-          (min-height: 400px) and (orientation: landscape) {
-            padding-top: calc(34.7% * 0.90);
-          }
 
           display: flex;
           flex-direction: column;
@@ -311,6 +277,7 @@
           position: relative;
           img.carousel-frame {
             height: 100%;
+            width: 98%;
             position: absolute;
             top: 0;
           }
@@ -324,13 +291,7 @@
     }
   }
   .carousel-indicators {
-    @media only screen and (max-height: 639px) {
-      top: 65%
-    }
-    @media only screen and (min-height: 640px)  {
-      top: 73%;
-    }
-
+    top: 95%;
     li {
       width: 6px;
       height: 6px;
@@ -413,26 +374,7 @@
 }
 
 
-#menu-seperater {
-  width: 100%;
-  @media screen and (min-height: 500px) and (orientation: portrait),
-  (min-width: 500px) and (orientation: landscape) {
-    height: 3.5%;
-  }
-  @media screen and (min-height: 740px) and (orientation: portrait),
-  (min-width: 740px) and (orientation: landscape) {
-    height: 48px;
-  }
-}
-
 #carousel-seperater {
   width: 100%;
-  @media screen and (min-height: 700px) and (orientation: portrait),
-  (min-width: 700px) and (orientation: landscape) {
-    height: 15px;
-  }
-  @media screen and (min-height: 770px) and (orientation: portrait),
-  (min-width: 770px) and (orientation: landscape) {
-    height: 40px;
-  }
+  height: 5px;
 }
