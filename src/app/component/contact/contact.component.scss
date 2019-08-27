@@ -15,14 +15,57 @@
   width: 100%;
   border-bottom: 1px solid #0044BB;
 
-  .icon-warpper
+  .email-warpper
   {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width:20%;
-    height:100%;
+    width: 15%;
+    padding-top: 12.7%;
+    height:0;
   }
+  .phone-warpper
+  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding-top: 14.18%;
+    height:0;
+  }
+  .whatsapp-warpper
+  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding-top: 13.90%;
+    height:0;
+  }
+  .wechat-warpper
+  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding-top: 13%;
+    height:0;
+  }
+  .line-warpper
+  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding-top: 13.3%;
+    height:0;
+  }
+
   .detail
   {
     display: inline-block;
@@ -34,9 +77,8 @@
 
   .icon
   {
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-    height: 58%;
+    height: 100%;
+    position: absolute;
+    top: 0;
   }
 }
