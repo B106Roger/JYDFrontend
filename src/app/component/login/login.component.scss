@@ -43,14 +43,14 @@
   padding-top: calc(55.1% * 0.468);
   max-height: 143px;
   position: relative;
-
+  margin-top: 40%;
   @media screen and (max-height: 700px) and (min-height: 500px) and (orientation: portrait),
   (max-width: 700px) and (min-width: 500px) and (orientation: landscape) {
-    margin-top: 19vh;
+    margin-top: 19vmax;
   }
-  @media screen and (max-height: 870px) and (min-height: 701px) and (orientation: portrait),
-  (max-width: 870px) and (min-width: 701px) and (orientation: landscape) {
-    margin-top: 21vh;
+  @media screen and (min-height: 701px) and (max-width: 500px) and (orientation: portrait),
+  (max-height: 500px) and (min-width: 701px) and (orientation: landscape) {
+    margin-top: 21vmax;
   }
 
   img {

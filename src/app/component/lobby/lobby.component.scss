@@ -18,11 +18,11 @@
   // mobile portrait
   @media screen and (min-height: 730px) and (max-width: 494px) and (orientation: portrait) {
     height: calc(100vh - 106px - 85px);
-    max-height: calc(840px - 106px - 85px);
+    // max-height: calc(840px - 106px - 85px);
   }
   @media screen and (max-height: 729px) and (max-width: 494px) and (orientation: portrait) {
     height: calc(100vh - 66px - 67px);
-    max-height: calc(840px - 66px - 67px);
+    // max-height: calc(840px - 66px - 67px);
   }
   // mobile landscape
   @media screen and (min-width: 737px) and (max-height: 494px) and (orientation: landscape) {
