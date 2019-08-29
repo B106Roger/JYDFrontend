@@ -55,10 +55,26 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
+  toggleMusic(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    this.msuic = !this.msuic;
+    this.setMusic();
+  }
+
   setSound() {
     const setValue = this.sound === true ? 'on' : 'off';
     localStorage.setItem('sound', setValue);
     // set music physically
+  }
+
+  toggleSound(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    this.sound = !this.sound;
+    this.setSound();
   }
 
   playAfterInteract() {
@@ -88,7 +104,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.UserID = this.auth.getUserID();
   }
 
-  togglePopper(e:Event) {
+  togglePopper(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
