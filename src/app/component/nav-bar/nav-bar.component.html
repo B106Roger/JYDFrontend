@@ -1,6 +1,7 @@
 <div id="nav-bar-container">
   <img src="/assets/imgs/segBottom.png" style="width: 100%" alt="segBottom">
   <div class="d-flex" class="menu-bg" data-type="href"
+  (touchend)="navigateTo($event)"
   (mousedown)="navigateTo($event)" >
     <button *ngFor="let option of menuList"
      class="menu-button"
