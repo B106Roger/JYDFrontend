@@ -31,7 +31,7 @@
         <div id="musicContainer" (touchend)="toggleMusic($event)" (mousedown)="toggleMusic($event)">
           <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
                [ngStyle]="{ 'display': getMusic() === true ? 'block' : 'none'}" >
-          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'" 
+          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
                [ngStyle]="{ 'display': getMusic() === true ? 'none' : 'block'}">
         </div>
       </div>
@@ -47,7 +47,7 @@
         <div id='soundContainer' (touchend)="toggleSound($event)" (mousedown)="toggleSound($event)" >
           <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
                [ngStyle]="{ 'display': getSound() === true ? 'block' : 'none'}" >
-          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'" 
+          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
                [ngStyle]="{ 'display': getSound() === true ? 'none' : 'block'}">
         </div>
       </div>

@@ -79,14 +79,18 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   playAfterInteract() {
     const ele = document.getElementById('musicEle') as HTMLAudioElement;
-    document.addEventListener('click', interact);
-    document.addEventListener('touch', interact);
+    document.addEventListener('mousedown', interact);
+    document.addEventListener('touchend', interact);
 
-    function interact() {
+    function interact(e: Event) {
+      if (e.type === 'touchend') {
+        e.preventDefault();
+      }
       if (localStorage.getItem('music') === 'on') {
         ele.play();
       }
-      document.removeEventListener('click', interact);
+      document.removeEventListener('mousedown', interact);
+      document.removeEventListener('touchend', interact);
     }
   }
 
