@@ -11,7 +11,7 @@
     <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
   </div>
 
-  <button class="no-padding" id="settingButton" (click)="togglePopper()">
+  <button class="no-padding" id="settingButton" (touchend)="togglePopper($event)" (mouseup)="togglePopper($event)">
     <img id="settingImg" draggable="false" alt="settingButton"
      [ngClass]="{
        'settingImgNormal': !getShowPopper(),

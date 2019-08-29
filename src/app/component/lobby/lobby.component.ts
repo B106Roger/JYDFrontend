@@ -168,7 +168,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // 初始化遊戲選擇項目
-    if (!localStorage.getItem('gameChoose')) {
+    if (localStorage.getItem('gameChoose') === null || localStorage.getItem('gameChoose') === undefined) {
       this.menuSelected = 'all';
       localStorage.setItem('gameChoose', 'all');
     } else {
@@ -193,8 +193,8 @@ export class LobbyComponent implements OnInit, AfterViewInit {
         default:
          throw Error('Unknown Game Type');
       }
-
     }
+    console.log(this.menuShow);
   }
 
   ngAfterViewInit() {
@@ -222,13 +222,39 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   getMenuSelect() {
     return this.menuList.filter((e) => e.value === this.menuSelected)[0];
   }
-  setMenuSelect(menuOption: string) {
-    this.menuSelected = menuOption;
-    localStorage.setItem('gameChoose', menuOption);
+  setMenuSelect(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    let target = e.target as HTMLElement;
+
+    if (target.nodeName === 'SPAN') {
+      target = target.parentElement;
+    }
+
+    this.menuSelected = target.dataset.gametype;
+    localStorage.setItem('gameChoose', this.menuSelected);
+    this.menuShow = false;
   }
-  toggleMenuOnShow() {
-    this.menuShow = !this.menuShow;
+  toggleMenuOnShow(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    if (this.menuShow) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
   }
+
+  closeMenu() {
+    console.log('close');
+    this.menuShow = false;
+  }
+  openMenu() {
+    this.menuShow = true;
+  }
+
 
   setYesNormal(e) {
     const self = e.currentTarget as HTMLElement;
@@ -262,20 +288,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   closeLogoutBox() {
     document.getElementById('logout-box').hidden = true;
-  }
-
-  closeLeaveBox() {
-    document.getElementById('leave-box').hidden = true;
-  }
-
-  leave() {
-    window.opener = null;
-    window.open('', '_self', '');
-    try {
-      window.close();
-    } catch (e) {
-      console.log('fail');
-    }
   }
 
   logout() {
@@ -378,7 +390,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       e3.currentTarget.removeEventListener('touchmove', scrollX);
       e3.currentTarget.removeEventListener('touchend', newendScroll);
       e3.currentTarget.removeEventListener('touchcancel', newendScroll);
-
+      e3.preventDefault();
       // *************   Momentum Scroll   ****************
       const interval = new Date().getTime() - initalTime.getTime();
       let distance: number;

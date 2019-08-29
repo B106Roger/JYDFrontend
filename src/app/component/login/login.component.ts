@@ -72,7 +72,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
   getLang() {
     return this.langList.filter( e => e.lang === this.langChoosed )[0];
   }
-  setLang(lang: string) {
+  setLang(e:Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    const target = e.target as HTMLElement;
+    const lang = target.dataset.lang;
+
     if (this.translate.getLangs().includes(lang)) {
       this.langChoosed = lang;
     } else {
@@ -81,6 +87,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.translate.use(this.langChoosed);
     localStorage.setItem('lang', this.langChoosed);
     document.querySelector('body').id = this.translate.currentLang;
+    this.closePopper();
   }
 
   login() {
@@ -96,7 +103,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
   }
 
-  togglePopper() {
+  togglePopper(e:Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
     this.langShow = ! this.langShow;
   }
 

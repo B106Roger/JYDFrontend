@@ -88,7 +88,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.UserID = this.auth.getUserID();
   }
 
-  togglePopper() {
+  togglePopper(e:Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
     if (this.showPopper) {
       this.closePopper();
     } else {

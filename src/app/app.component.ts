@@ -88,7 +88,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       // 當是iphone x時，設定viewport tag
       if ( window.screen.height >= 812 && screen.width >=  375 ) {
         const metaTag = document.getElementById('viewport');
-        console.log(metaTag);
         metaTag.setAttribute('content', 'viewport-fit=cover, width=device-width, initial-scale=1.001, maximum-scale=1.001" id="viewport');
       }
     }
