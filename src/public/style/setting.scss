@@ -110,7 +110,21 @@ body{
 
   .close-button
   {
-    background-image: url("/assets/imgs/btnSettingLeaveNormal.png");
+    position: absolute;
+    right: 0;
+    top: 10%;
+    @media screen and ( orientation: portrait )   {
+      right: 0.5vh;
+      width: 5.5vh;
+      height: 5.5vh;
+    }
+    @media screen and ( orientation: landscape )  {
+      right: 0.5vw;
+      width: 5.5vw;
+      height: 5.5vw;
+    }
+    min-height: 20px;
+    max-height: 40px;
   }
 
   .close-button:active

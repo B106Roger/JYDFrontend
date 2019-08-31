@@ -38,6 +38,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     localStorage.setItem('lang', this.translate.currentLang);
   }
+
   ngOnInit(): void {
     // 如果service worker有被註冊時
     navigator.serviceWorker.getRegistrations().then(registrations => {
