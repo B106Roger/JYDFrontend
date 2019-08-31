@@ -43,6 +43,10 @@ export class NavBarComponent implements OnInit {
     img.src = this.translate.instant(srcURL);
   }
   navigateTo(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+
     const target = e.target as HTMLElement;
     if (target.nodeName === 'BUTTON') {
       this.route.navigate([target.dataset.href]);

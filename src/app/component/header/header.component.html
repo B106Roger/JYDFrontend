@@ -11,7 +11,7 @@
     <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
   </div>
 
-  <button class="no-padding" id="settingButton" (click)="togglePopper()">
+  <button class="no-padding" id="settingButton" (touchend)="togglePopper($event)" (mouseup)="togglePopper($event)">
     <img id="settingImg" draggable="false" alt="settingButton"
      [ngClass]="{
        'settingImgNormal': !getShowPopper(),
@@ -28,11 +28,12 @@
         <div class="column-flex-no-margin-padding">
           {{ 'lobby.setting.music' | translate }}
         </div>
-        <input type="checkbox" id="MusicBotton" style="display: none" [(ngModel)]="msuic" (change)="setMusic()">
-        <label for="MusicBotton" id="musicContainer">
-          <img [src]="getMusic() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)" draggable="false"
-              [alt]="getMusic() === true ? 'on' : 'off'" >
-        </label>
+        <div id="musicContainer" (touchend)="toggleMusic($event)" (mousedown)="toggleMusic($event)">
+          <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
+               [ngStyle]="{ 'display': getMusic() === true ? 'block' : 'none'}" >
+          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
+               [ngStyle]="{ 'display': getMusic() === true ? 'none' : 'block'}">
+        </div>
       </div>
 
       <div class="row-flex-no-margin-padding" style="align-items: center">
@@ -43,11 +44,12 @@
         <div class="column-flex-no-margin-padding">
           {{ 'lobby.setting.sounds' | translate }}
         </div>
-        <input type="checkbox" id="SonudBotton" style="display: none" [(ngModel)]="sound" (change)="setSound()">
-        <label  for="SonudBotton" id='soundContainer' >
-          <img [src]="getSound() === true ? ('lobby.onimg' | translate) : ('lobby.offimg' | translate)"
-          draggable="false" alt="separateLine" >
-        </label>
+        <div id='soundContainer' (touchend)="toggleSound($event)" (mousedown)="toggleSound($event)" >
+          <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
+               [ngStyle]="{ 'display': getSound() === true ? 'block' : 'none'}" >
+          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
+               [ngStyle]="{ 'display': getSound() === true ? 'none' : 'block'}">
+        </div>
       </div>
 
       <div class="row-flex-no-margin-padding" style="align-items: center">
@@ -58,7 +60,7 @@
           {{ 'lobby.setting.version' | translate }}
         </div>
         <div class="column-flex-no-margin-padding">
-            v.2019.07.03
+            v.2019.08.28
         </div>
       </div>
       <div class="row-flex-no-margin-padding" style="align-items: center">

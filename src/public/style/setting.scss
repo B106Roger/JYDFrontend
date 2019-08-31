@@ -37,7 +37,7 @@ body{
   @media screen and (min-height: 730px) and (max-width: 414px) and (orientation: portrait) {
     width: 100vw;
     height: calc(100vh - 40px - 18px);
-    max-height: calc(823px - 40px - 18px);
+    // max-height: calc(823px - 40px - 18px);
   }
   @media screen and (max-height: 729px) and (max-width: 414px) and (orientation: portrait) {
     width: 100vw;
@@ -48,7 +48,7 @@ body{
   @media screen and (min-width: 737px) and (max-height: 414px) and (orientation: landscape) {
     width: 100vh;
     height: calc(100vw - 40px - 18px);
-    max-width: calc(823px - 40px - 18px);
+    // max-width: calc(823px - 40px - 18px);
   }
   @media screen and (max-width: 736px) and (max-height: 414px) and (orientation: landscape) {
     width: 100vh;
@@ -72,6 +72,7 @@ body{
     padding: 0;
     @media screen and ( orientation: portrait )   { height:6vh; }
     @media screen and ( orientation: landscape )  { height:6vw; }
+    @media screen and (min-height: 900px) and (min-width: 900px) { height: 56px; }
     justify-content: center;
     align-items:center;
   }
@@ -82,7 +83,7 @@ body{
     height:88%;
     margin: 0;
     margin-top:10%;
-
+    @media screen and (min-height: 900px) and (min-width: 900px) { margin-top: 41px; }
   }
 
   .close-button-base
@@ -106,6 +107,8 @@ body{
     }
     min-height: 20px;
     max-height: 40px;
+    min-width: 20px;
+    max-width: 40px;
   }
 
   .close-button

@@ -55,22 +55,42 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
+  toggleMusic(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    this.msuic = !this.msuic;
+    this.setMusic();
+  }
+
   setSound() {
     const setValue = this.sound === true ? 'on' : 'off';
     localStorage.setItem('sound', setValue);
     // set music physically
   }
 
+  toggleSound(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
+    this.sound = !this.sound;
+    this.setSound();
+  }
+
   playAfterInteract() {
     const ele = document.getElementById('musicEle') as HTMLAudioElement;
-    document.addEventListener('click', interact);
-    document.addEventListener('touch', interact);
+    document.addEventListener('mousedown', interact);
+    document.addEventListener('touchend', interact);
 
-    function interact() {
+    function interact(e: Event) {
+      if (e.type === 'touchend') {
+        e.preventDefault();
+      }
       if (localStorage.getItem('music') === 'on') {
         ele.play();
       }
-      document.removeEventListener('click', interact);
+      document.removeEventListener('mousedown', interact);
+      document.removeEventListener('touchend', interact);
     }
   }
 
@@ -88,7 +108,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.UserID = this.auth.getUserID();
   }
 
-  togglePopper() {
+  togglePopper(e: Event) {
+    if (e.type === 'touchend') {
+      e.preventDefault();
+    }
     if (this.showPopper) {
       this.closePopper();
     } else {

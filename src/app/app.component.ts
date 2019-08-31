@@ -60,6 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
     // 設定語系id
     document.querySelector('body').id = localStorage.getItem('lang');
+
   }
 
   ngAfterViewInit() {
@@ -84,32 +85,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         }, {passive: false});
       }
 
-
-      // 取得轉方向的event
-      // window.addEventListener('resize', () => {
-      //   let resizeId;
-      //   if (resizeId) {
-      //     clearTimeout(resizeId);
-      //   }
-      //   resizeId = setTimeout(() => {
-      //     const dst = this.router.url;
-      //     if (window.outerWidth >= window.outerHeight && !dst.match('/game/')) {
-      //       window.alert('change orientation to see full content');
-      //     } else if (this.isStandalone) {
-      //       scrollTo(0, 100);
-      //     }
-      //   }, 500);
-      // }, false);
-
-      // function reorient(e) {
-      //   console.log(window.orientation);
-      //   const portrait = ( (+window.orientation % 180) === 0);
-      //   $('body').css('-webkit-transform', !portrait ? 'rotate(-90deg)' : '');
-      // }
-      // window.addEventListener('orientationchange', () => {
-      //   window.setTimeout(reorient, 0);
-      // }, true);
-
+      // 設定iphone meta tag
+      // 當是iphone x時，設定viewport tag
+      if ( window.screen.height >= 812 && screen.width >=  375 ) {
+        const metaTag = document.getElementById('viewport');
+        metaTag.setAttribute('content', 'viewport-fit=cover, width=device-width, initial-scale=1.001, maximum-scale=1.001" id="viewport');
+      }
     }
   }
   isLoginOrGame() {

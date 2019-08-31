@@ -12,7 +12,7 @@
       <!-- <div id="menu-seperater"></div> -->
       <!-- 遊戲種類選擇元件 -->
       <div class="menu-container">
-          <button id="game-filter-bg" class="row-flex" (mousedown)="toggleMenuOnShow()" (blur)="this.menuShow=false">
+          <button id="game-filter-bg" class="row-flex" (touchend)="toggleMenuOnShow($event)" (mousedown)="toggleMenuOnShow($event)" (blur)="closeMenu()">
 
             <div >
               <span class="basic-text-style" id="menu-text" >{{('lobby.' + getMenuSelect().value) | translate}}</span>
@@ -25,9 +25,9 @@
           </button>
           <!-- poppup setting content padding-top: 11px;-->
           <div id="game_popper" [ngStyle]="{'display': this.menuShow === true ? 'block' : 'none'}">
-            <div class="unselectable" id="menuPopup">
+            <div class="unselectable" id="menuPopup"  (touchend)="setMenuSelect($event)" (mousedown)="setMenuSelect($event)" >
               <ng-container *ngFor="let option of menuList">
-                  <div class="menu-option-bg" (mousedown)="setMenuSelect(option.value);toggleMenuOnShow()">
+                  <div class="menu-option-bg" [attr.data-gametype]="option.value" >
                       <span class="basic-text-style " style="padding-left: 9.6%">{{('lobby.' + option.value) | translate}}</span>
                   </div>
               </ng-container>

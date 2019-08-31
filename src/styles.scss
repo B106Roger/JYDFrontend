@@ -106,13 +106,10 @@ input {
   height: 18px;
   min-width:320px;
   max-width:414px;
-  @media screen and (min-height: 730px) and (orientation: portrait) {
-    width: 100vw;
+  @media screen and (min-height: 730px) and (orientation: portrait),
+  (min-width: 730px) and (orientation: landscape) {
+    width: 100vmin;
   }
-  @media screen and (min-width: 737px) and (orientation: landscape) {
-    width: 100vh;
-  }
-
 
   @media screen and (max-height: 729px) and (orientation: portrait),
   (max-width: 736px) and (orientation: landscape){
@@ -125,11 +122,9 @@ input {
   height: 40px;
   min-width:320px;
   max-width:414px;
-  @media screen and (min-height: 730px) and (orientation: portrait) {
-    width: 100vw;
-  }
-  @media screen and (min-width: 737px) and (orientation: landscape) {
-    width: 100vh;
+  @media screen and (min-height: 730px) and (orientation: portrait),
+  (min-width: 730px) and (orientation: landscape) {
+    width: 100vmin;
   }
 
   @media screen and (max-height: 729px) and (orientation: portrait),

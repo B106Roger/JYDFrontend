@@ -18,11 +18,11 @@
   // mobile portrait
   @media screen and (min-height: 730px) and (max-width: 494px) and (orientation: portrait) {
     height: calc(100vh - 106px - 85px);
-    max-height: calc(840px - 106px - 85px);
+    // max-height: calc(840px - 106px - 85px);
   }
   @media screen and (max-height: 729px) and (max-width: 494px) and (orientation: portrait) {
     height: calc(100vh - 66px - 67px);
-    max-height: calc(840px - 66px - 67px);
+    // max-height: calc(840px - 66px - 67px);
   }
   // mobile landscape
   @media screen and (min-width: 737px) and (max-height: 494px) and (orientation: landscape) {
@@ -51,6 +51,12 @@
   (max-height: 495px) and (orientation: landscape) {
     height: 77.4vmin;
   }
+  @media only screen
+    and (min-width : 414px) and (max-width : 736px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 3),
+    (min-height : 414px) and (max-height : 736px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 3)
+    {
+      height: 74vmin;
+    }
 
   display: flex;
   flex-direction: column;
@@ -77,6 +83,7 @@
     align-items: center;
 
     position: relative;
+
     #hot-Tag {
       position: absolute;
       top: 3px;

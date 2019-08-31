@@ -80,22 +80,28 @@
   outline: none;
   border: 0px;
 
-  margin: 3px 0 0 2.6%;
-  width: 7.74%;
+  margin-top: 3px;
+  width: 15.5%;
+  height: 66px;
 
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
+  position: absolute;
+  right: 0;
+  z-index: 11;
+
   .settingImgNormal {
-    width: 100%;
+    margin-left: 20%;
+    width: 50%;
     content: url('/assets/imgs/btnSettingMenuNormal@3x.png');
   }
   .settingImgPressed {
-    width: 129%;
+    margin-left: 20%;
+    width: 64.5%;
     margin-bottom: 2px;
-    z-index: 11;
     content: url('/assets/imgs/btnSettingMenuPressed@3x.png');
   }
 }
@@ -152,9 +158,14 @@
 }
 
 #musicContainer, #soundContainer {
-  width: 37.6%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
   img {
-    width: 100%;
+    width: 75.2%;
   }
   margin: 0px;
 }

@@ -8,7 +8,7 @@
 
     <!-- 選擇語系元件-->
     <div class="row-flex w100" style="margin-top: 30px">
-      <button id="lang-bg" class="row-flex" (mousedown)="togglePopper()" (blur)="closePopper()">
+      <button id="lang-bg" class="row-flex" (touchend)="togglePopper($event)" (mousedown)="togglePopper($event)" (blur)="closePopper()">
         <div>
           <img [src]="getLang().img" class="langFlag">
           <span class="lang-text">{{getLang().label}}</span>
@@ -20,11 +20,11 @@
 
       <!-- poppup setting content -->
       <div id="popper_content" [ngStyle]="{'display': this.langShow === true ? 'block' : 'none'}" >
-        <div class="unselectable" id="langPopup">
+        <div class="unselectable" id="langPopup" (touchend)="setLang($event)" (mousedown)="setLang($event)">
           <ng-container *ngFor="let ele of langList">
-            <div class="lang-option-bg" style="justify-content: flex-start" (mousedown)="setLang(ele.lang);closePopper()">
-              <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label">
-              <span class="lang-text">{{ele.label}}</span>
+            <div class="lang-option-bg" style="justify-content: flex-start" [attr.data-lang]="ele.lang">
+              <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label" [attr.data-lang]="ele.lang">
+              <span class="lang-text" [attr.data-lang]="ele.lang">{{ele.label}}</span>
             </div>
           </ng-container>
         </div>
