@@ -82,8 +82,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
     const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
     if (this.currentPage > maxPage) {
       this.currentPage = maxPage;
-      this.sendQuery();
     }
+    this.currentPage = 0;
+    this.sendQuery();
+
   }
 
   setGoNormal(e) {
@@ -147,14 +149,14 @@ export class HistoryComponent implements OnInit, OnDestroy {
   startDateChange(e) {
     const nextStartDate = e.currentTarget.value;
     if ( nextStartDate != null ) {
-      this.startDate = nextStartDate;
+      this.startDate = Date.parse(nextStartDate) < Date.parse(this.endDate) ? nextStartDate : this.endDate;
     }
   }
 
   endDateChange(e) {
     const nextEndDate = e.currentTarget.value;
     if ( nextEndDate != null ) {
-      this.endDate = nextEndDate;
+      this.endDate = Date.parse(nextEndDate) > Date.parse(this.startDate) ? nextEndDate : this.startDate;
     }
   }
 
@@ -180,13 +182,19 @@ export class HistoryComponent implements OnInit, OnDestroy {
   sendQuery() {
     Promise.all([
       this.fetch.fetchGameRecords(this.startDate, this.endDate, this.currentPage)
-        .then(responseJson => { this.gameRecrods = responseJson.recordList; }),
+        .then(responseJson => {
+          this.gameRecrods = responseJson.recordList;
+          this.gameRecordTotalPage = responseJson.info.totalPages;
+        }),
 
       this.fetch.fetchInOutRecords(this.startDate, this.endDate, this.currentPage)
-        .then(responseJson => { this.ioRecrods = responseJson.recordList; })
+        .then(responseJson => {
+          this.ioRecrods = responseJson.recordList;
+          this.ioRecordTotalPage = responseJson.info.totalPages;
+        })
     ]).then( values => {
         document.querySelector('.records-container').scrollTo(0, 0);
     });
-
   }
+
 }
