@@ -14,7 +14,7 @@
 // 遊戲列表 start
 .game-container {
   width: 100%;
-
+  -webkit-overflow-scrolling: touch;
   // mobile portrait
   @media screen and (min-height: 730px) and (max-width: 494px) and (orientation: portrait) {
     height: calc(100vh - 106px - 85px);
@@ -65,12 +65,14 @@
   align-content: flex-start;
 
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   overflow-y: hidden;
 
-  &::-webkit-scrollbar
-  {
+  &::-webkit-scrollbar {
      display: none;
+  }
+  &::after {
+    width: calc(100% - 1px);
+    height: calc(74vmin + 1px);
   }
 
   #hot-game-frame {

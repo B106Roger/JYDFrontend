@@ -51,45 +51,47 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
       // 詢問瀏覽器是否接受通知
       if ('serviceWorker' in navigator) {
-        Notification.requestPermission((status) => {
-          console.log('Notification permission status:', status);
-        });
+        // Notification.requestPermission((status) => {
+        //   console.log('Notification permission status:', status);
+        // });
       }
     }).catch((err) => {
       console.log(err);
     });
     // 設定語系id
     document.querySelector('body').id = localStorage.getItem('lang');
-
+    window['isIphone'] = this.isIphone;
+    window['isStandalone'] = this.isStandalone;
   }
 
   ngAfterViewInit() {
     let time = new Date().getTime();
-    if (this.isIphone === true) {
+    if (window['isIphone'] === true) {
       scrollTo(0, 100);
       // 當網頁是經由home開啟時要防止縮放滑動
-      if (this.isStandalone) {
-        // 防止瀏覽器上下滑動
-        window.addEventListener('touchmove', (e) => {
-          e.preventDefault();
-        }, {passive: false});
+      if (window['isStandalone']) {
 
         // 防止雙手縮放
         document.addEventListener('touchstart', event => {
           const tmp = new Date().getTime();
           if (event.touches.length > 1 || tmp - time < 300) {
               event.preventDefault();
-              event.stopPropagation(); // maybe useless
+              // event.stopPropagation(); // maybe useless
           }
           time = tmp;
         }, {passive: false});
-      }
 
-      // 設定iphone meta tag
-      // 當是iphone x時，設定viewport tag
-      if ( window.screen.height >= 812 && screen.width >=  375 ) {
-        const metaTag = document.getElementById('viewport');
-        metaTag.setAttribute('content', 'viewport-fit=cover, width=device-width, initial-scale=1.001, maximum-scale=1.001" id="viewport');
+         // 設定iphone meta tag
+        // 當是iphone x時，設定viewport tag
+        if ( window.screen.height >= 812 && screen.width >=  375 ) {
+          const metaTag = document.getElementById('viewport');
+          metaTag.setAttribute('content', 'viewport-fit=cover, width=device-width, initial-scale=1.001, maximum-scale=1.001" id="viewport');
+        }
+
+        // 設定iphone standalone style
+        const approot = document.querySelector('app-root') as HTMLElement;
+        approot.style.position = 'fixed';
+        approot.style.top = '0';
       }
     }
   }

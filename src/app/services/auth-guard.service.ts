@@ -54,7 +54,7 @@ export class AuthGuardService implements CanActivate {
     if (decryptToken !== null && decryptToken !== '') {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'], {skipLocationChange: true});
       return false;
     }
   }
@@ -98,7 +98,7 @@ export class AuthGuardService implements CanActivate {
     this.UserID = null;
     this.Password = null;
     this.token = null;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login'], {skipLocationChange: true});
   }
 
   decrypt( text ) {
