@@ -27,8 +27,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     console.log( this.routerInfo.snapshot.params.gameName );
     window['_GameName'] = this.routerInfo.snapshot.params.gameName;
     window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
-    // 測試用刪除
-    // window['_Bearer']   = this.auth.getUserID();
+    window['_Bearer']   = this.auth.getUserID();
     this.gameType = this.routerInfo.snapshot.params.gameType;
     this.iframeURL = this.getSrc();
     this.initOrientation();
