@@ -25,19 +25,40 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
 
   ngOnInit() {
     console.log( this.routerInfo.snapshot.params.gameName );
-    window['_GameName'] = this.routerInfo.snapshot.params.gameName;
-    window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
-    window['_Bearer']   = this.auth.getUserID();
     this.gameType = this.routerInfo.snapshot.params.gameType;
+    window['_GameName'] = this.routerInfo.snapshot.params.gameName;
+    switch (this.gameType) {
+      case 'slots': {
+        window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
+        break;
+      }
+      case 'marry': {
+        window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
+        break;
+      }
+      case 'poker': {
+        window['_GameUrl']  = 'https://5pk.bet7evens.com';
+        break;
+      }
+      default: {
+        throw Error('Unknown Game Type');
+      }
+    }
+    window['_Bearer']   = this.auth.getUserID();
     this.iframeURL = this.getSrc();
     this.initOrientation();
 
+
+    // 將history.back方法改寫
     var backCallback  = (e: any) => {
       console.log('current location: ', window.location.origin);
       console.log('receive location: ', e.origin);
       if (e.data.command === 'back' && e.origin === window.location.origin) {
         window.removeEventListener('message', backCallback, false);
-        this.route.navigate(['/lobby'], {skipLocationChange: true});
+        console.log('back to lobby');
+        setTimeout(() => {
+          this.route.navigate(['/lobby'], {skipLocationChange: true});
+        }, 0);
       }
     };
     backCallback = backCallback.bind(this);
@@ -57,7 +78,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
         return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/Builds/index.html`);
 
       case 'poker':
-        return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/poker.html');
+        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/poker.html`);
 
         default:
         throw Error('Unknown Game Type');

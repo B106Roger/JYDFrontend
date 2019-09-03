@@ -47,26 +47,26 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       display: '1'
     },
     {
-      gameName: 'jackorbetter',
+      gameName: 'videoPoker',
       gameImgUrl: 'jackorbetter',
       gameCategory: 'poker',
       display: '2'
     },
     {
-      gameName: 'deuceswild',
+      gameName: 'deucespk',
       gameImgUrl: 'deuceswild',
       gameCategory: 'poker',
       display: '2'
     },
     {
-      gameName: 'jokerpoker',
+      gameName: 'jokerpk',
       gameImgUrl: 'jokerpoker',
       gameCategory: 'poker',
       display: '2'
     },
     {
-      gameName: 'deuceswild',
-      gameImgUrl: 'deuceswild',
+      gameName: 'tenpk',
+      gameImgUrl: 'multihandjokerpoker',
       gameCategory: 'poker',
       display: '2'
     },
