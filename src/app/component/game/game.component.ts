@@ -19,6 +19,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
 
   isIphone = window['isIphone'];
   gameType = '';
+  gameName = this.routerInfo.snapshot.params.gameName;
   orientation = '';
   historyBack = history.back;
   iframeURL;
@@ -26,7 +27,12 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   ngOnInit() {
     console.log( this.routerInfo.snapshot.params.gameName );
     this.gameType = this.routerInfo.snapshot.params.gameType;
-    window['_GameName'] = this.routerInfo.snapshot.params.gameName;
+
+    window['_GameName'] = this.gameName;
+    if (this.gameName === 'jokerpk') {
+      window['_GameName'] = 'tenpk';
+    }
+
     switch (this.gameType) {
       case 'slots': {
         window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
@@ -75,10 +81,10 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
         return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
 
       case 'marry':
-        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/Builds/index.html`);
+        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/Builds/index.html`);
 
       case 'poker':
-        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${window['_GameName']}/poker.html`);
+        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/poker.html`);
 
         default:
         throw Error('Unknown Game Type');
