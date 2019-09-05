@@ -63,7 +63,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
         window.removeEventListener('message', backCallback, false);
         console.log('back to lobby');
         setTimeout(() => {
-          this.route.navigate(['/lobby'], {skipLocationChange: true});
+          this.route.navigate(['/lobby']);
         }, 0);
       }
     };

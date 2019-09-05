@@ -41,7 +41,7 @@
       <div id="normal-game-container" (mousedown)="startScroll($event)">
           <div class="gameSeparate"></div>
           <ng-container *ngFor="let item of getHotGame();let first = first">
-            <div id="hot-game-frame" *ngIf="first" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]" skipLocationChange>
+            <div id="hot-game-frame" *ngIf="first" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]" >
               <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
               <img id="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
               <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false" alt="hotGameFrame">
@@ -50,7 +50,7 @@
 
 
           <ng-container *ngFor="let item of getNormalGame()">
-            <div class="normal-game-frame" [routerLink]="['/game' ,item.gameCategory ,item.gameName]" skipLocationChange>
+            <div class="normal-game-frame" [routerLink]="['/game' ,item.gameCategory ,item.gameName]" >
               <img class="normal-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
               <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false" alt="normalGameFrame">
             </div>

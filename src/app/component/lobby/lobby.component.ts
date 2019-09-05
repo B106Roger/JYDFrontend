@@ -194,7 +194,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
          throw Error('Unknown Game Type');
       }
     }
-    console.log(this.menuShow);
   }
 
   ngAfterViewInit() {

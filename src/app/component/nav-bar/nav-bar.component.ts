@@ -49,10 +49,10 @@ export class NavBarComponent implements OnInit {
 
     const target = e.target as HTMLElement;
     if (target.nodeName === 'BUTTON') {
-      this.route.navigate([target.dataset.href], {skipLocationChange: true});
+      this.route.navigate([target.dataset.href]);
     } else if (target.nodeName === 'IMG') {
       const actualTarget = target.parentElement  as HTMLElement;
-      this.route.navigate([actualTarget.dataset.href], {skipLocationChange: true});
+      this.route.navigate([actualTarget.dataset.href]);
     }
   }
 }

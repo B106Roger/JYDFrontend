@@ -95,9 +95,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .then( loginState => {
         if ( loginState ) {
           this.fetch.fetchAmount().then(() => {
-            this.route.navigate(['/lobby'], {skipLocationChange: true});
+            this.route.navigate(['/lobby']);
           }).catch( err => {
-            this.route.navigate(['/lobby'], {skipLocationChange: true});
+            this.route.navigate(['/lobby']);
           });
         }
     });
