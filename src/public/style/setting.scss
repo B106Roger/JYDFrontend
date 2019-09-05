@@ -34,28 +34,30 @@ body{
   background-size: 100% 100%;
 
   // mobile portrait
-  @media screen and (min-height: 730px) and (max-width: 414px) and (orientation: portrait) {
+  @media screen and (min-height: 730px) and (max-width: 500px) and (orientation: portrait) {
     width: 100vw;
     height: calc(100vh - 40px - 18px);
   }
-  @media screen and (max-height: 729px) and (max-width: 414px) and (orientation: portrait) {
+  @media screen and (max-height: 729px) and (max-width: 500px) and (orientation: portrait) {
     width: 100vw;
     height: 100vh;
   }
 
   // mobile landscape
-  @media screen and (min-width: 737px) and (max-height: 414px) and (orientation: landscape) {
+  @media screen and (min-width: 737px) and (max-height: 500px) and (orientation: landscape) {
     width: 100vh;
     height: calc(100vw - 40px - 18px);
   }
-  @media screen and (max-width: 736px) and (max-height: 414px) and (orientation: landscape) {
+  @media screen and (max-width: 736px) and (max-height: 500px) and (orientation: landscape) {
     width: 100vh;
     height: 100vw;
   }
 
   // PC
-  height: 782px;//calc(823px - 40px - 18px);
-  width: 414px;
+  @media screen and (min-width: 501px) and (min-height: 501px) {
+    height: calc(800px - 40px - 18px);
+    width: 450px;
+  }
 }
 
 .setting-bg

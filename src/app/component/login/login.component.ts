@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   getLang() {
     return this.langList.filter( e => e.lang === this.langChoosed )[0];
   }
-  setLang(e:Event) {
+  setLang(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
   }
 
-  togglePopper(e:Event) {
+  togglePopper(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
