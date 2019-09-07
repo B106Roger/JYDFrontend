@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from './../../services/fetch.service';
@@ -8,7 +8,7 @@ import { FetchService } from './../../services/fetch.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('musicEle', {static: false})
   musicEle: ElementRef;
@@ -22,8 +22,16 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.msuic = (localStorage.getItem('music') === 'on' || null ? true : false);
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
-    this.getUserID();
-    this.fetchMoney();
+    this.setUserID();
+    this.setUserAmount();
+    this.fetch.userAmount$.subscribe(userAmount => {
+      sessionStorage.setItem('amount', userAmount);
+      this.money = parseFloat(userAmount);
+    });
+    console.log(this.money);
+  }
+  ngOnDestroy() {
+
   }
   ngAfterViewInit() {
     this.setMusic();
@@ -94,17 +102,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
   }
 
-  fetchMoney() {
-    if (!sessionStorage.getItem('amount')) {
-      this.fetch.fetchAmount().then(responseJson => {
-        // this.money = parseFloat(responseJson.account.amount);
-        this.money = parseFloat(sessionStorage.getItem('amount'));
-      });
-    } else {
+  setUserAmount() {
+    if (sessionStorage.getItem('amount') !== null) {
       this.money = parseFloat(sessionStorage.getItem('amount'));
     }
   }
-  getUserID() {
+  setUserID() {
     this.UserID = this.auth.getUserID();
   }
 

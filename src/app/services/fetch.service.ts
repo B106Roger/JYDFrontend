@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Api } from './../env';
 import { AuthGuardService } from './auth-guard.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class FetchService {
   private static _INSTANCE: FetchService;
   private historyStart;
   private historyEnd;
+  public userAmount$ = new Subject<string>();
   constructor(private auth: AuthGuardService) {
     return FetchService._INSTANCE = FetchService._INSTANCE || this;
   }
@@ -79,6 +81,8 @@ export class FetchService {
         return response.json();
       }
     }).then( responseJSON => {
+      this.userAmount$.next(responseJSON.account.amount);
+      console.log('request');
       sessionStorage.setItem('amount', responseJSON.account.amount);
       return responseJSON;
     });

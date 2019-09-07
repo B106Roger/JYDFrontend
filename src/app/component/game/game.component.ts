@@ -32,43 +32,26 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     if (this.gameName === 'jokerpk') {
       window['_GameName'] = 'tenpk';
     }
-
-    switch (this.gameType) {
-      case 'slots': {
-        window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
-        break;
-      }
-      case 'marry': {
-        window['_GameUrl']  = 'https://dev-slot-mario.gd888.cc/gamelab/';
-        break;
-      }
-      case 'poker': {
-        window['_GameUrl']  = 'https://5pk.bet7evens.com';
-        break;
-      }
-      default: {
-        throw Error('Unknown Game Type');
-      }
-    }
+    window['_GameUrl'] = this.getGameUrl();
     window['_Bearer']   = this.auth.getUserID();
     this.iframeURL = this.getSrc();
-    this.initOrientation();
+    this.getOrientation();
 
 
     // 將history.back方法改寫
-    var backCallback  = (e: any) => {
-      console.log('current location: ', window.location.origin);
-      console.log('receive location: ', e.origin);
-      if (e.data.command === 'back' && e.origin === window.location.origin) {
-        window.removeEventListener('message', backCallback, false);
-        console.log('back to lobby');
-        setTimeout(() => {
-          this.route.navigate(['/lobby']);
-        }, 0);
-      }
-    };
-    backCallback = backCallback.bind(this);
-    window.addEventListener('message', backCallback, false);
+    // window['_backCallback']  = (e: any) => {
+    //   console.log('current location: ', window.location.origin);
+    //   console.log('receive location: ', e.origin);
+    //   if (e.data.command === 'back' && e.origin === window.location.origin) {
+    //     window.removeEventListener('message', window['_backCallback'], false);
+    //     console.log('back to lobby');
+    //     setTimeout(() => {
+    //       this.route.navigate(['/lobby']);
+    //     }, 0);
+    //   }
+    // };
+    // window['_backCallback'] = window['_backCallback'].bind(this);
+    // window.addEventListener('message', window['_backCallback'], false);
   }
 
   ngAfterViewInit(): void {
@@ -91,7 +74,7 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     }
   }
 
-  initOrientation() {
+  getOrientation() {
     switch ( this.gameType ) {
       case 'slots':
         this.orientation = 'landscape';
@@ -110,6 +93,23 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     }
   }
 
+  getGameUrl() {
+    switch (this.gameType) {
+      case 'slots': {
+        return 'https://dev-slot-mario.gd888.cc/gamelab/';
+      }
+      case 'marry': {
+        return 'https://dev-slot-mario.gd888.cc/gamelab/';
+      }
+      case 'poker': {
+        return 'https://5pk.bet7evens.com';
+      }
+      default: {
+        throw Error('Unknown Game Type');
+      }
+    }
+  }
+
   stopPropagation(e: Event) {
     e.stopPropagation();
   }
@@ -119,16 +119,17 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     const game = iframe.contentWindow.document.querySelector('body');
     game.addEventListener('mousedown', (e) => {e.stopPropagation(); }, true);
 
-    const currentlocation = window.location.origin;
-    const script = document.createElement('script');
-    script.innerHTML = 'history.back = function(){  parent.window.postMessage({"command":"back"}, \'' + currentlocation + '\');  };';
-    iframe.contentWindow.document.body.appendChild(script);
+    // const currentlocation = window.location.origin;
+    // const script = document.createElement('script');
+    // script.innerHTML = 'history.back = function(){  parent.window.postMessage({"command":"back"}, \'' + currentlocation + '\');  };';
+    // iframe.contentWindow.document.body.appendChild(script);
   }
 
   ngOnDestroy() {
     delete window['_GameName'];
     delete window['_GameUrl'];
     delete window['_Bearer'];
-    sessionStorage.removeItem('amount');
+    // delete window['_backCallback'];
+    this.fetch.fetchAmount();
   }
 }
