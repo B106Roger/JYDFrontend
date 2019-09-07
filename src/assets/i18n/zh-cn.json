@@ -42,6 +42,8 @@
 
   "download-app" : {
     "title" : "下载 APP",
+    "titleImg": "/assets/imgs/en/picTitleDownloadTxt@2x.png",
+    "label": "/assets/imgs/zh-cn/btnLabelDownloadPressed@2x.png",
     "download" : "下载",
     "TREASURE ISLAND" : "金银岛",
     "downloadImgNormal" : "/assets/imgs/zh-cn/btnDownloadNormal@2x.png",
@@ -50,6 +52,7 @@
 
   "contact" : {
     "title" : "联系我们",
+    "label": "/assets/imgs/zh-cn/btnLabelContactusPressed@2x.png",
     "REACH US WITH FOLLOWING CONTACT DETAILS" : "请透过以下方式与我们联系",
     "email-icon"    : "/assets/imgs/zh-cn/iconContactEmail@3x.png",
     "phone-icon"    : "/assets/imgs/zh-cn/iconContactPhone@3x.png",
@@ -60,6 +63,7 @@
 
   "account" : {
     "title" : "帐户设定",
+    "label": "/assets/imgs/zh-cn/btnLabelResetPwPressed@2x.png",
     "RESET PASSWORD" : "重设密码",
     "CURRENT PASSWORD" : "当前密码",
     "NEW PASSWORD" : "请输入新密码",
@@ -76,6 +80,10 @@
     "to" : "至",
     "goImgNormal"  : "/assets/imgs/zh-cn/btnHistoryGoNormal@2x.png",
     "goImgPressed" : "/assets/imgs/zh-cn/btnHistoryGoPressed@2x.png",
+    "labelGameHistoryNormal": "/assets/imgs/zh-cn/btnLabelGameHistoryNormal@2x.png",
+    "labelGameHistoryPressed": "/assets/imgs/zh-cn/btnLabelGameHistoryPressed@2x.png",
+    "labelInOutHistoryNormal": "/assets/imgs/zh-cn/btnLabelInoutHistoryNormal@2x.png",
+    "labelInOutHistoryPressed": "/assets/imgs/zh-cn/btnLabelInoutHistoryPressed@2x.png",
     "GAME HISTORY" : "游戏纪录",
     "IN/OUT HISTORY" : "进出分纪录",
     "gameRecord" : {

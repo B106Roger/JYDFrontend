@@ -83,6 +83,10 @@
     "to" : "TO",
     "goImgNormal"  : "/assets/imgs/en/btnHistoryGoNormal@2x.png",
     "goImgPressed" : "/assets/imgs/en/btnHistoryGoPressed@2x.png",
+    "labelGameHistoryNormal"  : "/assets/imgs/en/btnLabelGameHistoryNormal@2x.png",
+    "labelGameHistoryPressed" : "/assets/imgs/en/btnLabelGameHistoryPressed@2x.png",
+    "labelInOutHistoryNormal"  : "/assets/imgs/en/btnLabelInoutHistoryNormal@2x.png",
+    "labelInOutHistoryPressed" : "/assets/imgs/en/btnLabelInoutHistoryPressed@2x.png",
     "GAME HISTORY" : "GAME HISTORY",
     "IN/OUT HISTORY" : "IN/OUT HISTORY",
     "gameRecord" : {

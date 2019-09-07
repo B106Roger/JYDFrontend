@@ -42,6 +42,8 @@
 
   "download-app" : {
     "title" : "DOWNLOAD APP",
+    "titleImg": "/assets/imgs/en/picTitleDownloadTxt@2x.png",
+    "label": "/assets/imgs/en/btnLabelDownloadPressed@2x.png",
     "download" : "DOWNLOAD",
     "TREASURE ISLAND" : "TREASURE ISLAND",
     "downloadImgNormal" : "/assets/imgs/en/btnDownloadNormal@2x.png",
@@ -50,6 +52,8 @@
 
   "contact" : {
     "title" : "CONTATE-NOS",
+    "titleImg": "/assets/imgs/en/picTitleContactTxt@2x.png",
+    "label": "/assets/imgs/en/btnLabelContactusPressed@2x.png",
     "REACH US WITH FOLLOWING CONTACT DETAILS" : "ALCANÇA-NOS COM SEGUINTES DETALHES DO CONTATO",
     "email-icon"    : "/assets/imgs/en/iconContactEmail@3x.png",
     "phone-icon"    : "/assets/imgs/en/iconContactPhone@3x.png",
@@ -60,6 +64,8 @@
 
   "account" : {
     "title" : "CONTA",
+    "titleImg": "/assets/imgs/en/picTitleAccountTxt@2x.png",
+    "label": "/assets/imgs/en/btnLabelResetPwPressed@2x.png",
     "RESET PASSWORD" : "RESET SENHA",
     "CURRENT PASSWORD" : "SENHA ATUAL",
     "NEW PASSWORD" : "NOVA SENHA",
@@ -72,10 +78,15 @@
 
   "history" : {
     "title" : "HISTÓRIA",
+    "titleImg": "/assets/imgs/en/picTitleHistoryTxt@2x.png",
     "time" : "TEMPO",
     "to" : "TO",
     "goImgNormal"  : "/assets/imgs/en/btnHistoryGoNormal@2x.png",
     "goImgPressed" : "/assets/imgs/en/btnHistoryGoPressed@2x.png",
+    "labelGameHistoryNormal": "/assets/imgs/en/btnLabelGameHistoryNormal@2x.png",
+    "labelGameHistoryPressed": "/assets/imgs/en/btnLabelGameHistoryPressed@2x.png",
+    "labelInOutHistoryNormal": "/assets/imgs/en/btnLabelInoutHistoryNormal@2x.png",
+    "labelInOutHistoryPressed": "/assets/imgs/en/btnLabelInoutHistoryPressed@2x.png",
     "GAME HISTORY" : "HISTORIA DEL JUEGO",
     "IN/OUT HISTORY" : "HISTÓRIA DE ENTRADA / SAÍDA",
     "gameRecord" : {

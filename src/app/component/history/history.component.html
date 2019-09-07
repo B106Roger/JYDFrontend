@@ -8,15 +8,9 @@
   </div>
 
   <div class="main-content">
-    <img src="" />
-    <img src="" />
-    <!-- 頁籤 -->
-    <div class="d-flex text-center justify-content-around">
-        <span (click)="tabChange(1)" [class.active]="selectPage" class="btn-bg btn-label">
-          {{ 'history.GAME HISTORY' | translate }}
-        </span>
-        <span (click)="tabChange(0)" [class.active]="!selectPage" class="btn-bg btn-label">{{ 'history.IN/OUT HISTORY' | translate }}</span>
-    </div>
+    <img class="short-label" id="tab-01" (click)="tabChange(1)" [src]="'history.labelGameHistoryPressed' | translate" />
+    <img class="short-label" id="tab-00" (click)="tabChange(0)" [src]="'history.labelInOutHistoryNormal' | translate" />
+
 
     <!-- 資料主體 -->
     <div class="wrapper">

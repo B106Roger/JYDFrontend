@@ -43,6 +43,17 @@ export class HistoryComponent implements OnInit, OnDestroy {
         this.startDate = snapshot.startDate;
         this.endDate = snapshot.endDate;
         this.currentPage = snapshot.currentPage;
+        if (this.selectPage === 1) {
+          setTimeout(() => {
+            document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryPressed'));
+            document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryNormal'));
+          }, 0);
+        } else {
+          setTimeout( () => {
+            document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryNormal'));
+            document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryPressed'));
+          } ,0);
+        }
         this.gameRecrods = snapshot.gameRecrods;
         this.gameRecordTotalPage = snapshot.gameRecordTotalPage;
         this.ioRecrods = snapshot.ioRecrods;
@@ -63,6 +74,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.ioRecordTotalPage = responseJson.info.totalPages;
           });
       }
+      console.log('this.selectPage', this.selectPage);
   }
 
   ngOnDestroy() {
@@ -77,15 +89,23 @@ export class HistoryComponent implements OnInit, OnDestroy {
       ioRecordTotalPage: this.ioRecordTotalPage
     }));
   }
+
   tabChange( page ) {
     this.selectPage = page;
     const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
     if (this.currentPage > maxPage) {
       this.currentPage = maxPage;
     }
+    if ( page === 1) {
+      document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryPressed'));
+      document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryNormal'));
+    } else {
+      document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryNormal'));
+      document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryPressed'));
+    }
     this.currentPage = 0;
+    console.log( 'this.selectPage', this.selectPage );
     this.sendQuery();
-
   }
 
   setGoNormal(e) {
@@ -193,7 +213,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
           this.ioRecordTotalPage = responseJson.info.totalPages;
         })
     ]).then( values => {
-        document.querySelector('.records-container').scrollTo(0, 0);
+        console.log(values);
     });
   }
 
