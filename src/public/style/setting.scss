@@ -83,7 +83,9 @@ body{
     height:88%;
     margin: 0;
     margin-top:6%;
-    @media screen and (min-height: 900px) and (min-width: 900px) { margin-top: 41px; }
+    @media screen and (min-height: 900px) and (min-width: 900px) { 
+      margin-top:4%;
+    }
   }
 
   .close-button-base
@@ -105,10 +107,11 @@ body{
       width: 5vw;
       height: 5vw;
     }
-    min-height: 20px;
-    max-height: 40px;
-    min-width: 20px;
+    
+    // max-height: 40px;
+    // min-height: 20px;
     max-width: 40px;
+    min-width: 20px;
   }
 
   .close-button
@@ -118,21 +121,14 @@ body{
     top: 10%;
     @media screen and ( orientation: portrait )   {
       right: 0.5vh;
-      width: 5.5vh;
       height: 5.5vh;
     }
     @media screen and ( orientation: landscape )  {
       right: 0.5vw;
-      width: 5.5vw;
       height: 5.5vw;
     }
     min-height: 20px;
     max-height: 40px;
-  }
-
-  .close-button:active
-  {
-    background-image: url("/assets/imgs/btnSettingLeavePressed.png");
   }
 
   .btn-label
@@ -188,7 +184,7 @@ body{
 
 .short-label
 {
-  max-width:47%;
+  max-width:44%;
   @media screen and ( orientation: portrait )   { margin:0 0.8vh; }
   @media screen and ( orientation: landscape )  { margin:0 0.8vw; }
 

@@ -8,8 +8,10 @@
   </div>
 
   <div class="main-content">
-    <img class="short-label" id="tab-01" (click)="tabChange(1)" [src]="'history.labelGameHistoryPressed' | translate" />
-    <img class="short-label" id="tab-00" (click)="tabChange(0)" [src]="'history.labelInOutHistoryNormal' | translate" />
+    <div class="d-flex justify-content-around">
+      <img class="short-label" id="tab-01" (click)="tabChange(1)" [src]="'history.labelGameHistoryPressed' | translate" />
+      <img class="short-label" id="tab-00" (click)="tabChange(0)" [src]="'history.labelInOutHistoryNormal' | translate" />
+    </div>
 
 
     <!-- 資料主體 -->
