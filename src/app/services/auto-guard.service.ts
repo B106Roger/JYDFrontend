@@ -12,7 +12,7 @@ export class AutoGuardService implements CanActivate {
     const sessionUID = sessionStorage.getItem('Token') ;
     if ( sessionUID !== null ) {
       if ( this.auth.decrypt( sessionUID ) !== null ) {
-        this.router.navigate(['/lobby'], {skipLocationChange: true});
+        this.router.navigate(['/lobby']);
       }
     }
     return true;
