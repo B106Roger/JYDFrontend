@@ -60,6 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
     // 設定語系id
     document.querySelector('body').id = localStorage.getItem('lang');
+    // 設定其他參數
     window['isIphone'] = this.isIphone;
     window['isStandalone'] = this.isStandalone;
   }
@@ -81,11 +82,11 @@ export class AppComponent implements OnInit, AfterViewInit {
           time = tmp;
         }, {passive: false});
 
-         // 設定iphone meta tag
+        // 設定iphone meta tag
         // 當是iphone x時，設定viewport tag
         if ( window.screen.height >= 812 && screen.width >=  375 ) {
           const metaTag = document.getElementById('viewport');
-          metaTag.setAttribute('content', 'viewport-fit=cover, width=device-width, initial-scale=1.001, maximum-scale=1.001" id="viewport');
+          metaTag.setAttribute('content', 'viewport-fit=cover, width=device-width, initial-scale=1.001, maximum-scale=1.001');
         }
 
         // 設定iphone standalone style
@@ -93,6 +94,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         approot.style.position = 'fixed';
         approot.style.top = '0';
       }
+    } else {
+      const metaTag = document.getElementById('viewport');
+      const screenHeight = window.screen.height;
+      const innerHeight = window.innerHeight;
+      const height = screenHeight > innerHeight ? innerHeight : screenHeight;
+      console.log(screenHeight, innerHeight);
+      metaTag.setAttribute('content', `width=${window.screen.width}px, height=${height}px initial-scale=1.001, maximum-scale=1.001`);
     }
   }
   isLoginOrGame() {
