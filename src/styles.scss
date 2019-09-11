@@ -5,6 +5,9 @@ body, html {
   margin: 0px;
   touch-action: manipulation;
   overflow-x: hidden;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
 }
 
 body {

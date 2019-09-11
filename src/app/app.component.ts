@@ -3,6 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import { __asyncDelegator } from 'tslib';
+import { FetchService } from './services/fetch.service';
 // tslint:disable: no-string-literal
 
 declare var $: any;
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   isIphone = /iphone/.test( this.userAgent );
   isStandalone = 'standalone' in navigator && navigator['standalone'];
 
-  constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService) {
+  constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService, private fetch: FetchService) {
     translate.addLangs(['en', 'zh-cn', 'es', 'pt']);
     translate.setDefaultLang('en');
     // 檢查localStorage沒有語系紀錄
@@ -49,12 +50,6 @@ export class AppComponent implements OnInit, AfterViewInit {
           document.location.reload();
         });
       });
-      // 詢問瀏覽器是否接受通知
-      if ('serviceWorker' in navigator) {
-        // Notification.requestPermission((status) => {
-        //   console.log('Notification permission status:', status);
-        // });
-      }
     }).catch((err) => {
       console.log(err);
     });
@@ -63,6 +58,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     // 設定其他參數
     window['isIphone'] = this.isIphone;
     window['isStandalone'] = this.isStandalone;
+    // 取得GameList pai
+    this.fetch.fetchGameList().then(data => {
+      // 排序遊戲顯示順序
+      data = data.sort((gameItem1, gameItem2) => {
+        return gameItem1.Priority < gameItem2.Priority ? 1 : -1;
+      });
+      console.log(data);
+      localStorage.setItem('gameList', JSON.stringify(data));
+    }).catch((err) => {
+      console.log(err);
+    });
+
+    // catch app install event
+    window.addEventListener('appinstalled', (e) => {
+      console.log('app installed');
+      // window.open(window.location.origin, '_blank');
+    });
   }
 
   ngAfterViewInit() {
@@ -77,7 +89,6 @@ export class AppComponent implements OnInit, AfterViewInit {
           const tmp = new Date().getTime();
           if (event.touches.length > 1 || tmp - time < 300) {
               event.preventDefault();
-              // event.stopPropagation(); // maybe useless
           }
           time = tmp;
         }, {passive: false});
@@ -94,12 +105,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         approot.style.position = 'fixed';
         approot.style.top = '0';
       }
+      // 處理andoird 虛擬鍵盤影響影響畫面Layout
     } else {
       const metaTag = document.getElementById('viewport');
       const screenHeight = window.screen.height;
       const innerHeight = window.innerHeight;
       const height = screenHeight > innerHeight ? innerHeight : screenHeight;
-      console.log(screenHeight, innerHeight);
+      console.log(`meta width: ${window.screen.width}; height: ${height}`);
       metaTag.setAttribute('content', `width=${window.screen.width}px, height=${height}px initial-scale=1.001, maximum-scale=1.001`);
     }
   }
