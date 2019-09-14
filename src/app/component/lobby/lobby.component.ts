@@ -42,37 +42,37 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   images = [
     {
       gameName: 'fivedragons',
-      gameImgUrl: '5dragons',
+      gameImgUrl: 'fivedragons',
       gameCategory: 'slots',
       display: '1'
     },
     {
       gameName: 'videoPoker',
-      gameImgUrl: 'jackorbetter',
+      gameImgUrl: 'videoPoker',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'deucespk',
-      gameImgUrl: 'deuceswild',
+      gameImgUrl: 'deucespk',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'jokerpk',
-      gameImgUrl: 'jokerpoker',
+      gameImgUrl: 'jokerpk',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'tenpk',
-      gameImgUrl: 'multihandjokerpoker',
+      gameImgUrl: 'tenpk',
       gameCategory: 'poker',
       display: '2'
     },
     {
       gameName: 'luckymario',
-      gameImgUrl: 'luckygoddess',
+      gameImgUrl: 'luckymario',
       gameCategory: 'marry',
       display: '2'
     },
@@ -84,19 +84,19 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     },
     {
       gameName: 'fivekoi',
-      gameImgUrl: '5koi',
+      gameImgUrl: 'fivekoi',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'fiftydragons',
-      gameImgUrl: '50dragons',
+      gameImgUrl: 'fiftydragons',
       gameCategory: 'slots',
       display: '2'
     },
     {
       gameName: 'fortunes88',
-      gameImgUrl: '88fortunes',
+      gameImgUrl: 'fortunes88',
       gameCategory: 'slots',
       display: '2'
     },
@@ -247,7 +247,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
 
   closeMenu() {
-    console.log('close');
     this.menuShow = false;
   }
   openMenu() {

@@ -88,6 +88,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     localStorage.setItem('lang', this.langChoosed);
     document.querySelector('body').id = this.translate.currentLang;
     this.closePopper();
+    // 重新preload GameList image(因為同樣的遊戲，不同語系有不同圖片)
+    this.fetch.preloadGameListImage();
   }
 
   login() {

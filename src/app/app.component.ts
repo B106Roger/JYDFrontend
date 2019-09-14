@@ -58,22 +58,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     // 設定其他參數
     window['isIphone'] = this.isIphone;
     window['isStandalone'] = this.isStandalone;
-    // 取得GameList pai
-    this.fetch.fetchGameList().then(data => {
-      // 排序遊戲顯示順序
-      data = data.sort((gameItem1, gameItem2) => {
-        return gameItem1.Priority < gameItem2.Priority ? 1 : -1;
-      });
-      console.log(data);
-      localStorage.setItem('gameList', JSON.stringify(data));
-    }).catch((err) => {
-      console.log(err);
+    // 取得GameList
+    if (localStorage.getItem('gameList') !== null) {
+      this.fetch.preloadGameListImage();
+    }
+    this.fetch.gameList$.subscribe((data) => {
+      this.fetch.preloadGameListImage();
     });
+    this.fetch.fetchGameList();
 
     // catch app install event
     window.addEventListener('appinstalled', (e) => {
       console.log('app installed');
-      // window.open(window.location.origin, '_blank');
     });
   }
 
@@ -112,8 +108,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       const innerHeight = window.innerHeight;
       const height = screenHeight > innerHeight ? innerHeight : screenHeight;
       console.log(`meta width: ${window.screen.width}; height: ${height}`);
-      metaTag.setAttribute('content', `width=${window.screen.width}px, height=${height}px initial-scale=1.001, maximum-scale=1.001`);
+      metaTag.setAttribute('content', `width=${window.screen.width}, height=${height} initial-scale=1.001, maximum-scale=1.001`);
     }
+
+
   }
   isLoginOrGame() {
     const dst = this.router.url;
