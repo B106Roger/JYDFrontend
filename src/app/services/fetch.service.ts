@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Api } from './../env';
 import { AuthGuardService } from './auth-guard.service';
 import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class FetchService {
   private preloadImageLanguage: string[] = [];
   public userAmount$ = new Subject<string>();
   public gameList$ = new Subject<string>();
-  constructor(private auth: AuthGuardService) {
+  constructor(private auth: AuthGuardService, private trans: TranslateService) {
     return FetchService._INSTANCE = FetchService._INSTANCE || this;
   }
 
@@ -118,7 +119,62 @@ export class FetchService {
     });
   }
 
-  preloadGameListImage() {
+  preloadLoginImage(preloadType: string = 'preload') {
+    const loginImageList: string[] = [
+      '/assets/imgs/bgLoginBig@2x.png',
+      '/assets/imgs/picIdFrame@3x.png',
+      '/assets/imgs/picPasswordFrame@3x.png',
+      '/assets/imgs/picRememberFrame@2x.png',
+      '/assets/imgs/iconRememberCheck.png',
+      '/assets/imgs/iconLanEn.png',
+      '/assets/imgs/iconLanSc.png',
+      '/assets/imgs/iconLanEs.png',
+      '/assets/imgs/iconLanPo.png'
+    ];
+    loginImageList.forEach((item) => {
+      const link = document.createElement('link');
+      link.rel = preloadType;
+      link.href = item;
+      link.as = 'image';
+      document.head.appendChild(link);
+    });
+  }
+
+  preloadLobbyImage(preloadType: string = 'preload') {
+    const lobbyImageList: string[] = [
+      '/assets/imgs/picTopBg@2x.png',
+      '/assets/imgs/picIdFrameEmpty@2x.png',
+      '/assets/imgs/iconId@2x.png',
+      '/assets/imgs/picCreditFrame@3x.png',
+      '/assets/imgs/iconCreditDollar@2x.png',
+      '/assets/imgs/btnSettingMenuNormal@3x.png',
+      '/assets/imgs/btnSettingMenuPressed@3x.png',
+      '/assets/imgs/picGameMenuBg@2x.png',
+      '/assets/imgs/iconGameMenuDown.png',
+      '/assets/imgs/iconGameMenuUp.png',
+      '/assets/imgs/picGameFrameLarge.png',
+      '/assets/imgs/picGameFrameSmall.png',
+      '/assets/imgs/picBannerFrame.png',
+      '/assets/imgs/btnLobbyBg@2x.png',
+      '/assets/imgs/picBgLobby@2x.png'
+    ];
+    lobbyImageList.forEach((item) => {
+      const link =  document.createElement('link');
+      link.as = 'image';
+      link.rel = preloadType;
+      link.href = item;
+      document.head.appendChild(link);
+    });
+  }
+
+  preloadLobbyLanguageImage(preloadType: string = 'preload') {
+    this.preloadGameListImage();
+    this.preloadNavbarImage();
+  }
+
+  private preloadGameListImage(preloadType: string = 'preload') {
+    // 當前語系
+    const currentLang = this.trans.currentLang;
     // 確定同個語系沒有重複preload
     if (this.preloadImageLanguage.includes(localStorage.getItem('lang'))) {
       return;
@@ -129,24 +185,37 @@ export class FetchService {
     const data = localStorage.getItem('gameList');
     console.log(data);
     let gameList: any[];
-    if (data !== null) {
-      gameList = JSON.parse(data);
-    }
+    gameList = (data !== null ? JSON.parse(data) : []);
     // 依照GameName及語系取得圖片位置，並prelaod
     gameList.forEach((item, index) => {
       const link = document.createElement('link');
-      link.rel = 'preload';
+      link.rel = preloadType;
       if (index === 0) {
-        link.href = `/assets/imgs/${localStorage.getItem('lang')}/pic_game_iconL_${item.GameName}_${localStorage.getItem('lang')}.png`;
+        link.href = `/assets/imgs/${currentLang}/pic_game_iconL_${item.GameName}_${currentLang}.png`;
       } else {
-        link.href = `/assets/imgs/${localStorage.getItem('lang')}/pic_game_iconS_${item.GameName}_${localStorage.getItem('lang')}.png`;
+        link.href = `/assets/imgs/${currentLang}/pic_game_iconS_${item.GameName}_${currentLang}.png`;
       }
       link.as = 'image';
       document.head.appendChild(link);
     });
   }
 
-  preloadLoginImage() {
-
+  private preloadNavbarImage(preloadType: string = 'preload') {
+    // 當前語系
+    const currentLang = this.trans.currentLang;
+    // 依照大廳的四個連結取得
+    const navBarList = [
+      'btnLobbyNormal',
+      'btnHistoryNormal',
+      'btnAccountNormal',
+      'btnContactNormal'
+    ];
+    navBarList.forEach((item) => {
+      const link = document.createElement('link');
+      link.rel = preloadType;
+      link.href = `/assets/imgs/${currentLang}/${item}@2x.png`;
+      link.as = 'image';
+      document.head.appendChild(link);
+    });
   }
 }

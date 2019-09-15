@@ -58,12 +58,21 @@ export class AppComponent implements OnInit, AfterViewInit {
     // 設定其他參數
     window['isIphone'] = this.isIphone;
     window['isStandalone'] = this.isStandalone;
-    // 取得GameList
-    if (localStorage.getItem('gameList') !== null) {
-      this.fetch.preloadGameListImage();
+    console.log(this.router.url);
+
+    // 如果當前頁面不是lobby
+    if (this.router.url === '/') {
+      this.fetch.preloadLoginImage('preload');
+      this.fetch.preloadLobbyImage('prefetch');
+      // 取得GameList
+      if (localStorage.getItem('gameList') !== null) {
+        this.fetch.preloadLobbyLanguageImage('prefetch');
+      }
     }
+
     this.fetch.gameList$.subscribe((data) => {
-      this.fetch.preloadGameListImage();
+      const prelaodOption = this.router.url.match('/lobby') ? 'preload' : 'prefetch';
+      this.fetch.preloadLobbyLanguageImage(prelaodOption);
     });
     this.fetch.fetchGameList();
 
