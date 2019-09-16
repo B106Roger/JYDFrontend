@@ -60,7 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     window['isStandalone'] = this.isStandalone;
     console.log(this.router.url);
 
-    // 如果當前頁面不是lobby
+    // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
     if (this.router.url === '/') {
       this.fetch.preloadLoginImage('preload');
       this.fetch.preloadLobbyImage('prefetch');
