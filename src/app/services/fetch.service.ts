@@ -102,7 +102,9 @@ export class FetchService {
       // 將gamelab-前墜去掉
       const deprecateWord = 'gamelab-';
       responseJSON.forEach(function(part, index) {
-        this[index].GameName = this[index].GameName.substr(this[index].GameName.indexOf(deprecateWord) + deprecateWord.length);
+        if (this[index].GameName.indexOf(deprecateWord) !== -1) {
+          this[index].GameName = this[index].GameName.substr(this[index].GameName.indexOf(deprecateWord) + deprecateWord.length);
+        }
       }, responseJSON);
 
       const stringifyData = JSON.stringify(responseJSON);
@@ -120,6 +122,24 @@ export class FetchService {
   }
 
   preloadLoginImage(preloadType: string = 'preload') {
+
+    // preload 與語系有關的圖片，須等載完語系檔才能preload
+    const loginLanguageImageList: string[] = [
+      'mainicon',
+      'loginbtn',
+      'loginbtnpressed'
+    ];
+    this.trans.getTranslation(this.trans.currentLang).subscribe(() => {
+      loginLanguageImageList.forEach((item) => {
+        const link = document.createElement('link');
+        link.rel = preloadType;
+        link.href = this.trans.instant('login.' + item);
+        link.as = 'image';
+        document.head.appendChild(link);
+      });
+    });
+
+    // preload 與語系無關的圖片
     const loginImageList: string[] = [
       '/assets/imgs/bgLoginBig@2x.png',
       '/assets/imgs/picIdFrame@3x.png',
@@ -183,7 +203,6 @@ export class FetchService {
     }
     // 取得gameList data
     const data = localStorage.getItem('gameList');
-    console.log(data);
     let gameList: any[];
     gameList = (data !== null ? JSON.parse(data) : []);
     // 依照GameName及語系取得圖片位置，並prelaod

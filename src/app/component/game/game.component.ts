@@ -25,33 +25,19 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   iframeURL;
 
   ngOnInit() {
-    console.log( this.routerInfo.snapshot.params.gameName );
     this.gameType = this.routerInfo.snapshot.params.gameType;
 
+    // 處理例外事件，jokerpt跟tenpk的gameName相同
     window['_GameName'] = this.gameName;
     if (this.gameName === 'jokerpk') {
       window['_GameName'] = 'tenpk';
     }
+
     window['_GameUrl'] = this.getGameUrl();
     window['_Bearer']   = this.auth.getUserID();
     this.iframeURL = this.getSrc();
     this.getOrientation();
 
-
-    // 將history.back方法改寫
-    // window['_backCallback']  = (e: any) => {
-    //   console.log('current location: ', window.location.origin);
-    //   console.log('receive location: ', e.origin);
-    //   if (e.data.command === 'back' && e.origin === window.location.origin) {
-    //     window.removeEventListener('message', window['_backCallback'], false);
-    //     console.log('back to lobby');
-    //     setTimeout(() => {
-    //       this.route.navigate(['/lobby']);
-    //     }, 0);
-    //   }
-    // };
-    // window['_backCallback'] = window['_backCallback'].bind(this);
-    // window.addEventListener('message', window['_backCallback'], false);
   }
 
   ngAfterViewInit(): void {
@@ -118,18 +104,12 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     const iframe = document.querySelector('iframe');
     const game = iframe.contentWindow.document.querySelector('body');
     game.addEventListener('mousedown', (e) => {e.stopPropagation(); }, true);
-
-    // const currentlocation = window.location.origin;
-    // const script = document.createElement('script');
-    // script.innerHTML = 'history.back = function(){  parent.window.postMessage({"command":"back"}, \'' + currentlocation + '\');  };';
-    // iframe.contentWindow.document.body.appendChild(script);
   }
 
   ngOnDestroy() {
     delete window['_GameName'];
     delete window['_GameUrl'];
     delete window['_Bearer'];
-    // delete window['_backCallback'];
     this.fetch.fetchAmount();
   }
 }

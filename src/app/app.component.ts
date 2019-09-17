@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     // 檢查localStorage沒有語系紀錄
     if (localStorage.getItem('lang')) {      // 有，使用localStorage語系
       translate.use(localStorage.getItem('lang'));
-      console.log('localstorage lang', localStorage.getItem('lang'));
     } else {                                 // 沒有
       const browserLang = translate.getBrowserLang();
       if (translate.langs.includes(browserLang)) {
@@ -35,7 +34,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       } else {
         translate.use(translate.defaultLang);
       }
-      console.log('browser lang', translate.getBrowserLang());
     }
     localStorage.setItem('lang', this.translate.currentLang);
   }
@@ -58,7 +56,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     // 設定其他參數
     window['isIphone'] = this.isIphone;
     window['isStandalone'] = this.isStandalone;
-    console.log(this.router.url);
 
     // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
     if (this.router.url === '/') {

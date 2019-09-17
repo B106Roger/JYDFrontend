@@ -39,128 +39,29 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       label: 'POKER GAMES'
     }
   ];
-  images = [
+  carasoulImages = [
     {
-      gameName: 'fivedragons',
-      gameImgUrl: 'fivedragons',
-      gameCategory: 'slots',
-      display: '1'
-    },
-    {
-      gameName: 'videoPoker',
-      gameImgUrl: 'videoPoker',
-      gameCategory: 'poker',
-      display: '2'
-    },
-    {
-      gameName: 'deucespk',
-      gameImgUrl: 'deucespk',
-      gameCategory: 'poker',
-      display: '2'
-    },
-    {
-      gameName: 'jokerpk',
-      gameImgUrl: 'jokerpk',
-      gameCategory: 'poker',
-      display: '2'
-    },
-    {
-      gameName: 'tenpk',
-      gameImgUrl: 'tenpk',
-      gameCategory: 'poker',
-      display: '2'
-    },
-    {
-      gameName: 'luckymario',
-      gameImgUrl: 'luckymario',
-      gameCategory: 'marry',
-      display: '2'
-    },
-    {
-      gameName: 'sambaqueen',
-      gameImgUrl: 'sambaqueen',
-      gameCategory: 'marry',
-      display: '2'
-    },
-    {
-      gameName: 'fivekoi',
-      gameImgUrl: 'fivekoi',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'fiftydragons',
-      gameImgUrl: 'fiftydragons',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'fortunes88',
-      gameImgUrl: 'fortunes88',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'diamondeternity',
-      gameImgUrl: 'diamondeternity',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'huga',
-      gameImgUrl: 'huga',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'beanstalk',
-      gameImgUrl: 'beanstalk',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'misskitty',
-      gameImgUrl: 'misskitty',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'pelicanpete',
-      gameImgUrl: 'pelicanpete',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameImgUrl: 'buffalo',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'kingofmountain',
-      gameImgUrl: 'kingofmountain',
-      gameCategory: 'slots',
-      display: '2'
-    },
-    {
-      gameName: 'buffalo',
-      gameImgUrl: 'picBanner01@2x.png',
-      gameCategory: 'slots',
-      display: '3'
-    },
-    {
-      gameName: 'buffalo',
-      gameImgUrl: 'picBanner01@2x.png',
-      gameCategory: 'slots',
-      display: '3'
-    },
-    {
-      gameName: 'buffalo',
-      gameImgUrl: 'picBanner01@2x.png',
-      gameCategory: 'slots',
-      display: '3'
-    },
+      gameImgUrl: `assets/imgs/${localStorage.getItem('lang')}/picBanner01@2x.png`
+    }, {
+      gameImgUrl: `assets/imgs/${localStorage.getItem('lang')}/picBanner01@2x.png`
+    }, {
+      gameImgUrl: `assets/imgs/${localStorage.getItem('lang')}/picBanner01@2x.png`
+    }
   ];
+
+  slotsGameList = [
+    'fivedragons', 'fivekoi', 'fiftydragons', 'fortunes88', 'diamondeternity', 'huga', 'beanstalk',
+    'misskitty', 'pelicanpete', 'buffalo', 'kingofmountain', 'sexybartender', 'soccerfever'
+  ];
+
+  pokerGameList = [
+    'videoPoker', 'deucespk', 'jokerpk', 'tenpk'
+  ];
+
+  marioGameList = [
+    'luckymario', 'sambaqueen'
+  ];
+  images: any[] = [];
   private scrollintervalItem;
   private touchintervalItem;
 
@@ -174,26 +75,39 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     } else {
       this.menuSelected = localStorage.getItem('gameChoose');
     }
-    // 初始化遊戲圖片
+    // 初始化遊戲列表
     this.picLang = this.translate.currentLang;
-    for (const ele of this.images) {
-      switch (ele.display) {
-        case '1':
-          ele.gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${ele.gameImgUrl}_${this.picLang}.png`;
-          break;
-
-        case '2':
-          ele.gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${ele.gameImgUrl}_${this.picLang}.png`;
-          break;
-
-        case '3':
-          ele.gameImgUrl = `/assets/imgs/${this.picLang}/${ele.gameImgUrl}`;
-          break;
-
-        default:
-         throw Error('Unknown Game Type');
-      }
+    const localGameList = localStorage.getItem('gameList');
+    let gameListArray = [];
+    if (localGameList !== null) {
+      gameListArray = JSON.parse(localGameList);
     }
+
+    gameListArray.forEach((gameItem: any, index: number) => {
+      const gameName: string = gameItem.GameName;
+      let gameCategory: string;
+      let gameImgUrl: string;
+      // 設定遊戲種類
+      if (this.slotsGameList.indexOf(gameName) !== -1) {
+        gameCategory = 'slots';
+      } else if (this.marioGameList.indexOf(gameName) !== -1) {
+        gameCategory = 'mario';
+      } else if (this.pokerGameList.indexOf(gameName) !== -1) {
+        gameCategory = 'poker';
+      }
+      // 設定圖片路徑
+      if (index === 0) {
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameName}_${this.picLang}.png`;
+      } else {
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameName}_${this.picLang}.png`;
+      }
+
+      this.images.push({
+        gameName: gameName,
+        gameCategory: gameCategory,
+        gameImgUrl: gameImgUrl,
+      });
+    });
   }
 
   ngAfterViewInit() {
@@ -203,20 +117,20 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   getNormalGame() {
     if (this.menuSelected === 'all') {
-      return this.images.filter((e) => e.display === '2');
+      return this.images.filter((e, index) => index !== 0);
     } else {
-      return this.images.filter((e) => e.display === '2' && e.gameCategory === this.menuSelected);
+      return this.images.filter((e) => e.gameCategory === this.menuSelected);
     }
   }
   getHotGame() {
-    if (this.menuSelected === 'all') {
-      return this.images.filter((e) => e.display === '1');
+    if ((this.menuSelected === 'all' || this.menuSelected === this.images[0].gameCategory) && this.images.length !== 0) {
+      return [this.images[0]];
     } else {
-      return this.images.filter((e) => e.display === '1' && e.gameCategory === this.menuSelected);
+      return [null];
     }
   }
   getCarouselGame() {
-    return this.images.filter((e) => e.display === '3');
+    return this.carasoulImages;
   }
   getMenuSelect() {
     return this.menuList.filter((e) => e.value === this.menuSelected)[0];

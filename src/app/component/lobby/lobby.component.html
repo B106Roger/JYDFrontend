@@ -40,8 +40,8 @@
       <!-- 遊戲顯示元件  -->
       <div id="normal-game-container" (mousedown)="startScroll($event)">
           <div class="gameSeparate"></div>
-          <ng-container *ngFor="let item of getHotGame();let first = first">
-            <div id="hot-game-frame" *ngIf="first" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]" >
+          <ng-container *ngFor="let item of getHotGame();">
+            <div id="hot-game-frame" *ngIf="item !== null" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]" >
               <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
               <img id="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
               <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false" alt="hotGameFrame">
