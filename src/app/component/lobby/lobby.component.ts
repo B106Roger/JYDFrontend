@@ -91,7 +91,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       if (this.slotsGameList.indexOf(gameName) !== -1) {
         gameCategory = 'slots';
       } else if (this.marioGameList.indexOf(gameName) !== -1) {
-        gameCategory = 'mario';
+        gameCategory = 'marry';
       } else if (this.pokerGameList.indexOf(gameName) !== -1) {
         gameCategory = 'poker';
       }
