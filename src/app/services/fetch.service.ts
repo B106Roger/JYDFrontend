@@ -121,6 +121,11 @@ export class FetchService {
     });
   }
 
+
+
+
+
+  // 預載函數
   preloadLoginImage(preloadType: string = 'preload') {
 
     // preload 與語系有關的圖片，須等載完語系檔才能preload
@@ -136,7 +141,12 @@ export class FetchService {
       link.as = 'image';
       document.head.appendChild(link);
     });
-
+    let loginBackground: string;
+    if (window.innerHeight >= 760) {
+      loginBackground = 'bgLoginBig';
+    } else {
+      loginBackground = '/assets/imgs/bgLogin@2x.png';
+    }
     // preload 與語系無關的圖片
     const loginImageList: string[] = [
       '/assets/imgs/bgLoginBig@2x.png',
