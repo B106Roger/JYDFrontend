@@ -1,7 +1,7 @@
 
 .landscape-frame
 {
-  background: url('/assets/imgs/bgLobby-v@2x.png') transparent;
+  background: url('/assets/imgs/picBgLobby.png') transparent;
   display: flex;
   // for android mobile
   @media screen and (max-width: 500px) and (orientation: portrait){
@@ -33,7 +33,7 @@
 
 
 .portrait-frame {
-  background: url('/assets/imgs/bgLobby-v@2x.png') transparent;
+  background: url('/assets/imgs/picBgLobby.png') transparent;
   display: flex;
 
   // for android mobile

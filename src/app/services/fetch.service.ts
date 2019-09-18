@@ -13,7 +13,7 @@ export class FetchService {
   private static _INSTANCE: FetchService;
   private historyStart;
   private historyEnd;
-  private preloadImageLanguage: string[] = [];
+  public preloadImageLanguage: string[] = [];
   public userAmount$ = new Subject<string>();
   public gameList$ = new Subject<string>();
   constructor(private auth: AuthGuardService, private trans: TranslateService) {
@@ -125,18 +125,16 @@ export class FetchService {
 
     // preload 與語系有關的圖片，須等載完語系檔才能preload
     const loginLanguageImageList: string[] = [
-      'mainicon',
-      'loginbtn',
-      'loginbtnpressed'
+      'btnLoginNormal.png',
+      'btnLoginPressed.png',
+      'picLogo@3x.png'
     ];
-    this.trans.getTranslation(this.trans.currentLang).subscribe(() => {
-      loginLanguageImageList.forEach((item) => {
-        const link = document.createElement('link');
-        link.rel = preloadType;
-        link.href = this.trans.instant('login.' + item);
-        link.as = 'image';
-        document.head.appendChild(link);
-      });
+    loginLanguageImageList.forEach((item) => {
+      const link = document.createElement('link');
+      link.rel = preloadType;
+      link.href = `/assets/imgs/${this.trans.currentLang}/${item}`;
+      link.as = 'image';
+      document.head.appendChild(link);
     });
 
     // preload 與語系無關的圖片
@@ -146,6 +144,8 @@ export class FetchService {
       '/assets/imgs/picPasswordFrame@3x.png',
       '/assets/imgs/picRememberFrame@2x.png',
       '/assets/imgs/iconRememberCheck.png',
+      '/assets/imgs/picLanMenuBg@2x.png',
+      '/assets/imgs/picLanMenuBgExpand.png',
       '/assets/imgs/iconLanEn.png',
       '/assets/imgs/iconLanSc.png',
       '/assets/imgs/iconLanEs.png',
@@ -162,6 +162,7 @@ export class FetchService {
 
   preloadLobbyImage(preloadType: string = 'preload') {
     const lobbyImageList: string[] = [
+      '/assets/imgs/picBgLobby@2x.png',
       '/assets/imgs/picTopBg@2x.png',
       '/assets/imgs/picIdFrameEmpty@2x.png',
       '/assets/imgs/iconId@2x.png',
@@ -176,7 +177,6 @@ export class FetchService {
       '/assets/imgs/picGameFrameSmall.png',
       '/assets/imgs/picBannerFrame.png',
       '/assets/imgs/btnLobbyBg@2x.png',
-      '/assets/imgs/picBgLobby@2x.png'
     ];
     lobbyImageList.forEach((item) => {
       const link =  document.createElement('link');
@@ -188,19 +188,18 @@ export class FetchService {
   }
 
   preloadLobbyLanguageImage(preloadType: string = 'preload') {
-    this.preloadGameListImage();
-    this.preloadNavbarImage();
-  }
-
-  private preloadGameListImage(preloadType: string = 'preload') {
-    // 當前語系
-    const currentLang = this.trans.currentLang;
     // 確定同個語系沒有重複preload
     if (this.preloadImageLanguage.includes(localStorage.getItem('lang'))) {
       return;
     } else {
       this.preloadImageLanguage.splice(0, 0, localStorage.getItem('lang'));
     }
+    this.preloadGameListImage(preloadType);
+    this.preloadNavbarImage(preloadType);
+  }
+
+  private preloadGameListImage(preloadType: string = 'preload') {
+    const currentLang = this.trans.currentLang;
     // 取得gameList data
     const data = localStorage.getItem('gameList');
     let gameList: any[];

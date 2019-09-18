@@ -5,7 +5,7 @@
     "password_holder": "请输入密码",
     "loginbtn": "/assets/imgs/zh-cn/btnLoginNormal.png",
     "loginbtnpressed": "/assets/imgs/zh-cn/btnLoginPressed.png",
-    "mainicon": "/assets/imgs/zh-cn/picLogoSc@3x.png"
+    "mainicon": "/assets/imgs/zh-cn/picLogo@3x.png"
   },
   "lobby": {
     "all": "全部",

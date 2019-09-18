@@ -69,6 +69,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.fetch.gameList$.subscribe((data) => {
       const prelaodOption = this.router.url.match('/lobby') ? 'preload' : 'prefetch';
+      this.fetch.preloadImageLanguage = [];
       this.fetch.preloadLobbyLanguageImage(prelaodOption);
     });
     this.fetch.fetchGameList();
