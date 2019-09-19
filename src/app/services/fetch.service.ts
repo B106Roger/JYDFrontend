@@ -156,6 +156,8 @@ export class FetchService {
       '/assets/imgs/iconRememberCheck.png',
       '/assets/imgs/picLanMenuBg@2x.png',
       '/assets/imgs/picLanMenuBgExpand.png',
+      '/assets/imgs/iconLanMenuDown.png',
+      '/assets/imgs/iconLanMenuUp.png',
       '/assets/imgs/iconLanEn.png',
       '/assets/imgs/iconLanSc.png',
       '/assets/imgs/iconLanEs.png',

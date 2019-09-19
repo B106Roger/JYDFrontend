@@ -83,7 +83,7 @@ body{
     height:88%;
     margin: 0;
     margin-top:6%;
-    @media screen and (min-height: 900px) and (min-width: 900px) { 
+    @media screen and (min-height: 900px) and (min-width: 900px) {
       margin-top:4%;
     }
   }
@@ -107,7 +107,7 @@ body{
       width: 5vw;
       height: 5vw;
     }
-    
+
     // max-height: 40px;
     // min-height: 20px;
     max-width: 40px;
@@ -184,7 +184,11 @@ body{
 
 .short-label
 {
-  max-width:44%;
+  @media screen and (min-width:500px) and (min-height: 500px) {
+    max-width:  44%;
+  }
+  max-width: 44vw;
+  max-height:  10vw;
   @media screen and ( orientation: portrait )   { margin:0 0.8vh; }
   @media screen and ( orientation: landscape )  { margin:0 0.8vw; }
 
