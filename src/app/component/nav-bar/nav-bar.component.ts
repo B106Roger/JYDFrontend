@@ -43,6 +43,7 @@ export class NavBarComponent implements OnInit {
     img.src = this.translate.instant(srcURL);
   }
   navigateTo(e: Event) {
+    // 在touchend中 preventDefault 就不會觸發mousedown Event
     if (e.type === 'touchend') {
       e.preventDefault();
     }

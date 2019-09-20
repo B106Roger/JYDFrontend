@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     document.querySelector('body').id = this.translate.currentLang;
     this.closePopper();
     // 重新preload Lobby 跟語系有關的圖片(GameList, Navbar)
-    this.fetch.preloadLobbyLanguageImage('prefetch');
+    this.fetch.preloadLobbyLanguageImage();
   }
 
   login() {

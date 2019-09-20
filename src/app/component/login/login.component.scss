@@ -63,11 +63,11 @@
 
 #login-backround {
   @media only screen  and (min-height: 760px) {
-    background: url('/assets/imgs/bgLoginBig@2x.png') center no-repeat;
+    background: url('/assets/imgs/bgLoginBig.png') center no-repeat;
     background-size: 100% 100%;
   }
   @media only screen  and (max-height: 759px){
-    background: url('/assets/imgs/bgLogin@2x.png') center no-repeat;
+    background: url('/assets/imgs/bgLogin.png') center no-repeat;
     background-size: 100% 100%;
   }
   height: 100%;
@@ -95,7 +95,7 @@
   position: relative;
   flex-wrap: nowrap;
 
-  background: url('/assets/imgs/picIdFrame@3x.png') no-repeat;
+  background: url('/assets/imgs/picIdFrame@2x.png') no-repeat;
   background-size: 100%100%;
   background-position: center;
   #account {
@@ -118,7 +118,7 @@
   position: relative;
   flex-wrap: nowrap;
 
-  background: url('/assets/imgs/picPasswordFrame@3x.png') no-repeat;
+  background: url('/assets/imgs/picPasswordFrame@2x.png') no-repeat;
   background-size: 100%100%;
   background-position: center;
   margin-top: 10px;
@@ -181,7 +181,7 @@
 }
 
 .remember-checkbox {
-  background: url('/assets/imgs/picRememberFrame@2x.png') no-repeat;
+  background: url('/assets/imgs/picRememberFrame.png') no-repeat;
   background-size: 100%100%;
   width: 5.5%;
   padding-top: 5.5%;
@@ -206,7 +206,7 @@
 
 
 #lang-bg {
-  background: url('/assets/imgs/picLanMenuBg@2x.png') no-repeat;
+  background: url('/assets/imgs/picLanMenuBg.png') no-repeat;
   background-size: 100%100%;
 
   justify-content: flex-start;
@@ -305,7 +305,7 @@
       margin: 0;
       padding-left: 8%;
       &:hover {
-        background: url('/assets/imgs/picLanMenuSelect@2x.png');
+        background: url('/assets/imgs/picLanMenuSelect.png');
         background-size: 100%100%;
         background-repeat: no-repeat;
       }

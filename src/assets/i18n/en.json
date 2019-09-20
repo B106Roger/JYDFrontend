@@ -5,7 +5,7 @@
     "password_holder": "PASSWORD",
     "loginbtn": "/assets/imgs/en/btnLoginNormal.png",
     "loginbtnpressed": "/assets/imgs/en/btnLoginPressed.png",
-    "mainicon": "/assets/imgs/en/picLogo@3x.png"
+    "mainicon": "/assets/imgs/en/picLogo@2x.png"
   },
   "lobby": {
     "all": "ALL",
@@ -24,10 +24,10 @@
     "hotGameTag": "/assets/imgs/en/picTagHotGame.png",
     "logoutMessage" :"ARE YOU SURE YOU WANT TO QUIT?",
 
-    "lobbyimg": "/assets/imgs/en/btnLobbyNormal@2x.png",
-    "historyimg": "/assets/imgs/en/btnHistoryNormal@2x.png",
-    "accountimg": "/assets/imgs/en/btnAccountNormal@2x.png",
-    "contactimg": "/assets/imgs/en/btnContactNormal@2x.png",
+    "lobbyimg": "/assets/imgs/en/btnLobbyNormal.png",
+    "historyimg": "/assets/imgs/en/btnHistoryNormal.png",
+    "accountimg": "/assets/imgs/en/btnAccountNormal.png",
+    "contactimg": "/assets/imgs/en/btnContactNormal.png",
     "lobbyimgpressed": "/assets/imgs/en/btnLobbyPressed@2x.png",
     "historyimgpressed": "/assets/imgs/en/btnHistoryPressed@2x.png",
     "accountimgpressed": "/assets/imgs/en/btnAccountPressed@2x.png",

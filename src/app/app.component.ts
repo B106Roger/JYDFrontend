@@ -1,8 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import { __asyncDelegator } from 'tslib';
+import { Location } from '@angular/common';
 import { FetchService } from './services/fetch.service';
 // tslint:disable: no-string-literal
 
@@ -21,21 +20,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   isIphone = /iphone/.test( this.userAgent );
   isStandalone = 'standalone' in navigator && navigator['standalone'];
 
-  constructor(public swupdate: SwUpdate, public router: Router, private translate: TranslateService, private fetch: FetchService) {
+  constructor(public swupdate: SwUpdate, private translate: TranslateService,
+              private fetch: FetchService, private location: Location) {
     translate.addLangs(['en', 'zh-cn', 'es', 'pt']);
-    translate.setDefaultLang('en');
-    // 檢查localStorage沒有語系紀錄
-    if (localStorage.getItem('lang')) {      // 有，使用localStorage語系
+    const defaultLang = 'en';
+    // 先試local storage lang，再試browser lang，最後用default lang
+    if (localStorage.getItem('lang')) {
       translate.use(localStorage.getItem('lang'));
-    } else {                                 // 沒有
-      const browserLang = translate.getBrowserLang();
-      if (translate.langs.includes(browserLang)) {
-        translate.use(browserLang);
-      } else {
-        translate.use(translate.defaultLang);
-      }
+    } else if (translate.langs.includes( translate.getBrowserLang())) {
+      translate.use(translate.getBrowserLang());
+    } else {
+      translate.use(defaultLang);
     }
     localStorage.setItem('lang', this.translate.currentLang);
+    translate.setDefaultLang(defaultLang);
   }
 
   ngOnInit(): void {
@@ -58,19 +56,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     window['isStandalone'] = this.isStandalone;
 
     // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
-    if (this.router.url === '/') {
-      this.fetch.preloadLoginImage('preload');
-      this.fetch.preloadLobbyImage('prefetch');
+    if (this.location.path() === '') {
+      this.fetch.preloadLoginImage();
+      this.fetch.preloadLobbyImage();
       // 取得GameList
       if (localStorage.getItem('gameList') !== null) {
-        this.fetch.preloadLobbyLanguageImage('prefetch');
+        this.fetch.preloadLobbyLanguageImage();
       }
     }
 
     this.fetch.gameList$.subscribe((data) => {
-      const prelaodOption = this.router.url.match('/lobby') ? 'preload' : 'prefetch';
       this.fetch.preloadImageLanguage = [];
-      this.fetch.preloadLobbyLanguageImage(prelaodOption);
+      this.fetch.preloadLobbyLanguageImage();
     });
     this.fetch.fetchGameList();
 
@@ -81,6 +78,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log('ngview', this.location.path());
+
     let time = new Date().getTime();
     if (window['isIphone'] === true) {
       scrollTo(0, 100);
@@ -121,7 +120,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
   isLoginOrGame() {
-    const dst = this.router.url;
-    return dst === '/' || dst.match('/game/') || dst === '/?utm_source=pwa_app';
+    const dst = this.location.path();
+    return dst === '' || dst.match('/game/') || dst === '/?utm_source=pwa_app';
   }
 }

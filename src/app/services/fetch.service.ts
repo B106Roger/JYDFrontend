@@ -127,87 +127,75 @@ export class FetchService {
 
   // 預載函數
   preloadLoginImage(preloadType: string = 'preload') {
-
-    // preload 與語系有關的圖片，須等載完語系檔才能preload
-    const loginLanguageImageList: string[] = [
-      'btnLoginNormal.png',
-      'btnLoginPressed.png',
-      'picLogo@3x.png'
-    ];
-    loginLanguageImageList.forEach((item) => {
-      const link = document.createElement('link');
-      link.rel = preloadType;
-      link.href = `/assets/imgs/${this.trans.currentLang}/${item}`;
-      link.as = 'image';
-      document.head.appendChild(link);
-    });
+    console.log(this.trans.currentLang);
     let loginBackground: string;
     if (window.innerHeight >= 760) {
-      loginBackground = 'bgLoginBig';
+      loginBackground = '/assets/imgs/bgLoginBig.png';
     } else {
-      loginBackground = '/assets/imgs/bgLogin@2x.png';
+      loginBackground = '/assets/imgs/bgLogin.png';
     }
     // preload 與語系無關的圖片
     const loginImageList: string[] = [
-      '/assets/imgs/bgLoginBig@2x.png',
-      '/assets/imgs/picIdFrame@3x.png',
-      '/assets/imgs/picPasswordFrame@3x.png',
-      '/assets/imgs/picRememberFrame@2x.png',
-      '/assets/imgs/iconRememberCheck.png',
-      '/assets/imgs/picLanMenuBg@2x.png',
-      '/assets/imgs/picLanMenuBgExpand.png',
-      '/assets/imgs/iconLanMenuDown.png',
-      '/assets/imgs/iconLanMenuUp.png',
+      loginBackground,
+      `/assets/imgs/${this.trans.currentLang}/picLogo@2x.png`,
+      '/assets/imgs/picLanMenuBg.png',
+      '/assets/imgs/picPasswordFrame@2x.png',
+      '/assets/imgs/picIdFrame@2x.png',
+      '/assets/imgs/picRememberFrame.png',
+      `/assets/imgs/${this.trans.currentLang}/btnLoginNormal.png`,
+
       '/assets/imgs/iconLanEn.png',
       '/assets/imgs/iconLanSc.png',
       '/assets/imgs/iconLanEs.png',
-      '/assets/imgs/iconLanPo.png'
+      '/assets/imgs/iconLanPo.png',
+      '/assets/imgs/iconLanMenuDown.png',
+
+      '/assets/imgs/iconRememberCheck.png',
+      '/assets/imgs/picLanMenuBgExpand.png',
+      '/assets/imgs/iconLanMenuUp.png',
+      `/assets/imgs/${this.trans.currentLang}/btnLoginPressed.png`,
     ];
     loginImageList.forEach((item) => {
-      const link = document.createElement('link');
-      link.rel = preloadType;
-      link.href = item;
-      link.as = 'image';
-      document.head.appendChild(link);
+      const image = new Image();
+      image.src = item;
     });
   }
 
-  preloadLobbyImage(preloadType: string = 'preload') {
+  preloadLobbyImage() {
     const lobbyImageList: string[] = [
-      '/assets/imgs/picBgLobby@2x.png',
+      '/assets/imgs/picBgLobby.png',
       '/assets/imgs/picTopBg@2x.png',
       '/assets/imgs/picIdFrameEmpty@2x.png',
       '/assets/imgs/iconId@2x.png',
-      '/assets/imgs/picCreditFrame@3x.png',
+      '/assets/imgs/picCreditFrame@2x.png',
       '/assets/imgs/iconCreditDollar@2x.png',
-      '/assets/imgs/btnSettingMenuNormal@3x.png',
-      '/assets/imgs/btnSettingMenuPressed@3x.png',
+      '/assets/imgs/btnSettingMenuNormal.png',
+
       '/assets/imgs/picGameMenuBg@2x.png',
       '/assets/imgs/iconGameMenuDown.png',
-      '/assets/imgs/iconGameMenuUp.png',
       '/assets/imgs/picGameFrameLarge.png',
       '/assets/imgs/picGameFrameSmall.png',
       '/assets/imgs/picBannerFrame.png',
-      '/assets/imgs/btnLobbyBg@2x.png',
+      '/assets/imgs/btnLobbyBg.png',
+
+      '/assets/imgs/btnSettingMenuPressed.png',
+      '/assets/imgs/iconGameMenuUp.png',
     ];
     lobbyImageList.forEach((item) => {
-      const link =  document.createElement('link');
-      link.as = 'image';
-      link.rel = preloadType;
-      link.href = item;
-      document.head.appendChild(link);
+      const image = new Image();
+      image.src = item;
     });
   }
 
-  preloadLobbyLanguageImage(preloadType: string = 'preload') {
+  preloadLobbyLanguageImage() {
     // 確定同個語系沒有重複preload
     if (this.preloadImageLanguage.includes(localStorage.getItem('lang'))) {
       return;
     } else {
       this.preloadImageLanguage.splice(0, 0, localStorage.getItem('lang'));
     }
-    this.preloadGameListImage(preloadType);
-    this.preloadNavbarImage(preloadType);
+    this.preloadGameListImage();
+    this.preloadNavbarImage();
   }
 
   private preloadGameListImage(preloadType: string = 'preload') {
@@ -216,21 +204,22 @@ export class FetchService {
     const data = localStorage.getItem('gameList');
     let gameList: any[];
     gameList = (data !== null ? JSON.parse(data) : []);
-    // 依照GameName及語系取得圖片位置，並prelaod
+    // 載入前7張遊戲圖片，依照GameName及語系取得圖片位置
     gameList.forEach((item, index) => {
-      const link = document.createElement('link');
-      link.rel = preloadType;
+      let src: string;
       if (index === 0) {
-        link.href = `/assets/imgs/${currentLang}/pic_game_iconL_${item.GameName}_${currentLang}.png`;
+        src = `/assets/imgs/${currentLang}/pic_game_iconL_${item.GameName}_${currentLang}.png`;
+      } else if ( index < 7) {
+        src = `/assets/imgs/${currentLang}/pic_game_iconS_${item.GameName}_${currentLang}.png`;
       } else {
-        link.href = `/assets/imgs/${currentLang}/pic_game_iconS_${item.GameName}_${currentLang}.png`;
+        return;
       }
-      link.as = 'image';
-      document.head.appendChild(link);
+      const image = new Image();
+      image.src = src;
     });
   }
 
-  private preloadNavbarImage(preloadType: string = 'preload') {
+  private preloadNavbarImage() {
     // 當前語系
     const currentLang = this.trans.currentLang;
     // 依照大廳的四個連結取得
@@ -241,11 +230,8 @@ export class FetchService {
       'btnContactNormal'
     ];
     navBarList.forEach((item) => {
-      const link = document.createElement('link');
-      link.rel = preloadType;
-      link.href = `/assets/imgs/${currentLang}/${item}@2x.png`;
-      link.as = 'image';
-      document.head.appendChild(link);
+      const image = new Image();
+      image.src = `/assets/imgs/${currentLang}/${item}.png`;
     });
   }
 }
