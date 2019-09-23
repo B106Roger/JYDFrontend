@@ -15,10 +15,7 @@ declare var $: any;
 export class AppComponent implements OnInit, AfterViewInit {
   updates = false;
   displayHeader = 'none';
-
   userAgent = window.navigator.userAgent.toLowerCase();
-  isIphone = /iphone/.test( this.userAgent );
-  isStandalone = 'standalone' in navigator && navigator['standalone'];
 
   constructor(public swupdate: SwUpdate, private translate: TranslateService,
               private fetch: FetchService, private location: Location) {
@@ -37,34 +34,38 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // 如果service worker有被註冊時
-    navigator.serviceWorker.getRegistrations().then(registrations => {
-      // 當有新東西時更新pwa cache
-      this.swupdate.available.subscribe(event => {
-        this.updates = true;
-        this.swupdate.activateUpdate().then(() => {
-          document.location.reload();
-        });
-      });
-    }).catch((err) => {
-      console.log(err);
-    });
     // 設定語系id
     document.querySelector('body').id = localStorage.getItem('lang');
     // 設定其他參數
-    window['isIphone'] = this.isIphone;
-    window['isStandalone'] = this.isStandalone;
+    window['isIphone'] = /iphone/.test( this.userAgent );
+    window['isStandalone'] = 'standalone' in navigator && navigator['standalone'];
+
+    if ( 'serviceWorker' in navigator) {
+      // 如果service worker有被註冊時
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        // 當有新東西時更新pwa cache
+        this.swupdate.available.subscribe(event => {
+          this.updates = true;
+          this.swupdate.activateUpdate().then(() => {
+            document.location.reload();
+          });
+        });
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
 
     // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
     if (this.location.path() === '') {
       this.fetch.preloadLoginImage();
       this.fetch.preloadLobbyImage();
-      // 取得GameList
+      // 取得上次存的GameList，並預載遊戲圖片
       if (localStorage.getItem('gameList') !== null) {
         this.fetch.preloadLobbyLanguageImage();
       }
     }
 
+    // 當fetch的gameList有改變時就再預載遊戲圖片
     this.fetch.gameList$.subscribe((data) => {
       this.fetch.preloadImageLanguage = [];
       this.fetch.preloadLobbyLanguageImage();
@@ -74,6 +75,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     // catch app install event
     window.addEventListener('appinstalled', (e) => {
       console.log('app installed');
+    });
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('before install prompt');
     });
   }
 
@@ -121,6 +126,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   isLoginOrGame() {
     const dst = this.location.path();
-    return dst === '' || dst.match('/game/') || dst === '/?utm_source=pwa_app';
+    return dst === '' || dst.match('/game/') || dst === '?utm_source=pwa_app';
   }
 }

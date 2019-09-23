@@ -14,10 +14,6 @@ declare var $: any;
 // tslint:disable: no-string-literal
 
 export class LobbyComponent implements OnInit, AfterViewInit {
-
-  userAgent = window.navigator.userAgent.toLowerCase();
-  isIphone = /iphone/.test( this.userAgent );
-  isStandalone = 'standalone' in navigator && navigator['standalone'];
   picLang: string;
   menuSelected: string;
   menuShow = false;
@@ -209,7 +205,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   startScroll(e1: MouseEvent) {
     // 清除上一次的momentum scroll
     clearInterval(this.scrollintervalItem);
-    if (this.isIphone === true) {return; }
+    if (window['isIphone'] === true) {return; }
     const initialLocation = e1.clientX;
     const initalTime = new Date();
     let previousLocation = initialLocation;

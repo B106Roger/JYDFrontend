@@ -47,6 +47,9 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   getSrc() {
     switch ( this.gameType ) {
       case 'slots':
+        if (this.gameName === 'sexybartender' || this.gameName === 'soccerfever') {
+          return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/slots2.html`);
+        }
         return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
 
       case 'marry':
