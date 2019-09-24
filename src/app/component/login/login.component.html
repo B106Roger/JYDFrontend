@@ -72,6 +72,22 @@
     </div>
 
   </div>
+  <div class="error-confirmation-container" *ngIf="! loginSuccess">
+    <div class="error-message" [ngStyle]="{
+      'background': 'url(' + ('login.loginfailmsg' | translate) + ')',
+      'background-repeat': 'no-repeat',
+      'background-position': 'no-repeat',
+      'background-size': '100%100%'
+    }">
+      <img [src]="'login.loginfailconfirm' | translate" class="btn-confirm" alt="confirm"
+      (mousedown) ="setBtnConfirmPressed($event)"
+      (touchend)  ="setBtnConfirmNormal($event)"
+      (touchstart)="setBtnConfirmPressed($event)"
+      (mouseup)   ="setBtnConfirmNormal($event)"
+      (mouseleave)="setBtnConfirmNormal($event)"
+      (click)     ="closeLoginFailConfirmMsg()">
+    </div>
+  </div>
 </section>
 
 

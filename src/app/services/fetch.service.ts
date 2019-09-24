@@ -224,14 +224,14 @@ export class FetchService {
     const currentLang = this.trans.currentLang;
     // 依照大廳的四個連結取得
     const navBarList = [
-      'btnLobbyNormal',
-      'btnHistoryNormal',
-      'btnAccountNormal',
-      'btnContactNormal'
+      'btnLobbyNormal@2x.png',
+      'btnHistoryNormal@2x.png',
+      'btnAccountNormal@2x.png',
+      'btnContactNormal@2x.png'
     ];
     navBarList.forEach((item) => {
       const image = new Image();
-      image.src = `/assets/imgs/${currentLang}/${item}.png`;
+      image.src = `/assets/imgs/${currentLang}/${item}`;
     });
   }
 }

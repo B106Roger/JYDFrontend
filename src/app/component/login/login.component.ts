@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       label: 'Português'
     }
   ];
+  loginSuccess = true;
   constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService, private fetch: FetchService) {  }
 
   ngOnInit() {
@@ -53,12 +54,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    scrollTo(0, 40);
   }
 
-  getRememberValue() {return this.remember; }
   getRememberStyle() {
-    const displayVal = this.getRememberValue() === true ? 'inline' : 'none';
+    const displayVal = this.remember === true ? 'inline' : 'none';
     return { display: displayVal };
   }
   toggleRemeberValue() {
@@ -101,6 +100,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
           }).catch( err => {
             this.route.navigate(['/lobby']);
           });
+        } else {
+          this.loginSuccess = false;
         }
     });
   }
@@ -131,5 +132,18 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
   closePopper() {
     this.langShow = false;
+  }
+
+
+  setBtnConfirmNormal(e: Event) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('login.loginfailconfirm'));
+  }
+  setBtnConfirmPressed(e: Event) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('src' , this.translate.instant('login.loginfailpress'));
+  }
+  closeLoginFailConfirmMsg() {
+    this.loginSuccess = true;
   }
 }

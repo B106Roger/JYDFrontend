@@ -13,7 +13,7 @@ const Api = {
     * @var  Password :string
     * @return access_token , expires_in , token_type , scope
     */
-  loginApi      : 'https://jyd.bet7evens.com/auth/connect/token',
+  loginApi      : 'https://admin.jyd188.net/auth/connect/token',
 
    /**
     * @method Get
@@ -30,7 +30,7 @@ const Api = {
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  betRecordApi  : 'https://jyd.bet7evens.com/api/account/betrecord',
+  betRecordApi  : 'https://admin.jyd188.net/api/account/betrecord',
    /**
     * @method Get
     * @headers {'Authorization' : Access_token}
@@ -38,7 +38,7 @@ const Api = {
     * @var EndDate   :Y-m-d
     * @return RecordList[]
     */
-  gameRecordApi : 'https://jyd.bet7evens.com/api/game/record',
+  gameRecordApi : 'https://admin.jyd188.net/api/game/record',
 
    /**
     * @method Get
@@ -48,7 +48,7 @@ const Api = {
     * @var void
     * @return data[]
     */
-  amountApi     : 'https://jyd.bet7evens.com/api/account',
+  amountApi     : 'https://admin.jyd188.net/api/account',
 
    /**
     * @method PUT
@@ -56,7 +56,7 @@ const Api = {
     * @var oldPassword: string
     * @var newPassword: string
     */
-  ChangePasswordApi: 'https://jyd.bet7evens.com/api/account/password',
+  ChangePasswordApi: 'https://admin.jyd188.net/api/account/password',
 
    /**
     * @method Get

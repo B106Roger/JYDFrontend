@@ -86,8 +86,6 @@ export class AuthGuardService implements CanActivate {
         return true;
       })
       .catch( error => {
-        window.alert( error );
-
         return false;
     });
   }
