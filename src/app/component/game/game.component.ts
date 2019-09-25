@@ -66,7 +66,11 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
   getOrientation() {
     switch ( this.gameType ) {
       case 'slots':
-        this.orientation = 'landscape';
+        if (this.gameName === 'soccerfever' || this.gameName === 'sexybartender') {
+          this.orientation = 'portrait';
+        } else {
+          this.orientation = 'landscape';
+        }
         break;
 
       case 'marry':
