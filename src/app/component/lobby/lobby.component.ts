@@ -12,7 +12,7 @@ declare var $: any;
 
 // tslint:disable: one-line
 // tslint:disable: no-string-literal
-
+// tslint:disable: object-literal-shorthand
 export class LobbyComponent implements OnInit, AfterViewInit {
   picLang: string;
   menuSelected: string;
@@ -37,11 +37,11 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   ];
   carasoulImages = [
     {
-      gameImgUrl: `assets/imgs/${localStorage.getItem('lang')}/picBanner01@2x.png`
+      gameImgUrl: `assets/imgs/${this.translate.currentLang}/picBanner01@2x.png`
     }, {
-      gameImgUrl: `assets/imgs/${localStorage.getItem('lang')}/picBanner01@2x.png`
+      gameImgUrl: `assets/imgs/${this.translate.currentLang}/picBanner01@2x.png`
     }, {
-      gameImgUrl: `assets/imgs/${localStorage.getItem('lang')}/picBanner01@2x.png`
+      gameImgUrl: `assets/imgs/${this.translate.currentLang}/picBanner01@2x.png`
     }
   ];
 
@@ -107,7 +107,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    scrollTo(0, 40);
     setTimeout(() => { $('.carousel').carousel('next'); }, 1000);
   }
 
@@ -268,29 +267,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
         }, updateInterval);
       }
       // *******************************************
-    }
-  }
-  // 註冊手機點擊拖曳 的 移動事件
-  startTouch(e1: TouchEvent) {
-    const ele = document.querySelector('#normal-game-container') as HTMLElement;
-    const initial = e1.touches[0].clientX;
-    const maxscroll = ele.scrollWidth - ele.offsetWidth;
-    e1.currentTarget.addEventListener('touchmove', scrollX);
-    e1.currentTarget.addEventListener('touchend', endScroll);
-    e1.currentTarget.addEventListener('touchcancel', endScroll);
-
-    function scrollX(e2: TouchEvent) {
-      const delta =  initial - e2.touches[0].clientX ;
-      if ( delta > 0 && ele.scrollLeft === maxscroll) {
-        e2.preventDefault();
-      } else if (delta < 0 && ele.scrollLeft === 0){
-        e2.preventDefault();
-      }
-    }
-    function endScroll(e3: TouchEvent) {
-      e3.currentTarget.removeEventListener('touchmove', scrollX);
-      e3.currentTarget.removeEventListener('touchend', endScroll);
-      e3.currentTarget.removeEventListener('touchcancel', endScroll);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
@@ -10,12 +10,11 @@ import { FetchService } from 'src/app/services/fetch.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
   account = '';
   password = '';
   remember: boolean;
   langShow = false;
-  langChoosed = 'en';
   langList = [
     {
       lang: 'en',
@@ -38,12 +37,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
       label: 'Português'
     }
   ];
+  langChoosed = this.langList[0];
   loginSuccess = true;
   constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService, private fetch: FetchService) {  }
 
   ngOnInit() {
     // 設定語系
-    this.langChoosed = localStorage.getItem('lang');
+    if (localStorage.getItem('lang') !== null) {
+      this.langChoosed = this.langList.filter((item) => item.lang === localStorage.getItem('lang'))[0];
+    }
     // 設定記住帳密
     if (! localStorage.getItem('remember')) {
       this.remember = false;
@@ -53,13 +55,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-  }
-
-  getRememberStyle() {
-    const displayVal = this.remember === true ? 'inline' : 'none';
-    return { display: displayVal };
-  }
   toggleRemeberValue() {
     this.remember = !this.remember;
     this.setRememberValue();
@@ -69,7 +64,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     localStorage.setItem('remember', setvalue);
   }
   getLang() {
-    return this.langList.filter( e => e.lang === this.langChoosed )[0];
+    return this.langChoosed.lang;
   }
   setLang(e: Event) {
     if (e.type === 'touchend') {
@@ -79,12 +74,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const lang = target.dataset.lang;
 
     if (this.translate.getLangs().includes(lang)) {
-      this.langChoosed = lang;
+      this.langChoosed = this.langList.filter((item) => item.lang === lang)[0];
     } else {
-      this.langChoosed = this.translate.defaultLang;
+      this.langChoosed = this.langList.filter((item) => item.lang === this.translate.defaultLang )[0];
     }
-    this.translate.use(this.langChoosed);
-    localStorage.setItem('lang', this.langChoosed);
+    this.translate.use(this.langChoosed.lang);
+    localStorage.setItem('lang', this.langChoosed.lang);
     document.querySelector('body').id = this.translate.currentLang;
     this.closePopper();
     // 重新preload Lobby 跟語系有關的圖片(GameList, Navbar)
@@ -130,10 +125,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
       console.log('Notification are denied');
     }
   }
+
   closePopper() {
     this.langShow = false;
   }
-
 
   setBtnConfirmNormal(e: Event) {
     const self = e.currentTarget as HTMLElement;

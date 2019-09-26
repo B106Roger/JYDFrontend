@@ -87,7 +87,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     let time = new Date().getTime();
     if (window['isIphone'] === true) {
-      scrollTo(0, 100);
       // 當網頁是經由home開啟時要防止縮放滑動
       if (window['isStandalone']) {
 

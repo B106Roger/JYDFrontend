@@ -63,12 +63,12 @@
           <div id="carouselExampleIndicators" class="carousel slide"
           data-ride="carousel"  data-interval="false" data-wrap="true" data-pause="hover">
             <ol class="carousel-indicators" >
-              <ng-container *ngFor="let item of getCarouselGame();let index = index;let first = first">
+              <ng-container *ngFor="let item of carasoulImages;let index = index;let first = first">
                 <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="index" [ngClass]="{'active': first}"></li>
               </ng-container>
             </ol>
             <div class="carousel-inner" >
-              <ng-container *ngFor="let item of getCarouselGame();let first = first;let index = index">
+              <ng-container *ngFor="let item of carasoulImages;let first = first;let index = index">
                   <div [ngClass]="{'active': first, 'carousel-item': true}" >
                       <div class="banner-game-frame">
                           <img class="carousel-content"  [src]="item.gameImgUrl" draggable="false" [alt]="index + 'slide'"  >

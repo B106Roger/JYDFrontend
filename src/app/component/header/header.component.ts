@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from './../../services/fetch.service';
@@ -8,11 +8,11 @@ import { FetchService } from './../../services/fetch.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('musicEle', {static: false})
   musicEle: ElementRef;
-  msuic = false;
+  music = false;
   sound = false;
   money: number;
   UserID = '';
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(public auth: AuthGuardService, public fetch: FetchService) { }
 
   ngOnInit() {
-    this.msuic = (localStorage.getItem('music') === 'on' || null ? true : false);
+    this.music = (localStorage.getItem('music') === 'on' || null ? true : false);
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
     this.setUserID();
     this.setUserAmount();
@@ -30,15 +30,13 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     console.log(this.money);
   }
-  ngOnDestroy() {
 
-  }
   ngAfterViewInit() {
     this.setMusic();
     this.setSound();
   }
 
-  getMusic() { return this.msuic; }
+  getMusic() { return this.music; }
 
   getSound() { return this.sound; }
 
@@ -51,10 +49,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   setMusic() {
-    const setValue = this.msuic === true ? 'on' : 'off';
+    const setValue = this.music === true ? 'on' : 'off';
     localStorage.setItem('music', setValue);
     // set music physically
-    if (this.msuic) {
+    if (this.music) {
       this.musicEle.nativeElement.play().catch((err) => {
         this.playAfterInteract();
       });
@@ -67,7 +65,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
-    this.msuic = !this.msuic;
+    this.music = !this.music;
     this.setMusic();
   }
 
