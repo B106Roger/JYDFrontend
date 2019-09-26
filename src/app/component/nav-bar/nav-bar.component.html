@@ -3,7 +3,7 @@
   <div class="d-flex" class="menu-bg" data-type="href"
   (touchend)="navigateTo($event)"
   (mousedown)="navigateTo($event)" >
-    <button *ngFor="let option of menuList"
+    <button *ngFor="let option of (menuList | generalPipe)"
      class="menu-button"
      [attr.data-href]="option.nextUrl" >
       <img [src]="option.picture | translate" draggable="false" [alt]="option.picture">

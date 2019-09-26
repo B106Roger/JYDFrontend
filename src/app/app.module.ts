@@ -21,6 +21,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameRecordsComponent } from './component/history/game-records.component';
 import { IoRecordsComponent } from './component/history/io-records.component';
 import { GameComponent } from './component/game/game.component';
+import { GamePipePipe } from './game-pipe.pipe';
+import { GeneralPipePipe } from './general-pipe.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +41,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LobbyComponent,
     GameRecordsComponent,
     IoRecordsComponent,
-    GameComponent
+    GameComponent,
+    GamePipePipe,
+    GeneralPipePipe
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ declare var $: any;
 // tslint:disable: object-literal-shorthand
 export class LobbyComponent implements OnInit, AfterViewInit {
   picLang: string;
-  menuSelected: string;
+  menuSelected: any;
   menuShow = false;
   menuList = [
     {
@@ -57,6 +57,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   marioGameList = [
     'luckymario', 'sambaqueen'
   ];
+
   images: any[] = [];
   private scrollintervalItem;
   private touchintervalItem;
@@ -65,12 +66,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // 初始化遊戲選擇項目
-    if (localStorage.getItem('gameChoose') === null || localStorage.getItem('gameChoose') === undefined) {
-      this.menuSelected = 'all';
-      localStorage.setItem('gameChoose', 'all');
-    } else {
-      this.menuSelected = localStorage.getItem('gameChoose');
-    }
+    this.menuSelected = this.menuList[0];
     // 初始化遊戲列表
     this.picLang = this.translate.currentLang;
     const localGameList = localStorage.getItem('gameList');
@@ -110,25 +106,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     setTimeout(() => { $('.carousel').carousel('next'); }, 1000);
   }
 
-  getNormalGame() {
-    if (this.menuSelected === 'all') {
-      return this.images.filter((e, index) => index !== 0);
-    } else {
-      return this.images.filter((e) => e.gameCategory === this.menuSelected);
-    }
-  }
-  getHotGame() {
-    if ((this.menuSelected === 'all' || this.menuSelected === this.images[0].gameCategory) && this.images.length !== 0) {
-      return [this.images[0]];
-    } else {
-      return [null];
-    }
-  }
-  getCarouselGame() {
-    return this.carasoulImages;
-  }
   getMenuSelect() {
-    return this.menuList.filter((e) => e.value === this.menuSelected)[0];
+    console.log('detect');
+    return this.menuSelected;
   }
   setMenuSelect(e: Event) {
     if (e.type === 'touchend') {
@@ -140,8 +120,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       target = target.parentElement;
     }
 
-    this.menuSelected = target.dataset.gametype;
-    localStorage.setItem('gameChoose', this.menuSelected);
+    this.menuSelected = this.menuList.filter(item => item.value === target.dataset.gametype)[0];
     this.menuShow = false;
   }
   toggleMenuOnShow(e: Event) {
