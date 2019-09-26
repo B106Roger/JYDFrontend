@@ -1,4 +1,4 @@
-import { Component, OnInit , OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit , OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,12 +11,10 @@ import { FetchService } from 'src/app/services/fetch.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
-  @ViewChild('myiframe',{static: false}) myframe: ElementRef;
+export class GameComponent implements OnInit , OnDestroy {
 
   constructor(private routerInfo: ActivatedRoute, private auth: AuthGuardService,
               public sanitizer: DomSanitizer, public fetch: FetchService, public route: Router) { }
-
   isIphone = window['isIphone'];
   gameType = '';
   gameName = this.routerInfo.snapshot.params.gameName;
@@ -38,10 +36,6 @@ export class GameComponent implements OnInit , OnDestroy, AfterViewInit {
     this.iframeURL = this.getSrc();
     this.getOrientation();
 
-  }
-
-  ngAfterViewInit(): void {
-    const iframe = document.querySelector('iframe');
   }
 
   getSrc() {

@@ -7,7 +7,6 @@ import { LobbyComponent } from './component/lobby/lobby.component';
 import { HistoryComponent } from './component/history/history.component';
 import { AccountComponent } from './component/account/account.component';
 import { ContactComponent } from './component/contact/contact.component';
-import { DownloadAppComponent } from './component/download-app/download-app.component';
 import { GameComponent } from './component/game/game.component';
 const routes: Routes = [
   {
@@ -38,11 +37,6 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'download',
-    component: DownloadAppComponent,
     canActivate: [AuthGuardService]
   },
   {
