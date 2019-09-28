@@ -2,11 +2,11 @@
 <!-- 給android的遊戲畫面 -->
 <section *ngIf="this.isIphone === false; else iphone_area"
  [ngClass]="{
-   'landscape-frame': orientation === 'landscape',
-   'portrait-frame': orientation === 'portrait'
+   'landscape-frame': gameItem.Orientation === 'landscape',
+   'portrait-frame': gameItem.Orientation === 'portrait'
   }">
     <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
-    mozallowfullscreen="true" allowfullscreen="true" (load)="this.addListenerInIframe()" allowSyntheticDefaultImports></iframe>
+    mozallowfullscreen="true" allowfullscreen="true" (load)="addListenerInIframe();" allowSyntheticDefaultImports></iframe>
 </section>
 
 
@@ -14,12 +14,12 @@
 <!-- 給ios的遊戲畫面 -->
 <ng-template #iphone_area>
   <div [ngClass]="{
-    'ios-landscape-body': orientation === 'landscape',
-    'ios-portrait-body': orientation === 'portrait'
+    'ios-landscape-body': gameItem.Orientation === 'landscape',
+    'ios-portrait-body': gameItem.Orientation === 'portrait'
   }">
     <div class="iframe-container fixed scroll no-scrollbar">
       <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
-      mozallowfullscreen="true" allowfullscreen="true" (load)="this.addListenerInIframe()" allowSyntheticDefaultImports></iframe>
+      mozallowfullscreen="true" allowfullscreen="true" (load)="addListenerInIframe();"  allowSyntheticDefaultImports></iframe>
     </div>
   </div>
 </ng-template>

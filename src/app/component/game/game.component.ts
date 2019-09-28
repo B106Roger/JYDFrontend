@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FetchService } from 'src/app/services/fetch.service';
+import { GameItem } from 'src/app/iterface';
 // tslint:disable: max-line-length
 // tslint:disable: no-string-literal
 
@@ -16,85 +17,27 @@ export class GameComponent implements OnInit , OnDestroy {
   constructor(private routerInfo: ActivatedRoute, private auth: AuthGuardService,
               public sanitizer: DomSanitizer, public fetch: FetchService, public route: Router) { }
   isIphone = window['isIphone'];
-  gameType = '';
-  gameName = this.routerInfo.snapshot.params.gameName;
-  orientation = '';
-  historyBack = history.back;
+  gameItem: GameItem;
+  gameName: string = this.routerInfo.snapshot.params.gameName;
   iframeURL;
 
   ngOnInit() {
-    this.gameType = this.routerInfo.snapshot.params.gameType;
-
-    // 處理例外事件，jokerpt跟tenpk的gameName相同
-    window['_GameName'] = this.gameName;
-    if (this.gameName === 'jokerpk') {
-      window['_GameName'] = 'tenpk';
+    if (localStorage.getItem('gameList') !== null) {
+      this.gameItem = JSON.parse(localStorage.getItem('gameList')).filter( (item: GameItem) => item.DisplayName === this.gameName )[0];
+    } else {
+      console.log(this.gameName);
+      alert('unknown game name');
+      this.route.navigate(['lobby']);
     }
-
-    window['_GameUrl'] = this.getGameUrl();
+    window['_DisplayName'] = this.gameItem.DisplayName;
+    window['_GameName'] = this.gameItem.GameName;
+    window['_GameUrl'] = this.gameItem.URL;
     window['_Bearer']   = this.auth.getUserID();
     this.iframeURL = this.getSrc();
-    this.getOrientation();
-
   }
 
   getSrc() {
-    switch ( this.gameType ) {
-      case 'slots':
-        if (this.gameName === 'sexybartender' || this.gameName === 'soccerfever') {
-          return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/slots2.html`);
-        }
-        return this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Games/slots.html');
-
-      case 'marry':
-        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/mario.html`);
-
-      case 'poker':
-        return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/poker.html`);
-
-        default:
-        throw Error('Unknown Game Type');
-    }
-  }
-
-  getOrientation() {
-    switch ( this.gameType ) {
-      case 'slots':
-        if (this.gameName === 'soccerfever' || this.gameName === 'sexybartender') {
-          this.orientation = 'portrait';
-        } else {
-          this.orientation = 'landscape';
-        }
-        break;
-
-      case 'marry':
-        this.orientation = 'portrait';
-        break;
-
-      case 'poker':
-        this.orientation = 'portrait';
-        break;
-
-      default:
-        throw Error('Unknown Game Type');
-    }
-  }
-
-  getGameUrl() {
-    switch (this.gameType) {
-      case 'slots': {
-        return 'https://dev-slot-mario.gd888.cc/gamelab/';
-      }
-      case 'marry': {
-        return 'https://dev-slot-mario.gd888.cc/gamelab/';
-      }
-      case 'poker': {
-        return 'https://5pk.bet7evens.com';
-      }
-      default: {
-        throw Error('Unknown Game Type');
-      }
-    }
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/index.html`);
   }
 
   stopPropagation(e: Event) {
@@ -111,6 +54,12 @@ export class GameComponent implements OnInit , OnDestroy {
     delete window['_GameName'];
     delete window['_GameUrl'];
     delete window['_Bearer'];
+    delete window['_DisplayName'];
     this.fetch.fetchAmount();
+  }
+
+  log(a) {
+    console.log(a);
+    console.log('asdfadfa');
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { Router } from '@angular/router';
+import { isNgTemplate } from '@angular/compiler';
+import { GameItem } from 'src/app/iterface';
 declare var $: any;
 
 @Component({
@@ -23,11 +25,11 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       label: 'ALL'
     },
     {
-      value: 'slots',
+      value: 'slot',
       label: 'SLOTS'
     },
     {
-      value: 'marry',
+      value: 'mario',
       label: 'MARRY SLOTS'
     },
     {
@@ -70,33 +72,24 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     // 初始化遊戲列表
     this.picLang = this.translate.currentLang;
     const localGameList = localStorage.getItem('gameList');
-    let gameListArray = [];
+    let gameListArray: GameItem[] = [];
     if (localGameList !== null) {
       gameListArray = JSON.parse(localGameList);
     }
 
-    gameListArray.forEach((gameItem: any, index: number) => {
-      const gameName: string = gameItem.GameName;
-      let gameCategory: string;
+    gameListArray.forEach((gameItem: GameItem, index: number) => {
       let gameImgUrl: string;
-      // 設定遊戲種類
-      if (this.slotsGameList.indexOf(gameName) !== -1) {
-        gameCategory = 'slots';
-      } else if (this.marioGameList.indexOf(gameName) !== -1) {
-        gameCategory = 'marry';
-      } else if (this.pokerGameList.indexOf(gameName) !== -1) {
-        gameCategory = 'poker';
-      }
+
       // 設定圖片路徑
       if (index === 0) {
-        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameName}_${this.picLang}.png`;
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameItem.DisplayName}_${this.picLang}.png`;
       } else {
-        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameName}_${this.picLang}.png`;
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameItem.DisplayName}_${this.picLang}.png`;
       }
 
       this.images.push({
-        gameName: gameName,
-        gameCategory: gameCategory,
+        DisplayName: gameItem.DisplayName,
+        GameType: gameItem.GameType,
         gameImgUrl: gameImgUrl,
       });
     });

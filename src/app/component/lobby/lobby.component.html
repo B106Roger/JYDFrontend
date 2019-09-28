@@ -41,17 +41,17 @@
       <div id="normal-game-container" (mousedown)="startScroll($event)">
           <div class="gameSeparate"></div>
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value: true)">
-            <div id="hot-game-frame" *ngIf="item !== null" [routerLink]="['/game' ,item.gameCategory ,item.gameName ]" >
+            <div id="hot-game-frame" *ngIf="item !== null" [routerLink]="['/game' ,item.GameType ,item.DisplayName ]" >
               <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
-              <img id="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
+              <img id="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.DisplayName">
               <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false" alt="hotGameFrame">
             </div>
           </ng-container>
 
 
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value)">
-            <div class="normal-game-frame" [routerLink]="['/game' ,item.gameCategory ,item.gameName]" >
-              <img class="normal-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.gameName">
+            <div class="normal-game-frame" [routerLink]="['/game' ,item.GameType ,item.DisplayName]" >
+              <img class="normal-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.DisplayName">
               <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false" alt="normalGameFrame">
             </div>
           </ng-container>

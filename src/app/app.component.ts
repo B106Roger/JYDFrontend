@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
-    if (this.location.path() === '') {
+    if (this.location.path() === '' || this.location.path() === '?utm_source=pwa_app') {
       this.fetch.preloadLoginImage();
       this.fetch.preloadLobbyImage();
       // 取得上次存的GameList，並預載遊戲圖片
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     // 當fetch的gameList有改變時就再預載遊戲圖片
-    this.fetch.gameList$.subscribe((data) => {
+    this.fetch.gameList$.subscribe((data: string) => {
       this.fetch.preloadImageLanguage = [];
       this.fetch.preloadLobbyLanguageImage();
     });

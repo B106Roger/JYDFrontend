@@ -12,8 +12,8 @@
   },
   "lobby": {
     "all": "全部",
-    "slots": "老虎机",
-    "marry": "玛莉机",
+    "slot": "老虎机",
+    "mario": "玛莉机",
     "poker": "扑克游戏",
     "setting": {
       "music": "背景音乐",

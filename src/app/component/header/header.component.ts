@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from './../../services/fetch.service';
 
@@ -8,7 +8,7 @@ import { FetchService } from './../../services/fetch.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('musicEle', {static: false})
   musicEle: ElementRef;
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   money: number;
   UserID = '';
   showPopper = false;
+  userAmountSubscription = null;
   constructor(public auth: AuthGuardService, public fetch: FetchService) { }
 
   ngOnInit() {
@@ -24,21 +25,21 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
     this.setUserID();
     this.setUserAmount();
-    this.fetch.userAmount$.subscribe(userAmount => {
+    this.userAmountSubscription = this.fetch.userAmount$.subscribe(userAmount => {
       sessionStorage.setItem('amount', userAmount);
       this.money = parseFloat(userAmount);
     });
     console.log(this.money);
   }
 
+  ngOnDestroy() {
+    this.userAmountSubscription.unsubscribe();
+  }
+
   ngAfterViewInit() {
     this.setMusic();
     this.setSound();
   }
-
-  getMusic() { return this.music; }
-
-  getSound() { return this.sound; }
 
   showLogoutBox() {
     document.getElementById('logout-box').hidden = false;

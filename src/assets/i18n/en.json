@@ -12,8 +12,8 @@
   },
   "lobby": {
     "all": "ALL",
-    "slots": "SLOT",
-    "marry": "MARY SLOTS",
+    "slot": "SLOT",
+    "mario": "MARY SLOTS",
     "poker": "POKER GAMES",
     "setting": {
       "music": "MUSIC",

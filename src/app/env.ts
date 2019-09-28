@@ -21,7 +21,7 @@ const Api = {
     * @var void
     * @return GameList[]
     */
-  gameListApi   : 'https://dev-slot-mario.gd888.cc/gamelab/slot-mario/v3/config/priorities',
+  gameListApi   : ' https://dev-slot-mario.gd888.cc/gamelab/gamelist',
 
    /**
     * @method Get

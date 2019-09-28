@@ -3,6 +3,7 @@ import { Api } from './../env';
 import { AuthGuardService } from './auth-guard.service';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { GameItem } from '../iterface';
 
 @Injectable({
   providedIn: 'root'
@@ -94,18 +95,11 @@ export class FetchService {
   fetchGameList() {
     return fetch(`${Api.gameListApi}`).then(response => {
       return response.json();
-    }).then((responseJSON: any[]) => {
+    }).then((responseJSON: GameItem[]) => {
       // 依照priority排序
       responseJSON = responseJSON.sort((gameItem1, gameItem2) => {
         return gameItem1.Priority < gameItem2.Priority ? 1 : -1;
       });
-      // 將gamelab-前墜去掉
-      const deprecateWord = 'gamelab-';
-      responseJSON.forEach(function(part, index) {
-        if (this[index].GameName.indexOf(deprecateWord) !== -1) {
-          this[index].GameName = this[index].GameName.substr(this[index].GameName.indexOf(deprecateWord) + deprecateWord.length);
-        }
-      }, responseJSON);
 
       const stringifyData = JSON.stringify(responseJSON);
       if (stringifyData !== localStorage.getItem('gameList')) {
@@ -208,9 +202,9 @@ export class FetchService {
     gameList.forEach((item, index) => {
       let src: string;
       if (index === 0) {
-        src = `/assets/imgs/${currentLang}/pic_game_iconL_${item.GameName}_${currentLang}.png`;
+        src = `/assets/imgs/${currentLang}/pic_game_iconL_${item.DisplayName}_${currentLang}.png`;
       } else if ( index < 7) {
-        src = `/assets/imgs/${currentLang}/pic_game_iconS_${item.GameName}_${currentLang}.png`;
+        src = `/assets/imgs/${currentLang}/pic_game_iconS_${item.DisplayName}_${currentLang}.png`;
       } else {
         return;
       }
