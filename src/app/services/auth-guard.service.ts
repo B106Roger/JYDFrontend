@@ -50,7 +50,12 @@ export class AuthGuardService implements CanActivate {
   }
 
   loginValidate() {
-    const decryptToken = this.decrypt(sessionStorage.getItem('Token'));
+    const token = sessionStorage.getItem('Token');
+    if (token === null || token === undefined) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+    const decryptToken = this.decrypt(token);
     if (decryptToken !== null && decryptToken !== '') {
       return true;
     } else {
@@ -90,8 +95,11 @@ export class AuthGuardService implements CanActivate {
     });
   }
 
-  logout() {
-    localStorage.removeItem('user');
+  logout(remember: boolean) {
+    if (!remember) {
+      localStorage.removeItem('UserID');
+      localStorage.removeItem('Password');
+    }
     sessionStorage.clear();
     this.UserID = null;
     this.Password = null;

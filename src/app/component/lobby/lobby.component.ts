@@ -170,7 +170,8 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
 
   logout() {
-    this.auth.logout();
+    const remember = localStorage.getItem('remember') === 'true' ? true : false;
+    this.auth.logout(remember);
   }
   // 註冊滑鼠點擊拖曳 的 移動事件
   startScroll(e1: MouseEvent) {
@@ -240,5 +241,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       }
       // *******************************************
     }
+  }
+  log (a: any) {
+    console.log(a);
+    return a.to_string();
   }
 }

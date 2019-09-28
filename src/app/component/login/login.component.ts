@@ -47,11 +47,18 @@ export class LoginComponent implements OnInit {
       this.langChoosed = this.langList.filter((item) => item.lang === localStorage.getItem('lang'))[0];
     }
     // 設定記住帳密
-    if (! localStorage.getItem('remember')) {
-      this.remember = false;
-      localStorage.setItem('remember', 'false');
+    if (localStorage.getItem('remember') === 'true') {
+      // 取得記住之帳密
+      const account = localStorage.getItem('UserID');
+      const password = localStorage.getItem('Password');
+      if (account !== null && password !== null) {
+        this.account = this.auth.decrypt(account);
+        this.password = this.auth.decrypt(password);
+      }
+      this.remember = true;
     } else {
-      this.remember = localStorage.getItem('remember') === 'true';
+      localStorage.setItem('remember', 'false');
+      this.remember = false;
     }
   }
 

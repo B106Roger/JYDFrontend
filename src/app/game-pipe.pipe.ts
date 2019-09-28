@@ -11,7 +11,7 @@ export class GamePipePipe implements PipeTransform {
       if (gameType === 'all' || gameType === gameArray[0].GameType) {
         return [ gameArray[0] ];
       } else {
-        return [];
+        return [ ];
       }
     }
     switch (gameType) {
