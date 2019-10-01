@@ -8,7 +8,10 @@
     "mainicon": "/assets/imgs/es/picLogo@2x.png",
     "loginfailmsg": "/assets/imgs/es/picMsgLoginFailed@2x.png",
     "loginfailconfirm": "/assets/imgs/es/btnConfirmNormal@2x.png",
-    "loginfailpress": "/assets/imgs/es/btnConfirmPressed@2x.png"
+    "loginfailpress": "/assets/imgs/es/btnConfirmPressed@2x.png",
+    "installHint": "assets/imgs/es/picInstallationGuide.png",
+    "installconfirm": "/assets/imgs/es/btnInstallNormal.png",
+    "installpressed": "/assets/imgs/es/btnInstallPressed.png"
   },
   "lobby": {
     "all": "ALL",

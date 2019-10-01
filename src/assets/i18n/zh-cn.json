@@ -8,7 +8,10 @@
     "mainicon": "/assets/imgs/zh-cn/picLogo@2x.png",
     "loginfailmsg": "/assets/imgs/zh-cn/picMsgLoginFailed@2x.png",
     "loginfailconfirm": "/assets/imgs/zh-cn/btnConfirmNormal@2x.png",
-    "loginfailpress": "/assets/imgs/zh-cn/btnConfirmPressed@2x.png"
+    "loginfailpress": "/assets/imgs/zh-cn/btnConfirmPressed@2x.png",
+    "installHint": "assets/imgs/zh-cn/picInstallationGuide.png",
+    "installconfirm": "/assets/imgs/zh-cn/btnInstallNormal.png",
+    "installpressed": "/assets/imgs/zh-cn/btnInstallPressed.png"
   },
   "lobby": {
     "all": "全部",
