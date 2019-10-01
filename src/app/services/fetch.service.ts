@@ -181,19 +181,18 @@ export class FetchService {
     });
   }
 
-  preloadLobbyLanguageImage() {
+  preloadLobbyLanguageImage(lang: string) {
     // 確定同個語系沒有重複preload
     if (this.preloadImageLanguage.includes(localStorage.getItem('lang'))) {
       return;
     } else {
       this.preloadImageLanguage.splice(0, 0, localStorage.getItem('lang'));
     }
-    this.preloadGameListImage();
+    this.preloadGameListImage(lang);
     this.preloadNavbarImage();
   }
 
-  private preloadGameListImage(preloadType: string = 'preload') {
-    const currentLang = this.trans.currentLang;
+  private preloadGameListImage(lang: string) {
     // 取得gameList data
     const data = localStorage.getItem('gameList');
     let gameList: any[];
@@ -202,9 +201,9 @@ export class FetchService {
     gameList.forEach((item, index) => {
       let src: string;
       if (index === 0) {
-        src = `/assets/imgs/${currentLang}/pic_game_iconL_${item.DisplayName}_${currentLang}.png`;
+        src = `/assets/imgs/${lang}/pic_game_iconL_${item.DisplayName}_${lang}.png`;
       } else if ( index < 7) {
-        src = `/assets/imgs/${currentLang}/pic_game_iconS_${item.DisplayName}_${currentLang}.png`;
+        src = `/assets/imgs/${lang}/pic_game_iconS_${item.DisplayName}_${lang}.png`;
       } else {
         return;
       }

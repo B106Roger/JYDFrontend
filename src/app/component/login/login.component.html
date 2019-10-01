@@ -72,11 +72,13 @@
     </div>
 
   </div>
-  <div class="error-confirmation-container" *ngIf="! loginSuccess">
+
+
+  <!-- 登入失敗提示 -->
+  <div class="additional-msg-container" *ngIf="! loginSuccess">
     <div class="error-message" [ngStyle]="{
       'background': 'url(' + ('login.loginfailmsg' | translate) + ')',
       'background-repeat': 'no-repeat',
-      'background-position': 'no-repeat',
       'background-size': '100%100%'
     }">
       <img [src]="'login.loginfailconfirm' | translate" class="btn-confirm" alt="confirm"
@@ -88,6 +90,27 @@
       (click)     ="closeLoginFailConfirmMsg()">
     </div>
   </div>
+
+  <!-- iphone 下載提示-->
+  <!-- <div *ngIf="isIphone && !isStandalone && showInstallHint" id="iphoneInstallHint"
+   class="additional-msg-container" style="background-color: rgba(0,0,0,.5);">
+    <div class="download-msg" [ngStyle]="{
+      'background': 'url(' + ('login.installHint' | translate) + ') 100%100% no-repeat'
+    }">
+    </div>
+    <button class="btn-save" (click)="hideInstallHint()">
+      <img alt="save"
+      [src]="'login.installconfirm' | translate"
+      (mousedown)="$event.currentTarget.src=translate.instant('login.installpressed')"
+      (mouseup)="$event.currentTarget.src=translate.instant('login.installconfirm')"
+      (mouseleave)="$event.currentTarget.src=translate.instant('login.installconfirm')"
+      (touchstart)="$event.currentTarget.src=translate.instant('login.installpressed')"
+      (touchend)="$event.currentTarget.src=translate.instant('login.installconfirm')"
+      draggable="false">
+    </button>
+  </div> -->
+
+
 </section>
 
 

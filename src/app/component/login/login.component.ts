@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from 'src/app/services/fetch.service';
-
+// tslint:disable:no-string-literal
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,11 @@ export class LoginComponent implements OnInit {
   account = '';
   password = '';
   remember: boolean;
-  langShow = false;
+  isIphone = window['isIphone'];
+  isStandalone = window['isStandalone'];
+  showInstallHint: boolean;
+  showInstallHintForever: boolean;
+
   langList = [
     {
       lang: 'en',
@@ -38,6 +42,7 @@ export class LoginComponent implements OnInit {
     }
   ];
   langChoosed = this.langList[0];
+  langShow = false;
   loginSuccess = true;
   constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService, private fetch: FetchService) {  }
 
@@ -60,6 +65,14 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('remember', 'false');
       this.remember = false;
     }
+    // 設定iOS 是否顯示downlaod提示
+    if (localStorage.getItem('showInstallHint') !== 'false') {
+      this.showInstallHint = true;
+      this.showInstallHintForever = true;
+    } else {
+      this.showInstallHint = false;
+      this.showInstallHintForever = false;
+    }
   }
 
   toggleRemeberValue() {
@@ -70,27 +83,24 @@ export class LoginComponent implements OnInit {
     const setvalue = this.remember === true ? 'true' : 'false';
     localStorage.setItem('remember', setvalue);
   }
-  getLang() {
-    return this.langChoosed.lang;
-  }
   setLang(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
     const target = e.target as HTMLElement;
     const lang = target.dataset.lang;
-
     if (this.translate.getLangs().includes(lang)) {
       this.langChoosed = this.langList.filter((item) => item.lang === lang)[0];
     } else {
       this.langChoosed = this.langList.filter((item) => item.lang === this.translate.defaultLang )[0];
     }
+
     this.translate.use(this.langChoosed.lang);
     localStorage.setItem('lang', this.langChoosed.lang);
     document.querySelector('body').id = this.translate.currentLang;
     this.closePopper();
     // 重新preload Lobby 跟語系有關的圖片(GameList, Navbar)
-    this.fetch.preloadLobbyLanguageImage();
+    this.fetch.preloadLobbyLanguageImage(this.langChoosed.lang);
   }
 
   login() {
@@ -147,5 +157,12 @@ export class LoginComponent implements OnInit {
   }
   closeLoginFailConfirmMsg() {
     this.loginSuccess = true;
+  }
+
+  hideInstallHint() {
+    this.showInstallHint = false;
+    if (this.showInstallHintForever === false) {
+      localStorage.setItem('showInstallHint', 'false');
+    }
   }
 }

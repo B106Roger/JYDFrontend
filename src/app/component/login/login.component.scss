@@ -311,7 +311,7 @@
   }
 }
 
-.error-confirmation-container {
+.additional-msg-container {
   height: 100%;
   width: 100%;
 
@@ -339,4 +339,33 @@
       padding-top: 11.6%;
     }
   }
+
+  .download-msg {
+    min-width: 83.33%;
+    padding-top: 141.38%;
+
+    position: relative;
+    background-position: center !important;
+  }
+  .btn-save {
+    background: none;
+    outline: none;
+    border: none;
+    width:73.6%;
+
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items : flex-end;
+    align-content: flex-end;
+    justify-content: center;
+    margin-top: 30px;
+    &:hover {
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+    }
+  }
 }
+

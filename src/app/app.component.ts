@@ -61,14 +61,14 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.fetch.preloadLobbyImage();
       // 取得上次存的GameList，並預載遊戲圖片
       if (localStorage.getItem('gameList') !== null) {
-        this.fetch.preloadLobbyLanguageImage();
+        this.fetch.preloadLobbyLanguageImage(this.translate.currentLang);
       }
     }
 
     // 當fetch的gameList有改變時就再預載遊戲圖片
     this.fetch.gameList$.subscribe((data: string) => {
       this.fetch.preloadImageLanguage = [];
-      this.fetch.preloadLobbyLanguageImage();
+      this.fetch.preloadLobbyLanguageImage(this.translate.currentLang);
     });
     this.fetch.fetchGameList();
 
