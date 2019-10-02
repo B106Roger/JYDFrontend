@@ -1,4 +1,4 @@
-<div class="row-flex-no-margin-padding" id="header-bg">
+<div class="row-flex no-margin no-padding" id="header-bg">
 
   <div class="row-flex" id="name-bg" >
     <img  id="iconId" src="/assets/imgs/iconId@2x.png" draggable="false" alt="ID icon" >
@@ -25,7 +25,7 @@
     <div class="column-flex basic-text-style unselectable setting-menu-container">
 
       <div class="row-flex setting-item">
-        <div class="column-flex-no-margin-padding">
+        <div class="column-flex no-margin no-padding">
           {{ 'lobby.setting.music' | translate }}
         </div>
         <div id="musicContainer" (touchend)="toggleMusic($event)" (mousedown)="toggleMusic($event)">
@@ -36,12 +36,12 @@
         </div>
       </div>
 
-      <div class="row-flex-no-margin-padding" style="align-items: center">
+      <div class="row-flex no-margin no-padding" style="align-items: center">
         <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
       </div>
 
       <div class="row-flex setting-item">
-        <div class="column-flex-no-margin-padding">
+        <div class="column-flex no-margin no-padding">
           {{ 'lobby.setting.sounds' | translate }}
         </div>
         <div id="soundContainer" (touchend)="toggleSound($event)" (mousedown)="toggleSound($event)" >
@@ -52,22 +52,22 @@
         </div>
       </div>
 
-      <div class="row-flex-no-margin-padding" style="align-items: center">
+      <div class="row-flex no-margin no-padding" style="align-items: center">
         <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
       </div>
       <div class="row-flex setting-item">
-        <div class="column-flex-no-margin-padding">
+        <div class="column-flex no-margin no-padding">
           {{ 'lobby.setting.version' | translate }}
         </div>
-        <div class="column-flex-no-margin-padding">
+        <div class="column-flex no-margin no-padding">
             v.2019.09.01
         </div>
       </div>
-      <div class="row-flex-no-margin-padding" style="align-items: center">
+      <div class="row-flex no-margin no-padding" style="align-items: center">
         <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
       </div>
       <div class="row-flex setting-item" (click)="closePopper();showLogoutBox()" >
-        <div  class="column-flex-no-margin-padding">
+        <div  class="column-flex no-margin no-padding">
           {{'lobby.setting.logout' | translate }}
         </div>
       </div>

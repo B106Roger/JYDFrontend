@@ -6,8 +6,12 @@ body, html {
   touch-action: manipulation;
   overflow-x: hidden;
 
-  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
   -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -54,29 +58,7 @@ app-root {
   flex-direction: column;
   flex-wrap: wrap;
   margin: 5px;
-
   justify-content: center;
-
-}
-
-.row-flex-no-margin-padding {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0px;
-  padding: 0px;
-  justify-content: center;
-
-}
-
-.column-flex-no-margin-padding {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 0px;
-  padding: 0px;
-  justify-content: center;
-
 }
 
 .no-margin {
