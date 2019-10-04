@@ -1,11 +1,11 @@
 <div class="screen">
     <picture>
-      <source srcset="/assets/imgs/picTopBgExpand.png.webp">
+      <source srcset="/assets/imgs/picTopBgExpand.png.webp" type="image/webp">
       <img class="header-banner" src="/assets/imgs/picTopBgExpand.png" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="topBanner">
     </picture>
     <router-outlet></router-outlet>
     <picture>
-      <source srcset="/assets/imgs/btnBgExpand.png.webp">
+      <source srcset="/assets/imgs/btnBgExpand.png.webp" type="image/webp">
       <img class="bottom-banner" src="/assets/imgs/btnBgExpand.png" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="bottomBanner">
     </picture>
 </div>
