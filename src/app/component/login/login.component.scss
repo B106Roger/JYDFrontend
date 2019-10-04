@@ -1,3 +1,4 @@
+
 .login-root-base {
   font-size:0.95em;
   position: relative;
@@ -62,22 +63,21 @@
 }
 
 #login-backround {
-  @media only screen  and (min-height: 760px) {
-    background: url('/assets/imgs/bgLoginBig.png') center no-repeat;
-    background-size: 100% 100%;
-  }
-  @media only screen  and (max-height: 759px){
-    background: url('/assets/imgs/bgLogin.png') center no-repeat;
-    background-size: 100% 100%;
+  #loginBg{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
   }
   height: 100%;
   width: 100%;
 
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
 }
 
 
@@ -93,13 +93,16 @@
   position: relative;
   flex-wrap: nowrap;
 
-  background: url('/assets/imgs/picIdFrame@2x.png') no-repeat;
-  background-size: 100%100%;
-  background-position: center;
+  picture img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   #account {
     width: 100%;
     height: 100%;
-
     position: absolute;
     top: 0;
     border: 0;
@@ -115,11 +118,14 @@
   padding-top: 12.5%;
   position: relative;
   flex-wrap: nowrap;
-
-  background: url('/assets/imgs/picPasswordFrame@2x.png') no-repeat;
-  background-size: 100%100%;
-  background-position: center;
   margin-top: 10px;
+  picture img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   #password {
     width: 100%;
     height: 100%;
@@ -153,6 +159,7 @@
   align-items : flex-end;
   align-content: flex-end;
   justify-content: center;
+  position: relative;
   &:hover {
     cursor: pointer;
   }
@@ -161,13 +168,36 @@
   }
 }
 
-#remember-container {
+.checkbox-container {
   position: relative;
   top: -7px;
-  justify-content: flex-start;
-  div.column-flex {
-    label {
-      margin: 0px;
+  justify-content: flex-end;
+  .checkbox {
+    width: 5.5%;
+    padding-top: 5.5%;
+    height: 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-right: 3%;
+    position: relative;
+    .check-img {
+      width: 70%;
+      height: 60%;
+      position: absolute;
+      top: 25%;
+    }
+    .box-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .checkbox_msg {
+    margin: 0 12% 0 0 ;
+    span {
       @media screen and (orientation: portrait){
         font-size: 90%;
       }
@@ -178,35 +208,19 @@
   }
 }
 
-.remember-checkbox {
-  background: url('/assets/imgs/picRememberFrame.png') no-repeat;
-  background-size: 100%100%;
-  width: 5.5%;
-  padding-top: 5.5%;
-  height: 0;
-  margin-left: 52%;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  vertical-align: middle;
-  position: relative;
-
-  #check-img {
-    width: 70%;
-    height: 60%;
-    position: absolute;
-    top: 25%;
-  }
-}
 
 
 
 #lang-bg {
-  background: url('/assets/imgs/picLanMenuBg.png') no-repeat;
-  background-size: 100%100%;
-
+  #menuBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  background: none;
   justify-content: flex-start;
   align-items: center;
 
@@ -273,15 +287,18 @@
 
 
 #popper_content {
-  background-image: url('/assets/imgs/picLanMenuBgExpand.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
   width: 42.2%;
   padding-top: 42.2%;
   z-index: 3;
   position: absolute;
   margin-top: 7px;
-
+  #langPopupBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
   #langPopup {
     position: absolute;
     top: 19.6%;
@@ -303,7 +320,7 @@
       margin: 0;
       padding-left: 8%;
       &:hover {
-        background: url('/assets/imgs/picLanMenuSelect.png');
+        background: url('/assets/imgs/picLanMenuSelect.png'),url('/assets/imgs/picLanMenuSelect.png');
         background-size: 100%100%;
         background-repeat: no-repeat;
       }
@@ -332,16 +349,25 @@
 
     margin-top: 1%;
     .btn-confirm {
+      background: none;
+      outline: 0;
+      border: 0;
+      cursor: default;
+
       position: absolute;
       bottom: 5%;
       left: 35.2%;
       width: 29.6%;
       padding-top: 11.6%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
   .download-msg {
-    min-width: 83.33%;
+    width: 100%;
     padding-top: 141.38%;
 
     position: relative;
@@ -359,9 +385,8 @@
     align-items : flex-end;
     align-content: flex-end;
     justify-content: center;
-    margin-top: 30px;
     &:hover {
-      cursor: pointer;
+      cursor: default;
     }
     img {
       width: 100%;

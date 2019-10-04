@@ -11,7 +11,8 @@
     "loginfailpress": "/assets/imgs/pt/btnConfirmPressed@2x.png",
     "installHint": "assets/imgs/pt/picInstallationGuide.png",
     "installconfirm": "/assets/imgs/pt/btnInstallNormal.png",
-    "installpressed": "/assets/imgs/pt/btnInstallPressed.png"
+    "installpressed": "/assets/imgs/pt/btnInstallPressed.png",
+    "installMsg": "Não mostrar notificações"
   },
   "lobby": {
     "all": "ALL",

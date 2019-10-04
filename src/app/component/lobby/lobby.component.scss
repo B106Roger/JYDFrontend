@@ -1,13 +1,15 @@
 #lobby-background {
-  background: url('/assets/imgs/picBgLobby.png') transparent;
-
-  // background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% calc(100% + 66px);
-
+  #lobby-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
 }
 
 
@@ -148,10 +150,14 @@
   justify-content: flex-start;
   margin: 15px 0 0 2%;
   #game-filter-bg {
-    background: url('/assets/imgs/picGameMenuBg@2x.png');
-    background-size: 100%100%;
-    background-repeat: no-repeat;
-
+    #gamefilter-bg {
+      position: absolute;
+      width:100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    background: none;
     width: 43%;
     padding-top: 9.2%;
     margin: 0 0 0 1px;
@@ -195,7 +201,7 @@
 }
 
 #game_popper {
-  background: url('/assets/imgs/picGameMenuBgExpand.png');
+  background: url('/assets/imgs/picGameMenuBgExpand.png.webp'),url('/assets/imgs/picGameMenuBgExpand.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 43%;
@@ -228,7 +234,8 @@
 
   height: 95%;
   &:hover {
-    background: url('/assets/imgs/picGameMenuSelect@2x.png');
+    background: url('/assets/imgs/picGameMenuSelect@2x.png.webp'),url('/assets/imgs/picGameMenuBgExpand@2x.png');
+
     background-size: 100%100%;
     background-repeat: no-repeat;
   }
@@ -240,7 +247,7 @@
 
 // 廣播訊息 start
 .marquee-bg {
-  background: url('/assets/imgs/picMarqueeBg@2x.png');
+  background: url('/assets/imgs/picMarqueeBg@2x.png.webp'),url('/assets/imgs/picMarqueeBg@2x.png');
 
   display: flex;
   flex-direction: row;
@@ -336,7 +343,7 @@
   {
 
     position: relative;
-    background-image: url('/assets/imgs/picLogoutFrame@2x.png');
+    background: url('/assets/imgs/picLogoutFrame@2x.png.webp'),url('/assets/imgs/picLogoutFrame@2x.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 96%;

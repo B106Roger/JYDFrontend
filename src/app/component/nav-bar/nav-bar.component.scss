@@ -2,13 +2,13 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  position: relative;
 }
 
 .menu-button {
   min-height: 66px;
   width: 25%;
-  background: url('/assets/imgs/btnLobbyBg@2x.png') no-repeat;
+  background: url('/assets/imgs/btnLobbyBg@2x.png.webp'),url('/assets/imgs/btnLobbyBg@2x.png');
   background-size: 100% 100%;
 
   outline: none;
@@ -18,7 +18,7 @@
 
   vertical-align: middle;
 
-  img {
+  .option {
     height: 44px;
   }
 }

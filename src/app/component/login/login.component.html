@@ -1,29 +1,52 @@
 <section class="login-root-base">
   <div class=flex-container id="login-backround">
-
+    <picture>
+      <source srcset="/assets/imgs/bgLogin.png.webp" media="(max-height: 759px)" type="image/webp">
+      <source srcset="/assets/imgs/bgLogin.png" media="(max-height: 759px)" type="image/png">
+      <source srcset="/assets/imgs/bgLoginBig.png.webp" media="(min-height: 760px)" type="image/webp">
+      <img id="loginBg" src="/assets/imgs/bgLoginBig.png" media="(min-height: 760px)" alt="login-backround">
+    </picture>
     <!-- Treasure Island Icon-->
     <div class="row-flex w100" id="main-icon-container">
-        <img [src]="'login.mainicon' | translate" draggable="false" alt="TreasureIsland">
+      <picture>
+        <source [srcset]="('login.mainicon' | translate) + '.webp'" type="image/webp" />
+        <img [src]="'login.mainicon' | translate" draggable="false" alt="Sample" />
+      </picture>
     </div>
 
     <!-- 選擇語系元件-->
     <div class="row-flex w100" style="margin-top: 30px">
       <button id="lang-bg" class="row-flex" (touchend)="togglePopper($event)" (mousedown)="togglePopper($event)" (blur)="closePopper()">
+        <picture>
+          <source srcset="/assets/imgs/picLanMenuBg.png.webp" type="image/webp">
+          <img id="menuBg" src="/assets/imgs/picLanMenuBg.png" alt="MenuBg">
+        </picture>
         <div>
-          <img [src]="this.langChoosed.img" class="langFlag">
+          <picture>
+            <source [srcset]="this.langChoosed.img + '.webp'" type="image/webp">
+            <img [src]="this.langChoosed.img" class="langFlag">
+          </picture>
           <span class="lang-text">{{ this.langChoosed.label }}</span>
-          <img id="pointer" [src]="langShow == false ?
-          '/assets/imgs/iconLanMenuDown.png' :
-          '/assets/imgs/iconLanMenuUp.png'"  >
+          <picture>
+            <source [srcset]="langShow == false ? '/assets/imgs/iconLanMenuDown.png.webp' : '/assets/imgs/iconLanMenuUp.png.webp'" type="image/webp">
+            <img id="pointer" [src]="langShow == false ? '/assets/imgs/iconLanMenuDown.png' : '/assets/imgs/iconLanMenuUp.png'">
+          </picture>
         </div>
       </button>
 
       <!-- poppup setting content -->
       <div id="popper_content" [ngStyle]="{'display': this.langShow === true ? 'block' : 'none'}" >
+        <picture>
+          <source srcset="/assets/imgs/picLanMenuBgExpand.png.webp" type="image/webp">
+          <img id="langPopupBg" src="/assets/imgs/picLanMenuBgExpand.png" alt="langPopupBg">
+        </picture>
         <div class="unselectable" id="langPopup" (touchend)="setLang($event)" (mousedown)="setLang($event)">
           <ng-container *ngFor="let ele of langList">
             <div class="lang-option-bg" style="justify-content: flex-start" [attr.data-lang]="ele.lang">
-              <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label" [attr.data-lang]="ele.lang">
+              <picture>
+                <source [srcset]="ele.img + '.webp'" type="image/webp">
+                <img [src]="ele.img" class="langFlag" draggable="false" [alt]="ele.label" [attr.data-lang]="ele.lang">
+              </picture>
               <span class="lang-text" [attr.data-lang]="ele.lang">{{ele.label}}</span>
             </div>
           </ng-container>
@@ -33,41 +56,60 @@
 
     <!-- 帳號元件-->
     <div class="column-flex w100"  id="account-container" style="margin-top: 15px">
+      <picture>
+        <source srcset="/assets/imgs/picIdFrame@2x.png.webp" type="image/webp">
+        <img src="/assets/imgs/picIdFrame@2x.png" alt="account:">
+      </picture>
       <input [(ngModel)]="account" type="text" id="account"
         class="basic-text-style" placeholder="{{'login.account_holder' | translate}}">
     </div>
 
     <!-- 密碼元件-->
     <div class="column-flex w100"  id="password-container">
+      <picture>
+        <source srcset="/assets/imgs/picPasswordFrame@2x.png.webp" type="image/webp">
+        <img src="/assets/imgs/picPasswordFrame@2x.png" alt="password:">
+      </picture>
       <input [(ngModel)]="password" type="text" id="password" type="password"
         class="basic-text-style" placeholder="{{ 'login.password_holder' | translate }}">
     </div>
 
     <!-- 記住我元件-->
-    <div class="row-flex w100" id="remember-container" style="margin-top: 10px">
-      <div class="column-flex remember-checkbox" (click)="toggleRemeberValue()">
-        <img id="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="{ 'display': remember === true ? 'inline' : 'none' }"
-        draggable="false" alt="check">
+    <div class="row-flex w100 checkbox-container" style="margin-top: 10px">
+      <div class="column-flex checkbox" (click)="toggleRemeberValue()">
+        <picture>
+          <source srcset="/assets/imgs/picRememberFrame.png.webp" type="image/webp">
+          <img class="box-img" src="/assets/imgs/picRememberFrame.png" draggable="false" alt="box">
+        </picture>
+        <picture>
+          <source srcset="/assets/imgs/iconRememberCheck.png.webp" type="image/webp">
+          <img class="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="{ 'display': remember === true ? 'inline' : 'none' }"
+          draggable="false" alt="check">
+        </picture>
       </div>
-      <div class="column-flex" >
-        <label for="remember-me" class="unselectable basic-text-style" >
+      <div class="column-flex checkbox_msg" >
+        <span class="unselectable basic-text-style" (click)="toggleRemeberValue()">
             {{ 'login.rememberMe' | translate}}
-        </label>
+        </span>
       </div>
-      <input type="checkbox" id="remember-me" style="display: none" [(ngModel)]="this.remember" (change)="setRememberValue()">
     </div>
 
     <!-- 登入按鈕-->
     <div class="row-flex w100" style="margin-top: 20px">
-      <button id="loginBtn" (click)="login()" >
-        <img alt="Login"
-        [src]="'login.loginbtn' | translate"
-        (mousedown)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
-        (mouseup)="$event.currentTarget.src=translate.instant('login.loginbtn')"
-        (mouseleave)="$event.currentTarget.src=translate.instant('login.loginbtn')"
-        (touchstart)="$event.currentTarget.src=translate.instant('login.loginbtnpressed')"
-        (touchend)="$event.currentTarget.src=translate.instant('login.loginbtn')"
-        draggable="false">
+      <button id="loginBtn" (click)="login()"
+      (mousedown)="setLoginBtn(true)"
+      (mouseup)="setLoginBtn(false)"
+      (mouseleave)="setLoginBtn(false)"
+      (touchstart)="setLoginBtn(true)"
+      (touchend)="setLoginBtn(false)" >
+        <picture [style.display]="loginButtonPressed === true ? 'none' : 'block'">
+          <source [srcset]="('login.loginbtn' | translate) + '.webp'" type="image/webp">
+          <img alt="Login" [src]="'login.loginbtn' | translate" draggable="false">
+        </picture>
+        <picture [style.display]="loginButtonPressed === false ? 'none' : 'block'">
+            <source [srcset]="('login.loginbtnpressed' | translate) + '.webp'" type="image/webp">
+            <img alt="Login" [src]="('login.loginbtnpressed' | translate)" draggable="false">
+        </picture>
       </button>
     </div>
 
@@ -81,34 +123,67 @@
       'background-repeat': 'no-repeat',
       'background-size': '100%100%'
     }">
-      <img [src]="'login.loginfailconfirm' | translate" class="btn-confirm" alt="confirm"
-      (mousedown) ="setBtnConfirmPressed($event)"
-      (touchend)  ="setBtnConfirmNormal($event)"
-      (touchstart)="setBtnConfirmPressed($event)"
-      (mouseup)   ="setBtnConfirmNormal($event)"
-      (mouseleave)="setBtnConfirmNormal($event)"
-      (click)     ="closeLoginFailConfirmMsg()">
+    <button class="btn-confirm"
+    (mousedown)="setFailContirmBtn(true)"
+    (mouseup)="setFailContirmBtn(false)"
+    (mouseleave)="setFailContirmBtn(false)"
+    (touchstart)="setFailContirmBtn(true)"
+    (touchend)="setFailContirmBtn(false)"
+    (click)     ="closeLoginFailConfirmMsg()">
+      <picture [style.display]="loginFailBUttonPressed === false ? 'none' : 'block'">
+        <source [srcset]="('login.loginfailpress' | translate) + '.webp'" type="image/webp">
+        <img [src]="('login.loginfailpress' | translate)" alt="confirm" draggable="false">
+      </picture>
+      <picture [style.display]="loginFailBUttonPressed === true ? 'none' : 'block'">
+        <source [srcset]="('login.loginfailconfirm' | translate) + '.webp'" type="image/webp">
+        <img [src]="('login.loginfailconfirm' | translate)" alt="confirm" draggable="false">
+      </picture>
+    </button>
+
     </div>
   </div>
 
   <!-- iphone 下載提示-->
-  <!-- <div *ngIf="isIphone && !isStandalone && showInstallHint" id="iphoneInstallHint"
-   class="additional-msg-container" style="background-color: rgba(0,0,0,.5);">
+  <div *ngIf="isIphone && !isStandalone && showInstallHint" id="iphoneInstallHint"
+   class="additional-msg-container" style="background-color: rgba(0,0,0,.3);">
     <div class="download-msg" [ngStyle]="{
       'background': 'url(' + ('login.installHint' | translate) + ') 100%100% no-repeat'
-    }">
-    </div>
-    <button class="btn-save" (click)="hideInstallHint()">
-      <img alt="save"
-      [src]="'login.installconfirm' | translate"
-      (mousedown)="$event.currentTarget.src=translate.instant('login.installpressed')"
-      (mouseup)="$event.currentTarget.src=translate.instant('login.installconfirm')"
-      (mouseleave)="$event.currentTarget.src=translate.instant('login.installconfirm')"
-      (touchstart)="$event.currentTarget.src=translate.instant('login.installpressed')"
-      (touchend)="$event.currentTarget.src=translate.instant('login.installconfirm')"
-      draggable="false">
+    }"></div>
+    <div class="row-flex w100 checkbox-container" style="margin-top: -10px">
+        <div class="column-flex checkbox" (click)="toggleInstallHintForever()">
+          <picture>
+            <source srcset="/assets/imgs/picRememberFrame.png.webp" type="image/webp">
+            <img class="box-img" src="/assets/imgs/picRememberFrame.png" draggable="false" alt="box">
+          </picture>
+          <picture>
+            <source srcset="/assets/imgs/iconRememberCheck.png.webp" type="image/webp">
+            <img class="check-img"  src="/assets/imgs/iconRememberCheck.png" [ngStyle]="{ 'display': showInstallHintForever === true ? 'none' : 'inline' }"
+            draggable="false" alt="check">
+          </picture>
+        </div>
+        <div class="column-flex checkbox_msg" >
+          <span class="unselectable basic-text-style" (click)="toggleInstallHintForever()">
+              {{ 'login.installMsg' | translate}}
+          </span>
+        </div>
+      </div>
+    <button class="btn-save"
+    (click)="hideInstallHint()"
+    (mousedown)="setInstallBtn(true)"
+    (mouseup)="setInstallBtn(false)"
+    (mouseleave)="setInstallBtn(false)"
+    (touchstart)="setInstallBtn(true)"
+    (touchend)="setInstallBtn(false)">
+      <picture [style.display]="installButtonPressed === false ? 'none' : 'block'">
+          <source [srcset]="('login.installpressed' | translate) + '.webp'" type="image/webp">
+          <img alt="save" [src]="('login.installpressed' | translate)" draggable="false">
+      </picture>
+      <picture [style.display]="installButtonPressed === true ? 'none' : 'block'">
+          <source [srcset]="('login.installconfirm' | translate) + '.webp'" type="image/webp">
+          <img alt="save" [src]="('login.installconfirm' | translate)" draggable="false">
+      </picture>
     </button>
-  </div> -->
+  </div>
 
 
 </section>

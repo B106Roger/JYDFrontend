@@ -44,6 +44,12 @@ export class LoginComponent implements OnInit {
   langChoosed = this.langList[0];
   langShow = false;
   loginSuccess = true;
+
+  // Layout 控制
+  loginButtonPressed = false;
+  installButtonPressed = false;
+  loginFailBUttonPressed = false;
+
   constructor(public route: Router, public translate: TranslateService, private auth: AuthGuardService, private fetch: FetchService) {  }
 
   ngOnInit() {
@@ -99,7 +105,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('lang', this.langChoosed.lang);
     document.querySelector('body').id = this.translate.currentLang;
     this.closePopper();
-    // 重新preload Lobby 跟語系有關的圖片(GameList, Navbar)
+    // preload Login image
+    this.fetch.preloadLoginLanguageImage(this.langChoosed.lang, false);
+    // preload Lobby 跟語系有關的圖片(GameList, Navbar)
     this.fetch.preloadLobbyLanguageImage(this.langChoosed.lang);
   }
 
@@ -146,15 +154,6 @@ export class LoginComponent implements OnInit {
   closePopper() {
     this.langShow = false;
   }
-
-  setBtnConfirmNormal(e: Event) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('login.loginfailconfirm'));
-  }
-  setBtnConfirmPressed(e: Event) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('login.loginfailpress'));
-  }
   closeLoginFailConfirmMsg() {
     this.loginSuccess = true;
   }
@@ -163,6 +162,22 @@ export class LoginComponent implements OnInit {
     this.showInstallHint = false;
     if (this.showInstallHintForever === false) {
       localStorage.setItem('showInstallHint', 'false');
+    } else {
+      localStorage.setItem('showInstallHint', 'true');
     }
+  }
+
+  toggleInstallHintForever() {
+    this.showInstallHintForever = !this.showInstallHintForever;
+  }
+
+  setInstallBtn(b: boolean) {
+    this.installButtonPressed = b;
+  }
+  setLoginBtn(b: boolean) {
+    this.loginButtonPressed = b;
+  }
+  setFailContirmBtn(b: boolean) {
+    this.loginFailBUttonPressed = b;
   }
 }

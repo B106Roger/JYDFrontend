@@ -1,12 +1,17 @@
 <div id="nav-bar-container">
-  <img src="/assets/imgs/segBottom.png" style="width: 100%" alt="segBottom">
+  <picture>
+    <source srcset="/assets/imgs/segBottom.png.webp" type="image/webp">
+    <img src="/assets/imgs/segBottom.png" style="width: 100%" alt="segBottom">
+  </picture>
   <div class="d-flex" class="menu-bg" data-type="href"
   (touchend)="navigateTo($event)"
   (mousedown)="navigateTo($event)" >
     <button *ngFor="let option of (menuList | generalPipe)"
-     class="menu-button"
-     [attr.data-href]="option.nextUrl" >
-      <img [src]="option.picture | translate" draggable="false" [alt]="option.picture">
+     class="menu-button" [attr.data-href]="option.nextUrl" >
+      <picture [attr.data-href]="option.nextUrl">
+        <source [srcset]="(option.picture | translate) + '.webp'" type="image/webp">
+        <img class="option" [src]="option.picture | translate" draggable="false" [alt]="option.picture">
+      </picture>
     </button>
   </div>
 </div>

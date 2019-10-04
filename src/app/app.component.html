@@ -1,5 +1,11 @@
 <div class="screen">
-    <img class="header-banner" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="topBanner">
+    <picture>
+      <source srcset="/assets/imgs/picTopBgExpand.png.webp">
+      <img class="header-banner" src="/assets/imgs/picTopBgExpand.png" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="topBanner">
+    </picture>
     <router-outlet></router-outlet>
-    <img class="bottom-banner" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="bottomBanner">
+    <picture>
+      <source srcset="/assets/imgs/btnBgExpand.png.webp">
+      <img class="bottom-banner" src="/assets/imgs/btnBgExpand.png" [ngClass]="{'none': isLoginOrGame() }" draggable="false" alt="bottomBanner">
+    </picture>
 </div>

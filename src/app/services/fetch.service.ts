@@ -4,7 +4,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { GameItem } from '../iterface';
-
+// tslint:disable:no-string-literal
 @Injectable({
   providedIn: 'root'
 })
@@ -120,8 +120,7 @@ export class FetchService {
 
 
   // 預載函數
-  preloadLoginImage(preloadType: string = 'preload') {
-    console.log(this.trans.currentLang);
+  preloadLoginImage() {
     let loginBackground: string;
     if (window.innerHeight >= 760) {
       loginBackground = '/assets/imgs/bgLoginBig.png';
@@ -131,12 +130,10 @@ export class FetchService {
     // preload 與語系無關的圖片
     const loginImageList: string[] = [
       loginBackground,
-      `/assets/imgs/${this.trans.currentLang}/picLogo@2x.png`,
       '/assets/imgs/picLanMenuBg.png',
       '/assets/imgs/picPasswordFrame@2x.png',
       '/assets/imgs/picIdFrame@2x.png',
       '/assets/imgs/picRememberFrame.png',
-      `/assets/imgs/${this.trans.currentLang}/btnLoginNormal.png`,
 
       '/assets/imgs/iconLanEn.png',
       '/assets/imgs/iconLanSc.png',
@@ -147,11 +144,30 @@ export class FetchService {
       '/assets/imgs/iconRememberCheck.png',
       '/assets/imgs/picLanMenuBgExpand.png',
       '/assets/imgs/iconLanMenuUp.png',
-      `/assets/imgs/${this.trans.currentLang}/btnLoginPressed.png`,
     ];
     loginImageList.forEach((item) => {
       const image = new Image();
-      image.src = item;
+      image.src = item + window['webpExtension'];
+    });
+  }
+
+  preloadLoginLanguageImage(lang: string, firstLoad: boolean) {
+    let loginImageList = [
+      `/assets/imgs/${lang}/picLogo@2x.png`,
+      `/assets/imgs/${lang}/btnLoginNormal.png`,
+      `/assets/imgs/${lang}/btnLoginPressed.png`
+    ];
+    if (firstLoad === true && window['isIphone'] === true) {
+      const loginImageExtension = [
+        `/assets/imgs/${lang}/picInstallationGuide.png`,
+        `/assets/imgs/${lang}/btnInstallNormal.png`,
+        `/assets/imgs/${lang}/btnInstallPressed.png`
+      ];
+      loginImageList = loginImageExtension.concat(loginImageList);
+    }
+    loginImageList.forEach((item) => {
+      const image = new Image();
+      image.src = item + window['webpExtension'];
     });
   }
 
@@ -177,7 +193,7 @@ export class FetchService {
     ];
     lobbyImageList.forEach((item) => {
       const image = new Image();
-      image.src = item;
+      image.src = item + window['webpExtension'];
     });
   }
 
@@ -208,7 +224,7 @@ export class FetchService {
         return;
       }
       const image = new Image();
-      image.src = src;
+      image.src = src + window['webpExtension'];
     });
   }
 
@@ -224,7 +240,7 @@ export class FetchService {
     ];
     navBarList.forEach((item) => {
       const image = new Image();
-      image.src = `/assets/imgs/${currentLang}/${item}`;
+      image.src = `/assets/imgs/${currentLang}/${item}` + window['webpExtension'];
     });
   }
 }

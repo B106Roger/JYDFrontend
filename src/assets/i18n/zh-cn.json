@@ -11,7 +11,8 @@
     "loginfailpress": "/assets/imgs/zh-cn/btnConfirmPressed@2x.png",
     "installHint": "assets/imgs/zh-cn/picInstallationGuide.png",
     "installconfirm": "/assets/imgs/zh-cn/btnInstallNormal.png",
-    "installpressed": "/assets/imgs/zh-cn/btnInstallPressed.png"
+    "installpressed": "/assets/imgs/zh-cn/btnInstallPressed.png",
+    "installMsg": "不再显示通知"
   },
   "lobby": {
     "all": "全部",

@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { Router } from '@angular/router';
-import { isNgTemplate } from '@angular/compiler';
 import { GameItem } from 'src/app/iterface';
 declare var $: any;
 

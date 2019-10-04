@@ -55,8 +55,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
     }
 
+    // If the browser doesn't has the method createImageBitmap, you can't display webp format
+    window['webpExtension'] = window['Modernizr'].webp.alpha === true ? '.webp' : '';
+
     // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
     if (this.location.path() === '' || this.location.path() === '?utm_source=pwa_app') {
+      this.fetch.preloadLoginLanguageImage(this.translate.currentLang, true);
       this.fetch.preloadLoginImage();
       this.fetch.preloadLobbyImage();
       // 取得上次存的GameList，並預載遊戲圖片

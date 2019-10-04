@@ -1,43 +1,78 @@
 <div class="row-flex no-margin no-padding" id="header-bg">
-
+  <picture>
+    <source srcset="/assets/imgs/picTopBg@2x.png.webp" type="image/webp">
+    <img class="picture1" src="/assets/imgs/picTopBg@2x.png" alt="header">
+  </picture>
   <div class="row-flex" id="name-bg" >
-    <img  id="iconId" src="/assets/imgs/iconId@2x.png" draggable="false" alt="ID icon" >
+    <picture>
+      <source srcset="/assets/imgs/picIdFrameEmpty@2x.png.webp" type="image/webp">
+      <img class="picture1" src="/assets/imgs/picIdFrameEmpty@2x.png" alt="name field">
+    </picture>
+    <picture>
+      <source srcset="/assets/imgs/iconId@2x.png.webp" type="image/webp">
+      <img  id="iconId" src="/assets/imgs/iconId@2x.png" draggable="false" alt="ID icon" >
+    </picture>
     <span class="basic-text-style" id="accountText">{{ UserID | generalPipe }}</span>
   </div>
 
 
   <div class="row-flex" id="credit-bg">
-    <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png" draggable="false" alt="Cash icon">
+    <picture>
+      <source srcset="/assets/imgs/picCreditFrame@2x.png.webp" type="image/webp">
+      <img class="picture1" src="/assets/imgs/picCreditFrame@2x.png" alt="header">
+    </picture>
+    <picture>
+      <source  srcset="/assets/imgs/iconCreditDollar@2x.png.webp" type="image/webp">
+      <img id="iconCredit" src="/assets/imgs/iconCreditDollar@2x.png" draggable="false" alt="Cash icon">
+    </picture>
     <span class="basic-text-style" id="moneyText">{{money | number: '.2-2'}}</span>
   </div>
 
   <button class="no-padding" id="settingButton" (touchend)="togglePopper($event)" (mouseup)="togglePopper($event)">
-    <img id="settingImg" draggable="false" alt="settingButton"
-     [ngClass]="{
-       'settingImgNormal': !this.showPopper,
-       'settingImgPressed': this.showPopper
-      }">
+    <picture [style.display]="showPopper == true ? 'none' : 'block'">
+      <source srcset="/assets/imgs/btnSettingMenuNormal.png.webp" type="image/webp">
+      <img id="settingImg" draggable="false" alt="settingButton"
+      src="/assets/imgs/btnSettingMenuNormal.png" class="settingImgNormal">
+    </picture>
+    <picture [style.display]="showPopper == false ? 'none' : 'block'">
+      <source srcset="/assets/imgs/btnSettingMenuPressed.png.webp" type="image/webp">
+      <img id="settingImg"  draggable="false" alt="settingButton"
+      src="/assets/imgs/btnSettingMenuPressed.png" class="settingImgPressed">
+    </picture>
   </button>
 
 
   <!-- poppup setting content padding-top: 11px;-->
   <div id="popper_content" [ngStyle]="{'display': showPopper === true ? 'block' : 'none'}" >
+    <picture>
+      <source srcset="/assets/imgs/picSettingMenuBg.png.webp" type="image/webp">
+      <img class="picture1" src="/assets/imgs/picSettingMenuBg.png" alt="popper_bg">
+    </picture>
     <div class="column-flex basic-text-style unselectable setting-menu-container">
-
       <div class="row-flex setting-item">
         <div class="column-flex no-margin no-padding">
           {{ 'lobby.setting.music' | translate }}
         </div>
         <div id="musicContainer" (touchend)="toggleMusic($event)" (mousedown)="toggleMusic($event)">
-          <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
-               [ngStyle]="{ 'display': music === true ? 'block' : 'none'}" >
-          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
-               [ngStyle]="{ 'display': music === true ? 'none' : 'block'}">
+          <picture>
+            <source [srcset]="('lobby.onimg' | translate) + '.webp'" type="image/webp">
+            <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
+            [ngStyle]="{ 'display': music === true ? 'block' : 'none'}" >
+          </picture>
+          <picture>
+            <source [srcset]="('lobby.offimg' | translate) + '.webp'" type="image/webp">
+            <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
+            [ngStyle]="{ 'display': music === true ? 'none' : 'block'}">
+          </picture>
+
         </div>
       </div>
 
       <div class="row-flex no-margin no-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
+        <picture>
+          <source srcset="/assets/imgs/segSettingMenu@2x.png.webp" type="image/webp">
+          <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
+        </picture>
       </div>
 
       <div class="row-flex setting-item">
@@ -45,15 +80,24 @@
           {{ 'lobby.setting.sounds' | translate }}
         </div>
         <div id="soundContainer" (touchend)="toggleSound($event)" (mousedown)="toggleSound($event)" >
-          <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
-               [ngStyle]="{ 'display': sound === true ? 'block' : 'none'}" >
-          <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
-               [ngStyle]="{ 'display': sound === true ? 'none' : 'block'}">
+          <picture>
+            <source [srcset]="('lobby.onimg' | translate) + '.webp'" type="image/webp">
+            <img [src]="'lobby.onimg' | translate" draggable="false" [alt]="'on'"
+            [ngStyle]="{ 'display': sound === true ? 'block' : 'none'}" >
+          </picture>
+          <picture>
+            <source [srcset]="('lobby.offimg' | translate) + '.webp'" type="image/webp">
+            <img [src]="'lobby.offimg' | translate" draggable="false" [alt]="'off'"
+            [ngStyle]="{ 'display': sound === true ? 'none' : 'block'}">
+          </picture>
         </div>
       </div>
 
       <div class="row-flex no-margin no-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
+        <picture>
+          <source srcset="/assets/imgs/segSettingMenu@2x.png.webp" type="image/webp">
+          <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
+        </picture>
       </div>
       <div class="row-flex setting-item">
         <div class="column-flex no-margin no-padding">
@@ -64,7 +108,10 @@
         </div>
       </div>
       <div class="row-flex no-margin no-padding" style="align-items: center">
-        <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine" >
+        <picture>
+          <source srcset="/assets/imgs/segSettingMenu@2x.png.webp" type="image/webp">
+          <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
+        </picture>
       </div>
       <div class="row-flex setting-item" (click)="closePopper();showLogoutBox()" >
         <div  class="column-flex no-margin no-padding">
