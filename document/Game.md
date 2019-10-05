@@ -104,3 +104,7 @@ var BEARER    = window['_Bearer'];
 </body>
 </body></html>
 ```
+
+----
+1. 此教學為 在lobby被bundle的狀況下新增遊戲，意思是不用改到JYDFrontend source code的狀況下即可成功新增遊戲
+2. 原文連結: https://hackmd.io/5vWBuJ7PQyW3QB96kpbzvQ?both

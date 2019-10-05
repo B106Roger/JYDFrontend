@@ -3,6 +3,7 @@
 
 #Custom
 /src/assets/Games
+*.webp
 
 # compiled output
 /dist
