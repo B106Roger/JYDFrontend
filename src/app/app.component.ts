@@ -81,8 +81,18 @@ export class AppComponent implements OnInit, AfterViewInit {
       console.log('app installed');
     });
 
+    // catch app beforeinstallprompt
     window.addEventListener('beforeinstallprompt', (e) => {
       console.log('before install prompt');
+    });
+
+    // 使android 長按圖片不會出現框框
+    document.body.addEventListener('contextmenu', e => {
+      const targetEle = e.target as HTMLElement;
+      if (targetEle.nodeName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
     });
   }
 

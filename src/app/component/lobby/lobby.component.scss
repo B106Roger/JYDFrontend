@@ -84,7 +84,7 @@
     height: calc(74vmin + 1px);
   }
 
-  #hot-game-frame {
+  .hot-game-frame {
     width: 29.2%;
     height: 100%;
 
@@ -100,13 +100,13 @@
       z-index: 1;
       width: 62.6%;
     }
-    #hot-pic {
+    .hot-pic {
       width: 95%;
       height: 98%;
       position: absolute;
       top: 3px;
     }
-    #hot-frame {
+    .hot-frame {
       width: 100%;
       height: 100%;;
       position: absolute;
@@ -129,11 +129,18 @@
       position: absolute;
       top: 3px;
     }
-    #normal-frame {
+    .normal-frame {
       width: 100%;
       height: 100%;
       position: absolute;
       top: 0;
+    }
+  }
+  .hot-game-frame, .normal-game-frame {
+    picture {
+      height: 100%;
+      width: 100%;
+      position: absolute;
     }
   }
 
@@ -201,7 +208,7 @@
 }
 
 #game_popper {
-  background: url('/assets/imgs/picGameMenuBgExpand.png.webp'),url('/assets/imgs/picGameMenuBgExpand.png');
+  background: url('/assets/imgs/picGameMenuBgExpand.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 43%;
@@ -234,7 +241,7 @@
 
   height: 95%;
   &:hover {
-    background: url('/assets/imgs/picGameMenuSelect@2x.png.webp'),url('/assets/imgs/picGameMenuBgExpand@2x.png');
+    background: url('/assets/imgs/picGameMenuSelect@2x.png');
 
     background-size: 100%100%;
     background-repeat: no-repeat;

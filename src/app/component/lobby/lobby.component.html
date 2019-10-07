@@ -1,7 +1,7 @@
 <section class="root-base" id="lobby-background">
   <picture>
     <source srcset="/assets/imgs/picBgLobby.png.webp" type="image/webp">
-    <img id="lobby-bg" src="/assets/imgs/picBgLobby.png" alt="">
+    <img id="lobby-bg" src="/assets/imgs/picBgLobby.png" draggable="false" alt="background">
   </picture>
     <app-header ></app-header>
 
@@ -53,18 +53,18 @@
       <div id="normal-game-container" (mousedown)="startScroll($event)">
           <div class="gameSeparate"></div>
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value: true )">
-            <div id="hot-game-frame" *ngIf="item !== undefined && item !== null" [routerLink]="['/game' ,item.GameType ,item.DisplayName ]" >
+            <div class="hot-game-frame" *ngIf="item !== undefined && item !== null" [routerLink]="['/game' ,item.GameType ,item.DisplayName ]" >
               <picture>
                 <source [srcset]="('lobby.hotGameTag' | translate)+'.webp'" type="image/webp">
                 <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
               </picture>
               <picture>
                 <source [srcset]="item.gameImgUrl + '.webp'" type="image/webp">
-                <img id="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.DisplayName">
+                <img class="hot-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.DisplayName">
               </picture>
               <picture>
                 <source srcset="/assets/imgs/picGameFrameLarge.png.webp" type="image/webp">
-                <img id="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false" alt="hotGameFrame">
+                <img class="hot-frame" src="/assets/imgs/picGameFrameLarge.png" draggable="false" alt="hotGameFrame">
               </picture>
             </div>
           </ng-container>
@@ -78,7 +78,7 @@
               </picture>
               <picture>
                 <source srcset="/assets/imgs/picGameFrameSmall.png.webp" type="image/webp">
-                  <img id="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false" alt="normalGameFrame">
+                <img class="normal-frame" src="/assets/imgs/picGameFrameSmall.png" draggable="false" alt="normalGameFrame">
               </picture>
             </div>
           </ng-container>
