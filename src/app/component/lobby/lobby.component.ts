@@ -46,23 +46,8 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  slotsGameList = [
-    'fivedragons', 'fivekoi', 'fiftydragons', 'fortunes88', 'diamondeternity', 'huga', 'beanstalk',
-    'misskitty', 'pelicanpete', 'buffalo', 'kingofmountain', 'sexybartender', 'soccerfever'
-  ];
-
-  pokerGameList = [
-    'videoPoker', 'deucespk', 'jokerpk', 'tenpk'
-  ];
-
-  marioGameList = [
-    'luckymario', 'sambaqueen'
-  ];
-
   images: any[] = [];
   private scrollintervalItem;
-  private touchintervalItem;
-
   constructor(private translate: TranslateService, private auth: AuthGuardService, private route: Router) { }
 
   ngOnInit() {
@@ -241,7 +226,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       // *******************************************
     }
   }
-  log (a: any) {
+  log(a: any) {
     console.log(a);
     return a.to_string();
   }
