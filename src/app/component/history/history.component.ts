@@ -184,8 +184,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
     const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1;
     let temp;
     temp = parseInt( this.currentPage , 10 ) + value;
-    temp = (temp < 0 ? 0 : temp );
     temp = (temp > maxPage ? maxPage : temp );
+    temp = (temp < 0 ? 0 : temp );
     if (parseInt(this.currentPage, 10) !== temp ) {
       this.currentPage = temp;
       this.sendQuery();
@@ -193,7 +193,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   setPage(page: number) {
-    if (parseInt(this.currentPage, 10) !== page) {
+    if (parseInt(this.currentPage, 10) ) {
       this.currentPage = page;
       this.sendQuery();
     }
