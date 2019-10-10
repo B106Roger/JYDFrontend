@@ -65,9 +65,9 @@
 而且index.html在任何script load前一定要加入以下 inline script:
 ```jsx=
 // 通常放在document.head的部分
-var GAME_NAME = window['_GameName'];
-var GAME_URL  = window['_GameUrl'];
-var BEARER    = window['_Bearer'];
+var GAME_NAME = parent.window['_GameName'];
+var GAME_URL  = parent.window['_GameUrl'];
+var BEARER    = parent.window['_Bearer'];
 ```
 
 以下為soccerfever/index.html 範例:

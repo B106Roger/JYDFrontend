@@ -5,7 +5,7 @@
    'landscape-frame': gameItem.Orientation === 'landscape',
    'portrait-frame': gameItem.Orientation === 'portrait'
   }">
-    <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
+    <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true" allowfullscreen="true"
     mozallowfullscreen="true" allowfullscreen="true" (load)="addListenerInIframe();" allowSyntheticDefaultImports></iframe>
 </section>
 
@@ -18,7 +18,7 @@
     'ios-portrait-body': gameItem.Orientation === 'portrait'
   }">
     <div class="iframe-container fixed scroll no-scrollbar">
-      <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true"
+      <iframe [src]="this.iframeURL" frameborder="0" webkitallowfullscreen="true" allowfullscreen="true"
       mozallowfullscreen="true" allowfullscreen="true" (load)="addListenerInIframe();"  allowSyntheticDefaultImports></iframe>
     </div>
   </div>
