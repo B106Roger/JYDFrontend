@@ -1,7 +1,10 @@
 <div class="root-base setting-bg">
   <div class="row-flex no-margin no-padding setting-top">
     <span *ngIf="false" class="title">{{ 'history.title' | translate }}</span>
-    <img class="titleImg" [src]="'history.titleImg' | translate" />
+    <picture>
+      <source class="titleImg" [srcset]="('history.titleImg' | translate)+'.webp'" type="image/webp">
+      <img class="titleImg" [srcset]="'history.titleImg' | translate" />
+    </picture>
     <a routerLink="/lobby">
       <img class="close-button" src="/assets/imgs/btnSettingLeaveNormal.png">
     </a>
@@ -9,8 +12,8 @@
 
   <div class="main-content">
     <div class="d-flex justify-content-around" style="position: relative">
-      <img class="short-label" id="tab-01" (click)="tabChange(1)" [src]="'history.labelGameHistoryPressed' | translate" />
-      <img class="short-label" id="tab-00" (click)="tabChange(0)" [src]="'history.labelInOutHistoryNormal' | translate" />
+        <img class="short-label" id="tab-00" (click)="tabChange(0)" [srcset]="'history.labelGameHistoryPressed' | translate" />
+        <img class="short-label" id="tab-01" (click)="tabChange(1)" [srcset]="'history.labelInOutHistoryNormal' | translate" />
     </div>
 
     <!-- 資料主體 -->
@@ -21,7 +24,7 @@
 
         <span class="text-sliver time-input">
           {{ startDate }}
-          <img id="datepicker-begin" [src]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+          <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
           <input type="date" class="ui-datepicker-begin" [value]="startDate"
             (focus) = "setDatepickerPressed('datepicker-begin')"
             (input) = "setDatepickerNormal('datepicker-begin')"
@@ -34,7 +37,7 @@
 
         <span class="text-sliver time-input">
           {{ endDate }}
-          <img id="datepicker-end" [src]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+          <img id="datepicker-end" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
           <input type="date" class="ui-datepicker-end" [value]="endDate"
             (focus) = "setDatepickerPressed('datepicker-end')"
             (input) = "setDatepickerNormal('datepicker-end')"
@@ -43,7 +46,7 @@
           >
         </span>
 
-        <img draggable="false" [src]="'history.goImgNormal' | translate" class="go-btn-base"
+        <img draggable="false" [srcset]="'history.goImgNormal' | translate" class="go-btn-base"
           (mousedown)  ="setGoPressed($event)"
           (touchstart) ="setGoPressed($event)"
           (touchend)   ="setGoNormal($event)"
@@ -53,11 +56,11 @@
         />
       </div>
 
-      <app-game-records [gameRecrods]="gameRecrods" [hidden]="!selectPage"></app-game-records>
-      <app-io-records [ioRecrods]="ioRecrods" [hidden]="selectPage"></app-io-records>
+      <app-game-records [gameRecrods]="gameRecrods" [hidden]="!selectTab"></app-game-records>
+      <app-io-records [ioRecrods]="ioRecrods" [hidden]="selectTab"></app-io-records>
 
       <div class="pageSelect-container">
-        <img class="first-page" [src]="'/assets/imgs/btnFirstPageNormal@2x.png'"
+        <img class="first-page" [srcset]="'/assets/imgs/btnFirstPageNormal@2x.png'"
           (mousedown)  ="setFirstPageBtnPressed($event)"
           (touchstart) ="setFirstPageBtnPressed($event)"
           (touchend)   ="setFirstPageBtnNormal($event)"
@@ -65,7 +68,7 @@
           (mouseleave) ="setFirstPageBtnNormal($event)"
           (click)      ="setPage( 0 )"
         />
-        <img class="prev-page" [src]="'/assets/imgs/btnPreviousPageNormal@2x.png'"
+        <img class="prev-page" [srcset]="'/assets/imgs/btnPreviousPageNormal@2x.png'"
           (mousedown)  ="setPrevPageBtnPressed($event)"
           (touchstart) ="setPrevPageBtnPressed($event)"
           (touchend)   ="setPrevPageBtnNormal($event)"
@@ -74,7 +77,7 @@
           (click)      ="changePage( -1 )"
         />
         <span class="page-frame">{{ currentPage+1 }}</span>
-        <img class="next-page" [src]="'/assets/imgs/btnNextPageNormal@2x.png'"
+        <img class="next-page" [srcset]="'/assets/imgs/btnNextPageNormal@2x.png'"
           (mousedown)  ="setNextPageBtnPressed($event)"
           (touchstart) ="setNextPageBtnPressed($event)"
           (touchend)   ="setNextPageBtnNormal($event)"
@@ -82,13 +85,13 @@
           (mouseleave) ="setNextPageBtnNormal($event)"
           (click)      ="changePage( 1 )"
         />
-        <img class="final-page" [src]="'/assets/imgs/btnLastPageNormal@2x.png'"
+        <img class="final-page" [srcset]="'/assets/imgs/btnLastPageNormal@2x.png'"
           (mousedown)  ="setFinalPageBtnPressed($event)"
           (touchstart) ="setFinalPageBtnPressed($event)"
           (touchend)   ="setFinalPageBtnNormal($event)"
           (mouseup)    ="setFinalPageBtnNormal($event)"
           (mouseleave) ="setFinalPageBtnNormal($event)"
-          (click)      ="setPage( selectPage ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 )"
+          (click)      ="setPage( selectTab ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 )"
         />
       </div>
 

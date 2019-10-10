@@ -24,22 +24,22 @@ export class AccountComponent implements OnInit {
 
   setSaveNormal(e: Event) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('account.saveImgNormal'));
+    self.setAttribute('srcset' , this.translate.instant('account.saveImgNormal'));
   }
 
   setCancelNormal(e: Event) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('account.cancelImgNormal'));
+    self.setAttribute('srcset' , this.translate.instant('account.cancelImgNormal'));
   }
 
   setSavePressed(e: Event) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('account.saveImgPressed'));
+    self.setAttribute('srcset' , this.translate.instant('account.saveImgPressed'));
   }
 
   setCancelPressed(e: Event) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('account.cancelImgPressed'));
+    self.setAttribute('srcset' , this.translate.instant('account.cancelImgPressed'));
   }
 
   resetClicked() {

@@ -15,7 +15,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   public startDate: string;
   public endDate: string;
-  public selectPage: number;
+  public selectTab: number;
   public gameRecrods;
   public ioRecrods;
   public currentPage;
@@ -31,7 +31,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         return numDate < 10 ? '0' + numDate : numDate;
       }).join('-');
 
-      d.setTime( d.getTime() - 604800000 );
+      d.setTime(d.getTime() - 604800000); // 604800000 = 7day * 24hr * 60min * 60sec * 1000ms
       const initStartDate = d.toLocaleDateString().split('/').map( strDate => {
         const numDate = parseInt(strDate , 10);
         return numDate < 10 ? '0' + numDate : numDate;
@@ -39,19 +39,19 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
       if ('historyCache' in sessionStorage) {
         const snapshot = JSON.parse(sessionStorage.getItem('historyCache'));
-        this.selectPage = snapshot.selectPage;
+        this.selectTab = snapshot.selectTab;
         this.startDate = snapshot.startDate;
         this.endDate = snapshot.endDate;
         this.currentPage = snapshot.currentPage;
-        if (this.selectPage === 1) {
+        if (this.selectTab === 1) {
           setTimeout(() => {
-            document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryPressed'));
-            document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryNormal'));
+            document.querySelector('#tab-00').setAttribute('srcset', this.translate.instant('history.labelGameHistoryPressed'));
+            document.querySelector('#tab-01').setAttribute('srcset', this.translate.instant('history.labelInOutHistoryNormal'));
           }, 0);
         } else {
           setTimeout( () => {
-            document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryNormal'));
-            document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryPressed'));
+            document.querySelector('#tab-00').setAttribute('srcset', this.translate.instant('history.labelGameHistoryNormal'));
+            document.querySelector('#tab-01').setAttribute('srcset', this.translate.instant('history.labelInOutHistoryPressed'));
           } ,0);
         }
         this.gameRecrods = snapshot.gameRecrods;
@@ -59,7 +59,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         this.ioRecrods = snapshot.ioRecrods;
         this.ioRecordTotalPage = snapshot.ioRecordTotalPage;
       } else {
-        this.selectPage = 1;
+        this.selectTab = 1;
         this.startDate = initStartDate;
         this.endDate = initEndDate;
         this.currentPage = 0;
@@ -74,12 +74,12 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.ioRecordTotalPage = responseJson.info.totalPages;
           });
       }
-      console.log('this.selectPage', this.selectPage);
+      console.log('this.selectTab', this.selectTab);
   }
 
   ngOnDestroy() {
     sessionStorage.setItem('historyCache' , JSON.stringify({
-      selectPage: this.selectPage,
+      selectTab: this.selectTab,
       startDate: this.startDate,
       endDate: this.endDate,
       currentPage: this.currentPage,
@@ -91,79 +91,78 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   tabChange( page ) {
-    this.selectPage = page;
-    const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
+    this.selectTab = page;
+    const maxPage = this.selectTab ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
     if (this.currentPage > maxPage) {
       this.currentPage = maxPage;
     }
-    if ( page === 1) {
-      document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryPressed'));
-      document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryNormal'));
+    if ( page === 0) {
+      document.querySelector('#tab-00').setAttribute('srcset', this.translate.instant('history.labelGameHistoryPressed'));
+      document.querySelector('#tab-01').setAttribute('srcset', this.translate.instant('history.labelInOutHistoryNormal'));
     } else {
-      document.querySelector('#tab-01').setAttribute('src', this.translate.instant('history.labelGameHistoryNormal'));
-      document.querySelector('#tab-00').setAttribute('src', this.translate.instant('history.labelInOutHistoryPressed'));
+      document.querySelector('#tab-00').setAttribute('srcset', this.translate.instant('history.labelGameHistoryNormal'));
+      document.querySelector('#tab-01').setAttribute('srcset', this.translate.instant('history.labelInOutHistoryPressed'));
     }
     this.currentPage = 0;
-    console.log( 'this.selectPage', this.selectPage );
     this.sendQuery();
   }
 
   setGoNormal(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('history.goImgNormal'));
+    self.setAttribute('srcset' , this.translate.instant('history.goImgNormal'));
   }
 
   setGoPressed(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('history.goImgPressed'));
+    self.setAttribute('srcset' , this.translate.instant('history.goImgPressed'));
   }
 
   setDatepickerNormal( id ) {
-    document.getElementById( id ).setAttribute('src' , '/assets/imgs/btnCalendarNormal@2x.png');
+    document.getElementById( id ).setAttribute('srcset' , '/assets/imgs/btnCalendarNormal@2x.png');
   }
 
   setDatepickerPressed( id ) {
-    document.getElementById( id ).setAttribute('src' , '/assets/imgs/btnCalendarPressed@2x.png');
+    document.getElementById( id ).setAttribute('srcset' , '/assets/imgs/btnCalendarPressed@2x.png');
   }
 
   setFirstPageBtnNormal(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnFirstPageNormal@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnFirstPageNormal@2x.png');
   }
 
   setFirstPageBtnPressed(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnFirstPagePressed@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnFirstPagePressed@2x.png');
   }
 
   setPrevPageBtnNormal(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnPreviousPageNormal@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnPreviousPageNormal@2x.png');
   }
 
   setPrevPageBtnPressed(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnPreviousPagePressed@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnPreviousPagePressed@2x.png');
   }
 
   setNextPageBtnNormal(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnNextPageNormal@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnNextPageNormal@2x.png');
   }
 
   setNextPageBtnPressed(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnNextPagePressed@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnNextPagePressed@2x.png');
   }
 
   setFinalPageBtnNormal(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnLastPageNormal@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnLastPageNormal@2x.png');
   }
 
   setFinalPageBtnPressed(e) {
     const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src', '/assets/imgs/btnLastPagePressed@2x.png');
+    self.setAttribute('srcset', '/assets/imgs/btnLastPagePressed@2x.png');
   }
 
   startDateChange(e) {
@@ -181,7 +180,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   changePage(value: number) {
-    const maxPage = this.selectPage ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1;
+    const maxPage = this.selectTab ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1;
     let temp;
     temp = parseInt( this.currentPage , 10 ) + value;
     temp = (temp > maxPage ? maxPage : temp );
@@ -212,9 +211,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
           this.ioRecrods = responseJson.recordList;
           this.ioRecordTotalPage = responseJson.info.totalPages;
         })
-    ]).then( values => {
-        console.log(values);
-    });
+    ])
   }
 
 }

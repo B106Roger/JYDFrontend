@@ -2,7 +2,10 @@
   <div class="flex-container">
     <div class="row-flex no-margin no-padding setting-top">
       <span *ngIf="false" class="title">{{ 'account.title' | translate }}</span>
-      <img class="titleImg" [src]="'account.titleImg' | translate" />
+      <picture class="titleImg">
+        <source class="titleImg" [srcset]="'account.titleImg' | translate">
+        <img class="titleImg" [srcset]="'account.titleImg' | translate" />
+      </picture>
       <a routerLink="/lobby" >
         <img class="close-button" src="/assets/imgs/btnSettingLeaveNormal.png">
       </a>
@@ -15,7 +18,10 @@
   <div class="main-content">
         <form id="resetPasswordForm" action="#">
           <!-- 頁籤 -->
-          <img class="short-label" [src]="'account.label' | translate" />
+          <picture class="short-label">
+            <source class="short-label" [srcset]="'account.label' | translate" >
+            <img class="short-label" [srcset]="'account.label' | translate" />
+          </picture>
           <div *ngIf="false" class="d-flex text-center justify-content-start" style="margin-left:2vw;">
               <span class="btn-bg btn-label">{{'account.RESET PASSWORD' | translate }}</span>
           </div>
@@ -41,7 +47,7 @@
         <div class="button-area d-flex justify-content-around align-items-center">
             <label for="submitBtn" class="d-inline-block">
               <input hidden id="submitBtn" type="button" value="SAVE">
-              <img draggable="false" [src]="'account.saveImgNormal' | translate" class="form-btn-base"
+              <img draggable="false" [srcset]="'account.saveImgNormal' | translate" class="form-btn-base"
                 (click)     ="submitClicked()"
                 (mousedown) ="setSavePressed($event)"
                 (touchstart)="setSavePressed($event)"
@@ -53,7 +59,7 @@
 
             <label for="resetBtn" class="d-inline-block">
               <input hidden id="resetBtn" type="button" value="CANCEL">
-              <img draggable="false" [src]="'account.cancelImgNormal' | translate" class="form-btn-base"
+              <img draggable="false" [srcset]="'account.cancelImgNormal' | translate" class="form-btn-base"
                 (click)     ="resetClicked()"
                 (mousedown) ="setCancelPressed($event)"
                 (touchstart)="setCancelPressed($event)"
