@@ -13,6 +13,7 @@
 .search-row
 {
   width:100%;
+  max-height:10%;
   @media screen and ( orientation: portrait )   { height:7vh; }
   @media screen and ( orientation: landscape )  { height:7vw; }
   border-bottom: 2px solid #0044BB;
@@ -52,6 +53,7 @@
   background-size: 100% 100%;
   font-size:0.75rem;
   width:30%;
+  max-height: 32px;
   @media screen and ( orientation: portrait )   { height:4vh; }
   @media screen and ( orientation: landscape )  { height:4vw; }
 
@@ -69,9 +71,9 @@
 /* Go button */
 .go-btn-base
 {
-  width: 12%;
-  @media screen and ( orientation: portrait )   { height:4vh; }
-  @media screen and ( orientation: landscape )  { height:4vw; }
+  max-width: 12%;
+  @media screen and ( orientation: portrait )   { max-height:4vh; }
+  @media screen and ( orientation: landscape )  { max-height:4vw; }
 }
 
 .go-btn
@@ -200,9 +202,9 @@
 {
   width:30%;
   position: absolute;
-  left:12.5%;
-  @media screen and ( orientation: portrait )   { height:7vh; }
-  @media screen and ( orientation: landscape )  { height:7vw; }
+  left:13%;
+  @media screen and ( orientation: portrait )   { max-height:7vh; }
+  @media screen and ( orientation: landscape )  { max-height:7vw; }
   opacity: 0;
 
   &::-webkit-inner-spin-button
@@ -226,9 +228,9 @@
 {
   width:30%;
   position: absolute;
-  right:17%;
-  @media screen and ( orientation: portrait )   { height:7vh; }
-  @media screen and ( orientation: landscape )  { height:7vw; }
+  right:18%;
+  @media screen and ( orientation: portrait )   { max-height:7vh; }
+  @media screen and ( orientation: landscape )  { max-height:7vw; }
   opacity: 0;
 
   &::-webkit-inner-spin-button

@@ -24,13 +24,13 @@
 
         <span class="text-sliver time-input">
           {{ startDate }}
-          <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
-          <input type="date" class="ui-datepicker-begin" [value]="startDate"
-            (focus) = "setDatepickerPressed('datepicker-begin')"
-            (input) = "setDatepickerNormal('datepicker-begin')"
-            (input) = "startDateChange($event)"
-            (blur)  = "setDatepickerNormal('datepicker-begin')"
-          >
+            <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+            <input type="date" class="ui-datepicker-begin" [value]="startDate"
+              (focus) = "setDatepickerPressed('datepicker-begin')"
+              (input) = "setDatepickerNormal('datepicker-begin')"
+              (input) = "startDateChange($event)"
+              (blur)  = "setDatepickerNormal('datepicker-begin')"
+            >
         </span>
 
         <span class="text-sliver" style="font-size:2vh">{{ 'history.to' | translate }}</span>
