@@ -76,16 +76,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
     this.fetch.fetchGameList();
 
-    // catch app install event
-    window.addEventListener('appinstalled', (e) => {
-      console.log('app installed');
-    });
-
-    // catch app beforeinstallprompt
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('before install prompt');
-    });
-
     // 使android 長按圖片不會出現框框
     document.body.addEventListener('contextmenu', e => {
       const targetEle = e.target as HTMLElement;
@@ -97,8 +87,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('ngview', this.location.path());
-
     let time = new Date().getTime();
     if (window['isIphone'] === true) {
       // 當網頁是經由home開啟時要防止縮放滑動
@@ -131,7 +119,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       const screenHeight = window.screen.height;
       const innerHeight = window.innerHeight;
       const height = screenHeight > innerHeight ? innerHeight : screenHeight;
-      console.log(`meta width: ${window.screen.width}; height: ${height}`);
       metaTag.setAttribute('content', `width=${window.screen.width}, height=${height} initial-scale=1.001, maximum-scale=1.001`);
     }
 

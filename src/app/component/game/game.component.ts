@@ -25,7 +25,6 @@ export class GameComponent implements OnInit , OnDestroy {
     if (localStorage.getItem('gameList') !== null) {
       this.gameItem = JSON.parse(localStorage.getItem('gameList')).filter( (item: GameItem) => item.DisplayName === this.gameName )[0];
     } else {
-      console.log(this.gameName);
       alert('unknown game name');
       this.route.navigate(['lobby']);
     }
@@ -56,10 +55,5 @@ export class GameComponent implements OnInit , OnDestroy {
     delete window['_Bearer'];
     delete window['_DisplayName'];
     this.fetch.fetchAmount();
-  }
-
-  log(a) {
-    console.log(a);
-    console.log('asdfadfa');
   }
 }

@@ -87,7 +87,6 @@ export class FetchService {
     }).then( responseJSON => {
       sessionStorage.setItem('amount', responseJSON.account.amount);
       this.userAmount$.next(responseJSON.account.amount);
-      console.log('request');
       return responseJSON;
     });
   }

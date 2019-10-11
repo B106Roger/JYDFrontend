@@ -84,7 +84,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   }
 
   getMenuSelect() {
-    console.log('detect');
     return this.menuSelected;
   }
   setMenuSelect(e: Event) {
@@ -225,9 +224,5 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       }
       // *******************************************
     }
-  }
-  log(a: any) {
-    console.log(a);
-    return a.to_string();
   }
 }

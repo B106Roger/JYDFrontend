@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       sessionStorage.setItem('amount', userAmount);
       this.money = parseFloat(userAmount);
     });
-    console.log(this.money);
   }
 
   ngOnDestroy() {

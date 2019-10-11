@@ -6,7 +6,7 @@
   <div class="d-flex" class="menu-bg" data-type="href"
   (touchend)="navigateTo($event)"
   (mousedown)="navigateTo($event)" >
-    <button *ngFor="let option of (menuList | generalPipe)"
+    <button *ngFor="let option of menuList"
      class="menu-button" [attr.data-href]="option.nextUrl" >
       <picture [attr.data-href]="option.nextUrl">
         <source [srcset]="(option.picture | translate) + '.webp'" type="image/webp">
