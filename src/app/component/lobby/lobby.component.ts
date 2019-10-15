@@ -66,7 +66,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     } else {
       this.fetch.fetchGameList().then((gameList: GameItem[]) => {
         // 處理gameList，變成圖片位置
-        console.log('late');
         this.processedGameList(gameList);
       });
     }
@@ -221,7 +220,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     }
   }
   private processedGameList(gameListArray: GameItem[]) {
-    console.log(gameListArray);
     this.images = [];
     gameListArray.forEach((gameItem: GameItem, index: number) => {
       let gameImgUrl: string;

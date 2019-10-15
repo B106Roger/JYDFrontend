@@ -74,7 +74,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.ioRecordTotalPage = responseJson.info.totalPages;
           });
       }
-      console.log('this.selectTab', this.selectTab);
   }
 
   ngOnDestroy() {
