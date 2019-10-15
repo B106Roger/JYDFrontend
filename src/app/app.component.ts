@@ -58,6 +58,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     // If the browser doesn't has the method createImageBitmap, you can't display webp format
     window['webpExtension'] = window['Modernizr'].webp.alpha === true ? '.webp' : '';
 
+    // fetch gameList
+    this.fetch.fetchGameList();
+
     // 如果當前頁面是login，就preload Login圖片，prefetch Lobby圖片
     if (this.location.path() === '' || this.location.path() === '?utm_source=pwa_app') {
       this.fetch.preloadLoginLanguageImage(this.translate.currentLang, true);
@@ -74,7 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.fetch.preloadImageLanguage = [];
       this.fetch.preloadLobbyLanguageImage(this.translate.currentLang);
     });
-    this.fetch.fetchGameList();
+
 
     // 使android 長按圖片不會出現框框
     document.body.addEventListener('contextmenu', e => {

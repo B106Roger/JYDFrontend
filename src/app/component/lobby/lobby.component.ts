@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { Router } from '@angular/router';
 import { GameItem } from 'src/app/iterface';
+import { FetchService } from 'src/app/services/fetch.service';
 declare var $: any;
 
 @Component({
@@ -47,8 +48,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
   ];
 
   images: any[] = [];
+
   private scrollintervalItem;
-  constructor(private translate: TranslateService, private auth: AuthGuardService, private route: Router) { }
+  constructor(private translate: TranslateService, private auth: AuthGuardService, private route: Router, private fetch: FetchService) { }
 
   ngOnInit() {
     // 初始化遊戲選擇項目
@@ -57,26 +59,19 @@ export class LobbyComponent implements OnInit, AfterViewInit {
     this.picLang = this.translate.currentLang;
     const localGameList = localStorage.getItem('gameList');
     let gameListArray: GameItem[] = [];
-    if (localGameList !== null) {
+    if (localGameList !== null && localGameList !== '') {
       gameListArray = JSON.parse(localGameList);
+      // 處理gameList，變成圖片位置
+      this.processedGameList(gameListArray);
+    } else {
+      this.fetch.fetchGameList().then((gameList: GameItem[]) => {
+        // 處理gameList，變成圖片位置
+        console.log('late');
+        this.processedGameList(gameList);
+      });
     }
 
-    gameListArray.forEach((gameItem: GameItem, index: number) => {
-      let gameImgUrl: string;
 
-      // 設定圖片路徑
-      if (index === 0) {
-        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameItem.DisplayName}_${this.picLang}.png`;
-      } else {
-        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameItem.DisplayName}_${this.picLang}.png`;
-      }
-
-      this.images.push({
-        DisplayName: gameItem.DisplayName,
-        GameType: gameItem.GameType,
-        gameImgUrl: gameImgUrl,
-      });
-    });
   }
 
   ngAfterViewInit() {
@@ -224,5 +219,23 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       }
       // *******************************************
     }
+  }
+  private processedGameList(gameListArray: GameItem[]) {
+    console.log(gameListArray);
+    this.images = [];
+    gameListArray.forEach((gameItem: GameItem, index: number) => {
+      let gameImgUrl: string;
+      // 設定圖片路徑
+      if (index === 0) {
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameItem.DisplayName}_${this.picLang}.png`;
+      } else {
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameItem.DisplayName}_${this.picLang}.png`;
+      }
+      this.images.push({
+        DisplayName: gameItem.DisplayName,
+        GameType: gameItem.GameType,
+        gameImgUrl: gameImgUrl,
+      });
+    });
   }
 }
