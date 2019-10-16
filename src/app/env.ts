@@ -1,11 +1,4 @@
 const Api = {
-   /*
-    UICD348EE55BC1A63AA805F63DE86EB5F7757D2EAD891FDFB25E5A523B26DE9E25D3D9D3952F505B6E4F157652ED50A0342F79CCFD79E70506
-    13FCD060F0651739050F60CACBE5C33DD1BA68974831BAC0
-
-    https://jyddev.azurewebsites.net/
-    https://jyddev.azurewebsites.net/
-   */
    /**
     * @method Post
     * @headers {'Content-Type':'application/json'}
