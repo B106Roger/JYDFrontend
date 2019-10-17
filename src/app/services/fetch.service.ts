@@ -216,9 +216,9 @@ export class FetchService {
     gameList.forEach((item, index) => {
       let src: string;
       if (index === 0) {
-        src = `/assets/imgs/${lang}/pic_game_iconL_${item.DisplayName}_${lang}.png`;
+        src = `/assets/imgs/${lang}/pic_game_iconL_${item.DisplayName}.png`;
       } else if ( index < 7) {
-        src = `/assets/imgs/${lang}/pic_game_iconS_${item.DisplayName}_${lang}.png`;
+        src = `/assets/imgs/${lang}/pic_game_iconS_${item.DisplayName}.png`;
       } else {
         return;
       }

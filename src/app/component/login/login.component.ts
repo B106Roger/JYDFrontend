@@ -21,22 +21,22 @@ export class LoginComponent implements OnInit {
 
   langList = [
     {
-      lang: 'en',
+      lang: 'eng',
       img: '/assets/imgs/iconLanEn.png',
       label: 'ENGLISH'
     },
     {
-      lang: 'zh-cn',
+      lang: 'sch',
       img: '/assets/imgs/iconLanSc.png',
       label: '简体中文'
     },
     {
-      lang: 'es',
+      lang: 'esp',
       img: '/assets/imgs/iconLanEs.png',
       label: 'Español'
     },
     {
-      lang: 'pt',
+      lang: 'por',
       img: '/assets/imgs/iconLanPo.png',
       label: 'Português'
     }

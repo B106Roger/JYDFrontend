@@ -225,9 +225,9 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       let gameImgUrl: string;
       // 設定圖片路徑
       if (index === 0) {
-        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameItem.DisplayName}_${this.picLang}.png`;
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconL_${gameItem.DisplayName}.png`;
       } else {
-        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameItem.DisplayName}_${this.picLang}.png`;
+        gameImgUrl = `/assets/imgs/${this.picLang}/pic_game_iconS_${gameItem.DisplayName}.png`;
       }
       this.images.push({
         DisplayName: gameItem.DisplayName,

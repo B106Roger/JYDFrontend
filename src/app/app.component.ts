@@ -19,8 +19,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(public swupdate: SwUpdate, private translate: TranslateService,
               private fetch: FetchService, private location: Location) {
-    translate.addLangs(['en', 'zh-cn', 'es', 'pt']);
-    const defaultLang = 'en';
+    translate.addLangs(['eng', 'sch', 'esp', 'por']);
+    const defaultLang = 'eng';
     // 先試local storage lang，再試browser lang，最後用default lang
     if (localStorage.getItem('lang')) {
       translate.use(localStorage.getItem('lang'));
@@ -31,6 +31,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     localStorage.setItem('lang', this.translate.currentLang);
     translate.setDefaultLang(defaultLang);
+    console.log(translate.currentLang);
   }
 
   ngOnInit(): void {

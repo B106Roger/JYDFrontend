@@ -19,6 +19,7 @@ export class GameComponent implements OnInit , OnDestroy {
   isIphone = window['isIphone'];
   gameItem: GameItem;
   gameName: string = this.routerInfo.snapshot.params.gameName;
+  lang: string;
   iframeURL;
 
   ngOnInit() {
@@ -32,11 +33,12 @@ export class GameComponent implements OnInit , OnDestroy {
     window['_GameName'] = this.gameItem.GameName;
     window['_GameUrl'] = this.gameItem.URL;
     window['_Bearer']   = this.auth.getUserID();
+    this.lang = localStorage.getItem('lang');
     this.iframeURL = this.getSrc();
   }
 
   getSrc() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/index.html`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`/assets/Games/${this.gameName}/index.html?lang=${this.lang}`);
   }
 
   stopPropagation(e: Event) {

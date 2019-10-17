@@ -1,0 +1,116 @@
+{
+  "login": {
+    "rememberMe": "RECUÉRDAME",
+    "account_holder": "ID DEL JUGADOR",
+    "password_holder": "SENHA",
+    "loginbtn": "/assets/imgs/esp/btnLoginNormal.png",
+    "loginbtnpressed": "/assets/imgs/esp/btnLoginPressed.png",
+    "mainicon": "/assets/imgs/esp/picLogo@2x.png",
+    "loginfailmsg": "/assets/imgs/esp/picMsgLoginFailed@2x.png",
+    "loginfailconfirm": "/assets/imgs/esp/btnConfirmNormal@2x.png",
+    "loginfailpress": "/assets/imgs/esp/btnConfirmPressed@2x.png",
+    "installHint": "assets/imgs/esp/picInstallationGuide.png",
+    "installconfirm": "/assets/imgs/esp/btnInstallNormal.png",
+    "installpressed": "/assets/imgs/esp/btnInstallPressed.png",
+    "installMsg": "No mostrar notificaciones"
+  },
+  "lobby": {
+    "all": "ALL",
+    "slot": "SLOT",
+    "mario": "MARY SLOTS",
+    "poker": "POKER GAMES",
+    "setting": {
+      "music": "MÚSICA",
+      "sounds": "SONAR",
+      "version": "VERSÃO",
+      "download": "DOWNLOAD APP",
+      "logout": "CERRAR SESIÓN",
+      "on" : "ON",
+      "off": "OFF"
+    },
+    "hotGameTag": "/assets/imgs/eng/picTagHotGame.png",
+    "logoutMessage" :"¿SEGURO QUE QUIERES SALIR?",
+
+    "lobbyimg": "/assets/imgs/eng/btnLobbyNormal@2x.png",
+    "historyimg": "/assets/imgs/eng/btnHistoryNormal@2x.png",
+    "accountimg": "/assets/imgs/eng/btnAccountNormal@2x.png",
+    "contactimg": "/assets/imgs/eng/btnContactNormal@2x.png",
+    "lobbyimgpressed": "/assets/imgs/eng/btnLobbyPressed@2x.png",
+    "historyimgpressed": "/assets/imgs/eng/btnHistoryPressed@2x.png",
+    "accountimgpressed": "/assets/imgs/eng/btnAccountPressed@2x.png",
+    "contactimgpressed": "/assets/imgs/eng/btnContactPressed@2x.png",
+    "onimg": "/assets/imgs/eng/btnMusicOn@2x.png",
+    "offimg": "/assets/imgs/eng/btnMusicOff@2x.png",
+    "yesImgNormal" :  "/assets/imgs/eng/btnLogoutYesNormal@2x.png",
+    "noImgNormal" :   "/assets/imgs/eng/btnLogoutNoNormal@2x.png",
+    "yesImgPressed" : "/assets/imgs/eng/btnLogoutYesPressed@2x.png",
+    "noImgPressed" :  "/assets/imgs/eng/btnLogoutNoPressed@2x.png"
+  },
+
+  "download-app" : {
+    "title" : "DOWNLOAD APP",
+    "titleImg": "/assets/imgs/eng/picTitleDownloadTxt@2x.png",
+    "label": "/assets/imgs/eng/btnLabelDownloadPressed@2x.png",
+    "download" : "DOWNLOAD",
+    "TREASURE ISLAND" : "TREASURE ISLAND",
+    "downloadImgNormal" : "/assets/imgs/eng/btnDownloadNormal@2x.png",
+    "downloadImgPressed" : "/assets/imgs/eng/btnDownloadPressed@2x.png"
+  },
+
+  "contact" : {
+    "title" : "CONTÁCTENOS",
+    "titleImg": "/assets/imgs/eng/picTitleContactTxt@2x.png",
+    "label": "/assets/imgs/eng/btnLabelContactusPressed@2x.png",
+    "REACH US WITH FOLLOWING CONTACT DETAILS" : "vLLEGUE A USTED CON LOS SIGUIENTES DATOS DE CONTACTO",
+    "email-icon"    : "/assets/imgs/eng/iconContactEmail@3x.png",
+    "phone-icon"    : "/assets/imgs/eng/iconContactPhone@3x.png",
+    "whatsApp-icon" : "/assets/imgs/eng/iconContactWhatsapp@3x.png",
+    "weChat-icon"   : "/assets/imgs/eng/iconContactWechat@3x.png",
+    "line-icon"     : "/assets/imgs/eng/iconContactLine@3x.png"
+  },
+
+  "account" : {
+    "title" : "CUENTA",
+    "titleImg": "/assets/imgs/eng/picTitleAccountTxt@2x.png",
+    "label": "/assets/imgs/eng/btnLabelResetPwPressed@2x.png",
+    "RESET PASSWORD" : "RESTABLECER LA CONTRASEÑA",
+    "CURRENT PASSWORD" : "CONTRASEÑA ACTUAL",
+    "NEW PASSWORD" : "NOVA SENHA",
+    "CONFIRM NEW PASSWORD" : "CONFIRMAR NUEVA CONTRASEÑA",
+    "saveImgNormal"    : "/assets/imgs/eng/btnAccountSaveNormal@2x.png",
+    "cancelImgNormal"  : "/assets/imgs/eng/btnAccountCancelNormal@2x.png",
+    "saveImgPressed"   : "/assets/imgs/eng/btnAccountSavePressed@2x.png",
+    "cancelImgPressed" : "/assets/imgs/eng/btnAccountCancelPressed@2x.png"
+  },
+
+  "history" : {
+    "title" : "HISTORIA",
+    "titleImg": "/assets/imgs/eng/picTitleHistoryTxt@2x.png",
+    "time" : "HORA",
+    "to" : "TO",
+    "goImgNormal"  : "/assets/imgs/eng/btnHistoryGoNormal@2x.png",
+    "goImgPressed" : "/assets/imgs/eng/btnHistoryGoPressed@2x.png",
+    "labelGameHistoryNormal": "/assets/imgs/eng/btnLabelGameHistoryNormal@2x.png",
+    "labelGameHistoryPressed": "/assets/imgs/eng/btnLabelGameHistoryPressed@2x.png",
+    "labelInOutHistoryNormal": "/assets/imgs/eng/btnLabelInoutHistoryNormal@2x.png",
+    "labelInOutHistoryPressed": "/assets/imgs/eng/btnLabelInoutHistoryPressed@2x.png",
+    "GAME HISTORY" : "HISTÓRICO DO JOGO",
+    "IN/OUT HISTORY" : "HISTORIA DE ENTRADA / SALIDA",
+    "gameRecord" : {
+      "game" : "JUEGO",
+      "dateTime" : "FECHA Y HORA",
+      "bet" : "APUESTA" ,
+      "win" : "GANAR" ,
+      "beginMoney" : "COMENZAR LA CANTIDAD",
+      "endMoney" : "CANTIDAD FINAL"
+    } ,
+
+    "inoutRecord" : {
+      "no" : "NO.",
+      "dateTime" : "FECHA Y HORA",
+      "before" : "ANTES DE",
+      "inout" : "ENTRADA / SALIDA",
+      "after" : "DESPUÉS"
+    }
+  }
+}
