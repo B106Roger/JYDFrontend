@@ -4,11 +4,11 @@
 
 ### 請將遊戲icon依照[Game List](https://dev-slot-mario.gd888.cc/gamelab/gamelist) 提供之DisplayName命名為
 ```jsx=
-`pic_game_iconS_${DisplayName}_${語系名稱}.png`  // normal game圖示
-`pic_game_iconL_${DisplayName}_${語系名稱}.png`  // hot    game圖示
+`pic_game_iconS_${DisplayName}.png`  // normal game圖示
+`pic_game_iconL_${DisplayName}.png`  // hot    game圖示
 ```
 
-### 例如: 在 GameList 提供的其中一個遊戲資訊中
+### 以足球狂熱遊戲為例: 在 GameList 提供的遊戲資訊中
 ```json
 {
     "DisplayName": "soccerfever",
@@ -21,8 +21,8 @@
 ```
 **足球狂熱**這個遊戲的icon名稱在**英文語系**下就必須命名為
 ```jsx=
-`pic_game_iconS_soccerfever_en.png`  // normal game圖示
-`pic_game_iconL_soccerfever_en.png`  // hot    game圖示
+`pic_game_iconS_soccerfever.png`  // normal game圖示
+`pic_game_iconL_soccerfever.png`  // hot    game圖示
 ```
 
 
@@ -33,20 +33,20 @@
     JYDFrontend/
         assets/
             imgs/
-                en/
-                es/
-                pt/
-                zh-cn/
+                eng/
+                esp/
+                por/
+                sch/
 
-請將遊戲icon放置到各語系目錄下(en、es、pt、zh-cn)
+請將遊戲icon放置到各語系目錄下(eng, esp, por, sch)
 <span style="color:red">請記住在不同語系資料夾下的遊戲icon，要替換成對的語系名稱。</span>
 
 
 ### **語系名稱** 直接用語系目錄名稱替換，如:
-     pic_game_iconS_soccerfever_en.png           // 放在en 資料夾下
-     pic_game_iconS_soccerfever_es.png           // 放在es 資料夾下
-     pic_game_iconS_soccerfever_pt.png           // 放在pt 資料夾下
-     pic_game_iconS_soccerfever_zh-cn.png        // 放在zh-cn 資料夾下
+     pic_game_iconS_soccerfever.png           // 放在eng 資料夾下
+     pic_game_iconS_soccerfever.png           // 放在esp 資料夾下
+     pic_game_iconS_soccerfever.png           // 放在por 資料夾下
+     pic_game_iconS_soccerfever.png           // 放在sch 資料夾下
 ----
 
 # Step 3 - 將遊戲script 新增至遊戲目錄中
