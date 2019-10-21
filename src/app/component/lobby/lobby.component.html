@@ -119,7 +119,10 @@
     <!-- 登出元件 -->
     <div id="logout-box" class="blurContainer" hidden>
       <div class="confirm-box">
-
+        <picture>
+          <source [srcset]="'/assets/imgs/' + picLang + '/picLogoutFrame@2x.png.webp'">
+          <img class="logout-msg" [src]="'/assets/imgs/' + picLang + '/picLogoutFrame@2x.png'" alt="logout-msg">
+        </picture>
         <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
             (mousedown) ="setClosePressed($event)"
             (touchend)  ="setCloseNormal($event)"
@@ -129,9 +132,9 @@
             (click)     ="closeLogoutBox()"
         >
 
-        <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div>
+        <!-- <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div> -->
 
-        <div class="img-btn d-flex justify-content-around">
+        <div class="btn-set d-flex justify-content-around">
           <img class="yes" draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
             (mousedown) ="setYesPressed($event)"
             (touchend)  ="setYesNormal($event)"

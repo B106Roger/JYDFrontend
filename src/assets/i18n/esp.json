@@ -47,16 +47,6 @@
     "noImgPressed" :  "/assets/imgs/esp/btnLogoutNoPressed@2x.png"
   },
 
-  "download-app" : {
-    "title" : "DOWNLOAD APP",
-    "titleImg": "/assets/imgs/esp/picTitleDownloadTxt@2x.png",
-    "label": "/assets/imgs/esp/btnLabelDownloadPressed@2x.png",
-    "download" : "DOWNLOAD",
-    "TREASURE ISLAND" : "TREASURE ISLAND",
-    "downloadImgNormal" : "/assets/imgs/esp/btnDownloadNormal@2x.png",
-    "downloadImgPressed" : "/assets/imgs/esp/btnDownloadPressed@2x.png"
-  },
-
   "contact" : {
     "title" : "CONTÁCTENOS",
     "titleImg": "/assets/imgs/esp/picTitleContactTxt@2x.png",

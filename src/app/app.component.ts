@@ -31,7 +31,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     localStorage.setItem('lang', this.translate.currentLang);
     translate.setDefaultLang(defaultLang);
-    console.log(translate.currentLang);
   }
 
   ngOnInit(): void {

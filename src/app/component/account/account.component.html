@@ -16,12 +16,10 @@
 
 
   <div class="main-content">
+    <!-- 頁籤 -->
+    <img class="short-label" [srcset]="'account.label' | translate" />
         <form id="resetPasswordForm" action="#">
-          <!-- 頁籤 -->
-          <picture class="short-label">
-            <source class="short-label" [srcset]="'account.label' | translate" >
-            <img class="short-label" [srcset]="'account.label' | translate" />
-          </picture>
+
           <div *ngIf="false" class="d-flex text-center justify-content-start" style="margin-left:2vw;">
               <span class="btn-bg btn-label">{{'account.RESET PASSWORD' | translate }}</span>
           </div>
