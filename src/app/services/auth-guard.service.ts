@@ -104,7 +104,7 @@ export class AuthGuardService implements CanActivate {
     this.UserID = null;
     this.Password = null;
     this.token = null;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   decrypt( text ) {

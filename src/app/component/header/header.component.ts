@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from './../../services/fetch.service';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -9,16 +10,14 @@ import { FetchService } from './../../services/fetch.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-
-  @ViewChild('musicEle', {static: false})
-  musicEle: ElementRef;
   music = false;
   sound = false;
   money: number;
   UserID = '';
   showPopper = false;
   userAmountSubscription = null;
-  constructor(public auth: AuthGuardService, public fetch: FetchService) { }
+  routerUrlSubscription = null;
+  constructor(public auth: AuthGuardService, public fetch: FetchService, public route: Router) { }
 
   ngOnInit() {
     this.music = (localStorage.getItem('music') === 'on' || null ? true : false);
@@ -28,6 +27,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.userAmountSubscription = this.fetch.userAmount$.subscribe(userAmount => {
       sessionStorage.setItem('amount', userAmount);
       this.money = parseFloat(userAmount);
+    });
+    this.routerUrlSubscription = this.route.events.subscribe((e: RouterEvent) => {
+      if (e instanceof NavigationEnd) {
+        const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
+        if (this.music === false || e.url.match('/game/') || e.url === '/' || e.url === '/?utm_source=pwa_app') {
+          musicElement.pause();
+          musicElement.currentTime = 0;
+        }
+      }
     });
   }
 
@@ -50,14 +58,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setMusic() {
     const setValue = this.music === true ? 'on' : 'off';
+    const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
     localStorage.setItem('music', setValue);
     // set music physically
     if (this.music) {
-      this.musicEle.nativeElement.play().catch((err) => {
+      musicElement.play().catch((err) => {
         this.playAfterInteract();
       });
     } else {
-      this.musicEle.nativeElement.pause();
+      musicElement.pause();
     }
   }
 
@@ -84,7 +93,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   playAfterInteract() {
-    const ele = document.getElementById('musicEle') as HTMLAudioElement;
+    const ele = document.querySelector('#music_lobbybg') as HTMLAudioElement;
     document.addEventListener('mousedown', interact);
     document.addEventListener('touchend', interact);
 
