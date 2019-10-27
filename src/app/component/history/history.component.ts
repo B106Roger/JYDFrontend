@@ -43,7 +43,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         this.startDate = snapshot.startDate;
         this.endDate = snapshot.endDate;
         this.currentPage = snapshot.currentPage;
-        if (this.selectTab === 1) {
+        if (this.selectTab === 0) {
           setTimeout(() => {
             document.querySelector('#tab-00').setAttribute('srcset', this.translate.instant('history.labelGameHistoryPressed'));
             document.querySelector('#tab-01').setAttribute('srcset', this.translate.instant('history.labelInOutHistoryNormal'));
@@ -52,14 +52,14 @@ export class HistoryComponent implements OnInit, OnDestroy {
           setTimeout( () => {
             document.querySelector('#tab-00').setAttribute('srcset', this.translate.instant('history.labelGameHistoryNormal'));
             document.querySelector('#tab-01').setAttribute('srcset', this.translate.instant('history.labelInOutHistoryPressed'));
-          } ,0);
+          }, 0);
         }
         this.gameRecrods = snapshot.gameRecrods;
         this.gameRecordTotalPage = snapshot.gameRecordTotalPage;
         this.ioRecrods = snapshot.ioRecrods;
         this.ioRecordTotalPage = snapshot.ioRecordTotalPage;
       } else {
-        this.selectTab = 1;
+        this.selectTab = 0;
         this.startDate = initStartDate;
         this.endDate = initEndDate;
         this.currentPage = 0;

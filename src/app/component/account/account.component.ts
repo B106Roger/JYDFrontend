@@ -48,6 +48,11 @@ export class AccountComponent implements OnInit {
   }
 
   submitClicked() {
+    if (this.password.value.length === 0 || this.confirm.value.length === 0) {
+      window.alert('Form doesn\'t finish');
+      return;
+    }
+
     if (this.password.value === this.confirm.value) {
       this.fetch.fetchChangePassword( this.password.value );
     } else {

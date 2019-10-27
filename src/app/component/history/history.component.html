@@ -56,8 +56,8 @@
         />
       </div>
 
-      <app-game-records [gameRecrods]="gameRecrods" [hidden]="!selectTab"></app-game-records>
-      <app-io-records [ioRecrods]="ioRecrods" [hidden]="selectTab"></app-io-records>
+      <app-game-records [gameRecrods]="gameRecrods" [hidden]="selectTab"></app-game-records>
+      <app-io-records [ioRecrods]="ioRecrods" [hidden]="!selectTab"></app-io-records>
 
       <div class="pageSelect-container">
         <img class="first-page" [srcset]="'/assets/imgs/btnFirstPageNormal@2x.png'"
