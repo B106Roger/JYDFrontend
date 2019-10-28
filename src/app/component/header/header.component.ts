@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
         if (this.music === false || e.url.match('/game/') || e.url === '/' || e.url === '/?utm_source=pwa_app') {
           musicElement.pause();
+
           musicElement.currentTime = 0;
         }
       }
