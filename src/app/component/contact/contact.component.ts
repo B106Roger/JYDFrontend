@@ -12,4 +12,14 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
+  btnSound(soundName: string) {
+    if (window['sound'] === true) {
+      const sound = document.querySelector('#' + soundName) as HTMLAudioElement;
+      sound.currentTime = 0;
+      sound.play().catch(err => {
+        console.log(err);
+      });
+    }
+  }
+
 }

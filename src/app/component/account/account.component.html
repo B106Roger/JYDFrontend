@@ -7,7 +7,8 @@
         <img class="titleImg" [srcset]="'account.titleImg' | translate" />
       </picture>
       <a routerLink="/lobby" >
-        <img class="close-button" src="/assets/imgs/btnSettingLeaveNormal.png">
+        <img class="close-button" (click)="btnSound('sound_pressbtn05')"
+        src="/assets/imgs/btnSettingLeaveNormal.png">
       </a>
     </div>
   </div>
@@ -46,7 +47,7 @@
             <label for="submitBtn" class="d-inline-block">
               <input hidden id="submitBtn" type="button" value="SAVE">
               <img draggable="false" [srcset]="'account.saveImgNormal' | translate" class="form-btn-base"
-                (click)     ="submitClicked()"
+                (click)     ="btnSound('sound_pressbtn04');submitClicked();"
                 (mousedown) ="setSavePressed($event)"
                 (touchstart)="setSavePressed($event)"
                 (mouseup)   ="setSaveNormal($event)"
@@ -58,7 +59,7 @@
             <label for="resetBtn" class="d-inline-block">
               <input hidden id="resetBtn" type="button" value="CANCEL">
               <img draggable="false" [srcset]="'account.cancelImgNormal' | translate" class="form-btn-base"
-                (click)     ="resetClicked()"
+                (click)     ="btnSound('sound_pressbtn05');resetClicked();"
                 (mousedown) ="setCancelPressed($event)"
                 (touchstart)="setCancelPressed($event)"
                 (mouseup)   ="setCancelNormal($event)"

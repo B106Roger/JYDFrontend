@@ -59,4 +59,14 @@ export class AccountComponent implements OnInit {
       window.alert('Not Match Password');
     }
   }
+
+  btnSound(soundName: string) {
+    if (window['sound'] === true) {
+      const sound = document.querySelector('#' + soundName) as HTMLAudioElement;
+      sound.currentTime = 0;
+      sound.play().catch(err => {
+        console.log(err);
+      });
+    }
+  }
 }

@@ -7,13 +7,14 @@
         <img class="titleImg" [srcset]="'contact.titleImg' | translate" />
       </picture>
       <a routerLink="/lobby" >
-        <img class="close-button" srcset="/assets/imgs/btnSettingLeaveNormal.png">
+        <img class="close-button" (click)="btnSound('sound_pressbtn05')"
+        srcset="/assets/imgs/btnSettingLeaveNormal.png">
       </a>
     </div>
   </div>
 
   <div class="main-content">
-  <!-- 頁籤 -->
+  <!-- 頝籤 -->
   <img class="long-label" [srcset]="'contact.label' | translate" />
   <div *ngIf="false" class="d-flex text-center justify-content-center">
       <span class="btn-bg btn-label-long">{{'contact.REACH US WITH FOLLOWING CONTACT DETAILS' | translate}}</span>

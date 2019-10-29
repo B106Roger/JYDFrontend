@@ -6,14 +6,15 @@
       <img class="titleImg" [srcset]="'history.titleImg' | translate" />
     </picture>
     <a routerLink="/lobby">
-      <img class="close-button" src="/assets/imgs/btnSettingLeaveNormal.png">
+      <img class="close-button" (click)="btnSound('sound_pressbtn05')"
+      src="/assets/imgs/btnSettingLeaveNormal.png">
     </a>
   </div>
 
   <div class="main-content">
     <div class="d-flex justify-content-around" style="position: relative">
-        <img class="short-label" id="tab-00" (click)="tabChange(0)" [srcset]="'history.labelGameHistoryPressed' | translate" />
-        <img class="short-label" id="tab-01" (click)="tabChange(1)" [srcset]="'history.labelInOutHistoryNormal' | translate" />
+        <img class="short-label" id="tab-00" (click)="btnSound('sound_pressbtn02');tabChange(0)" [srcset]="'history.labelGameHistoryPressed' | translate" />
+        <img class="short-label" id="tab-01" (click)="btnSound('sound_pressbtn02');tabChange(1)" [srcset]="'history.labelInOutHistoryNormal' | translate" />
     </div>
 
     <!-- 資料主體 -->
@@ -30,6 +31,7 @@
               (input) = "setDatepickerNormal('datepicker-begin')"
               (input) = "startDateChange($event)"
               (blur)  = "setDatepickerNormal('datepicker-begin')"
+              (click)="btnSound('sound_pressbtn03')"
             >
         </span>
 
@@ -43,6 +45,7 @@
             (input) = "setDatepickerNormal('datepicker-end')"
             (input) = "endDateChange($event)"
             (blur)  = "setDatepickerNormal('datepicker-end')"
+            (click)="btnSound('sound_pressbtn03')"
           >
         </span>
 
@@ -52,7 +55,7 @@
           (touchend)   ="setGoNormal($event)"
           (mouseup)    ="setGoNormal($event)"
           (mouseleave)="setGoNormal($event)"
-          (click) = "sendQuery()"
+          (click) = "sendQuery();btnSound('sound_pressbtn04');"
         />
       </div>
 
@@ -66,7 +69,7 @@
           (touchend)   ="setFirstPageBtnNormal($event)"
           (mouseup)    ="setFirstPageBtnNormal($event)"
           (mouseleave) ="setFirstPageBtnNormal($event)"
-          (click)      ="setPage( 0 )"
+          (click)      ="setPage( 0 );btnSound('sound_pressbtn03');"
         />
         <img class="prev-page" [srcset]="'/assets/imgs/btnPreviousPageNormal@2x.png'"
           (mousedown)  ="setPrevPageBtnPressed($event)"
@@ -74,7 +77,7 @@
           (touchend)   ="setPrevPageBtnNormal($event)"
           (mouseup)    ="setPrevPageBtnNormal($event)"
           (mouseleave) ="setPrevPageBtnNormal($event)"
-          (click)      ="changePage( -1 )"
+          (click)      ="changePage( -1 );btnSound('sound_pressbtn03');"
         />
         <span class="page-frame">{{ currentPage+1 }}</span>
         <img class="next-page" [srcset]="'/assets/imgs/btnNextPageNormal@2x.png'"
@@ -83,7 +86,7 @@
           (touchend)   ="setNextPageBtnNormal($event)"
           (mouseup)    ="setNextPageBtnNormal($event)"
           (mouseleave) ="setNextPageBtnNormal($event)"
-          (click)      ="changePage( 1 )"
+          (click)      ="changePage( 1 );btnSound('sound_pressbtn03');"
         />
         <img class="final-page" [srcset]="'/assets/imgs/btnLastPageNormal@2x.png'"
           (mousedown)  ="setFinalPageBtnPressed($event)"
@@ -91,7 +94,7 @@
           (touchend)   ="setFinalPageBtnNormal($event)"
           (mouseup)    ="setFinalPageBtnNormal($event)"
           (mouseleave) ="setFinalPageBtnNormal($event)"
-          (click)      ="setPage( selectTab ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 )"
+          (click)      ="setPage( selectTab ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 );btnSound('sound_pressbtn03');"
         />
       </div>
 

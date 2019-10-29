@@ -210,7 +210,17 @@ export class HistoryComponent implements OnInit, OnDestroy {
           this.ioRecrods = responseJson.recordList;
           this.ioRecordTotalPage = responseJson.info.totalPages;
         })
-    ])
+    ]);
+  }
+
+  btnSound(soundName: string) {
+    if (window['sound'] === true) {
+      const sound = document.querySelector('#' + soundName) as HTMLAudioElement;
+      sound.currentTime = 0;
+      sound.play().catch(err => {
+        console.log(err);
+      });
+    }
   }
 
 }

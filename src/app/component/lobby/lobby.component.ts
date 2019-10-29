@@ -95,7 +95,7 @@ export class LobbyComponent implements OnInit, AfterViewInit {
       e.preventDefault();
     }
     this.menuShow = !this.menuShow;
-    this.btnSound('sound_pressbtn03');
+    this.btnSound('sound_pressbtn02');
   }
 
   setPicSrc(e: Event, image: string, trans: boolean = true) {
