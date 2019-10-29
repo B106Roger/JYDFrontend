@@ -9,6 +9,7 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+// tslint:disable: no-string-literal
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   music = false;
   sound = false;
@@ -24,45 +25,51 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.sound = (localStorage.getItem('sound') === 'on' ? true : false);
     this.setUserID();
     this.setUserAmount();
+    // 訂閱使用者金錢
     this.userAmountSubscription = this.fetch.userAmount$.subscribe(userAmount => {
       sessionStorage.setItem('amount', userAmount);
       this.money = parseFloat(userAmount);
     });
+    // 訂閱當前路由
     this.routerUrlSubscription = this.route.events.subscribe((e: RouterEvent) => {
       if (e instanceof NavigationEnd) {
         const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
         if (this.music === false || e.url.match('/game/') || e.url === '/' || e.url === '/?utm_source=pwa_app') {
           musicElement.pause();
-
           musicElement.currentTime = 0;
         }
       }
     });
+
+    this.setMusic(this.music);
+    this.setSound(this.sound);
   }
 
   ngOnDestroy() {
-    this.userAmountSubscription.unsubscribe();
+    if (this.userAmountSubscription !== null) {
+      this.userAmountSubscription.unsubscribe();
+    }
   }
 
   ngAfterViewInit() {
-    this.setMusic();
-    this.setSound();
   }
 
   showLogoutBox() {
+    // 隱藏popper 跟背景顏色
+    this.showPopper = false;
+    document.getElementById('blurItem').hidden = true;
+
     document.getElementById('logout-box').hidden = false;
   }
 
-  showLeaveBox() {
-    document.getElementById('leave-box').hidden = false;
-  }
-
-  setMusic() {
-    const setValue = this.music === true ? 'on' : 'off';
-    const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
+  setMusic(musicVal: boolean) {
+    const setValue = musicVal === true ? 'on' : 'off';
+    this.music = musicVal;
     localStorage.setItem('music', setValue);
+
+    const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
     // set music physically
-    if (this.music) {
+    if (musicVal) {
       musicElement.play().catch((err) => {
         this.playAfterInteract();
       });
@@ -75,22 +82,25 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
-    this.music = !this.music;
-    this.setMusic();
+    this.setMusic(!this.music);
+    this.btnSound('sound_pressbtn03');
   }
 
-  setSound() {
-    const setValue = this.sound === true ? 'on' : 'off';
+  setSound(soundVal: boolean) {
+    const setValue = soundVal === true ? 'on' : 'off';
+    this.sound = soundVal;
     localStorage.setItem('sound', setValue);
+
     // set music physically
+    window['sound'] = soundVal;
   }
 
   toggleSound(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
-    this.sound = !this.sound;
-    this.setSound();
+    this.setSound(!this.sound);
+    this.btnSound('sound_pressbtn03');
   }
 
   playAfterInteract() {
@@ -123,21 +133,22 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
-    if (this.showPopper) {
-      this.closePopper();
-    } else {
-      this.openPopper();
+    this.setPopperVisible(!this.showPopper);
+    this.btnSound('sound_pressbtn03');
+  }
+
+  setPopperVisible(visible: boolean) {
+    this.showPopper = visible;
+    document.getElementById('blurItem').hidden = !this.showPopper;
+  }
+
+  btnSound(soundName: string) {
+    if (window['sound'] === true) {
+      const sound = document.querySelector('#' + soundName) as HTMLAudioElement;
+      sound.currentTime = 0;
+      sound.play().catch(err => {
+        console.log(err);
+      });
     }
-  }
-  closePopper() {
-    this.showPopper = false;
-    document.getElementById('blurItem').hidden = true;
-  }
-  openPopper() {
-    this.showPopper = true;
-    document.getElementById('blurItem').hidden = false;
-  }
-  getShowPopper() {
-    return this.showPopper;
   }
 }

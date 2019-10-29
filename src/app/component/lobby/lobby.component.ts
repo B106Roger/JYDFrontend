@@ -69,17 +69,12 @@ export class LobbyComponent implements OnInit, AfterViewInit {
         this.processedGameList(gameList);
       });
     }
-
-
   }
 
   ngAfterViewInit() {
     setTimeout(() => { $('.carousel').carousel('next'); }, 1000);
   }
 
-  getMenuSelect() {
-    return this.menuSelected;
-  }
   setMenuSelect(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
@@ -92,54 +87,25 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
     this.menuSelected = this.menuList.filter(item => item.value === target.dataset.gametype)[0];
     this.menuShow = false;
+
+    this.btnSound('sound_pressbtn03');
   }
   toggleMenuOnShow(e: Event) {
     if (e.type === 'touchend') {
       e.preventDefault();
     }
-    if (this.menuShow) {
-      this.closeMenu();
+    this.menuShow = !this.menuShow;
+    this.btnSound('sound_pressbtn03');
+  }
+
+  setPicSrc(e: Event, image: string, trans: boolean = true) {
+    const self = e.currentTarget as HTMLElement;
+    if (trans) {
+      self.setAttribute('src' , this.translate.instant(image));
     } else {
-      this.openMenu();
+      self.setAttribute('src' , image);
     }
-  }
 
-  closeMenu() {
-    this.menuShow = false;
-  }
-  openMenu() {
-    this.menuShow = true;
-  }
-
-
-  setYesNormal(e) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('lobby.yesImgNormal'));
-  }
-
-  setNoNormal(e) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('lobby.noImgNormal'));
-  }
-
-  setYesPressed(e) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('lobby.yesImgPressed'));
-  }
-
-  setNoPressed(e) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , this.translate.instant('lobby.noImgPressed'));
-  }
-
-  setCloseNormal(e) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , '/assets/imgs/btnLogoutLeaveNormal.png');
-  }
-
-  setClosePressed(e) {
-    const self = e.currentTarget as HTMLElement;
-    self.setAttribute('src' , '/assets/imgs/btnLogoutLeavePressed.png');
   }
 
   closeLogoutBox() {
@@ -235,5 +201,15 @@ export class LobbyComponent implements OnInit, AfterViewInit {
         gameImgUrl: gameImgUrl,
       });
     });
+  }
+
+  btnSound(soundName: string) {
+    if (window['sound'] === true) {
+      const sound = document.querySelector('#' + soundName) as HTMLAudioElement;
+      sound.currentTime = 0;
+      sound.play().catch(err => {
+        console.log(err);
+      });
+    }
   }
 }

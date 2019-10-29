@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
+
+// tslint:disable: no-string-literal
 export class NavBarComponent implements OnInit {
 
   constructor(public translate: TranslateService, private route: Router) {  }
@@ -37,23 +39,31 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  setPicture(e: Event, srcURL: string) {
-    const target = e.currentTarget as HTMLElement;
-    const img = target.querySelector('img');
-    img.src = this.translate.instant(srcURL);
-  }
   navigateTo(e: Event) {
     // 在touchend中 preventDefault 就不會觸發mousedown Event
     if (e.type === 'touchend') {
       e.preventDefault();
     }
+    // 播按鈕音樂
+    this.btnSound('sound_pressbtn01');
 
+    // 跳轉路由
     const target = e.target as HTMLElement;
     if (target.nodeName === 'BUTTON') {
       this.route.navigate([target.dataset.href]);
     } else if (target.nodeName === 'IMG') {
       const actualTarget = target.parentElement  as HTMLElement;
       this.route.navigate([actualTarget.dataset.href]);
+    }
+  }
+
+  btnSound(soundName: string) {
+    if (window['sound'] === true) {
+      const sound = document.querySelector('#' + soundName) as HTMLAudioElement;
+      sound.currentTime = 0;
+      sound.play().catch(err => {
+        console.log(err);
+      });
     }
   }
 }

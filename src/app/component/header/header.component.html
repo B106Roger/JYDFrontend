@@ -113,7 +113,7 @@
           <img src="/assets/imgs/segSettingMenu@2x.png" style="width: 92%;" draggable="false" alt="separateLine">
         </picture>
       </div>
-      <div class="row-flex setting-item" (click)="closePopper();showLogoutBox()" >
+      <div class="row-flex setting-item" (click)="showLogoutBox();btnSound('sound_pressbtn03');" >
         <div  class="column-flex no-margin no-padding">
           {{'lobby.setting.logout' | translate }}
         </div>

@@ -6,12 +6,13 @@
   <div class="d-flex" class="menu-bg" data-type="href"
   (touchend)="navigateTo($event)"
   (mousedown)="navigateTo($event)" >
-    <button *ngFor="let option of menuList"
-     class="menu-button" [attr.data-href]="option.nextUrl" >
-      <picture [attr.data-href]="option.nextUrl">
-        <source [srcset]="(option.picture | translate) + '.webp'" type="image/webp">
-        <img class="option" [src]="option.picture | translate" draggable="false" [alt]="option.picture">
-      </picture>
-    </button>
+    <ng-container *ngFor="let option of menuList">
+      <button data-src="/assets/audio/sound_pressbtn01.mp3" class="menu-button" [attr.data-href]="option.nextUrl" >
+        <picture [attr.data-href]="option.nextUrl">
+          <source [srcset]="(option.picture | translate) + '.webp'" type="image/webp">
+          <img class="option" [src]="option.picture | translate" draggable="false" [alt]="option.picture">
+        </picture>
+      </button>
+    </ng-container>
   </div>
 </div>

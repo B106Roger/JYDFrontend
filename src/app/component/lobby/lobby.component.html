@@ -19,19 +19,25 @@
 
 
     <div class="game-container">
-      <!-- <div id="menu-seperater"></div> -->
       <!-- 遊戲種類選擇元件 -->
       <div class="menu-container">
-          <button id="game-filter-bg" class="row-flex" (touchend)="toggleMenuOnShow($event)" (mousedown)="toggleMenuOnShow($event)" (blur)="closeMenu()">
+          <button id="game-filter-bg" class="row-flex"
+           (touchend)="toggleMenuOnShow($event)"
+           (mousedown)="toggleMenuOnShow($event)"
+           (blur)="this.menuShow = false;this.btnSound('sound_pressbtn03');">
             <picture>
               <source srcset="/assets/imgs/picGameMenuBg@2x.png.webp" type="image/webp">
               <img id="gamefilter-bg" src="/assets/imgs/picGameMenuBg@2x.png" alt="">
             </picture>
             <div>
               <span class="basic-text-style" id="menu-text" >{{'lobby.' + menuSelected.value | translate }}</span>
-              <picture>
-                <source [srcset]="menuShow === false ? '/assets/imgs/iconGameMenuDown.png.webp' : '/assets/imgs/iconGameMenuUp.png.webp'" type="image/webp">
-                <img [src]="menuShow === false ? '/assets/imgs/iconGameMenuDown.png' : '/assets/imgs/iconGameMenuUp.png'" draggable="false">
+              <picture [style.display]="menuShow === true ? 'none' : 'block'">
+                <source srcset="/assets/imgs/iconGameMenuDown.png.webp" type="image/webp">
+                <img src="/assets/imgs/iconGameMenuDown.png.webp" draggable="false">
+              </picture>
+              <picture [style.display]="menuShow === false ? 'none' : 'block'">
+                <source srcset="/assets/imgs/iconGameMenuUp.png.webp" type="image/webp">
+                <img src="/assets/imgs/iconGameMenuUp.png.webp" draggable="false">
               </picture>
             </div>
           </button>
@@ -50,7 +56,7 @@
 
 
       <!-- 遊戲顯示元件  -->
-      <div id="normal-game-container" (mousedown)="startScroll($event)">
+      <div id="normal-game-container"(touchstart)="btnSound('sound_pressbtn03');" (mousedown)="startScroll($event);btnSound('sound_pressbtn05');">
           <div class="gameSeparate"></div>
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value: true )">
             <div class="hot-game-frame" *ngIf="item !== undefined && item !== null" [routerLink]="['/game' ,item.GameType ,item.DisplayName ]" >
@@ -69,7 +75,7 @@
             </div>
           </ng-container>
 
-
+          <!--  -->
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value)">
             <div *ngIf="item !== undefined && item !== null" class="normal-game-frame" [routerLink]="['/game' ,item.GameType ,item.DisplayName]" >
               <picture>
@@ -89,9 +95,10 @@
       <div class="carousel-container">
           <div id="carouselExampleIndicators" class="carousel slide"
           data-ride="carousel"  data-interval="false" data-wrap="true" data-pause="hover">
-            <ol class="carousel-indicators" >
+            <ol class="carousel-indicators">
               <ng-container *ngFor="let item of carasoulImages;let index = index;let first = first">
-                <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="index" [ngClass]="{'active': first}"></li>
+                <li data-target="#carouselExampleIndicators" (click)="btnSound('sound_pressbtn03')"
+                [attr.data-slide-to]="index" [ngClass]="{'active': first}"></li>
               </ng-container>
             </ol>
             <div class="carousel-inner" >
@@ -124,32 +131,29 @@
           <img class="logout-msg" [src]="'/assets/imgs/' + picLang + '/picLogoutFrame@2x.png'" alt="logout-msg">
         </picture>
         <img class="leaveBtn" draggable="false" src="/assets/imgs/btnLogoutLeaveNormal.png" alt="NO"
-            (mousedown) ="setClosePressed($event)"
-            (touchend)  ="setCloseNormal($event)"
-            (touchstart)="setClosePressed($event)"
-            (mouseup)   ="setCloseNormal($event)"
-            (mouseleave)="setCloseNormal($event)"
-            (click)     ="closeLogoutBox()"
+            (mousedown) ="setPicSrc($event,'/assets/imgs/btnLogoutLeavePressed.png',false)"
+            (touchend)  ="setPicSrc($event,'/assets/imgs/btnLogoutLeaveNormal.png',false)"
+            (touchstart)="setPicSrc($event,'/assets/imgs/btnLogoutLeavePressed.png',false)"
+            (mouseup)   ="setPicSrc($event,'/assets/imgs/btnLogoutLeaveNormal.png',false)"
+            (mouseleave)="setPicSrc($event,'/assets/imgs/btnLogoutLeaveNormal.png',false)"
+            (click)     ="closeLogoutBox();btnSound('sound_pressbtn05');"
         >
-
-        <!-- <div class="text-center text-message">{{ 'lobby.logoutMessage' | translate }}</div> -->
-
         <div class="btn-set d-flex justify-content-around">
           <img class="yes" draggable="false" [src]="'lobby.yesImgNormal' | translate " alt="YES"
-            (mousedown) ="setYesPressed($event)"
-            (touchend)  ="setYesNormal($event)"
-            (touchstart)="setYesPressed($event)"
-            (mouseup)   ="setYesNormal($event)"
-            (mouseleave)="setYesNormal($event)"
-            (click)     ="logout()"
+            (mousedown) ="setPicSrc($event,'lobby.yesImgPressed')"
+            (touchend)  ="setPicSrc($event,'lobby.yesImgNormal')"
+            (touchstart)="setPicSrc($event,'lobby.yesImgPressed')"
+            (mouseup)   ="setPicSrc($event,'lobby.yesImgNormal')"
+            (mouseleave)="setPicSrc($event,'lobby.yesImgNormal')"
+            (click)     ="btnSound('sound_pressbtn04');logout()"
           >
           <img class="no" draggable="false" [src]=" 'lobby.noImgNormal' | translate " alt="NO"
-            (mousedown) ="setNoPressed($event)"
-            (touchend)  ="setNoNormal($event)"
-            (touchstart)="setNoPressed($event)"
-            (mouseup)   ="setNoNormal($event)"
-            (mouseleave)="setNoNormal($event)"
-            (click)     ="closeLogoutBox()"
+            (mousedown) ="setPicSrc($event,'lobby.noImgPressed')"
+            (touchend)  ="setPicSrc($event,'lobby.noImgNormal')"
+            (touchstart)="setPicSrc($event,'lobby.noImgPressed')"
+            (mouseup)   ="setPicSrc($event,'lobby.noImgNormal')"
+            (mouseleave)="setPicSrc($event,'lobby.noImgNormal')"
+            (click)     ="closeLogoutBox();btnSound('sound_pressbtn05');"
             >
         </div>
 
