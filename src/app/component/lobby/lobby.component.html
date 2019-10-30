@@ -56,10 +56,10 @@
 
 
       <!-- 遊戲顯示元件  -->
-      <div id="normal-game-container"(touchstart)="btnSound('sound_pressbtn03');" (mousedown)="startScroll($event);btnSound('sound_pressbtn05');">
+      <div id="normal-game-container" (mousedown)="startScroll($event)">
           <div class="gameSeparate"></div>
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value: true )">
-            <div class="hot-game-frame" *ngIf="item !== undefined && item !== null" [routerLink]="['/game' ,item.GameType ,item.DisplayName ]" >
+            <div class="hot-game-frame" *ngIf="item !== undefined && item !== null" (click)="btnSound('sound_pressbtn06');" [routerLink]="['/game' ,item.GameType ,item.DisplayName ]" >
               <picture>
                 <source [srcset]="('lobby.hotGameTag' | translate)+'.webp'" type="image/webp">
                 <img id="hot-Tag" [src]="'lobby.hotGameTag' | translate" draggable="false" alt="hotGameTag">
@@ -77,7 +77,7 @@
 
           <!--  -->
           <ng-container *ngFor="let item of (images | gamePipe: menuSelected.value)">
-            <div *ngIf="item !== undefined && item !== null" class="normal-game-frame" [routerLink]="['/game' ,item.GameType ,item.DisplayName]" >
+            <div *ngIf="item !== undefined && item !== null" class="normal-game-frame" (click)="btnSound('sound_pressbtn06');" [routerLink]="['/game' ,item.GameType ,item.DisplayName]" >
               <picture>
                 <source [srcset]="item.gameImgUrl + '.webp'" type="image/webp">
                 <img class="normal-pic" [src]="item.gameImgUrl" draggable="false" [alt]="item.DisplayName">

@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   UserID = '';
   showPopper = false;
   userAmountSubscription = null;
-  routerUrlSubscription = null;
   constructor(public auth: AuthGuardService, public fetch: FetchService, public route: Router) { }
 
   ngOnInit() {
@@ -29,16 +28,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.userAmountSubscription = this.fetch.userAmount$.subscribe(userAmount => {
       sessionStorage.setItem('amount', userAmount);
       this.money = parseFloat(userAmount);
-    });
-    // 訂閱當前路由
-    this.routerUrlSubscription = this.route.events.subscribe((e: RouterEvent) => {
-      if (e instanceof NavigationEnd) {
-        const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
-        if (this.music === false || e.url.match('/game/') || e.url === '/' || e.url === '/?utm_source=pwa_app') {
-          musicElement.pause();
-          musicElement.currentTime = 0;
-        }
-      }
     });
 
     this.setMusic(this.music);

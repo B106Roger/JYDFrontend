@@ -3,6 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import {TranslateService} from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { FetchService } from './services/fetch.service';
+import { Router, NavigationEnd, RouterEvent } from '@angular/router';
 // tslint:disable: no-string-literal
 
 declare var $: any;
@@ -16,9 +17,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   updates = false;
   displayHeader = 'none';
   userAgent = window.navigator.userAgent.toLowerCase();
+  routerUrlSubscription = null;
 
   constructor(public swupdate: SwUpdate, private translate: TranslateService,
-              private fetch: FetchService, private location: Location) {
+              private fetch: FetchService, private location: Location, private route: Router) {
     translate.addLangs(['eng', 'sch', 'esp', 'por']);
     const defaultLang = 'eng';
     // 先試local storage lang，再試browser lang，最後用default lang
@@ -78,13 +80,31 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.fetch.preloadLobbyLanguageImage(this.translate.currentLang);
     });
 
-
     // 使android 長按圖片不會出現框框
     document.body.addEventListener('contextmenu', e => {
       const targetEle = e.target as HTMLElement;
       if (targetEle.nodeName === 'IMG') {
         e.preventDefault();
         return false;
+      }
+    });
+
+    // 設定按鈕音效global 參數
+    const soundVal = localStorage.getItem('sound') === 'on' ? true : false;
+    window['sound'] = soundVal;
+
+    // 設定背景音樂
+    const musicVal = localStorage.getItem('music') === 'on' ? true : false;
+    const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
+    if (musicVal) { musicElement.play(); }
+
+    // 訂閱當前路由，如果是game, login 頁面就停掉背景音樂
+    this.routerUrlSubscription = this.route.events.subscribe((e: RouterEvent) => {
+      if (e instanceof NavigationEnd) {
+        if (e.url.match('/game/') || e.url === '/' || e.url === '/?utm_source=pwa_app') {
+          musicElement.pause();
+          musicElement.currentTime = 0;
+        }
       }
     });
   }
