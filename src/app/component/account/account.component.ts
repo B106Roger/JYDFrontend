@@ -68,7 +68,6 @@ export class AccountComponent implements OnInit {
   }
 
   submitClicked() {
-    debugger;
     if (this.password.value.length === 0 || this.confirm.value.length === 0) {
       this.errorPrompt = true;
       return;
