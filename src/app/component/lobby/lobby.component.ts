@@ -87,8 +87,6 @@ export class LobbyComponent implements OnInit, AfterViewInit {
 
     this.menuSelected = this.menuList.filter(item => item.value === target.dataset.gametype)[0];
     this.menuShow = false;
-
-    this.btnSound('sound_pressbtn03');
   }
   toggleMenuOnShow(e: Event) {
     if (e.type === 'touchend') {

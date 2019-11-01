@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthGuardService } from './../../services/auth-guard.service';
 import { FetchService } from './../../services/fetch.service';
-import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 // tslint:disable: no-string-literal
-export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   music = false;
   sound = false;
   money: number;
@@ -38,9 +38,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.userAmountSubscription !== null) {
       this.userAmountSubscription.unsubscribe();
     }
-  }
-
-  ngAfterViewInit() {
   }
 
   showLogoutBox() {
