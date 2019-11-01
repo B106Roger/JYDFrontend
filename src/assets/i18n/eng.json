@@ -70,7 +70,11 @@
     "saveImgNormal"    : "/assets/imgs/eng/btnAccountSaveNormal@2x.png",
     "cancelImgNormal"  : "/assets/imgs/eng/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/eng/btnAccountSavePressed@2x.png",
-    "cancelImgPressed" : "/assets/imgs/eng/btnAccountCancelPressed@2x.png"
+    "cancelImgPressed" : "/assets/imgs/eng/btnAccountCancelPressed@2x.png",
+    "successPrompt" : "/assets/imgs/eng/picMsgAccountSuccess@2x.png",
+    "errorPrompt"   : "/assets/imgs/eng/picMsgAccountError@2x.png",
+    "confirmBtnNormal": "/assets/imgs/eng/btnConfirmNormal@2x.png",
+    "confirmBtnPressed": "/assets/imgs/eng/btnConfirmPressed@2x.png"
   },
 
   "history" : {

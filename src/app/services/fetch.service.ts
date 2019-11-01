@@ -51,9 +51,9 @@ export class FetchService {
 
   fetchChangePassword( nextPassword ) {
     const formData = new FormData();
-    formData.append('oldPassword' , 'ggg3310');
-    formData.append('newPassword' , 'ggg3312');
-    fetch(`${Api.ChangePasswordApi}` , {
+    formData.append('oldPassword' , this.auth.getPassword());
+    formData.append('newPassword' , nextPassword);
+    return fetch(`${Api.ChangePasswordApi}` , {
         headers : new Headers({
           Authorization: `Bearer ${this.auth.getToken()}`,
           'Content-Type' : 'application/json'
@@ -64,13 +64,13 @@ export class FetchService {
           newPassword : nextPassword
         }),
         method : 'PUT'
-      })
-      .then( responser => {
-        window.alert('Success');
-      })
-      .catch(error => {
-        window.alert(error);
-    });
+      }).then( response => {
+        if (!response.ok) {
+          throw Error( response.statusText );
+        } else {
+          return response.json();
+        }
+      });
   }
 
   fetchAmount() {
@@ -88,7 +88,7 @@ export class FetchService {
       sessionStorage.setItem('amount', responseJSON.account.amount);
       this.userAmount$.next(responseJSON.account.amount);
       return responseJSON;
-    });
+    })
   }
 
   fetchGameList() {

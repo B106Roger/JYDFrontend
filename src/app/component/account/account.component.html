@@ -1,7 +1,7 @@
 <div class="root-base setting-bg">
   <div class="flex-container">
     <div class="row-flex no-margin no-padding setting-top">
-      <span *ngIf="false" class="title">{{ 'account.title' | translate }}</span>
+      <span *ngIf="false" class="title">ˊ'account.title' | translate }}</span>
       <picture class="titleImg">
         <source class="titleImg" [srcset]="'account.titleImg' | translate">
         <img class="titleImg" [srcset]="'account.titleImg' | translate" />
@@ -12,9 +12,6 @@
       </a>
     </div>
   </div>
-
-
-
 
   <div class="main-content">
     <!-- 頁籤 -->
@@ -47,7 +44,7 @@
             <label for="submitBtn" class="d-inline-block">
               <input hidden id="submitBtn" type="button" value="SAVE">
               <img draggable="false" [srcset]="'account.saveImgNormal' | translate" class="form-btn-base"
-                (click)     ="btnSound('sound_pressbtn04');submitClicked();"
+                (click)     ="btnSound('sound_pressbtn04'); submitClicked();"
                 (mousedown) ="setSavePressed($event)"
                 (touchstart)="setSavePressed($event)"
                 (mouseup)   ="setSaveNormal($event)"
@@ -59,7 +56,7 @@
             <label for="resetBtn" class="d-inline-block">
               <input hidden id="resetBtn" type="button" value="CANCEL">
               <img draggable="false" [srcset]="'account.cancelImgNormal' | translate" class="form-btn-base"
-                (click)     ="btnSound('sound_pressbtn05');resetClicked();"
+                (click)     ="btnSound('sound_pressbtn05'); resetClicked();"
                 (mousedown) ="setCancelPressed($event)"
                 (touchstart)="setCancelPressed($event)"
                 (mouseup)   ="setCancelNormal($event)"
@@ -70,4 +67,26 @@
         </div>
       </form>
     </div>
+    <div *ngIf="successPrompt || errorPrompt" id="alert" class="alert">
+        <div class="position-relative d-flex justify-content-center">
+          <img id="confirmBtn" [srcset] = "'account.confirmBtnNormal' | translate" 
+            (click)      = "btnSound('sound_pressbtn05'); closePrompt();"
+            (mousedown)  = "setConfirmPressed($event)"
+            (touchstart) = "setConfirmPressed($event)"
+            (mouseup)    = "setConfirmNormal($event)"
+            (touchend)   = "setConfirmNormal($event)"
+            (mouseleave) = "setConfirmNormal($event)"
+          />        
+          
+          <picture style="width:95%;" *ngIf="successPrompt">
+            <source style="width:100%" [srcset]="('account.successPrompt' | translate)+'.webp'" type="image/webp" />
+            <img style="width:100%" [srcset]="'account.successPrompt' | translate" />
+          </picture>
+          <picture style="width:95%;" *ngIf="errorPrompt">
+              <source style="width:100%" [srcset]="('account.errorPrompt' | translate)+'.webp'" type="image/webp" />
+              <img style="width:100%" [srcset]="'account.errorPrompt' | translate" />
+            </picture>
+        </div>
+      </div>
 </div>
+

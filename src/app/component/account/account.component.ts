@@ -12,6 +12,11 @@ import { FetchService } from './../../services/fetch.service';
 export class AccountComponent implements OnInit {
 
   public currentPassword;
+  public successPrompt;
+  public errorPrompt;
+  public picAccountSuccess;
+  public picAccountError;
+  public confirmBtn;
   private password;
   private confirm;
   constructor(public translate: TranslateService, private auth: AuthGuardService, private fetch: FetchService) {}
@@ -20,6 +25,11 @@ export class AccountComponent implements OnInit {
     this.currentPassword = this.auth.decrypt( sessionStorage.getItem('Password') );
     this.password = document.getElementById('password');
     this.confirm = document.getElementById('confirm');
+    this.picAccountSuccess = this.translate.instant('account.successPrompt');
+    this.picAccountError = this.translate.instant('account.errorPrompt');
+    this.picAccountError = this.translate.instant('account.errorPrompt');
+    this.successPrompt = false;
+    this.errorPrompt = false;
   }
 
   setSaveNormal(e: Event) {
@@ -42,6 +52,16 @@ export class AccountComponent implements OnInit {
     self.setAttribute('srcset' , this.translate.instant('account.cancelImgPressed'));
   }
 
+  setConfirmPressed(e: Event) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('srcset' , this.translate.instant('account.confirmBtnPressed'));
+  }
+
+  setConfirmNormal(e: Event) {
+    const self = e.currentTarget as HTMLElement;
+    self.setAttribute('srcset' , this.translate.instant('account.confirmBtnNormal'));
+  }
+
   resetClicked() {
     this.password.value = null;
     this.confirm.value = null;
@@ -49,15 +69,25 @@ export class AccountComponent implements OnInit {
 
   submitClicked() {
     if (this.password.value.length === 0 || this.confirm.value.length === 0) {
-      window.alert('Form doesn\'t finish');
+      this.errorPrompt = true;
       return;
     }
 
     if (this.password.value === this.confirm.value) {
-      this.fetch.fetchChangePassword( this.password.value );
+      this.fetch.fetchChangePassword( this.password.value ).then( state => {
+          this.successPrompt = true;
+          console.log( state );
+        }).catch( error => {
+          this.errorPrompt = true;
+          console.log( error );
+      });
     } else {
-      window.alert('Not Match Password');
+      this.errorPrompt = true;
     }
+  }
+
+  closePrompt() {
+    [this.errorPrompt , this.successPrompt] = [false, false];
   }
 
   btnSound(soundName: string) {

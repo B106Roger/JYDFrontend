@@ -70,7 +70,11 @@
     "saveImgNormal"    : "/assets/imgs/esp/btnAccountSaveNormal@2x.png",
     "cancelImgNormal"  : "/assets/imgs/esp/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/esp/btnAccountSavePressed@2x.png",
-    "cancelImgPressed" : "/assets/imgs/esp/btnAccountCancelPressed@2x.png"
+    "cancelImgPressed" : "/assets/imgs/esp/btnAccountCancelPressed@2x.png",
+    "successPrompt" : "/assets/imgs/esp/picMsgAccountSuccess@2x.png",
+    "errorPrompt"   : "/assets/imgs/esp/picMsgAccountError@2x.png",
+    "confirmBtnNormal": "/assets/imgs/esp/btnConfirmNormal@2x.png",
+    "confirmBtnPressed": "/assets/imgs/esp/btnConfirmPressed@2x.png"
   },
 
   "history" : {

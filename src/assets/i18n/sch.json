@@ -68,7 +68,11 @@
     "saveImgNormal"    : "/assets/imgs/sch/btnAccountSaveNormal@2x.png",
     "cancelImgNormal"  : "/assets/imgs/sch/btnAccountCancelNormal@2x.png",
     "saveImgPressed"   : "/assets/imgs/sch/btnAccountSavePressed@2x.png",
-    "cancelImgPressed" : "/assets/imgs/sch/btnAccountCancelPressed@2x.png"
+    "cancelImgPressed" : "/assets/imgs/sch/btnAccountCancelPressed@2x.png",
+    "successPrompt" : "/assets/imgs/sch/picMsgAccountSuccess@2x.png",
+    "errorPrompt"   : "/assets/imgs/sch/picMsgAccountError@2x.png",
+    "confirmBtnNormal": "/assets/imgs/sch/btnConfirmNormal@2x.png",
+    "confirmBtnPressed": "/assets/imgs/sch/btnConfirmPressed@2x.png"
   },
 
   "history" : {
