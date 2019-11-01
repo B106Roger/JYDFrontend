@@ -68,13 +68,14 @@ export class AccountComponent implements OnInit {
   }
 
   submitClicked() {
+    debugger;
     if (this.password.value.length === 0 || this.confirm.value.length === 0) {
       this.errorPrompt = true;
       return;
     }
 
-    if (this.password.value === this.confirm.value) {
-      this.fetch.fetchChangePassword( this.password.value ).then( state => {
+    if ( this.password.value === this.confirm.value) {
+       this.fetch.fetchChangePassword( this.password.value ).then( state => {
           this.successPrompt = true;
           console.log( state );
         }).catch( error => {

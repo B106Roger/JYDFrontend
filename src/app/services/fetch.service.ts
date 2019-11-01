@@ -70,25 +70,29 @@ export class FetchService {
         } else {
           return response.json();
         }
-      });
+      }).then( responseJSON => 
+        responseJSON
+      ).catch( error => {
+        console.log( error );
+    });
   }
 
   fetchAmount() {
     return fetch(`${Api.amountApi}` , {
-      headers : new Headers({
-        Authorization: `Bearer ${this.auth.getToken()}`
-      })
-    }).then( response => {
-      if ( !response.ok ) {
-        throw Error( response.statusText );
-      } else {
-        return response.json();
-      }
-    }).then( responseJSON => {
-      sessionStorage.setItem('amount', responseJSON.account.amount);
-      this.userAmount$.next(responseJSON.account.amount);
-      return responseJSON;
-    })
+        headers : new Headers({
+          Authorization: `Bearer ${this.auth.getToken()}`
+        })
+      }).then( response => {
+        if ( !response.ok ) {
+          throw Error( response.statusText );
+        } else {
+          return response.json();
+        }
+      }).then( responseJSON => {
+        sessionStorage.setItem('amount', responseJSON.account.amount);
+        this.userAmount$.next(responseJSON.account.amount);
+        return responseJSON;
+    });
   }
 
   fetchGameList() {
