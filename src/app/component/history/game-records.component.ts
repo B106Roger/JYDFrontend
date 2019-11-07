@@ -1,5 +1,6 @@
 import { Component, OnInit, Input , OnChanges, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { precision } from '../../env';
 import { isArray } from 'util';
 
 
@@ -47,10 +48,10 @@ export class GameRecordsComponent implements OnInit , OnChanges {
         return [
           record.gameName,
           record.dateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.dateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
-          parseInt( record.betMoney    , 10).toFixed(2),
-          parseInt( record.winMoney    , 10).toFixed(2),
-          parseInt( record.beforeMoney , 10).toFixed(2),
-          parseInt( record.afterMoney  , 10).toFixed(2),
+          parseInt( record.betMoney    , 10).toFixed(precision),
+          parseInt( record.winMoney    , 10).toFixed(precision),
+          parseInt( record.beforeMoney , 10).toFixed(precision),
+          parseInt( record.afterMoney  , 10).toFixed(precision),
         ];
       });
     }

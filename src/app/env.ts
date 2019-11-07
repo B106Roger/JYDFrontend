@@ -14,7 +14,7 @@ const Api = {
     * @var void
     * @return GameList[]
     */
-  gameListApi   : ' https://dev-slot-mario.gd888.cc/gamelab/gamelist',
+  gameListApi   : 'https://dev-slot-mario.gd888.cc/gamelab/gamelist',
 
    /**
     * @method Get
@@ -24,9 +24,10 @@ const Api = {
     * @return RecordList[]
     */
   betRecordApi  : 'https://admin.jyd188.net/api/account/betrecord',
+
    /**
     * @method Get
-    * @headers {'Authorization' : Access_token}
+    * @headers { 'Authorization' : Access_token }
     * @var StartDate :Y-m-d
     * @var EndDate   :Y-m-d
     * @return RecordList[]
@@ -35,9 +36,9 @@ const Api = {
 
    /**
     * @method Get
-    * @headers {'Authorization':'A602F295A6D547309A73AEC701ABC196'}
-    * @headers {'Currency':'CNY'}
-    * @headers {'UserID':'{{userid}}'}
+    * @headers { 'Authorization':'A602F295A6D547309A73AEC701ABC196' }
+    * @headers { 'Currency':'CNY' }
+    * @headers { 'UserID':'{{userid}}' }
     * @var void
     * @return data[]
     */
@@ -45,7 +46,7 @@ const Api = {
 
    /**
     * @method PUT
-    * @headers {'Authorization' : Access_token}
+    * @headers {'Authorization' : Access_token }
     * @var oldPassword: string
     * @var newPassword: string
     */
@@ -55,7 +56,7 @@ const Api = {
     * @method Get
     * @var begin : Y-m-d
     * @var end   : Y-m-d
-    * @return RecordList[]
+    * @return RecordList []
     */
   testIORecords   : 'http://localhost:8000/api/history/IORecords',
 
@@ -63,7 +64,7 @@ const Api = {
     * @method Get
     * @var begin : Y-m-d
     * @var end   : Y-m-d
-    * @return RecordList[]
+    * @return RecordList []
     */
   testGameRecords : 'http://localhost:8000/api/history/gameRecords',
 
@@ -73,7 +74,8 @@ const Api = {
     * @var Password :string
     * @return userInfo
     */
-  testLogin       : 'http://localhost:8000/api/user/login'
+   testLogin      : 'http://localhost:8000/api/user/login'
+
 };
 
 const fakeUser = [
@@ -81,7 +83,6 @@ const fakeUser = [
   {account: 'testuser' , password: 'testpassword' , UID: 'Test0002'}
 ];
 
-const testMode = true;
+const precision = 3;
 
-
-export { Api , fakeUser };
+export { Api , fakeUser , precision };
