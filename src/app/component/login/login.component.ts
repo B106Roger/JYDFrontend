@@ -79,6 +79,10 @@ export class LoginComponent implements OnInit {
       this.showInstallHint = false;
       this.showInstallHintForever = false;
     }
+    // 透過QR code進來
+    if (window['userID'] !== null || window['userID'] !== undefined) {
+      this.account = window['userID'];
+    }
   }
 
   toggleRemeberValue() {

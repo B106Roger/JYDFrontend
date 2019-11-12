@@ -3,7 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import {TranslateService} from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { FetchService } from './services/fetch.service';
-import { Router, NavigationEnd, RouterEvent } from '@angular/router';
+import { Router, NavigationEnd, RouterEvent, ActivatedRoute } from '@angular/router';
 // tslint:disable: no-string-literal
 
 declare var $: any;
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   userAgent = window.navigator.userAgent.toLowerCase();
   routerUrlSubscription = null;
 
-  constructor(public swupdate: SwUpdate, private translate: TranslateService,
+  constructor(public swupdate: SwUpdate, private translate: TranslateService, private actroute: ActivatedRoute,
               private fetch: FetchService, private location: Location, private route: Router) {
     translate.addLangs(['eng', 'sch', 'esp', 'por']);
     const defaultLang = 'eng';
@@ -96,17 +96,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     // 設定背景音樂
     const musicVal = localStorage.getItem('music') === 'on' ? true : false;
     const musicElement = document.querySelector('#music_lobbybg') as HTMLAudioElement;
-    if (musicVal) { musicElement.play(); }
+    if (musicVal) { musicElement.play().catch(); }
 
     // 訂閱當前路由，如果是game, login 頁面就停掉背景音樂
     this.routerUrlSubscription = this.route.events.subscribe((e: RouterEvent) => {
       if (e instanceof NavigationEnd) {
-        if (e.url.match('/game/') || e.url === '/' || e.url === '/?utm_source=pwa_app') {
+        if (e.url.match('/game/') || e.url.match('/login')) {
           musicElement.pause();
           musicElement.currentTime = 0;
         }
       }
     });
+
+    // 設定QR code進入大廳帳號
+    const fullURL = new URL(window.location.href);
+    const params = fullURL.searchParams;
+    if (params.has('userID')) {
+      sessionStorage.clear();
+      localStorage.removeItem('UserID');
+      localStorage.removeItem('Password');
+      window['userID'] = params.get('userID');
+    }
   }
 
   ngAfterViewInit() {
@@ -149,6 +159,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   isLoginOrGame() {
     const dst = this.location.path();
-    return dst === '' || dst.match('/game/') || dst === '?utm_source=pwa_app';
+    return dst.match('/login') || dst.match('/game/');
   }
 }

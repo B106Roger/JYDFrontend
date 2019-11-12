@@ -10,7 +10,7 @@ import { ContactComponent } from './component/contact/contact.component';
 import { GameComponent } from './component/game/game.component';
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
     canActivate: [AutoGuardService]
   },
@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo : ''
+    redirectTo : '/login'
   }
 ];
 /*
