@@ -80,8 +80,9 @@ export class LoginComponent implements OnInit {
       this.showInstallHintForever = false;
     }
     // 透過QR code進來
-    if (window['userID'] !== null || window['userID'] !== undefined) {
+    if (window['userID'] !== undefined && window['userID'] !== null) {
       this.account = window['userID'];
+      delete window['userID'];
     }
   }
 
