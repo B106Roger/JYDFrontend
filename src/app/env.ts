@@ -83,6 +83,6 @@ const fakeUser = [
   {account: 'testuser' , password: 'testpassword' , UID: 'Test0002'}
 ];
 
-const precision = 3;
+const precision = 2;
 
 export { Api , fakeUser , precision };

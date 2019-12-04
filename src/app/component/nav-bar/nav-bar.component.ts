@@ -32,7 +32,7 @@ export class NavBarComponent implements OnInit {
     {
       picture: 'lobby.contactimg',
       picturepressed: 'lobby.contactimgpressed',
-      nextUrl: '/contact'
+      nextUrl: '/lobby'
     }
   ];
 

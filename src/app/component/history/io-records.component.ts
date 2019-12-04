@@ -48,9 +48,9 @@ export class IoRecordsComponent implements OnInit , OnChanges {
         return [
           record.autoID,
           record.dateTime.match(/[\d]+/g).slice(0, 3).join('-') + ' ' + record.dateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
-          parseInt( record.beforeMoney , 10).toFixed(precision),
+          parseFloat( record.beforeMoney ).toFixed(precision),
           (record.afterMoney - record.beforeMoney).toFixed(precision),
-          parseInt( record.afterMoney  , 10).toFixed(precision),
+          parseFloat( record.afterMoney  ).toFixed(precision),
         ];
       });
     }

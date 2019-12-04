@@ -48,10 +48,10 @@ export class GameRecordsComponent implements OnInit , OnChanges {
         return [
           record.gameName,
           record.dateTime.match(/[\d]+/g).slice(0 , 3).join('-') + ' ' + record.dateTime.match(/[\d]+/g).slice(3 , 6).join(':'),
-          parseInt( record.betMoney    , 10).toFixed(precision),
-          parseInt( record.winMoney    , 10).toFixed(precision),
-          parseInt( record.beforeMoney , 10).toFixed(precision),
-          parseInt( record.afterMoney  , 10).toFixed(precision),
+          parseFloat( record.betMoney   ).toFixed(precision),
+          parseFloat( record.winMoney   ).toFixed(precision),
+          parseFloat( record.beforeMoney).toFixed(precision),
+          parseFloat( record.afterMoney ).toFixed(precision),
         ];
       });
     }

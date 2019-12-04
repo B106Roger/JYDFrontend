@@ -3,18 +3,20 @@
     <span *ngIf="false" class="title">{{ 'history.title' | translate }}</span>
     <picture>
       <source class="titleImg" [srcset]="('history.titleImg' | translate)+'.webp'" type="image/webp">
-      <img class="titleImg" [srcset]="'history.titleImg' | translate" />
+      <img class="titleImg" [srcset]="'history.titleImg' | translate" draggable="false"/>
     </picture>
     <a routerLink="/lobby">
-      <img class="close-button" (click)="btnSound('sound_pressbtn05')"
+      <img class="close-button" (click)="btnSound('sound_pressbtn05')" draggable="false"
       src="/assets/imgs/btnSettingLeaveNormal.png">
     </a>
   </div>
 
   <div class="main-content">
     <div class="d-flex justify-content-around" style="position: relative">
-        <img class="short-label" id="tab-00" (click)="btnSound('sound_pressbtn02');tabChange(0)" [srcset]="'history.labelGameHistoryPressed' | translate" />
-        <img class="short-label" id="tab-01" (click)="btnSound('sound_pressbtn02');tabChange(1)" [srcset]="'history.labelInOutHistoryNormal' | translate" />
+        <img class="short-label" id="tab-00" (click)="btnSound('sound_pressbtn02');tabChange(0)"
+        [srcset]="'history.labelGameHistoryPressed' | translate" draggable="false"/>
+        <img class="short-label" id="tab-01" (click)="btnSound('sound_pressbtn02');tabChange(1)"
+        [srcset]="'history.labelInOutHistoryNormal' | translate" draggable="false"/>
     </div>
 
     <!-- 資料主體 -->
@@ -25,7 +27,7 @@
 
         <span class="text-sliver time-input">
           {{ startDate }}
-            <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+            <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false"/>
             <input type="date" class="ui-datepicker-begin" [value]="startDate"
               (focus) = "setDatepickerPressed('datepicker-begin')"
               (input) = "setDatepickerNormal('datepicker-begin')"
@@ -39,7 +41,7 @@
 
         <span class="text-sliver time-input">
           {{ endDate }}
-          <img id="datepicker-end" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date"/>
+          <img id="datepicker-end" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false"/>
           <input type="date" class="ui-datepicker-end" [value]="endDate"
             (focus) = "setDatepickerPressed('datepicker-end')"
             (input) = "setDatepickerNormal('datepicker-end')"
@@ -49,7 +51,7 @@
           >
         </span>
 
-        <img draggable="false" [srcset]="'history.goImgNormal' | translate" class="go-btn-base"
+        <img draggable="false" [srcset]="'history.goImgNormal' | translate" class="go-btn-base" draggable="false"
           (mousedown)  ="setGoPressed($event)"
           (touchstart) ="setGoPressed($event)"
           (touchend)   ="setGoNormal($event)"
@@ -63,7 +65,7 @@
       <app-io-records [ioRecrods]="ioRecrods" [hidden]="!selectTab"></app-io-records>
 
       <div class="pageSelect-container">
-        <img class="first-page" [srcset]="'/assets/imgs/btnFirstPageNormal@2x.png'"
+        <img class="first-page" [srcset]="'/assets/imgs/btnFirstPageNormal@2x.png'" draggable="false"
           (mousedown)  ="setFirstPageBtnPressed($event)"
           (touchstart) ="setFirstPageBtnPressed($event)"
           (touchend)   ="setFirstPageBtnNormal($event)"
@@ -71,7 +73,7 @@
           (mouseleave) ="setFirstPageBtnNormal($event)"
           (click)      ="setPage( 0 );btnSound('sound_pressbtn03');"
         />
-        <img class="prev-page" [srcset]="'/assets/imgs/btnPreviousPageNormal@2x.png'"
+        <img class="prev-page" [srcset]="'/assets/imgs/btnPreviousPageNormal@2x.png'" draggable="false"
           (mousedown)  ="setPrevPageBtnPressed($event)"
           (touchstart) ="setPrevPageBtnPressed($event)"
           (touchend)   ="setPrevPageBtnNormal($event)"
@@ -80,7 +82,7 @@
           (click)      ="changePage( -1 );btnSound('sound_pressbtn03');"
         />
         <span class="page-frame">{{ currentPage+1 }}</span>
-        <img class="next-page" [srcset]="'/assets/imgs/btnNextPageNormal@2x.png'"
+        <img class="next-page" [srcset]="'/assets/imgs/btnNextPageNormal@2x.png'" draggable="false"
           (mousedown)  ="setNextPageBtnPressed($event)"
           (touchstart) ="setNextPageBtnPressed($event)"
           (touchend)   ="setNextPageBtnNormal($event)"
@@ -88,7 +90,7 @@
           (mouseleave) ="setNextPageBtnNormal($event)"
           (click)      ="changePage( 1 );btnSound('sound_pressbtn03');"
         />
-        <img class="final-page" [srcset]="'/assets/imgs/btnLastPageNormal@2x.png'"
+        <img class="final-page" [srcset]="'/assets/imgs/btnLastPageNormal@2x.png'" draggable="false"
           (mousedown)  ="setFinalPageBtnPressed($event)"
           (touchstart) ="setFinalPageBtnPressed($event)"
           (touchend)   ="setFinalPageBtnNormal($event)"
