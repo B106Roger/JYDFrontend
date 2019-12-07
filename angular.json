@@ -32,12 +32,19 @@
             "styles": [
               "src/styles.scss",
               "src/public/style/bootstrap.min.css",
-              "src/public/style/setting.scss"
+              "src/public/style/setting.scss",
+              "src/public/style/classic.css",
+              "src/public/style/classic.date.css",
+              "src/public/style/classic.time.css"
             ],
             "scripts": [
               "src/public/js/jquery.min.js",
               "src/public/js/bootstrap.min.js",
-              "src/public/js/modernizr-custom.js"
+              "src/public/js/modernizr-custom.js",
+              "src/public/js/picker.js",
+              "src/public/js/picker-date.js",
+              "src/public/js/picker-time.js",
+              "src/public/js/legacy.js"
             ]
           },
           "configurations": {
@@ -102,12 +109,19 @@
             "styles": [
               "src/styles.scss",
               "src/public/style/bootstrap.min.css",
-              "src/public/style/setting.scss"
+              "src/public/style/setting.scss",
+              "src/public/style/classic.css",
+              "src/public/style/classic.date.css",
+              "src/public/style/classic.time.css"
             ],
             "scripts": [
               "src/public/js/jquery.min.js",
               "src/public/js/bootstrap.min.js",
-              "src/public/js/modernizr-custom.js"
+              "src/public/js/modernizr-custom.js",
+              "src/public/js/picker.js",
+              "src/public/js/picker-date.js",
+              "src/public/js/picker-time.js",
+              "src/public/js/legacy.js"
             ]
           }
         },

@@ -20,36 +20,33 @@
     </div>
 
     <!-- 資料主體 -->
+    <!-- 
+
+     -->
     <div class="wrapper">
       <!-- table-header 查詢欄 -->
       <div class="search-row d-flex align-items-center justify-content-around position-relative">
         <span class="text-sliver" style="font-size:2vh">{{ 'history.time' | translate }}</span>
 
-        <span class="text-sliver time-input">
+        <span class="text-sliver time-input"
+          (touchstart) = "startDateChange($event)"
+          (touchstart) = "btnSound('sound_pressbtn03')"
+        >
           {{ startDate }}
-            <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false"/>
-            <input type="date" class="ui-datepicker-begin" [value]="startDate"
-              (focus) = "setDatepickerPressed('datepicker-begin')"
-              (input) = "setDatepickerNormal('datepicker-begin')"
-              (input) = "startDateChange($event)"
-              (blur)  = "setDatepickerNormal('datepicker-begin')"
-              (click)="btnSound('sound_pressbtn03')"
-            >
-        </span>
+            <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false" />
+          </span>
+          <input type="text" class="ui-datepicker-begin">
 
         <span class="text-sliver" style="font-size:2vh">{{ 'history.to' | translate }}</span>
 
-        <span class="text-sliver time-input">
+        <span class="text-sliver time-input"
+          (touchstart) = "endDateChange($event)"
+          (touchstart) = "btnSound('sound_pressbtn03')"
+        >
           {{ endDate }}
-          <img id="datepicker-end" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false"/>
-          <input type="date" class="ui-datepicker-end" [value]="endDate"
-            (focus) = "setDatepickerPressed('datepicker-end')"
-            (input) = "setDatepickerNormal('datepicker-end')"
-            (input) = "endDateChange($event)"
-            (blur)  = "setDatepickerNormal('datepicker-end')"
-            (click)="btnSound('sound_pressbtn03')"
-          >
+          <img id="datepicker-end" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false" />
         </span>
+        <input type="text" class="ui-datepicker-end">
 
         <img draggable="false" [srcset]="'history.goImgNormal' | translate" class="go-btn-base" draggable="false"
           (mousedown)  ="setGoPressed($event)"

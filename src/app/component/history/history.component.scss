@@ -20,27 +20,16 @@
   background-color: #380da2;
 }
 
-.column
-{
-  width:10em;
-  font-size:1rem;
-  height:100%;
-  color: #c4d2f0;
-  text-shadow: 0px 1.5px 1px black;
-}
-
-.sub-column
-{
-  font-size:0.75rem;
-  height:100%;
-  color: #c4d2f0;
-  text-shadow: 0px 1.5px 1px black;
-}
 /* Time input */
-.text-sliver
+span.text-sliver
 {
   color: #b4c6ec;
-  text-shadow: 0px 1.5px 1px black;
+  //text-shadow: 0px 1.5px 1px black;
+}
+
+.picker *
+{
+  text-shadow: 0px 1.5px 1px blue;
 }
 
 .time-input
@@ -201,13 +190,13 @@
 
 .ui-datepicker-begin
 {
-  width:30%;
+  width:1%;
   position: absolute;
-  left:13%;
+  top:0%;
+  left:0%;
   @media screen and ( orientation: portrait )   { max-height:7vh; }
   @media screen and ( orientation: landscape )  { max-height:7vw; }
   opacity: 0;
-
   &::-webkit-inner-spin-button
   {
     display: none;
@@ -227,9 +216,10 @@
 
 .ui-datepicker-end
 {
-  width:30%;
+  width:1%;
   position: absolute;
-  right:18%;
+  top:0%;
+  right:0%;
   @media screen and ( orientation: portrait )   { max-height:7vh; }
   @media screen and ( orientation: landscape )  { max-height:7vw; }
   opacity: 0;

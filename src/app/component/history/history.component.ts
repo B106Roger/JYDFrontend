@@ -13,7 +13,6 @@ import { GameRecordsComponent } from './game-records.component';
 
 export class HistoryComponent implements OnInit, OnDestroy {
 
-
   public startDate: string;
   public endDate: string;
   public selectTab: number;
@@ -22,18 +21,19 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public currentPage;
   public gameRecordTotalPage;
   public ioRecordTotalPage;
-  constructor(private router: Router, private translate: TranslateService, private fetch: FetchService) { }
+  private date;
+  constructor(private router: Router, private translate: TranslateService, private fetch: FetchService) { 
+    this.date = new Date();
+  }
 
   ngOnInit() {
-      const d = new Date();
-
-      const initEndDate = d.toLocaleDateString().split('/').map( strDate => {
+      const initEndDate = this.date.toLocaleDateString().split('/').map( strDate => {
         const numDate = parseInt(strDate , 10);
         return numDate < 10 ? '0' + numDate : numDate;
       }).join('-');
 
-      d.setTime(d.getTime() - 604800000); // 604800000 = 7day * 24hr * 60min * 60sec * 1000ms
-      const initStartDate = d.toLocaleDateString().split('/').map( strDate => {
+      this.date.setTime(this.date.getTime() - 604800000); // 604800000 = 7day * 24hr * 60min * 60sec * 1000ms
+      const initStartDate = this.date.toLocaleDateString().split('/').map( strDate => {
         const numDate = parseInt(strDate , 10);
         return numDate < 10 ? '0' + numDate : numDate;
       }).join('-');
@@ -75,6 +75,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
             this.ioRecordTotalPage = responseJson.info.totalPages;
           });
       }
+
+      this.datepickerInit();
   }
 
   ngOnDestroy() {
@@ -121,8 +123,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
     document.getElementById( id ).setAttribute('srcset' , '/assets/imgs/btnCalendarNormal@2x.png');
   }
 
-  setDatepickerPressed( id ) {
+  setDatepickerPressed( id ): boolean {
     document.getElementById( id ).setAttribute('srcset' , '/assets/imgs/btnCalendarPressed@2x.png');
+    return true;
   }
 
   setFirstPageBtnNormal(e) {
@@ -166,17 +169,59 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   startDateChange(e) {
-    const nextStartDate = e.currentTarget.value;
-    if ( nextStartDate != null ) {
-      this.startDate = Date.parse(nextStartDate) < Date.parse(this.endDate) ? nextStartDate : this.endDate;
+    const jQuery = window['$'];
+    if ( this.setDatepickerPressed('datepicker-begin') ) {
+      jQuery('.ui-datepicker-begin').click();
     }
   }
 
   endDateChange(e) {
-    const nextEndDate = e.currentTarget.value;
-    if ( nextEndDate != null ) {
-      this.endDate = Date.parse(nextEndDate) > Date.parse(this.startDate) ? nextEndDate : this.startDate;
+    const jQuery = window['$'];
+    if ( this.setDatepickerPressed('datepicker-end') ) {
+      jQuery('.ui-datepicker-end').click();
     }
+  }
+
+  datepickerInit() {
+    const jQuery = window['$'];
+
+    // Set begin date
+    jQuery('.ui-datepicker-begin').pickadate({
+      onSelect: () => {
+        jQuery(this).change();
+        this.setDatepickerNormal('datepicker-begin');
+      },
+      onClose: () => {
+        this.setDatepickerNormal('datepicker-begin');
+      }
+    }).on('change' , (e) => {
+      const nextStartDate = e.currentTarget.value;
+      this.date.setTime( Date.parse(nextStartDate) );
+      const dateString = this.date.toLocaleDateString().split('/').map( ch => ch.padStart(2 , 0)).join('-');
+
+      if ( nextStartDate != null ) {
+        this.startDate = Date.parse(nextStartDate) < Date.parse(this.endDate) ? dateString : this.endDate;
+      }
+    });
+
+    // Set End date
+    jQuery('.ui-datepicker-end').pickadate({
+      onSelect: () => {
+        jQuery(this).change();
+        this.setDatepickerNormal('datepicker-end');
+      },
+      onClose: () => {
+        this.setDatepickerNormal('datepicker-end');
+      }
+    }).on('change' , (e) => {
+      const nextEndDate = e.currentTarget.value;
+      this.date.setTime( Date.parse(nextEndDate) );
+      const dateString = this.date.toLocaleDateString().split('/').map( ch => ch.padStart(2 , 0)).join('-');
+
+      if ( nextEndDate != null ) {
+        this.endDate = Date.parse(nextEndDate) > Date.parse(this.startDate) ? dateString : this.startDate;
+      }
+    });
   }
 
   changePage(value: number) {
