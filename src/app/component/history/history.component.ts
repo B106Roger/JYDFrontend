@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FetchService } from './../../services/fetch.service';
 import { GameRecordsComponent } from './game-records.component';
+import { type } from 'os';
 
 @Component({
   selector: 'app-history',
@@ -91,7 +92,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   tabChange( page ) {
     this.selectTab = page;
-    const maxPage = this.selectTab ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
+    const maxPage = this.selectTab === 0 ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1 ;
     if (this.currentPage > maxPage) {
       this.currentPage = maxPage;
     }
@@ -179,7 +180,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   changePage(value: number) {
-    const maxPage = this.selectTab ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1;
+    const maxPage = this.selectTab === 0  ? this.gameRecordTotalPage - 1 : this.ioRecordTotalPage - 1;
     let temp;
     temp = parseInt( this.currentPage , 10 ) + value;
     temp = (temp > maxPage ? maxPage : temp );
@@ -191,7 +192,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   setPage(page: number) {
-    if (parseInt(this.currentPage, 10) ) {
+    if (page >= 0 ) {
       this.currentPage = page;
       this.sendQuery();
     }

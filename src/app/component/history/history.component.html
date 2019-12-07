@@ -96,7 +96,7 @@
           (touchend)   ="setFinalPageBtnNormal($event)"
           (mouseup)    ="setFinalPageBtnNormal($event)"
           (mouseleave) ="setFinalPageBtnNormal($event)"
-          (click)      ="setPage( selectTab ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 );btnSound('sound_pressbtn03');"
+          (click)      ="setPage( selectTab === 0 ?  gameRecordTotalPage-1 : ioRecordTotalPage-1 );btnSound('sound_pressbtn03');"
         />
       </div>
 
