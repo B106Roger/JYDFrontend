@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FetchService } from './../../services/fetch.service';
 import { GameRecordsComponent } from './game-records.component';
-import { type } from 'os';
+
 
 @Component({
   selector: 'app-history',
