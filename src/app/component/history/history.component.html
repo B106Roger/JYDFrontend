@@ -32,6 +32,8 @@
           (touchstart) = "startDateChange($event)"
           (click) = "startDateChange($event)"
           (touchstart) = "btnSound('sound_pressbtn03')"
+          (click) = "btnSound('sound_pressbtn03')"
+
         >
           {{ startDate }}
             <img id="datepicker-begin" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false" />
@@ -44,6 +46,8 @@
           (touchstart) = "endDateChange($event)"
           (click) = "endDateChange($event)"
           (touchstart) = "btnSound('sound_pressbtn03')"
+          (click) = "btnSound('sound_pressbtn03')"
+
         >
           {{ endDate }}
           <img id="datepicker-end" [srcset]="'/assets/imgs/btnCalendarNormal@2x.png'" class="icon-date" draggable="false" />
