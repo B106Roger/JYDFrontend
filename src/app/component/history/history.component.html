@@ -30,6 +30,7 @@
 
         <span class="text-sliver time-input"
           (touchstart) = "startDateChange($event)"
+          (click) = "startDateChange($event)"
           (touchstart) = "btnSound('sound_pressbtn03')"
         >
           {{ startDate }}
@@ -41,6 +42,7 @@
 
         <span class="text-sliver time-input"
           (touchstart) = "endDateChange($event)"
+          (click) = "endDateChange($event)"
           (touchstart) = "btnSound('sound_pressbtn03')"
         >
           {{ endDate }}
