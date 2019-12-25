@@ -19,26 +19,26 @@ const routes: Routes = [
     component: LobbyComponent,
     canActivate: [AuthGuardService]
   },
-  {
-    path: 'game/:gameType/:gameName',
-    component: GameComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'history',
-    component: HistoryComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'account',
-    component: AccountComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'contact',
-    component: ContactComponent,
-    canActivate: [AuthGuardService]
-  },
+  // {
+  //   path: 'game/:gameType/:gameName',
+  //   component: GameComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'history',
+  //   component: HistoryComponent,
+  //   canActivate: [AuthGuardService],
+  // },
+  // {
+  //   path: 'account',
+  //   component: AccountComponent,
+  //   canActivate: [AuthGuardService]
+  // },
+  // {
+  //   path: 'contact',
+  //   component: ContactComponent,
+  //   canActivate: [AuthGuardService]
+  // },
   {
     path: '**',
     redirectTo : '/login'
